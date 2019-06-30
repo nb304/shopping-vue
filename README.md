@@ -3,6 +3,7 @@ Iocn图标说明列表
   
   
   图标列表：(注意：以后自己添加好图标在本说明上添加该图标描述)
+      名称                    功能     默认颜色
       caigou.svg            采购图标   白色
       dianpu.svg            店铺图标   白色
       dingdan.svg           订单图标   白色
@@ -20,9 +21,11 @@ Iocn图标说明列表
       yonghuguanli.svg      用户图标   白色
       zhijingguanli.svg     资金图标   白色
       
-      shanchu.svg           删除图标   白色
+      shanchu.svg           删除图标   红色
       tianjia.svg           添加图标   白色
+      tianjiaNeiRong.svg    添加2图标  白色
       update.svg            修改图标   白色
+      xiugai.svg            修改2图标  橙色
       
       message.svg           消息图标   黑色
       price.svg             金额图标   黑色
