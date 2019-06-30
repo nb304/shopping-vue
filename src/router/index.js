@@ -65,26 +65,26 @@ export const constantRoutes = [
       {
         path: 'table',
         name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: '商品信息管理', icon: 'shangpinguanli' }
+        component: () =>  import('@/views/ProductManage/ProductInfoManage'),
+        meta: { title: '商品信息管理' }
       },
       {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
-        meta: { title: '商品品牌管理', icon: 'shangpinguanli' }
+        meta: { title: '商品品牌管理' }
       },
       {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
-        meta: { title: '商品类目管理', icon: 'shangpinguanli' }
+        meta: { title: '商品类目管理'}
       },
       {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
-        meta: { title: '商品运费管理', icon: 'shangpinguanli' }
+        meta: { title: '商品运费管理' }
       }
     ]
   },
@@ -98,18 +98,18 @@ export const constantRoutes = [
         path: 'index',
         name: 'Form',
         component: () => import('@/views/form/index'),
-        meta: { title: '商品申请采购', icon: 'caigou' }
+        meta: { title: '商品申请采购' }
       },
       {
         path: 'index',
         name: 'Form',
         component: () => import('@/views/form/index'),
-        meta: { title: '添加采购管理', icon: 'caigou' }
+        meta: { title: '添加采购管理' }
       },{
         path: 'index',
         name: 'Form',
         component: () => import('@/views/form/index'),
-        meta: { title: '采购列表管理', icon: 'caigou' }
+        meta: { title: '采购列表管理'}
       }
     ]
   },
@@ -125,19 +125,19 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '商品评价管理', icon: 'tongzhi' },
+        meta: { title: '商品评价管理' },
       },
       {
         path: 'menu1-2-1',
         component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
         name: 'Menu1-2-1',
-        meta: { title: '用户反馈管理' , icon: 'tongzhi'}
+        meta: { title: '用户反馈管理' }
       },
       {
         path: 'menu1-2-2',
         component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
         name: 'Menu1-2-2',
-        meta: { title: '网站通知管理' , icon: 'tongzhi' }
+        meta: { title: '网站通知管理'  }
       }
     ]
   },
@@ -147,31 +147,31 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/nested/menu1',
     name: 'Nested1',
-    meta: {title: '店铺管理', icon: 'dianpu'},
+    meta: {title: '店铺管理' , icon: 'dianpu' },
     children: [
       {
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '店铺信息管理' , icon: 'dianpu'},
+        meta: { title: '店铺信息管理' },
       },
       {
         path: 'menu1-2-1',
         component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
         name: 'Menu1-2-1',
-        meta: { title: '店铺人员管理' , icon: 'dianpu' }
+        meta: { title: '店铺人员管理' }
       },
       {
         path: 'menu1-2-2',
         component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
         name: 'Menu1-2-2',
-        meta: { title: '店铺入驻管理' , icon: 'dianpu' }
+        meta: { title: '店铺入驻管理' }
       },
       {
         path: 'menu1-2-2',
         component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
         name: 'Menu1-2-2',
-        meta: { title: '店铺分类管理' , icon: 'dianpu' }
+        meta: { title: '店铺分类管理' }
       }
     ]
   },
@@ -207,19 +207,19 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/order/OrderList'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '订单列表' , icon: 'dingdan'},
+        meta: { title: '订单列表' },
       },
       {
         path: 'menu1-2-1',
         component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
         name: 'Menu1-2-1',
-        meta: { title: '订单审核' , icon: 'dingdan' }
+        meta: { title: '订单审核' }
       },
       {
         path: 'menu1-2-1',
         component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
         name: 'Menu1-2-1',
-        meta: { title: '订单操作' , icon: 'dingdan' }
+        meta: { title: '订单操作'}
       }
     ]
   },
@@ -233,7 +233,7 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '库存管理列表' , icon: 'kucun' },
+        meta: { title: '库存管理列表'  },
       }
     ]
   }
@@ -249,12 +249,12 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '订单签收详情' , icon: 'wuliu' },
+        meta: { title: '订单签收详情'},
       },{
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '订单物流列表' , icon: 'wuliu' },
+        meta: { title: '订单物流列表' },
       }
     ]
   }
@@ -269,27 +269,27 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '商品统计' , icon: 'tongjiguanli' },
+        meta: { title: '商品统计'  },
       },{
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '商品评价统计' , icon: 'tongjiguanli' },
+        meta: { title: '商品评价统计'},
       },{
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '订单数量统计' , icon: 'tongjiguanli'  },
+        meta: { title: '订单数量统计' },
       },{
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '店铺差评统计' , icon: 'tongjiguanli'  },
+        meta: { title: '店铺差评统计'  },
       },{
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '商品库存统计'  , icon: 'tongjiguanli' },
+        meta: { title: '商品库存统计'   },
       }
     ]
   }
@@ -306,17 +306,17 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '优惠券管理' , icon: 'yingxiao' },
+        meta: { title: '优惠券管理' },
       },{
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '推广管理' , icon: 'yingxiao' },
+        meta: { title: '推广管理' },
       },{
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '积分管理' , icon: 'yingxiao' },
+        meta: { title: '积分管理' },
       }
     ]
   }
@@ -331,12 +331,12 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '轮播管理' , icon: 'wangzhan' },
+        meta: { title: '轮播管理'},
       },{
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '单页新闻' , icon: 'wangzhan' },
+        meta: { title: '单页新闻' },
       }
     ]
   }
@@ -352,7 +352,7 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '在线售后客服' , icon: 'kefu' }
+        meta: { title: '在线售后客服' }
       }
     ]
   }
@@ -367,19 +367,19 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '资金概况' , icon: 'zhijingguanli' }
+        meta: { title: '资金概况'  }
       },
       {
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '订单资金'  , icon: 'zhijingguanli'}
+        meta: { title: '订单资金'}
       },
       {
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '店铺资金' , icon: 'zhijingguanli' }
+        meta: { title: '店铺资金' }
       }
     ]
   }
@@ -409,13 +409,13 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '模块设置' , icon: 'xitongguanli' },
+        meta: { title: '模块设置' },
       },
       {
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '权限设置' , icon: 'xitongguanli' },
+        meta: { title: '权限设置'  },
       }
     ]
   },
