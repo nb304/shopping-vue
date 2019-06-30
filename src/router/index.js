@@ -186,13 +186,13 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: '成员角色管理' , icon: 'yonghuguanli' },
+        meta: { title: '成员角色管理' },
       },
       {
         path: 'menu1-2-1',
         component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
         name: 'Menu1-2-1',
-        meta: { title: '用户账号列表' , icon: 'yonghuguanli' }
+        meta: { title: '用户账号列表'  }
       }
     ]
   },
@@ -205,7 +205,7 @@ export const constantRoutes = [
     children: [
       {
         path: 'menu1',
-        component: () => import('@/views/order/OrderList'), // Parent router-view
+        component: () => import('@/views/OrderManage/OrderList'), // Parent router-view
         name: 'Menu1',
         meta: { title: '订单列表' },
       },
