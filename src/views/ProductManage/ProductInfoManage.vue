@@ -1,5 +1,5 @@
 <template>
-	<div id="listArea">
+	<div id="listArea" v-loading="isProductSPULoading">
 
 		<!-- ======================= 商品信息按钮集合 =========================  -->
 		<el-form :inline="true" :model="formInline" class="demo-form-inline">
@@ -122,7 +122,7 @@
 		<!-- ======================= 商品管理弹出层 =========================  -->
 
 		<!-- ======================= 添加商品弹出层 =========================  -->
-		<el-dialog :title="addProductTitle" :visible.sync="addProductFlag" class="addProduct" v-loading="isProductLoading">
+		<el-dialog :fullscreen="isLoadingFull" :title="addProductTitle" :visible.sync="addProductFlag" class="addProduct" v-loading="isProductLoading">
 			<!-- ======================= 步骤一=========================  -->
 			<div v-if="isShowOneFlag" id="stepone" class="stepList">
 
@@ -450,6 +450,7 @@
 			<el-button v-if="isAddOrNextFlag" :disabled='isStepBtn' style="margin-top: 12px;" @click="next">我已阅读无误,下一步</el-button>
 			<el-button style="margin-top: 12px;" @click="last" :disabled='isStepBtn'>上一步</el-button>
 			<el-button v-if="!isAddOrNextFlag" style="margin-top: 12px;" @click="next">我已阅读无误,确认添加</el-button>
+			<el-button style="margin-top: 12px;" @click="addProductFlag = false" :disabled='isStepBtn'>关闭窗口</el-button>
 		</el-dialog>
 		<!-- ======================= 添加商品弹出层End =========================  -->
 
@@ -477,7 +478,8 @@
 
 
 		<!-- ======================= 查看商品SPU =========================  -->
-		<el-dialog title="商品SPU信息" :visible.sync="productSpuFlag" class="addProduct" v-loading="isProductSPULoading">
+		<el-dialog title="商品SPU信息" :fullscreen="isLoadingFull" :modal-append-to-body="true" :visible.sync="productSpuFlag" class="addProduct"
+		 v-loading="isProductSPULoading">
 			<div>
 				<el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
 					<el-table-column type="selection" width="55">
@@ -510,6 +512,11 @@
 	export default {
 		data() {
 			return {
+				// loading是否全屏显示
+				isLoadingFull: false,
+				// 浏览器大小
+				screenWidth: '',
+				screenHeight: '',
 				// 查询商品SPU信息
 				productSpuFlag: true,
 				// 商品类目值
@@ -1015,6 +1022,28 @@
 		},
 		created() {
 			this.listLoading = false;
+		},
+		mounted() {
+			this.screenWidth = document.body.clientWidth;
+			this.screenHeight = document.body.clientHeight;
+			if(this.screenWidth <= 500) {
+				this.isLoadingFull = true;
+			} else {
+				this.isLoadingFull = false;
+			}
+			window.onresize = () => {
+				return (() => {
+					this.screenWidth = document.body.clientWidth;
+					this.screenHeight = document.body.clientHeight;
+					// 判断宽度是否小于500 小于500 全部全屏显示
+					if(this.screenWidth <= 500) {
+						this.isLoadingFull = true;
+					} else {
+						this.isLoadingFull = false;
+					}
+					
+				})();
+			};
 		}
 	}
 </script>
