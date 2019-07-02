@@ -42,16 +42,12 @@
 						</el-button>
 					</el-form-item>
 				</el-col>
-			</el-row>
 
-			<el-row :gutter="24">
-				<el-col :sm="{span: 6, offset: 18}" :xs="{span: 23}">
+				<el-col :sm="{span: 6}" :xs="{span: 23}">
 					<el-form-item>
 						<el-button type="primary" icon="el-icon-search" @click="onSubmit" style="width: 215px; margin-left: 70px;">搜索</el-button>
 					</el-form-item>
 				</el-col>
-
-
 			</el-row>
 		</el-form>
 
@@ -127,7 +123,7 @@
 			<!-- ======================= 步骤一=========================  -->
 			<div v-if="isShowOneFlag" id="stepone" class="stepList">
 
-				<el-form :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
+				<el-form label-position="left" :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
 					<el-row :gutter="24">
 
 						<el-col :sm="{span: 12,offset: 6}" :xs="{span: 23}">
@@ -172,19 +168,19 @@
 
 			<!-- ======================= 步骤二=========================  -->
 			<div id="steptwo" v-if="isShowTwoFlag">
-				<el-form :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
+				<el-form :inline="true" label-position="left" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
 
 					<el-row :gutter="24">
 
 						<el-col :sm="{span: 12}" :xs="{span: 23}">
-							<el-form-item label="商品名称" style="width:100%;">
+							<el-form-item class="addProductItem" label="商品名称" style="width:100%;">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品名称"></el-input>
 							</el-form-item>
 						</el-col>
 
 						<el-col :sm="{span: 12}" :xs="{span: 23}">
 
-							<el-form-item label="商品品牌">
+							<el-form-item label="商品品牌" class="addProductItem">
 								<el-select class="addProductFormInput" v-model="addProductTwoFrom.region" placeholder="请选择商品品牌">
 									<el-option label="区域一" value="shanghai"></el-option>
 									<el-option label="区域二" value="beijing"></el-option>
@@ -196,13 +192,13 @@
 
 					<el-row :gutter="24">
 						<el-col :sm="{span: 12}" :xs="{span: 23}">
-							<el-form-item label="市场价格">
+							<el-form-item label="市场价格" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入市场价格"></el-input>
 							</el-form-item>
 						</el-col>
 
 						<el-col :sm="{span: 12}" :xs="{span: 23}">
-							<el-form-item label="商城价格">
+							<el-form-item label="商城价格" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商城价格"></el-input>
 							</el-form-item>
 						</el-col>
@@ -214,17 +210,17 @@
 
 			<!-- ======================= 步骤三=========================  -->
 			<div id="stepthree" v-if="isShowThreeFlag">
-				<el-form :inline="true" ref="addProductThreeFrom" :model="addProductTwoFrom" label-width="80px">
+				<el-form :inline="true" label-position="left" ref="addProductThreeFrom" :model="addProductTwoFrom" label-width="80px">
 					<el-row :gutter="24">
 						<el-col :sm="{span: 12}" :xs="{span: 23}">
-							<el-form-item label="商品卖点" style="width:100%;">
+							<el-form-item label="商品卖点" style="width:100%;" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品卖点"></el-input>
 							</el-form-item>
 						</el-col>
 
 						<el-col :sm="{span: 12}" :xs="{span: 23}">
 
-							<el-form-item label="排序" style="width:100%;">
+							<el-form-item label="排序" style="width:100%;" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品排序"></el-input>
 							</el-form-item>
 						</el-col>
@@ -233,13 +229,13 @@
 
 					<el-row :gutter="24">
 						<el-col :sm="{span: 12}" :xs="{span: 23}">
-							<el-form-item label="商品单位" style="width:100%;">
+							<el-form-item label="商品单位" style="width:100%;" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品单位"></el-input>
 							</el-form-item>
 						</el-col>
 
 						<el-col :sm="{span: 12}" :xs="{span: 23}">
-							<el-form-item label="商品详情">
+							<el-form-item label="商品详情" class="addProductItem">
 								<el-input type="textarea" class="addProductFormInput" v-model="addProductTwoFrom.desc"></el-input>
 							</el-form-item>
 						</el-col>
@@ -251,17 +247,17 @@
 
 			<!-- ======================= 步骤四========================  -->
 			<div id="stepfour" v-if="isShowFourFlag">
-				<el-form :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
+				<el-form :inline="true" label-position="left" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
 					<el-row :gutter="24">
 						<el-col :sm="{span: 12}" :xs="{span: 23}">
-							<el-form-item label="SPU" style="width:100%;">
+							<el-form-item label="SPU" style="width:100%;" class="addProductItem">
 								<el-button type="primary" style="width:270px;" @click="addProductSPU">添加商品的SPU</el-button>
 							</el-form-item>
 						</el-col>
 
 						<el-col :sm="{span: 12}" :xs="{span: 23}">
 
-							<el-form-item label="SKU" style="width:100%;">
+							<el-form-item label="SKU" style="width:100%;" class="addProductItem">
 								<el-button type="primary" style="width:270px;" @click="addProductSKU">添加商品的SKU</el-button>
 							</el-form-item>
 						</el-col>
@@ -270,13 +266,13 @@
 
 					<el-row :gutter="24">
 						<el-col :sm="{span: 12}" :xs="{span: 23}">
-							<el-form-item label="商品图片" style="width:100%;">
+							<el-form-item label="商品图片" style="width:100%;" class="addProductItem">
 								<el-button type="primary" style="width:270px;" @click="addProductImages">添加商品图片</el-button>
 							</el-form-item>
 						</el-col>
 
 						<el-col :sm="{span: 12}" :xs="{span: 23}">
-							<el-form-item label="商品详情" style="width:100%;">
+							<el-form-item label="商品详情" style="width:100%;" class="addProductItem">
 								<el-button type="primary" style="width:270px;" @click="addProductInfos">添加商品详情</el-button>
 							</el-form-item>
 						</el-col>
@@ -289,7 +285,7 @@
 
 			<!-- ======================= 添加SPU ========================  -->
 			<div id="addProductSpu" v-if="addProductSpuFlag" class="title-menu-min2" style="max-height: 400px; margin-left: 10px;">
-				<el-form :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
+				<el-form label-position="left" :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
 					<el-row v-for="(o,index) in addProductSpuForm.domains" :key="o.key" class="spusRowClass" :gutter="24">
 
 						<el-card shadow="always" class="SpusClass" style="margin-bottom: 5px;width:360px;">
@@ -329,17 +325,18 @@
 
 						<el-collapse accordion>
 							<el-collapse-item title="操作菜单" name="1">
-								<el-col :sm="{span: 4}" :xs="{span: 8}">
-									<el-button type="primary" @click="addProductSpuLine">新增一行</el-button>
+								<el-col :sm="{span: 4}" :xs="{span: 23}">
+									<el-button type="primary" style="width: 100%;" @click="addProductSpuLine">新增一行</el-button>
 								</el-col>
 
-								<el-col :sm="{span: 5}" :xs="{span: 8}">
-									<el-button type="primary" @click="closeSpuWindows">关闭SPU窗口</el-button>
+								<el-col :sm="{span: 8}" :xs="{span: 23}">
+									<el-button type="primary" style="width: 100%;" class="addAndClose" @click="closeSpuWindows">保存SPU配置并关闭窗口</el-button>
 								</el-col>
-
-								<el-col :sm="{span: 8}" :xs="{span: 12}">
-									<el-button type="primary" class="addAndClose" @click="closeSpuWindows">保存SPU配置并关闭窗口</el-button>
+								
+								<el-col :sm="{span: 5}" :xs="{span: 23}">
+									<el-button style="width: 100%;" @click="closeSpuWindows">关闭窗口</el-button>
 								</el-col>
+								
 							</el-collapse-item>
 
 						</el-collapse>
@@ -351,7 +348,7 @@
 
 			<!-- ======================= 添加SKU ========================  -->
 			<div id="addProductSku" v-if="addProductSkuFlag" class="title-menu-min2" style="max-height: 400px; margin-left: 10px;">
-				<el-form :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
+				<el-form label-position="left" :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
 					<el-row v-for="(o,index) in addProductSkuForm.domains" :key="o.key" class="spusRowClass" :gutter="24">
 
 						<el-card shadow="always" class="SpusClass" style="margin-bottom: 5px;width:360px;">
@@ -390,20 +387,20 @@
 
 						<el-collapse accordion>
 							<el-collapse-item title="操作菜单" name="1">
-								<el-col :sm="{span: 4}" :xs="{span: 12}">
-									<el-button type="primary" @click="addProductSkuLine">新增一行</el-button>
+								<el-col :sm="{span: 4}" :xs="{span: 23}">
+									<el-button type="primary" style="width: 100%;" @click="addProductSkuLine">新增一行</el-button>
 								</el-col>
 
-								<el-col :sm="{span: 5}" :xs="{span: 12}">
-									<el-button type="primary" @click="closeSkuWindows">关闭SKU窗口</el-button>
+								<el-col :sm="{span: 7}" :xs="{span: 23}">
+									<el-button type="primary" style="width: 100%;" class="addAndClose" @click="closeSkuWindows">保存SKU配置并关闭窗口</el-button>
 								</el-col>
 
-								<el-col :sm="{span: 7}" :xs="{span: 13}">
-									<el-button type="primary" class="addAndClose" @click="closeSkuWindows">保存SKU配置并关闭窗口</el-button>
+								<el-col :sm="{span: 8}" :xs="{span: 23}">
+									<el-button type="primary" style="width: 100%;" class="addAndClose" @click="createProductSku">生成商品的SKU库存与价格</el-button>
 								</el-col>
-
-								<el-col :sm="{span: 8}" :xs="{span: 13}">
-									<el-button type="primary" class="addAndClose" @click="createProductSku">生成商品的SKU库存与价格</el-button>
+								
+								<el-col :sm="{span: 5}" :xs="{span: 23}">
+									<el-button  style="width: 100%;" @click="closeSkuWindows">关闭窗口</el-button>
 								</el-col>
 							</el-collapse-item>
 
@@ -421,7 +418,7 @@
 				 :on-exceed="exceedFun" :file-list="fileList" :auto-upload="false" list-type="picture">
 					<el-button slot="trigger" size="small" type="primary">选取需要上传的文件</el-button>
 					<el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
-					<el-button style="margin-left: 10px;" size="small" type="success" @click="closeProductImages">关闭窗口</el-button>
+					<el-button style="margin-left: 10px;" size="small" @click="closeProductImages">关闭窗口</el-button>
 					<div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
 					<div slot="tip" class="el-upload__tip">图片默认显示顺序也是根据上传的顺序规定</div>
 				</el-upload>
@@ -435,7 +432,7 @@
 				 :file-list="fileList" :auto-upload="false" list-type="picture">
 					<el-button slot="trigger" size="small" type="primary">选取需要上传的文件</el-button>
 					<el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
-					<el-button style="margin-left: 10px;" size="small" type="success" @click="closeProductInfo">关闭窗口</el-button>
+					<el-button style="margin-left: 10px;" size="small" @click="closeProductInfo">关闭窗口</el-button>
 					<div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
 					<div slot="tip" class="el-upload__tip">图片默认显示顺序也是根据上传的顺序规定</div>
 				</el-upload>
@@ -451,18 +448,18 @@
 
 			<el-row class="spusRowClass" :gutter="24">
 
-				<el-col :sm="{span: 8}" :xs="{span: 12}">
-					<el-button v-if="isAddOrNextFlag" :disabled='isStepBtn' style="margin-top: 12px; width: 100% !important;  padding-left: 0px !important; padding-right: 0px !important;"
+				<el-col :sm="{span: 8}" :xs="{span: 24}">
+					<el-button type="primary" v-if="isAddOrNextFlag" :disabled='isStepBtn' style="margin-top: 12px; width: 100% !important;  padding-left: 0px !important; padding-right: 0px !important;"
 					 @click="next">我已阅读无误,下一步</el-button>
-					<el-button v-if="!isAddOrNextFlag" style="margin-top: 12px;  width: 150px !important;   padding-left: 0px !important; padding-right: 0px !important;"
+					<el-button type="primary" v-if="!isAddOrNextFlag" :disabled='isStepBtn' style="margin-top: 12px;  width: 100% !important;   padding-left: 0px !important; padding-right: 0px !important;"
 					 @click="next">我已阅读无误,确认添加</el-button>
 				</el-col>
-				<el-col :sm="{span: 8}" :xs="{span: 12}">
-					<el-button style="margin-top: 12px;  width: 100% !important;  padding-left: 0px !important; padding-right: 0px !important;"
+				<el-col :sm="{span: 8}" :xs="{span: 24}">
+					<el-button type="primary" style="margin-top: 12px;  width: 100% !important;  padding-left: 0px !important; padding-right: 0px !important;"
 					 @click="last" :disabled='isStepBtn'>上一步</el-button>
 				</el-col>
 
-				<el-col :sm="{span: 8}" :xs="{span: 12}">
+				<el-col :sm="{span: 8}" :xs="{span: 24}">
 					<el-button style="margin-top: 12px;  width: 100% !important; padding-left: 0px !important; padding-right: 0px !important;"
 					 @click="closeAddProduct" :disabled='isStepBtn'>关闭窗口</el-button>
 				</el-col>
@@ -476,12 +473,12 @@
 		<el-dialog title="商品类目信息" :show-close="false" :close-on-click-modal="false" @close="spuWindow" :visible.sync="productLeiMuInfoFlag"
 		 class="addProduct">
 			<div>
-				<el-form :inline="true" ref="productLeiMuInfoFlag" :model="addProductTwoFrom" label-width="80px">
+				<el-form label-position="left" :inline="true" ref="productLeiMuInfoFlag" :model="addProductTwoFrom" label-width="80px">
 					<el-row :gutter="24">
 
-						<el-col :sm="{span: 12,offset: 6}" :xs="{span: 23}">
+						<el-col :sm="{span: 12,offset: 6}" :xs="{span: 23}" class="productLeiMuInfoClass">
 
-							<el-form-item label="商品类目" style="width:100%;">
+							<el-form-item  label="商品类目" style="width:100%;">
 								<el-input :disabled="true" v-model="productLeiMuValue">
 								</el-input>
 							</el-form-item>
@@ -520,20 +517,27 @@
 						</el-table-column>
 						<el-table-column label="操作" fixed="right" width="100">
 							<el-button type="text" size="small" @click="addProductInfoSpu2">编辑</el-button>
-							<el-button type="text" size="small" >删除</el-button>
+							<el-button type="text" size="small">删除</el-button>
 						</el-table-column>
 					</el-table>
 				</div>
-
-				<el-button style="margin-top: 12px;" @click="productSpuFlag = false">关闭窗口</el-button>
-				<el-button type="primary" @click="addProductInfoSpu">新增SPU</el-button>
-				<el-button type="primary">批量注销SPU</el-button>
-
+				<el-row :gutter="24">
+					<el-col :sm="{span: 8}" :xs="{span: 23}">
+						<el-button style="margin-top: 12px;width: 100%;" type="primary" @click="addProductInfoSpu">新增SPU</el-button>
+					</el-col>
+					<el-col :sm="{span: 8}" :xs="{span: 23}">
+						<el-button style="margin-top: 12px;width: 100%;" type="primary">批量注销SPU</el-button>
+					</el-col>
+					<el-col :sm="{span: 8}" :xs="{span: 23}">
+						<el-button style="margin-top: 12px;width: 100%;" @click="productSpuFlag = false">关闭窗口</el-button>
+					</el-col>
+				</el-row>
+				
 			</div>
 
 			<!-- ======================= 添加SPU ========================  -->
 			<div id="addProductSpu" v-if="addProductSpuFlag2" class="title-menu-min2" style="max-height: 400px; margin-left: 10px;">
-				<el-form :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
+				<el-form label-position="left" :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
 					<el-row v-for="(o,index) in addProductSpuForm.domains" :key="o.key" class="spusRowClass" :gutter="24">
 
 						<el-card shadow="always" class="SpusClass" style="margin-bottom: 5px;width:360px;">
@@ -573,16 +577,16 @@
 
 						<el-collapse accordion>
 							<el-collapse-item title="操作菜单" name="1">
-								<el-col :sm="{span: 4}" :xs="{span: 8}">
-									<el-button type="primary" @click="addProductSpuLine">新增一行</el-button>
+								<el-col :sm="{span: 8}" :xs="{span: 23}">
+									<el-button style="width: 100%;" type="primary" @click="addProductSpuLine">新增一行</el-button>
 								</el-col>
 
-								<el-col :sm="{span: 8}" :xs="{span: 8}">
-									<el-button type="primary" @click="closeSpuWindows2">保存SPU配置并关闭窗口</el-button>
+								<el-col :sm="{span: 8}" :xs="{span: 23}">
+									<el-button style="width: 100%;" type="primary" class="addAndClose">保存新的SPU</el-button>
 								</el-col>
-
-								<el-col :sm="{span: 8}" :xs="{span: 12}">
-									<el-button type="primary" class="addAndClose" >保存新的SPU</el-button>
+								
+								<el-col :sm="{span: 8}" :xs="{span:23}">
+									<el-button style="width: 100%;" type="primary" @click="closeSpuWindows2">保存SPU配置并关闭窗口</el-button>
 								</el-col>
 							</el-collapse-item>
 
@@ -591,12 +595,12 @@
 				</el-row>
 			</div>
 			<!-- ======================= SPU窗口按钮组(结束) ========================  -->
-			
+
 			<!-- ======================= 修改SPU ========================  -->
 			<div id="addProductSpu" v-if="addProductSpuFlag3" class="title-menu-min2" style="max-height: 400px; margin-left: 10px;">
-				<el-form :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
+				<el-form label-position="left" :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
 					<el-row v-for="(o,index) in addProductSpuForm.domains" :key="o.key" class="spusRowClass" :gutter="24">
-			
+
 						<el-card shadow="always" class="SpusClass" style="margin-bottom: 5px;width:360px;">
 							<el-col :sm="{span: 8}" :xs="{span: 12}">
 								<el-form-item>
@@ -604,21 +608,21 @@
 									</el-input>
 								</el-form-item>
 							</el-col>
-			
+
 							<el-col :sm="{span: 8}" :xs="{span: 12}">
 								<el-form-item>
 									<el-input class="SpuInput" v-model="o.spuValue" placeholder="请输入值">
 									</el-input>
 								</el-form-item>
 							</el-col>
-			
+
 							<el-col :sm="{span: 4}" :xs="{span: 12}">
 								<el-form-item>
 									<el-input class="SpuInput2" v-model="o.spuOrder" placeholder="排序">
 									</el-input>
 								</el-form-item>
 							</el-col>
-			
+
 							<el-col :sm="{span: 4}" :xs="{span: 12}">
 								<el-button type="danger" icon="el-icon-delete" circle @click.pprevent="removeProducSpuLink(o)"></el-button>
 							</el-col>
@@ -629,20 +633,19 @@
 			<!-- ======================= 修改SPU窗口按钮组 ========================  -->
 			<div v-if="addProductSpuFlag3" style="margin-left: 10px;">
 				<el-row class="spusRowClass" :gutter="24">
-			
+
 					<el-card shadow="always" class="SpusClass" style="margin-bottom: 5px;width:360px;">
-			
+
 						<el-collapse accordion>
 							<el-collapse-item title="操作菜单" name="1">
-								<el-col :sm="{span: 8}" :xs="{span: 12}">
-									<el-button type="primary" @click="closeSpuWindows3">关闭窗口</el-button>
+								<el-col :sm="{span: 8}" :xs="{span:24}">
+									<el-button type="primary" style="width: 100%;">保存当前配置</el-button>
 								</el-col>
-			
-								<el-col :sm="{span: 8}" :xs="{span:12}">
-									<el-button type="primary" >保存当前配置</el-button>
+								<el-col :sm="{span: 8}" :xs="{span: 24}">
+									<el-button style="width: 100%;" @click="closeSpuWindows3">关闭窗口</el-button>
 								</el-col>
 							</el-collapse-item>
-			
+
 						</el-collapse>
 					</el-card>
 				</el-row>
@@ -1380,7 +1383,10 @@
 	}
 
 	/*==================自定义自适应css========================*/
-	@media only screen and (min-width: 600px) and (max-width: 2000px) {
+	@media only screen and (min-width: 1300px) and (max-width: 2000px) {
+		.productLeiMuInfoClass {
+			margin-left: 0px !important;
+		}
 		.spusRowClass {
 			margin-right: 0px !important;
 			margin-left: 17px !important;
@@ -1403,7 +1409,52 @@
 		}
 	}
 
-	@media only screen and (min-width: 300px) and (max-width: 500px) {
+	@media only screen and (min-width: 300px) and (max-width: 409px) {
+		.addProductItem {
+			margin-bottom: 0px !important;
+		}
+
+		.SpusClass button {
+			margin-top: 0.625rem !important;
+		}
+
+		.spuDialogClass {
+			max-height: 300px;
+		}
+
+		.addAndClose {
+			margin-top: 10px !important;
+		}
+
+		.fixedClass {
+			position: absolute;
+			top: 100px;
+		}
+
+		.spusRowClass {
+			margin-right: 0px !important;
+			margin-left: 7px !important;
+		}
+
+		.SpusClass {
+			width: 270px !important;
+		}
+
+		/*  添加商品的css  */
+		.addProduct .el-dialog {
+			width: 330px !important;
+		}
+
+		.addProduct .el-dialog #steptwo {
+			max-height: 31.25rem;
+		}
+	}
+
+	@media only screen and (min-width: 410px) and (max-width: 500px) {
+		.SpusClass button {
+			margin-top: 0.625rem !important;
+		}
+
 		.spuDialogClass {
 			max-height: 300px;
 		}
@@ -1434,14 +1485,9 @@
 		.addProduct .el-dialog #steptwo {
 			max-height: 31.25rem;
 		}
+	}
 
-		#leimu1 {
-			margin-left: 0px !important;
-		}
-
-		#leimu2 {
-			margin-left: 30px !important;
-		}
+	@media only screen and (min-width: 410px) and (max-width: 1300px) {
 
 		.el-form .el-form-item .SpuInput .el-input__inner {
 			width: 100px !important;
