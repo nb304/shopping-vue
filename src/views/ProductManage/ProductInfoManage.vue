@@ -27,7 +27,7 @@
 				<el-col :sm="{span: 6}" :xs="{span: 23}">
 					<el-form-item>
 
-						<el-button type="primary" @click="addProductFlag = true" style="width: 215px; margin-left: 70px;">
+						<el-button type="primary" @click.stop="showAddProduct" style="width: 215px; margin-left: 70px;">
 							<svg-icon icon-class="tianjia" class-name='' style="width:14px !important; height:14px !important; margin-right:10px;" />
 							添加商品
 						</el-button>
@@ -122,7 +122,8 @@
 		<!-- ======================= 商品管理弹出层 =========================  -->
 
 		<!-- ======================= 添加商品弹出层 =========================  -->
-		<el-dialog :fullscreen="isLoadingFull" :title="addProductTitle" :visible.sync="addProductFlag" class="addProduct" v-loading="isProductLoading">
+		<el-dialog :show-close="false" top="7vh" :close-on-click-modal="false" :title="addProductTitle" :visible.sync="addProductFlag"
+		 class="addProduct title-menu-min2" v-loading="isProductLoading">
 			<!-- ======================= 步骤一=========================  -->
 			<div v-if="isShowOneFlag" id="stepone" class="stepList">
 
@@ -345,7 +346,7 @@
 					</el-card>
 				</el-row>
 			</div>
-			<!-- ======================= SPU窗口按钮组 ========================  -->
+			<!-- ======================= SPU窗口按钮组(结束) ========================  -->
 			<!-- ======================= 添加SPU(结束) ========================  -->
 
 			<!-- ======================= 添加SKU ========================  -->
@@ -415,9 +416,9 @@
 			<!-- ======================= 添加商品图片 ========================  -->
 			<div v-if="uploadProductPLists">
 
-				<el-upload class="upload-demo" ref="upload" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview"
-				 :on-remove="handleRemove" name="pLists" :multiple="true" limit="6" accept="image/*" :on-exceed="exceedFun"
-				 :file-list="fileList" :auto-upload="false" list-type="picture">
+				<el-upload class="upload-demo" ref="upload" action="http://192.168.0.127/ucc/vue/upload" :on-preview="handlePreview"
+				 :on-remove="handleRemove" name="fileImage" :multiple="true" limit="6" accept="image/*" :on-success="uploadProductImageSuccess"
+				 :on-exceed="exceedFun" :file-list="fileList" :auto-upload="false" list-type="picture">
 					<el-button slot="trigger" size="small" type="primary">选取需要上传的文件</el-button>
 					<el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
 					<el-button style="margin-left: 10px;" size="small" type="success" @click="closeProductImages">关闭窗口</el-button>
@@ -447,16 +448,33 @@
 				<el-step title="步骤3" description="添加宝贝详细信息"></el-step>
 				<el-step title="步骤4" :description="stepFourContent"></el-step>
 			</el-steps>
-			<el-button v-if="isAddOrNextFlag" :disabled='isStepBtn' style="margin-top: 12px;" @click="next">我已阅读无误,下一步</el-button>
-			<el-button style="margin-top: 12px;" @click="last" :disabled='isStepBtn'>上一步</el-button>
-			<el-button v-if="!isAddOrNextFlag" style="margin-top: 12px;" @click="next">我已阅读无误,确认添加</el-button>
-			<el-button style="margin-top: 12px;" @click="addProductFlag = false" :disabled='isStepBtn'>关闭窗口</el-button>
+
+			<el-row class="spusRowClass" :gutter="24">
+
+				<el-col :sm="{span: 8}" :xs="{span: 12}">
+					<el-button v-if="isAddOrNextFlag" :disabled='isStepBtn' style="margin-top: 12px; width: 100% !important;  padding-left: 0px !important; padding-right: 0px !important;"
+					 @click="next">我已阅读无误,下一步</el-button>
+					<el-button v-if="!isAddOrNextFlag" style="margin-top: 12px;  width: 150px !important;   padding-left: 0px !important; padding-right: 0px !important;"
+					 @click="next">我已阅读无误,确认添加</el-button>
+				</el-col>
+				<el-col :sm="{span: 8}" :xs="{span: 12}">
+					<el-button style="margin-top: 12px;  width: 100% !important;  padding-left: 0px !important; padding-right: 0px !important;"
+					 @click="last" :disabled='isStepBtn'>上一步</el-button>
+				</el-col>
+
+				<el-col :sm="{span: 8}" :xs="{span: 12}">
+					<el-button style="margin-top: 12px;  width: 100% !important; padding-left: 0px !important; padding-right: 0px !important;"
+					 @click="closeAddProduct" :disabled='isStepBtn'>关闭窗口</el-button>
+				</el-col>
+			</el-row>
+
 		</el-dialog>
 		<!-- ======================= 添加商品弹出层End =========================  -->
 
 		<!-- ======================= 查看商品类目 =========================  -->
 
-		<el-dialog title="商品类目信息" :visible.sync="productLeiMuInfoFlag" class="addProduct">
+		<el-dialog title="商品类目信息" :show-close="false" :close-on-click-modal="false" @close="spuWindow" :visible.sync="productLeiMuInfoFlag"
+		 class="addProduct">
 			<div>
 				<el-form :inline="true" ref="productLeiMuInfoFlag" :model="addProductTwoFrom" label-width="80px">
 					<el-row :gutter="24">
@@ -478,30 +496,160 @@
 
 
 		<!-- ======================= 查看商品SPU =========================  -->
-		<el-dialog title="商品SPU信息" :fullscreen="isLoadingFull" :modal-append-to-body="true" :visible.sync="productSpuFlag" class="addProduct"
-		 v-loading="isProductSPULoading">
-			<div>
-				<el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
-					<el-table-column type="selection" width="55">
-					</el-table-column>
-					<el-table-column label="SPU名称" width="220" show-overflow-tooltip>
-						<template slot-scope="scope">{{ scope.row.date }}</template>
-					</el-table-column>
-					<el-table-column label="SPU值" show-overflow-tooltip>
-						<template slot-scope="scope">{{ scope.row.date }}</template>
-					</el-table-column>
-					<el-table-column label="排序" width="120">
-						<template slot-scope="scope">{{ scope.row.date }}</template>
-					</el-table-column>
-					<el-table-column label="操作" fixed="right">
+		<el-dialog title="商品SPU信息" :show-close="false" top="7vh" :close-on-click-modal="false" :modal-append-to-body="true"
+		 :visible.sync="productSpuFlag" class="addProduct" v-loading="isProductSPULoading">
+			<div v-if="productSpuFlag2">
+				<div class="title-menu-min2 spuDialogClass" style="max-height: 400px;">
+					<el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
 
-					</el-table-column>
-				</el-table>
+						<el-table-column type="selection" width="55">
+						</el-table-column>
+						<el-table-column label="SPU名称" width="160" show-overflow-tooltip>
+							<template slot-scope="scope">{{ scope.row.date }}</template>
+						</el-table-column>
+						<el-table-column label="SPU值" show-overflow-tooltip>
+							<template slot-scope="scope">{{ scope.row.date }}</template>
+						</el-table-column>
+						<el-table-column label="排序" width="55" show-overflow-tooltip>
+							<template slot-scope="scope">123</template>
+						</el-table-column>
+						<el-table-column label="状态" width="80" show-overflow-tooltip>
+							<template slot-scope="scope">
+								<el-tag>使用中</el-tag>
+							</template>
+						</el-table-column>
+						<el-table-column label="操作" fixed="right" width="100">
+							<el-button type="text" size="small" @click="addProductInfoSpu2">编辑</el-button>
+							<el-button type="text" size="small" >删除</el-button>
+						</el-table-column>
+					</el-table>
+				</div>
+
+				<el-button style="margin-top: 12px;" @click="productSpuFlag = false">关闭窗口</el-button>
+				<el-button type="primary" @click="addProductInfoSpu">新增SPU</el-button>
+				<el-button type="primary">批量注销SPU</el-button>
+
 			</div>
 
-			<el-button style="margin-top: 12px;" @click="productLeiMuInfoFlag = false">关闭窗口</el-button>
+			<!-- ======================= 添加SPU ========================  -->
+			<div id="addProductSpu" v-if="addProductSpuFlag2" class="title-menu-min2" style="max-height: 400px; margin-left: 10px;">
+				<el-form :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
+					<el-row v-for="(o,index) in addProductSpuForm.domains" :key="o.key" class="spusRowClass" :gutter="24">
+
+						<el-card shadow="always" class="SpusClass" style="margin-bottom: 5px;width:360px;">
+							<el-col :sm="{span: 8}" :xs="{span: 12}">
+								<el-form-item>
+									<el-input class="SpuInput" v-model="o.spuKey" placeholder="请输入Key">
+									</el-input>
+								</el-form-item>
+							</el-col>
+
+							<el-col :sm="{span: 8}" :xs="{span: 12}">
+								<el-form-item>
+									<el-input class="SpuInput" v-model="o.spuValue" placeholder="请输入值">
+									</el-input>
+								</el-form-item>
+							</el-col>
+
+							<el-col :sm="{span: 4}" :xs="{span: 12}">
+								<el-form-item>
+									<el-input class="SpuInput2" v-model="o.spuOrder" placeholder="排序">
+									</el-input>
+								</el-form-item>
+							</el-col>
+
+							<el-col :sm="{span: 4}" :xs="{span: 12}">
+								<el-button type="danger" icon="el-icon-delete" circle @click.pprevent="removeProducSpuLink(o)"></el-button>
+							</el-col>
+						</el-card>
+					</el-row>
+				</el-form>
+			</div>
+			<!-- ======================= SPU窗口按钮组 ========================  -->
+			<div v-if="addProductSpuFlag2" style="margin-left: 10px;">
+				<el-row class="spusRowClass" :gutter="24">
+
+					<el-card shadow="always" class="SpusClass" style="margin-bottom: 5px;width:360px;">
+
+						<el-collapse accordion>
+							<el-collapse-item title="操作菜单" name="1">
+								<el-col :sm="{span: 4}" :xs="{span: 8}">
+									<el-button type="primary" @click="addProductSpuLine">新增一行</el-button>
+								</el-col>
+
+								<el-col :sm="{span: 8}" :xs="{span: 8}">
+									<el-button type="primary" @click="closeSpuWindows2">保存SPU配置并关闭窗口</el-button>
+								</el-col>
+
+								<el-col :sm="{span: 8}" :xs="{span: 12}">
+									<el-button type="primary" class="addAndClose" >保存新的SPU</el-button>
+								</el-col>
+							</el-collapse-item>
+
+						</el-collapse>
+					</el-card>
+				</el-row>
+			</div>
+			<!-- ======================= SPU窗口按钮组(结束) ========================  -->
+			
+			<!-- ======================= 修改SPU ========================  -->
+			<div id="addProductSpu" v-if="addProductSpuFlag3" class="title-menu-min2" style="max-height: 400px; margin-left: 10px;">
+				<el-form :inline="true" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
+					<el-row v-for="(o,index) in addProductSpuForm.domains" :key="o.key" class="spusRowClass" :gutter="24">
+			
+						<el-card shadow="always" class="SpusClass" style="margin-bottom: 5px;width:360px;">
+							<el-col :sm="{span: 8}" :xs="{span: 12}">
+								<el-form-item>
+									<el-input class="SpuInput" v-model="o.spuKey" placeholder="请输入Key">
+									</el-input>
+								</el-form-item>
+							</el-col>
+			
+							<el-col :sm="{span: 8}" :xs="{span: 12}">
+								<el-form-item>
+									<el-input class="SpuInput" v-model="o.spuValue" placeholder="请输入值">
+									</el-input>
+								</el-form-item>
+							</el-col>
+			
+							<el-col :sm="{span: 4}" :xs="{span: 12}">
+								<el-form-item>
+									<el-input class="SpuInput2" v-model="o.spuOrder" placeholder="排序">
+									</el-input>
+								</el-form-item>
+							</el-col>
+			
+							<el-col :sm="{span: 4}" :xs="{span: 12}">
+								<el-button type="danger" icon="el-icon-delete" circle @click.pprevent="removeProducSpuLink(o)"></el-button>
+							</el-col>
+						</el-card>
+					</el-row>
+				</el-form>
+			</div>
+			<!-- ======================= 修改SPU窗口按钮组 ========================  -->
+			<div v-if="addProductSpuFlag3" style="margin-left: 10px;">
+				<el-row class="spusRowClass" :gutter="24">
+			
+					<el-card shadow="always" class="SpusClass" style="margin-bottom: 5px;width:360px;">
+			
+						<el-collapse accordion>
+							<el-collapse-item title="操作菜单" name="1">
+								<el-col :sm="{span: 8}" :xs="{span: 12}">
+									<el-button type="primary" @click="closeSpuWindows3">关闭窗口</el-button>
+								</el-col>
+			
+								<el-col :sm="{span: 8}" :xs="{span:12}">
+									<el-button type="primary" >保存当前配置</el-button>
+								</el-col>
+							</el-collapse-item>
+			
+						</el-collapse>
+					</el-card>
+				</el-row>
+			</div>
+			<!-- ======================= 修改SPU窗口按钮组(结束) ========================  -->
 		</el-dialog>
-		<!-- ======================= 查看商品类目(结束) =========================  -->
+		<!-- ======================= 查看商品SPU(结束) =========================  -->
 
 
 		<!-- ======================= 商品管理弹出层End =========================  -->
@@ -512,13 +660,17 @@
 	export default {
 		data() {
 			return {
+				// 修改SPU窗口
+				addProductSpuFlag3: false,
+				// 商品SPU信息的新增SPU窗口
+				addProductSpuFlag2: false,
 				// loading是否全屏显示
 				isLoadingFull: false,
 				// 浏览器大小
 				screenWidth: '',
 				screenHeight: '',
 				// 查询商品SPU信息
-				productSpuFlag: true,
+				productSpuFlag: false,
 				// 商品类目值
 				productLeiMuValue: "衣服/牛仔裤",
 				// 是否显示商品类目页面Flag
@@ -617,6 +769,11 @@
 					resource: '',
 					desc: ''
 				},
+				// 商品监听对象的集合
+				ProductEventLists: [{
+					// 商品类目窗口的监听对象
+					ProductLeiMuEvent: ''
+				}],
 				// 是否显示第四步flag
 				isShowFourFlag: false,
 				// 是否显示第三步flag
@@ -650,6 +807,34 @@
 				// 添加商品的标题
 				addProductTitle: "添加商品",
 				tableData: [{
+					date: '2016-05-021',
+					name: '王小虎',
+					province: '上海',
+					city: '普陀区',
+					address: '上海市普陀区金沙江路 1518 弄',
+					zip: 200333
+				}, {
+					date: '2016-05-021',
+					name: '王小虎',
+					province: '上海',
+					city: '普陀区',
+					address: '上海市普陀区金沙江路 1518 弄',
+					zip: 200333
+				}, {
+					date: '2016-05-021',
+					name: '王小虎',
+					province: '上海',
+					city: '普陀区',
+					address: '上海市普陀区金沙江路 1518 弄',
+					zip: 200333
+				}, {
+					date: '2016-05-021',
+					name: '王小虎',
+					province: '上海',
+					city: '普陀区',
+					address: '上海市普陀区金沙江路 1518 弄',
+					zip: 200333
+				}, {
 					date: '2016-05-021',
 					name: '王小虎',
 					province: '上海',
@@ -737,6 +922,69 @@
 			}
 		},
 		methods: {
+			// 显示修改SPU窗口
+			addProductInfoSpu2() {
+				this.isProductLoading = true;
+				this.addProductSpuFlag3 = true;
+				this.productSpuFlag2 = false;
+				this.isProductLoading = false;
+			},
+			// 关闭修改SPU的窗口
+			closeSpuWindows3() {
+				this.isProductLoading = true;
+				this.addProductSpuFlag3 = false;
+				this.productSpuFlag2 = true;
+				this.isProductLoading = false;
+			},
+			// 关闭商品信息SPU的 新增窗口
+			closeSpuWindows2() {
+				this.isProductLoading = true;
+				this.addProductSpuFlag2 = false;
+				this.productSpuFlag2 = true;
+				this.isProductLoading = false;
+			},
+			// 显示商品SPU信息的SPU添加窗口
+			addProductInfoSpu() {
+				this.isProductLoading = true;
+				this.addProductSpuFlag2 = true;
+				this.productSpuFlag2 = false;
+				this.isProductLoading = false;
+			},
+			// 显示SPU窗口
+			shwoProductSpuInfo() {
+				this.isProductLoading = true;
+				this.productSpuFlag = true;
+				this.productSpuFlag2 = true;
+				this.isProductLoading = false;
+			},
+			// 关闭添加商品弹出层
+			closeAddProduct() {
+				this.htmlMove();
+				this.addProductFlag = false;
+			},
+			// 打开添加商品弹出层
+			showAddProduct() {
+				this.addProductFlag = true;
+			},
+			/***滑动限制***/
+			htmlStop() {
+				var mo = function(e) {
+					e.preventDefault();
+				};
+				document.getElementById("listArea").style.overflow = 'hidden';
+				document.getElementById("listArea").addEventListener("touchmove", mo, false); //禁止页面滑动
+
+				this.ProductEventLists.ProductLeiMuEvent = mo;
+			},
+			/***取消滑动限制***/
+			htmlMove() {
+				document.getElementById("listArea").style.overflow = '';
+				document.getElementById("listArea").removeEventListener("touchmove", this.ProductEventLists.ProductLeiMuEvent,
+					false);
+			},
+			spuWindow() {
+				this.htmlMove();
+			},
 			onSubmit() {
 				console.log('submit!');
 			},
@@ -747,6 +995,7 @@
 			showProductLeimu(id) {
 				// id为该商品的id 
 				this.productLeiMuInfoFlag = true;
+				this.htmlStop();
 			},
 			// 关闭上传商品详情页面
 			closeProductInfo() {
@@ -804,6 +1053,12 @@
 			},
 			exceedFun() {
 				this.$message.error('最多只能上传6个文件');
+			},
+			// 文件上传成功
+			uploadProductImageSuccess(response, file, fileList) {
+				console.log(response);
+				console.log(file);
+				console.log(fileList);
 			},
 			handleRemove(file, fileList) {
 				console.log(file, fileList);
@@ -1026,7 +1281,7 @@
 		mounted() {
 			this.screenWidth = document.body.clientWidth;
 			this.screenHeight = document.body.clientHeight;
-			if(this.screenWidth <= 500) {
+			if (this.screenWidth <= 500) {
 				this.isLoadingFull = true;
 			} else {
 				this.isLoadingFull = false;
@@ -1036,12 +1291,12 @@
 					this.screenWidth = document.body.clientWidth;
 					this.screenHeight = document.body.clientHeight;
 					// 判断宽度是否小于500 小于500 全部全屏显示
-					if(this.screenWidth <= 500) {
+					if (this.screenWidth <= 500) {
 						this.isLoadingFull = true;
 					} else {
 						this.isLoadingFull = false;
 					}
-					
+
 				})();
 			};
 		}
@@ -1149,6 +1404,10 @@
 	}
 
 	@media only screen and (min-width: 300px) and (max-width: 500px) {
+		.spuDialogClass {
+			max-height: 300px;
+		}
+
 		.addAndClose {
 			margin-top: 10px !important;
 		}
@@ -1170,6 +1429,10 @@
 		/*  添加商品的css  */
 		.addProduct .el-dialog {
 			width: 400px !important;
+		}
+
+		.addProduct .el-dialog #steptwo {
+			max-height: 31.25rem;
 		}
 
 		#leimu1 {
