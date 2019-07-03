@@ -97,7 +97,7 @@
 					</el-table-column>
 					<el-table-column fixed="right" label="操作" width="150">
 						<template slot-scope="scope">
-							<el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+							<el-button @click="showProductInfo(scope.row.date)" type="text" size="small">查看</el-button>
 							<el-button type="text" size="small">编辑</el-button>
 							<el-button type="text" size="small">删除</el-button>
 						</template>
@@ -332,11 +332,11 @@
 								<el-col :sm="{span: 8}" :xs="{span: 23}">
 									<el-button type="primary" style="width: 100%;" class="addAndClose" @click="closeSpuWindows">保存SPU配置并关闭窗口</el-button>
 								</el-col>
-								
+
 								<el-col :sm="{span: 5}" :xs="{span: 23}">
 									<el-button style="width: 100%;" @click="closeSpuWindows">关闭窗口</el-button>
 								</el-col>
-								
+
 							</el-collapse-item>
 
 						</el-collapse>
@@ -398,9 +398,9 @@
 								<el-col :sm="{span: 8}" :xs="{span: 23}">
 									<el-button type="primary" style="width: 100%;" class="addAndClose" @click="createProductSku">生成商品的SKU库存与价格</el-button>
 								</el-col>
-								
+
 								<el-col :sm="{span: 5}" :xs="{span: 23}">
-									<el-button  style="width: 100%;" @click="closeSkuWindows">关闭窗口</el-button>
+									<el-button style="width: 100%;" @click="closeSkuWindows">关闭窗口</el-button>
 								</el-col>
 							</el-collapse-item>
 
@@ -478,7 +478,7 @@
 
 						<el-col :sm="{span: 12,offset: 6}" :xs="{span: 23}" class="productLeiMuInfoClass">
 
-							<el-form-item  label="商品类目" style="width:100%;">
+							<el-form-item label="商品类目" style="width:100%;">
 								<el-input :disabled="true" v-model="productLeiMuValue">
 								</el-input>
 							</el-form-item>
@@ -494,7 +494,7 @@
 
 		<!-- ======================= 查看商品SPU =========================  -->
 		<el-dialog title="商品SPU信息" :show-close="false" top="7vh" :close-on-click-modal="false" :modal-append-to-body="true"
-		 :visible.sync="productSpuFlag" class="addProduct" v-loading="isProductSPULoading">
+		 :visible.sync="productSpuFlag" class="addProduct" v-loading="isProductInfoLoading">
 			<div v-if="productSpuFlag2">
 				<div class="title-menu-min2 spuDialogClass" style="max-height: 400px;">
 					<el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
@@ -532,7 +532,7 @@
 						<el-button style="margin-top: 12px;width: 100%;" @click="productSpuFlag = false">关闭窗口</el-button>
 					</el-col>
 				</el-row>
-				
+
 			</div>
 
 			<!-- ======================= 添加SPU ========================  -->
@@ -584,7 +584,7 @@
 								<el-col :sm="{span: 8}" :xs="{span: 23}">
 									<el-button style="width: 100%;" type="primary" class="addAndClose">保存新的SPU</el-button>
 								</el-col>
-								
+
 								<el-col :sm="{span: 8}" :xs="{span:23}">
 									<el-button style="width: 100%;" type="primary" @click="closeSpuWindows2">保存SPU配置并关闭窗口</el-button>
 								</el-col>
@@ -655,6 +655,160 @@
 		<!-- ======================= 查看商品SPU(结束) =========================  -->
 
 
+		<!-- ======================= 查看商品详细信息 =========================  -->
+
+		<el-dialog title="商品信息" :close-on-click-modal="false" :modal-append-to-body="true" :visible.sync="productInfoFlag"
+		 width="90%" top="1vh" v-loading="isProductSPULoading">
+			<div class="productInfo title-menu-min" style="max-height:500px;">
+				<el-row class="spusRowClass" :gutter="24">
+					<el-col :sm="{span: 8}" :xs="{span:24}">
+						<div class="block">
+							<el-carousel :interval="4000" type="card" height="200px">
+								<el-carousel-item v-for="item in 6" :key="item">
+									<h3 class="medium">{{ item }}</h3>
+								</el-carousel-item>
+							</el-carousel>
+						</div>
+					</el-col>
+
+					<el-col :sm="{span: 15}" :xs="{span:24}">
+
+						<el-row class="spusRowClass" :gutter="24">
+							<el-col :sm="{span: 24}" :xs="{span:24}">
+								<el-tabs v-model="productActiveName">
+									<el-tab-pane label="商品基础信息" name="first" class="title-menu-min">
+										<el-col :span="8" :xs="{span:24}">
+											<el-card shadow="hover" style="margin-bottom:10px;">
+												<el-divider content-position="left">商品名称</el-divider>
+												DW手表
+											</el-card>
+										</el-col>
+										<el-col :span="8" :xs="{span:24}">
+											<el-card shadow="hover" style="margin-bottom:10px;">
+												<el-divider content-position="left">商品价格</el-divider>
+												1200.00￥
+											</el-card>
+										</el-col>
+										<el-col :span="8" :xs="{span:24}">
+											<el-card shadow="hover" style="margin-bottom:10px;">
+												<el-divider content-position="left">商品类型</el-divider>
+												手表
+											</el-card>
+										</el-col>
+
+										<el-col :span="8" :xs="{span:24}">
+											<el-card shadow="hover" style="margin-bottom:10px;">
+												<el-divider content-position="left">库存数量</el-divider>
+												手表
+											</el-card>
+										</el-col>
+
+										<el-col :span="8" :xs="{span:24}">
+											<el-card shadow="hover" style="margin-bottom:10px;">
+												<el-divider content-position="left">商品状态</el-divider>
+												手表
+											</el-card>
+										</el-col>
+
+										<el-col :span="8" :xs="{span:24}">
+											<el-card shadow="hover" style="margin-bottom:10px;">
+												<el-divider content-position="left">卖出数量</el-divider>
+												手表
+											</el-card>
+										</el-col>
+
+										<el-col :span="8" :xs="{span:24}">
+											<el-card shadow="hover" style="margin-bottom:10px;">
+												<el-divider content-position="left">库存状态</el-divider>
+												手表
+											</el-card>
+										</el-col>
+										<el-col :span="8" :xs="{span:24}">
+											<el-card shadow="hover" style="margin-bottom:10px;">
+												<el-divider content-position="left">所属商家</el-divider>
+												手表
+											</el-card>
+										</el-col>
+										<el-col :span="8" :xs="{span:24}">
+											<el-card shadow="hover" style="margin-bottom:10px;">
+												<el-divider content-position="left">商品品牌</el-divider>
+												手表
+											</el-card>
+										</el-col>
+										<el-col :span="8" :xs="{span:24}">
+											<el-card shadow="hover" style="margin-bottom:10px;">
+												<el-divider content-position="left">收藏量</el-divider>
+												手表
+											</el-card>
+										</el-col>
+										<el-col :span="8" :xs="{span:24}">
+											<el-card shadow="hover" style="margin-bottom:10px;">
+												<el-divider content-position="left">卖出量</el-divider>
+												手表
+											</el-card>
+										</el-col>
+										<el-col :span="8" :xs="{span:24}">
+											<el-card shadow="hover" style="margin-bottom:10px;">
+												<el-divider content-position="left">月浏览量</el-divider>
+												手表
+											</el-card>
+										</el-col>
+
+									</el-tab-pane>
+									<el-tab-pane label="商品评论列表" name="second" class="title-menu-min">
+										<el-row :gutter="24">
+											<el-col :sm="{span: 8}" :xs="{span:8}">
+												<el-button type="primary" style="width:100%;padding:12px 0px; ">好评</el-button>
+											</el-col>
+											<el-col :sm="{span: 8}" :xs="{span:8}">
+												<el-button type="primary" style="width:100%;padding:12px 0px; ">中评</el-button>
+											</el-col>
+											<el-col :sm="{span: 8}" :xs="{span:8}">
+												<el-button type="primary" style="width:100%;padding:12px 0px; ">差评</el-button>
+											</el-col>
+										</el-row>
+										
+										<el-row :gutter="24">
+											<el-col :span="24" :xs="{span:24}">
+												<el-card shadow="hover" style="margin-top:10px;" show-overflow-tooltip>
+													<el-divider content-position="left"><el-link type="primary">鹿七七</el-link>  2019-07-02 20:54</el-divider>
+													手表很好用 很满意
+												</el-card>
+											</el-col>
+											<el-col :span="24" :xs="{span:24}">
+												<el-card shadow="hover" style="margin-top:10px;" show-overflow-tooltip>
+													<el-divider content-position="left"><el-link type="primary">鹿七七</el-link>  2019-07-02 20:54</el-divider>
+													手表很好用 很满意
+												</el-card>
+											</el-col>
+											<el-col :span="24" :xs="{span:24}">
+												<el-card shadow="hover" style="margin-top:10px;" show-overflow-tooltip>
+													<el-divider content-position="left"><el-link type="primary">鹿七七</el-link>  2019-07-02 20:54</el-divider>
+													手表很好用 很满意
+												</el-card>
+											</el-col>
+											<el-col :span="24" :xs="{span:24}">
+												<el-card shadow="hover" style="margin-top:10px;" show-overflow-tooltip>
+													<el-divider content-position="left"><el-link type="primary">鹿七七</el-link>  2019-07-02 20:54</el-divider>
+													手表很好用 很满意
+												</el-card>
+											</el-col>
+										</el-row>
+									</el-tab-pane>
+									<el-tab-pane label="商品SPU列表" name="third">商品SPU列表</el-tab-pane>
+									<el-tab-pane label="商品SKU列表" name="fourth">商品SKU列表</el-tab-pane>
+								</el-tabs>
+							</el-col>
+						</el-row>
+					</el-col>
+				</el-row>
+
+			</div>
+
+		</el-dialog>
+		<!-- ======================= 查看商品详细信息(结束) =========================  -->
+
+
 		<!-- ======================= 商品管理弹出层End =========================  -->
 	</div>
 </template>
@@ -663,6 +817,12 @@
 	export default {
 		data() {
 			return {
+				// 商品信息的默认选中
+				productActiveName: 'first',
+				// 商品详细信息窗口加载层
+				isProductInfoLoading: false,
+				// 商品详细信息窗口Flag
+				productInfoFlag: false,
 				// 修改SPU窗口
 				addProductSpuFlag3: false,
 				// 商品SPU信息的新增SPU窗口
@@ -925,6 +1085,13 @@
 			}
 		},
 		methods: {
+			// 显示商品详细信息
+			showProductInfo(id) {
+				console.log(id);
+				this.isProductInfoLoading = true;
+				this.productInfoFlag = true;
+				this.isProductInfoLoading = false;
+			},
 			// 显示修改SPU窗口
 			addProductInfoSpu2() {
 				this.isProductLoading = true;
@@ -1307,10 +1474,28 @@
 </script>
 
 <style>
+	.el-carousel__item h3 {
+		color: #475669;
+		font-size: 14px;
+		opacity: 0.75;
+		line-height: 200px;
+		margin: 0;
+	}
+
+	.el-carousel__item:nth-child(2n) {
+		background-color: #99a9bf;
+	}
+
+	.el-carousel__item:nth-child(2n+1) {
+		background-color: #d3dce6;
+	}
+
 	.el-form-item .el-form-item__content .addProductFormInput .el-input__inner,
 	.el-textarea__inner {
 		width: 270px !important;
 	}
+
+	.productInfo {}
 
 	.autocut {
 		overflow: hidden;
@@ -1383,10 +1568,11 @@
 	}
 
 	/*==================自定义自适应css========================*/
-	@media only screen and (min-width: 1300px) and (max-width: 2000px) {
+	@media only screen and (min-width: 1301px) and (max-width: 2000px) {
 		.productLeiMuInfoClass {
 			margin-left: 0px !important;
 		}
+
 		.spusRowClass {
 			margin-right: 0px !important;
 			margin-left: 17px !important;
