@@ -56,22 +56,22 @@ export const constantRoutes = [
   },
 
   {
-    path: '/example',
+    path: '/product',
     component: Layout,
-    redirect: '/example/table',
+    redirect: '/product/productInfo',
     name: 'Example',
     meta: { title: '商品管理', icon: 'shangpinguanli' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
+        path: 'productInfo',
+        name: '商品信息管理',
         component: () =>  import('@/views/ProductManage/ProductInfoManage'),
         meta: { title: '商品信息管理' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
+        path: 'productBrand',
+        name: '商品品牌管理',
+        component: () => import('@/views/ProductManage/ProductBrandManage'),
         meta: { title: '商品品牌管理' }
       },
       {
