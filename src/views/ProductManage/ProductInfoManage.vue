@@ -83,7 +83,7 @@
 						<el-button type="text" slot-scope="scope" size="small" @click="shwoProductSpuInfo(scope.row.date)">查看详情</el-button>
 					</el-table-column>
 					<el-table-column prop="address" label="SKU参数" width="100">
-						<el-button type="text" slot-scope="scope" size="small">查看详情</el-button>
+						<el-button type="text" slot-scope="scope" size="small" @click="showProductSkuInfo(scope.row.date)">查看详情</el-button>
 					</el-table-column>
 					<el-table-column prop="address" label="商品状态" width="90">
 						<el-link type="primary" :underline="false">上架</el-link>
@@ -98,7 +98,7 @@
 					<el-table-column fixed="right" label="操作" width="150">
 						<template slot-scope="scope">
 							<el-button @click="showProductInfo(scope.row.date)" type="text" size="small">查看</el-button>
-							<el-button type="text" size="small">编辑</el-button>
+							<el-button type="text" size="small" @click="editProduct(scope.row.date)">编辑</el-button>
 							<el-button type="text" size="small">删除</el-button>
 						</template>
 					</el-table-column>
@@ -118,7 +118,7 @@
 		<!-- ======================= 商品管理弹出层 =========================  -->
 
 		<!-- ======================= 添加商品弹出层 =========================  -->
-		<el-dialog :show-close="false" top="7vh" :close-on-click-modal="false" :title="addProductTitle" :visible.sync="addProductFlag"
+		<el-dialog top="7vh" :append-to-body="true" :close-on-click-modal="false" :title="addProductTitle" :visible.sync="addProductFlag"
 		 class="addProduct title-menu-min2" v-loading="isProductLoading">
 			<!-- ======================= 步骤一=========================  -->
 			<div v-if="isShowOneFlag" id="stepone" class="stepList">
@@ -135,34 +135,6 @@
 
 					</el-row>
 				</el-form>
-
-
-				<!-- <div>
-					<div id="leimu1" style="float:left; margin:0px 30px 0px 60px;">
-						<span>一级类目</span>
-						<el-card class="box-card title-menu-min" style="max-height:340px;min-height:340px; margin:0px 30px; 0px 60px;">
-							<div v-for="o in 100" :key="o" class="text item" style="width:130px;float:left; margin:5px 0px 5px 5px;">
-								<input type="radio" @click="findTypeOneSubList(o)" value="1" name="mulu1" />
-								<el-tooltip class="item" effect="dark" content="Top Left 提示文字" placement="top-start">
-									<el-button type="info" class="autocut" plain style="width:110px;">信息按信息按信息按信息按信息按信息按</el-button>
-								</el-tooltip>
-
-							</div>
-						</el-card>
-					</div>
-
-					<div id="leimu2">
-						<span>二级类目</span>
-						<el-card class="box-card title-menu-min" style="max-height:340px;min-height:340px;">
-							<div v-for="o in 10" :key="o" class="text item" style="width:130px;float:left; margin:5px 0px 5px 5px;">
-								<input type="radio" @click="findTypeTwoSubList(o)" value="1" name="mulu2" />
-								<el-tooltip class="item" effect="dark" content="Top Left 提示文字" placement="top-start">
-									<el-button type="info" class="autocut" plain style="width:110px;">信息按信息按信息按信息按信息按信息按</el-button>
-								</el-tooltip>
-							</div>
-						</el-card>
-					</div>
-				</div> -->
 			</div>
 			<!-- ======================= 步骤一(结束)=========================  -->
 
@@ -235,7 +207,7 @@
 						</el-col>
 
 						<el-col :sm="{span: 12}" :xs="{span: 23}">
-							<el-form-item label="商品详情" class="addProductItem">
+							<el-form-item label="商品简述" class="addProductItem">
 								<el-input type="textarea" class="addProductFormInput" v-model="addProductTwoFrom.desc"></el-input>
 							</el-form-item>
 						</el-col>
@@ -470,8 +442,7 @@
 
 		<!-- ======================= 查看商品类目 =========================  -->
 
-		<el-dialog title="商品类目信息" :show-close="false" :close-on-click-modal="false" @close="spuWindow" :visible.sync="productLeiMuInfoFlag"
-		 class="addProduct">
+		<el-dialog title="商品类目信息" :close-on-click-modal="false" @close="spuWindow" :visible.sync="productLeiMuInfoFlag" class="addProduct">
 			<div>
 				<el-form label-position="left" :inline="true" ref="productLeiMuInfoFlag" :model="addProductTwoFrom" label-width="80px">
 					<el-row :gutter="24">
@@ -493,8 +464,8 @@
 
 
 		<!-- ======================= 查看商品SPU =========================  -->
-		<el-dialog title="商品SPU信息" :show-close="false" top="7vh" :close-on-click-modal="false" :modal-append-to-body="true"
-		 :visible.sync="productSpuFlag" class="addProduct" v-loading="isProductInfoLoading">
+		<el-dialog title="商品SPU信息" top="7vh" :close-on-click-modal="false" :modal-append-to-body="true" :visible.sync="productSpuFlag"
+		 class="addProduct" v-loading="isProductInfoLoading">
 			<div v-if="productSpuFlag2">
 				<div class="title-menu-min2 spuDialogClass" style="max-height: 400px;">
 					<el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
@@ -657,15 +628,22 @@
 
 		<!-- ======================= 查看商品详细信息 =========================  -->
 
-		<el-dialog title="商品信息" :close-on-click-modal="false" :modal-append-to-body="true" :visible.sync="productInfoFlag"
-		 width="90%" top="1vh" v-loading="isProductSPULoading">
-			<div class="productInfo title-menu-min" style="max-height:500px;">
+		<el-dialog title="商品信息" :close-on-click-modal="false" :modal-append-to-body="false" :lock-scroll="true" :visible.sync="productInfoFlag"
+		 width="90%" :top="productTopHtml" v-loading="isProductSPULoading">
+
+			<!-- ======================= 查看商品信息 =========================  -->
+			<div v-if="productInfoFlag2" class="productInfo title-menu-min" style="max-height:500px;">
 				<el-row class="spusRowClass" :gutter="24">
 					<el-col :sm="{span: 8}" :xs="{span:24}">
 						<div class="block">
 							<el-carousel :interval="4000" type="card" height="200px">
 								<el-carousel-item v-for="item in 6" :key="item">
-									<h3 class="medium">{{ item }}</h3>
+									<el-image style="width: 100%; height: 100%" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+									 fit="fill">
+										<div slot="error" class="image-slot">
+											<i class="el-icon-picture-outline"></i>
+										</div>
+									</el-image>
 								</el-carousel-item>
 							</el-carousel>
 						</div>
@@ -767,36 +745,43 @@
 												<el-button type="primary" style="width:100%;padding:12px 0px; ">差评</el-button>
 											</el-col>
 										</el-row>
-										
-										<el-row :gutter="24">
-											<el-col :span="24" :xs="{span:24}">
-												<el-card shadow="hover" style="margin-top:10px;" show-overflow-tooltip>
-													<el-divider content-position="left"><el-link type="primary">鹿七七</el-link>  2019-07-02 20:54</el-divider>
-													手表很好用 很满意
-												</el-card>
-											</el-col>
-											<el-col :span="24" :xs="{span:24}">
-												<el-card shadow="hover" style="margin-top:10px;" show-overflow-tooltip>
-													<el-divider content-position="left"><el-link type="primary">鹿七七</el-link>  2019-07-02 20:54</el-divider>
-													手表很好用 很满意
-												</el-card>
-											</el-col>
-											<el-col :span="24" :xs="{span:24}">
-												<el-card shadow="hover" style="margin-top:10px;" show-overflow-tooltip>
-													<el-divider content-position="left"><el-link type="primary">鹿七七</el-link>  2019-07-02 20:54</el-divider>
-													手表很好用 很满意
-												</el-card>
-											</el-col>
-											<el-col :span="24" :xs="{span:24}">
-												<el-card shadow="hover" style="margin-top:10px;" show-overflow-tooltip>
-													<el-divider content-position="left"><el-link type="primary">鹿七七</el-link>  2019-07-02 20:54</el-divider>
-													手表很好用 很满意
-												</el-card>
-											</el-col>
-										</el-row>
+
+										<span v-for="o in 10" style="cursor: pointer;" @click="showCommentInfo(o)">
+											<el-row :gutter="24">
+												<el-col :span="24" :xs="{span:24}">
+													<el-card shadow="hover" style="margin-top:10px;">
+														<el-divider content-position="left">
+															<el-link type="primary">鹿七七</el-link> 2019-07-02 20:54
+														</el-divider>
+														<span>
+															手表很好用 很满意手表很好用 很满意手表很好用 很满意手表很好用 很满意手表很好用 很满意手表很好用 <br />很满意手表很好用 很满意手表很好用 很满意手表很好用 很满意手表很好用 很满意手表很好用
+															很满意
+														</span>
+
+													</el-card>
+												</el-col>
+											</el-row>
+										</span>
+
 									</el-tab-pane>
-									<el-tab-pane label="商品SPU列表" name="third">商品SPU列表</el-tab-pane>
-									<el-tab-pane label="商品SKU列表" name="fourth">商品SKU列表</el-tab-pane>
+									<el-tab-pane label="商品SPU列表" name="third" class="title-menu-min">
+										<el-col :span="8" :xs="{span:24}" v-for="o in 10">
+											<el-card shadow="hover" style="margin-bottom:10px;">
+												<el-divider content-position="left">品牌 {{o}}</el-divider>
+												DW手表
+											</el-card>
+										</el-col>
+									</el-tab-pane>
+									<el-tab-pane label="商品SKU列表" name="fourth">
+										<el-table :data="tableData" border style="width: 100%">
+											<el-table-column prop="date" label="SKU名称" min-width="150">
+											</el-table-column>
+											<el-table-column prop="province" label="排序" width="120">
+											</el-table-column>
+											<el-table-column prop="name" label="SKU值" fixed="right" width="120">
+											</el-table-column>
+										</el-table>
+									</el-tab-pane>
 								</el-tabs>
 							</el-col>
 						</el-row>
@@ -804,10 +789,217 @@
 				</el-row>
 
 			</div>
+			<!-- ======================= 查看商品信息(结束) =========================  -->
 
+			<!-- ======================= 评论详细信息 =========================  -->
+			<el-dialog width="50%" :top="productTopHtml" custom-class="productCommentInfoClass" title="商品评价信息" :visible.sync="productInfoFlag3"
+			 append-to-body>
+
+				<div class="productInfo title-menu-min" style="max-height:500px;">
+					<el-row class="spusRowClass" :gutter="24">
+						<el-col :sm="{span: 4}" :xs="{span:24}">
+							<div class="block">
+								<el-avatar shape="square" :size="77" src="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80"></el-avatar>
+							</div>
+						</el-col>
+						<el-col :sm="{span: 19}" :xs="{span:24}">
+							<el-card class="box-card" style="width:100%;">
+								<div class="text item">
+									<el-divider content-position="left">评价人</el-divider>
+									<el-link type="primary">鹿七七七</el-link>
+									<el-divider content-position="left">商品参数</el-divider>
+									红色,16GB,中国大陆
+									<el-divider content-position="left">评价内容</el-divider>
+									<span style="width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;">
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+									</span>
+									<el-divider content-position="left">评价时间</el-divider>
+									2019-07-03 11:53
+								</div>
+							</el-card>
+						</el-col>
+					</el-row>
+
+					<el-col :sm="{span: 8,offset: 5}" style="margin-top:20px; margin-bottom: 20px;" :xs="{span: 23}">
+						<el-button style="width: 100%;" @click="productInfoFlag3 = false">关闭窗口</el-button>
+					</el-col>
+				</div>
+			</el-dialog>
+
+			<!-- ======================= 评论详细信息(结束) =========================  -->
 		</el-dialog>
 		<!-- ======================= 查看商品详细信息(结束) =========================  -->
 
+		<!-- ======================= 商品SKU信息管理 =========================  -->
+		<el-dialog width="77%" :top="productTopHtml" custom-class="productSkuInfoDialog" title="商品SKU信息" :visible.sync="productInfoSkuInfos"
+		 append-to-body v-loading="isProductSKULoading">
+
+			<div style="max-height: 550px;" class="title-menu-min">
+				<el-table :data="SKUInfoForm" border style="width: 100%">
+					<el-table-column fixed show-overflow-tooltip="true" prop="SKUValue" label="商品SKU值" min-width="200">
+					</el-table-column>
+					<el-table-column label="库存数量" width="120">
+						<el-input slot-scope="scope" :value="scope.row.SKUKuCun" v-model="scope.row.SKUKuCun"></el-input>
+					</el-table-column>
+					<el-table-column prop="province" label="价格" width="120">
+						<el-input slot-scope="scope" :value="scope.row.SKUPrice" v-model="scope.row.SKUPrice"></el-input>
+					</el-table-column>
+				</el-table>
+				<el-col :sm="{span: 8}" style="margin-top:20px;" :xs="{span: 23}">
+					<el-button type="primary" style="width: 90%;" @click="productInfoFlag3 = false">保存配置</el-button>
+				</el-col>
+				<el-col :sm="{span: 8}" :xs="{span: 23}" style="margin-top:20px;">
+					<el-button style="width: 90%; " @click="productInfoSkuInfos = false">关闭窗口</el-button>
+				</el-col>
+			</div>
+		</el-dialog>
+		<!-- ======================= 商品SKU信息管理(结束) =========================  -->
+
+		<!-- ======================= 修改商品信息 =========================  -->
+
+		<el-dialog width="77%" :top="productTopHtml" custom-class="productSkuInfoDialog title-menu-min" title="編輯商品"
+		 :visible.sync="editProductInfoFlag" append-to-body v-loading="editProductFlag">
+
+			<div style="max-height: 550px;">
+				<el-form ref="editProduct" :model="editProduct" label-width="80px">
+
+					<el-row :gutter="24">
+
+						<el-col :sm="{span: 12}" :xs="{span: 23}">
+							<el-form-item class="addProductItem" label="商品名称" style="width:100%;">
+								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品名称"></el-input>
+							</el-form-item>
+						</el-col>
+
+						<el-col :sm="{span: 12}" :xs="{span: 23}">
+
+							<el-form-item label="商品品牌" class="addProductItem">
+								<el-select class="addProductFormInput" v-model="addProductTwoFrom.region" placeholder="请选择商品品牌">
+									<el-option label="区域一" value="shanghai"></el-option>
+									<el-option label="区域二" value="beijing"></el-option>
+								</el-select>
+							</el-form-item>
+						</el-col>
+					</el-row>
+					<el-row :gutter="24">
+						<el-col :sm="{span: 12}" :xs="{span: 23}">
+							<el-form-item class="addProductItem" label="市场价格" style="width:100%;">
+								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入市场价格"></el-input>
+							</el-form-item>
+						</el-col>
+
+						<el-col :sm="{span: 12}" :xs="{span: 23}">
+
+							<el-form-item label="商城价格" class="addProductItem">
+								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商城价格"></el-input>
+								</el-select>
+							</el-form-item>
+						</el-col>
+					</el-row>
+
+					<el-row :gutter="24">
+						<el-col :sm="{span: 12}" :xs="{span: 23}">
+							<el-form-item class="addProductItem" label="市场价格" style="width:100%;">
+								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入市场价格"></el-input>
+							</el-form-item>
+						</el-col>
+
+						<el-col :sm="{span: 12}" :xs="{span: 23}">
+
+							<el-form-item label="商城价格" class="addProductItem">
+								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商城价格"></el-input>
+								</el-select>
+							</el-form-item>
+						</el-col>
+
+					</el-row>
+
+					<el-row :gutter="24">
+						<el-col :sm="{span: 12}" :xs="{span: 23}">
+							<el-form-item class="addProductItem" label="商品卖点" style="width:100%;">
+								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品卖点"></el-input>
+							</el-form-item>
+						</el-col>
+
+						<el-col :sm="{span: 12}" :xs="{span: 23}">
+
+							<el-form-item label="排序" class="addProductItem">
+								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入排序"></el-input>
+								</el-select>
+							</el-form-item>
+						</el-col>
+					</el-row>
+
+					<el-row :gutter="24">
+						<el-col :sm="{span: 12}" :xs="{span: 23}">
+							<el-form-item class="addProductItem" label="商品单位" style="width:100%;">
+								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品单位"></el-input>
+							</el-form-item>
+						</el-col>
+
+						<el-col :sm="{span: 12}" :xs="{span: 23}">
+
+							<el-form-item label="商品简述" class="addProductItem">
+								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品简述"></el-input>
+								</el-select>
+							</el-form-item>
+						</el-col>
+					</el-row>
+
+					<el-row :gutter="24">
+						<el-col :sm="{span: 12}" :xs="{span: 23}">
+							<el-form-item class="addProductItem" label="商品图片" style="width:100%;">
+								<el-button type="primary" style="width:270px;" @click="addProductInfos">修改商品图片</el-button>
+							</el-form-item>
+						</el-col>
+
+						<el-col :sm="{span: 12}" :xs="{span: 23}">
+
+							<el-form-item label="商品详情" class="addProductItem">
+								<el-button type="primary" style="width:270px;" @click="addProductInfos">修改商品详情</el-button>
+							</el-form-item>
+						</el-col>
+					</el-row>
+
+					<el-row class="spusRowClass" :gutter="24">
+
+						<el-col :sm="{span: 6}" :xs="{span: 24}">
+							<el-button type="primary" style="margin-top: 12px;  width: 100% !important;  ">保存编辑</el-button>
+						</el-col>
+
+						<el-col :sm="{span: 6}" :xs="{span: 24}">
+							<el-button style="margin-top: 12px;  width: 100% !important; margin-bottom: 10px !important;" @click="editProductInfoFlag = false">关闭窗口</el-button>
+						</el-col>
+					</el-row>
+				</el-form>
+
+			</div>
+
+		</el-dialog>
+		<!-- ======================= 修改商品信息(结束) =========================  -->
 
 		<!-- ======================= 商品管理弹出层End =========================  -->
 	</div>
@@ -817,6 +1009,90 @@
 	export default {
 		data() {
 			return {
+				// 修改商品窗口的flag
+				editProductInfoFlag: false,
+				// 商品SKU信息的加载层
+				isProductSKULoading: false,
+				// 商品SKU库存与价格模拟数据
+				SKUInfoForm: [{
+						SKUValue: "红色,16GB,中国大陆红色,16GB,中国大陆红色,16GB,中国大陆",
+						SKUKuCun: 10,
+						SKUPrice: '3000.00'
+					},
+					{
+						SKUValue: "红色2,16GB,中国大陆",
+						SKUKuCun: 102,
+						SKUPrice: '30020.00'
+					},
+					{
+						SKUValue: "红色2,16GB,中国大陆",
+						SKUKuCun: 102,
+						SKUPrice: '30020.00'
+					},
+					{
+						SKUValue: "红色2,16GB,中国大陆",
+						SKUKuCun: 102,
+						SKUPrice: '30020.00'
+					},
+					{
+						SKUValue: "红色2,16GB,中国大陆",
+						SKUKuCun: 102,
+						SKUPrice: '30020.00'
+					},
+					{
+						SKUValue: "红色2,16GB,中国大陆",
+						SKUKuCun: 102,
+						SKUPrice: '30020.00'
+					},
+					{
+						SKUValue: "红色2,16GB,中国大陆",
+						SKUKuCun: 102,
+						SKUPrice: '30020.00'
+					},
+					{
+						SKUValue: "红色2,16GB,中国大陆",
+						SKUKuCun: 102,
+						SKUPrice: '30020.00'
+					},
+					{
+						SKUValue: "红色2,16GB,中国大陆",
+						SKUKuCun: 102,
+						SKUPrice: '30020.00'
+					},
+					{
+						SKUValue: "红色2,16GB,中国大陆",
+						SKUKuCun: 102,
+						SKUPrice: '30020.00'
+					},
+					{
+						SKUValue: "红色2,16GB,中国大陆",
+						SKUKuCun: 102,
+						SKUPrice: '30020.00'
+					},
+					{
+						SKUValue: "红色2,16GB,中国大陆",
+						SKUKuCun: 102,
+						SKUPrice: '30020.00'
+					},
+					{
+						SKUValue: "红色2,16GB,中国大陆",
+						SKUKuCun: 102,
+						SKUPrice: '30020.00'
+					},
+					{
+						SKUValue: "红色2,16GB,中国大陆",
+						SKUKuCun: 102,
+						SKUPrice: '30020.00'
+					}
+				],
+				// 商品SKU信息操作flag
+				productInfoSkuInfos: false,
+				// 商品相信信息距离网页头顶的距离
+				productTopHtml: '10vh',
+				// 商品评论信息flag
+				productInfoFlag3: false,
+				// 商品信息flag
+				productInfoFlag2: true,
 				// 商品信息的默认选中
 				productActiveName: 'first',
 				// 商品详细信息窗口加载层
@@ -1085,6 +1361,31 @@
 			}
 		},
 		methods: {
+			// 打开商品编辑窗口
+			editProduct() {
+				this.editProductFlag = true;
+				this.editProductInfoFlag = true;
+				// 查询商品信息
+				this.editProductFlag = false;
+			},
+			// 显示商品SKU信息
+			showProductSkuInfo() {
+				this.isProductSKULoading = true;
+				// 发送请求 传递数据
+				this.productInfoSkuInfos = true;
+				this.isProductSKULoading = false;
+			},
+			// 查看评论具体信息，
+			showCommentInfo(id) {
+
+				this.isProductInfoLoading = true;
+				this.$message({
+					type: 'info',
+					message: '评论详细信息:id=' + id
+				});
+				this.productInfoFlag3 = true;
+				this.isProductInfoLoading = false;
+			},
 			// 显示商品详细信息
 			showProductInfo(id) {
 				console.log(id);
@@ -1453,6 +1754,7 @@
 			this.screenHeight = document.body.clientHeight;
 			if (this.screenWidth <= 500) {
 				this.isLoadingFull = true;
+				this.productTopHtml = "1vh";
 			} else {
 				this.isLoadingFull = false;
 			}
@@ -1463,8 +1765,10 @@
 					// 判断宽度是否小于500 小于500 全部全屏显示
 					if (this.screenWidth <= 500) {
 						this.isLoadingFull = true;
+						this.productTopHtml = "1vh";
 					} else {
 						this.isLoadingFull = false;
+						this.productTopHtml = "10vh";
 					}
 
 				})();
@@ -1567,7 +1871,7 @@
 		background: rgba(0, 0, 0, 0.1);
 	}
 
-	/*==================自定义自适应css========================*/
+	/*==================自定义自适应css 宽度 1301 -- 2000px========================*/
 	@media only screen and (min-width: 1301px) and (max-width: 2000px) {
 		.productLeiMuInfoClass {
 			margin-left: 0px !important;
@@ -1596,6 +1900,14 @@
 	}
 
 	@media only screen and (min-width: 300px) and (max-width: 409px) {
+		.productSkuInfoDialog {
+			width: 100% !important;
+		}
+
+		.productCommentInfoClass {
+			width: 100% !important;
+		}
+
 		.addProductItem {
 			margin-bottom: 0px !important;
 		}
@@ -1637,6 +1949,15 @@
 	}
 
 	@media only screen and (min-width: 410px) and (max-width: 500px) {
+
+		.productSkuInfoDialog {
+			width: 100% !important;
+		}
+
+		.productCommentInfoClass {
+			width: 100% !important;
+		}
+
 		.SpusClass button {
 			margin-top: 0.625rem !important;
 		}
