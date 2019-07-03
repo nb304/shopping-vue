@@ -3,7 +3,7 @@
 
 
 
-    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+    <el-form :inline="true" class="demo-form-inline">
       <el-row :gutter="24">
         <el-col :sm="{span: 6}" :xs="{span: 23}"  >
           <el-form-item label="订单编号" >
@@ -13,7 +13,7 @@
 
         <el-col :sm="{span: 6}" :xs="{span: 23}">
           <el-form-item label="店铺名称">
-            <el-input v-model="dianPuNamer" placeholder="输入名称"><i slot="prefix" class="el-icon-edit"></i></el-input>
+            <el-input v-model="dianPuName" placeholder="输入名称"><i slot="prefix" class="el-icon-edit"></i></el-input>
           </el-form-item>
         </el-col>
 
@@ -76,10 +76,11 @@
             <el-button type="primary" icon="el-icon-search" @click="onSubmit" style="width: 215px; margin-left: 70px;">搜索</el-button>
           </el-form-item>
         </el-col>
-
-
       </el-row>
     </el-form>
+
+
+    <!--==================分割线(开始)========================-->
     <el-row :gutter="24">
       <el-col :sm="{span: 24}" :xs="{span: 24}">
         <div >
@@ -91,9 +92,11 @@
         </div>
       </el-col>
     </el-row>
+    <!--==================分割线(结束)========================-->
+
+
     <el-row :gutter="24">
       <el-col :sm="{span: 24}" :xs="{span: 24}">
-
         <el-table
           v-loading="listLoading"
           :data="list"
@@ -120,8 +123,6 @@
               <span>{{ scope.row.date }}</span>
             </template>
           </el-table-column>
-
-
           <el-table-column class-name="status-col" label="类型"  show-overflow-tooltip="true"  >
             <template slot-scope="scope">
               <span>{{ scope.row.cast }}</span>
@@ -173,7 +174,7 @@
             </template>
             <template slot-scope="scope">
               <el-button
-                @click.native.prevent="showMess(scope.$index, list)"
+                @click.native.prevent="orderUserDesc(scope.$index, list)"
                 type="text"
                 size="20px">
                 {{ scope.row.users }}
@@ -189,7 +190,7 @@
             </template>
             <template slot-scope="scope">
               <el-button
-                @click.native.prevent="showMess(scope.$index, list)"
+                @click.native.prevent="orderExpressDesc(scope.$index, list)"
                 type="text"
                 size="20px">
                 {{ scope.row.logistics }}
@@ -201,6 +202,7 @@
       </el-col>
     </el-row>
 
+    <!--==================分页组件(开始)========================-->
     <el-row :gutter="24">
       <el-col :sm="{span: 5, offset: 19}" :xs="{span: 24}">
         <el-pagination
@@ -216,6 +218,7 @@
         </el-pagination>
       </el-col>
     </el-row>
+    <!--==================分页组件(结束)========================-->
 
     <!--===================商品详情描述弹出框(开始)========================-->
     <el-dialog title="商品详情" :visible.sync="productDescVisible"  width="30%" >
@@ -278,6 +281,71 @@
     </el-dialog>
     <!--===================订单金额详情弹出框(结束)========================-->
 
+
+    <!--===================用户详情弹出框(开始)========================-->
+    <el-dialog title="用户详情" :visible.sync="orderUserVisible"  width="30%" >
+      <el-table
+        v-loading="listLoading"
+        :data="orderUserList"
+        element-loading-text="Loading"
+        border
+      >
+        <el-table-column class-name="status-col" label="类型"  show-overflow-tooltip="true"  >
+          <template slot-scope="scope">
+            <span>{{ scope.row.cast }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column  prop="created_at" label="信息"  show-overflow-tooltip="true"  >
+          <template slot-scope="scope">
+            <span v-if="scope.$index==6">
+                <el-input v-model="elsePrice"   placeholder="请输入" :value="scope.row.desc"  ></el-input>
+            </span>
+            <span v-if="scope.$index==7">
+                <el-input v-model="elseDesc"   placeholder="请输入" :value="scope.row.desc"  ></el-input>
+            </span>
+            <span v-if="scope.$index!=7&&scope.$index!=6">
+                {{scope.row.desc}}
+            </span>
+          </template>
+        </el-table-column>
+      </el-table>
+      <div slot="footer" class="dialog-footer " >
+        <el-button @click="orderUserVisible = false">取 消</el-button>
+        <el-button type="primary" @click="orderUserVisible = false">确 定</el-button>
+      </div>
+    </el-dialog>
+    <!--===================用户详情弹出框(结束)========================-->
+
+    <!--===================物流详情弹出框(开始)========================-->
+    <el-dialog title="物流详情"  :visible.sync="orderExpressVisible"  width="35%"  :closeOnClickModal="false">
+      <el-form :inline="true" class="demo-form-inline">
+        <el-row :gutter="24">
+          <el-col :sm="{span: 15}" :xs="{span: 24}"  >
+            <el-form-item label="物流编号" >
+              <el-select v-model="expressPid" placeholder="选择" >
+                <el-option label="211231233123" ></el-option>
+                <el-option label="1231321312312" ></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :sm="{span: 1}" :xs="{span: 24}"  >
+            <el-form-item>
+              <el-button type="primary" icon="el-icon-search" @click="onSubmit" style="width: 170px; ">查询</el-button>
+            </el-form-item>
+          </el-col>
+        </el-row>
+
+        <div class="title-menu-min" >
+          <el-steps  direction="vertical" space="2" :active="kaidiMess.context.length"  align-center="true"   >
+            <el-step  v-for="cont  in kaidiMess.context"     icon="el-icon-location"   :description="cont.time+'='+cont.desc" ></el-step>
+          </el-steps>
+        </div>
+      </el-form>
+
+    </el-dialog>
+    <!--===================物流详情弹出框(结束)========================-->
+
+
   </div>
 </template>
 
@@ -285,7 +353,22 @@
   export default {
     data() {
       return {
-        orderDescList:[
+        startDate: '',  //开始时间
+        endDate: '',    //结束时间
+        orderCast: '',  //订单类型
+        orderState: '', //订单状态
+        orderPid: '',   //订单编号
+        dianPuName: '', //店铺名称
+        elsePrice:'',   //订单金额对应里面的其他金额
+        elseDesc:'',    //订单金额对应里面的其他描述
+        productDescVisible:  false,    //订单商品描述弹出框是否打开关闭
+        orderPriceVisible:   false,    //订单金额描述弹出框是否打开关闭
+        orderUserVisible:    false,    //订单用户描述弹出框是否打开关闭
+        orderExpressVisible: false,    //订单物流描述弹出框是否打开关闭
+        expressPid:'',  //物流单号
+        total: 100,     //分页信息
+        currentPage: 2, //当前页数信息
+        orderDescList:[ //商品详细描述信息列表
           {cast:"商品编号",desc:"1231241413"},
           {cast:"店铺名称",desc:"小彭家具"},
           {cast:"商品名称",desc:"茶杯"},
@@ -293,7 +376,7 @@
           {cast:"商品总金额",desc:"78"},
           {cast:"商品购项",desc:"红色-4g-6+128"},
         ],
-        orderPriceList:[
+        orderPriceList:[ //金额详细描述信息列表
           {cast:"支付编号",desc:"5148949848948"},
           {cast:"下单时间",desc:"2019-1"},
           {cast:"商品金额",desc:"110"},
@@ -305,9 +388,13 @@
           {cast:"支付时间",desc:"2019-1-1"},
           {cast:"支付类型",desc:"支付宝"},
         ],
-        productDescVisible: false,
-        orderPriceVisible:  false,
-        pickerOptions: {
+        orderUserList:[ //订单用户列表信息
+          {cast:"账户",desc:"5148949848948"},
+          {cast:"用户姓名",desc:"小李"},
+          {cast:"收货地址",desc:"江西省上饶市广丰县"},
+          {cast:"电话",desc:"15717007490"}
+        ],
+        pickerOptions: {    //时间情况
           disabledDate(time) {
             return time.getTime() > Date.now()
           },
@@ -332,17 +419,7 @@
             }
           }]
         },
-        startDate: '',
-        endDate: '',
-        orderCast: '',
-        orderState: '',
-        orderPid: '',
-        dianPuNamer: '',
-        total: 100,
-        currentPage: 2,
-        elsePrice:'',
-        elseDesc:'',
-        list: [
+        list: [  //订单列表情况集合
           {
             pid: '1',
             number: '123123',
@@ -475,10 +552,92 @@
             users:'小明',
             logistics:'123123'
           }
-        ]
+        ],
+        kaidiMess:{  //订单物流信息
+          "status":"1",
+          "com":"shunfeng",
+          "state":"3",
+          "context":[
+            {
+              "time":"1561081339",
+              "desc":"[上海嘉定民丰营业点]代签收(京东快递柜 ),感谢使用顺丰,期待再次为您服务"
+            },
+            {
+              "time":"1561073871",
+              "desc":"[民丰速运营业点]快件交给李岳锋，正在派送途中（联系电话：13837610833）"
+            },
+            {
+              "time":"1561064666",
+              "desc":"[民丰速运营业点]快件到达 【上海嘉定民丰营业点】"
+            },
+            {
+              "time":"1561062264",
+              "desc":"[上海华新中转场]快件已发车"
+            },
+            {
+              "time":"1561056434",
+              "desc":"[上海华新中转场]快件在【上海华新集散中心】已装车,准备发往下一站"
+            },
+            {
+              "time":"1561039375",
+              "desc":"[上海华新中转场]快件到达 【上海华新集散中心】"
+            },
+            {
+              "time":"1561022793",
+              "desc":"[盐城盐都中转场]快件已发车"
+            },
+            {
+              "time":"1561009202",
+              "desc":"[盐城盐都中转场]快件在【盐城盐都集散中心】已装车,准备发往 【上海华新集散中心】"
+            },
+            {
+              "time":"1560998284",
+              "desc":"[盐城盐都中转场]快件到达 【盐城盐都集散中心】"
+            },
+            {
+              "time":"1560948881",
+              "desc":"[石家庄高开中转场]快件已发车"
+            },
+            {
+              "time":"1560946781",
+              "desc":"[石家庄高开中转场]快件在【石家庄高开集散中心】已装车,准备发往 【盐城盐都集散中心】"
+            },
+            {
+              "time":"1560942971",
+              "desc":"[石家庄高开中转场]快件到达 【石家庄高开集散中心】"
+            },
+            {
+              "time":"1560932244",
+              "desc":"[保定北市中转场]快件已发车"
+            },
+            {
+              "time":"1560932090",
+              "desc":"[保定北市中转场]快件在【保定北市集散中心】已装车,准备发往 【石家庄高开集散中心】"
+            },
+            {
+              "time":"1560930211",
+              "desc":"[保定北市中转场]快件到达 【保定北市集散中心】"
+            },
+            {
+              "time":"1560927662",
+              "desc":"[建华南街速运营业点]快件已发车"
+            },
+            {
+              "time":"1560926963",
+              "desc":"[建华南街速运营业点]快件在【保定市南市区建华南街营业点】已装车,准备发往下一站"
+            },
+            {
+              "time":"1560916105",
+              "desc":"[建华南街速运营业点]顺丰速运 已收取快件"
+            }
+          ],
+          "send_time":"2019-06-19 11:48:25",
+          "latest_progress":"2019-06-21 09:42:19 [上海嘉定民丰营业点]代签收(京东快递柜 ),感谢使用顺丰,期待再次为您服务",
+          "_source_com":"",
+          "_support_from":"kuaidi100"
+        }
       }
     },
-
     methods: {
       //表单提交方法
       onSubmit() {
@@ -492,6 +651,15 @@
       //订单金额方法
       orderPriceDesc(currIndex,obj){
         this.orderPriceVisible=true
+      },
+      //订单用户方法
+      orderUserDesc(currIndex,obj){
+        this.orderUserVisible=true
+      }
+      ,
+      //订单物流方法
+      orderExpressDesc(currIndex,obj){
+        this.orderExpressVisible=true
       }
     }
   }
@@ -507,6 +675,7 @@
     }
   }
   @media only screen and (min-width: 300px) and (max-width: 500px) {
+
     .el-form .el-form-item .el-input__inner{
       width: 250px !important;
     }
@@ -523,17 +692,31 @@
     .el-divider span{
       font-size: 11px;
     }
-
-    /*========弹出框样式信息开始============*/
-    .el-dialog__wrapper .el-dialog{
-       width: 80% !important;
+    .el-col{
+      padding: 0px !important;
     }
 
 
+    /*========弹出框样式信息开始============*/
+    .el-dialog__wrapper .el-dialog{
+      width: 80% !important;
+    }
+
+    /*========物流详情弹出框信息*=============*/
+    div[aria-label="物流详情"] .el-form .el-form-item .el-input__inner{
+      width: 184px !important;
+    }
+    div[aria-label="物流详情"] .el-form .el-form-item .el-button{
+      margin-left: 68px !important;
+      width: 184px !important;
+    }
   }
 
 
   /*========弹出框样式信息开始============*/
+  .el-dialog__wrapper div[role="dialog"]{
+    margin-top: 50px !important;
+  }
   .el-dialog__body{
     padding-top: 10px !important;
   }
@@ -567,5 +750,32 @@
   }
 
 
+  /*新加入隐藏滚动条效果*/
+  .title-menu-min {
+    height: 450px !important;
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .title-menu-min::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 4px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+  }
+
+  .title-menu-min::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .title-menu-min::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.1);
+  }
 
 </style>
