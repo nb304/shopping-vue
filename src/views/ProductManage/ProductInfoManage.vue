@@ -1032,12 +1032,12 @@
 					<div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且图片数量最多为6张,最少为一张</div>
 					<div slot="tip" class="el-upload__tip">图片默认显示顺序也是根据上传的顺序规定</div>
 				</el-upload>
-				
-				
+
+
 				<el-col :sm="{span: 8}" style="margin-top:20px; margin-bottom: 20px;" :xs="{span: 23}">
 					<el-button style="width: 100%;" type="primary">确认保存</el-button>
 				</el-col>
-				
+
 				<el-col :sm="{span: 8 ,offset: 1}" style="margin-top:20px; margin-bottom: 20px;" :xs="{span: 23}">
 					<el-button style="width: 100%;" @click="editProductImage = false">关闭窗口</el-button>
 				</el-col>
@@ -1453,17 +1453,18 @@
 		methods: {
 			// 打开商品编辑窗口
 			editProduct() {
-				this.editProductFlag = true;
+				this.COMMON.startLoading();
 				this.editProductInfoFlag = true;
 				// 查询商品信息
-				this.editProductFlag = false;
+				this.COMMON.stopLoading();
 			},
 			// 显示商品SKU信息
 			showProductSkuInfo() {
-				this.isProductSKULoading = true;
+
+				this.COMMON.startLoading()();
 				// 发送请求 传递数据
 				this.productInfoSkuInfos = true;
-				this.isProductSKULoading = false;
+				this.COMMON.stopLoading();
 			},
 			// 查看评论具体信息，
 			showCommentInfo(id) {
@@ -1479,9 +1480,9 @@
 			// 显示商品详细信息
 			showProductInfo(id) {
 				console.log(id);
-				this.isProductInfoLoading = true;
+				this.COMMON.startLoading();
 				this.productInfoFlag = true;
-				this.isProductInfoLoading = false;
+				this.COMMON.stopLoading();
 			},
 			// 显示修改SPU窗口
 			addProductInfoSpu2() {
@@ -1513,10 +1514,11 @@
 			},
 			// 显示SPU窗口
 			shwoProductSpuInfo() {
-				this.isProductLoading = true;
+
+				this.COMMON.startLoading();
 				this.productSpuFlag = true;
 				this.productSpuFlag2 = true;
-				this.isProductLoading = false;
+				this.COMMON.stopLoading();
 			},
 			// 关闭添加商品弹出层
 			closeAddProduct() {
@@ -1525,7 +1527,9 @@
 			},
 			// 打开添加商品弹出层
 			showAddProduct() {
+				this.COMMON.startLoading();
 				this.addProductFlag = true;
+				this.COMMON.stopLoading();
 			},
 			/***滑动限制***/
 			htmlStop() {
@@ -1554,9 +1558,10 @@
 			},
 			// 查询商品类目
 			showProductLeimu(id) {
+				this.COMMON.startLoading();
 				// id为该商品的id 
 				this.productLeiMuInfoFlag = true;
-				this.htmlStop();
+				this.COMMON.stopLoading();
 			},
 			// 关闭上传商品详情页面
 			closeProductInfo() {
@@ -1838,6 +1843,8 @@
 		},
 		created() {
 			this.listLoading = false;
+			this.COMMON.startLoading();
+			this.COMMON.stopLoading();
 		},
 		mounted() {
 			this.screenWidth = document.body.clientWidth;
