@@ -240,8 +240,11 @@
         </el-table-column>
       </el-table>
       <div slot="footer" class="dialog-footer ">
-        <el-button @click="productDescVisible = false">取 消</el-button>
-        <el-button type="primary" @click="productDescVisible = false">确 定</el-button>
+        <el-row :gutter="24">
+          <el-col :sm="{span: 8,offset:16}" :xs="{span: 23}" style="margin-top:20px;">
+            <el-button style="width: 90%; " @click="productDescVisible = false">关闭窗口</el-button>
+          </el-col>
+        </el-row>
       </div>
     </el-dialog>
     <!--===================商品详情描述弹出框(结束)========================-->
@@ -308,8 +311,11 @@
         </el-table-column>
       </el-table>
       <div slot="footer" class="dialog-footer ">
-        <el-button @click="orderUserVisible = false">取 消</el-button>
-        <el-button type="primary" @click="orderUserVisible = false">确 定</el-button>
+        <el-row :gutter="24">
+          <el-col :sm="{span: 8,offset:16}" :xs="{span: 23}" style="margin-top:20px;">
+            <el-button style="width: 90%; " @click="orderUserVisible = false">关闭窗口</el-button>
+          </el-col>
+        </el-row>
       </div>
     </el-dialog>
     <!--===================用户详情弹出框(结束)========================-->
@@ -374,6 +380,8 @@
 </template>
 
 <script>
+
+
 export default {
   data() {
     return {
@@ -393,30 +401,30 @@ export default {
       total: 100, // 分页信息
       currentPage: 2, // 当前页数信息
       orderDescList: [ // 商品详细描述信息列表
-        { cast: '商品编号', desc: '1231241413' },
-        { cast: '店铺名称', desc: '小彭家具' },
-        { cast: '商品名称', desc: '茶杯' },
-        { cast: '商品数量', desc: '2' },
-        { cast: '商品总金额', desc: '78' },
-        { cast: '商品购项', desc: '红色-4g-6+128' }
+        {cast: '商品编号', desc: '1231241413'},
+        {cast: '店铺名称', desc: '小彭家具'},
+        {cast: '商品名称', desc: '茶杯'},
+        {cast: '商品数量', desc: '2'},
+        {cast: '商品总金额', desc: '78'},
+        {cast: '商品购项', desc: '红色-4g-6+128'}
       ],
       orderPriceList: [ // 金额详细描述信息列表
-        { cast: '支付编号', desc: '5148949848948' },
-        { cast: '下单时间', desc: '2019-1' },
-        { cast: '商品金额', desc: '110' },
-        { cast: '优惠金额', desc: '20' },
-        { cast: '实付金额', desc: '90' },
-        { cast: '运费', desc: '15' },
-        { cast: '其他金额', desc: '0' },
-        { cast: '其他描述', desc: '无' },
-        { cast: '支付时间', desc: '2019-1-1' },
-        { cast: '支付类型', desc: '支付宝' }
+        {cast: '支付编号', desc: '5148949848948'},
+        {cast: '下单时间', desc: '2019-1'},
+        {cast: '商品金额', desc: '110'},
+        {cast: '优惠金额', desc: '20'},
+        {cast: '实付金额', desc: '90'},
+        {cast: '运费', desc: '15'},
+        {cast: '其他金额', desc: '0'},
+        {cast: '其他描述', desc: '无'},
+        {cast: '支付时间', desc: '2019-1-1'},
+        {cast: '支付类型', desc: '支付宝'}
       ],
       orderUserList: [ // 订单用户列表信息
-        { cast: '账户', desc: '5148949848948' },
-        { cast: '用户姓名', desc: '小李' },
-        { cast: '收货地址', desc: '江西省上饶市广丰县' },
-        { cast: '电话', desc: '15717007490' }
+        {cast: '账户', desc: '5148949848948'},
+        {cast: '用户姓名', desc: '小李'},
+        {cast: '收货地址', desc: '江西省上饶市广丰县'},
+        {cast: '电话', desc: '15717007490'}
       ],
       pickerOptions: { // 时间情况
         disabledDate(time) {
@@ -637,6 +645,9 @@ export default {
     }
   }
 }
+
+
+
 </script>
 
 <style >
@@ -755,6 +766,8 @@ export default {
     margin: 30px;
   }
   /*========当前页面的一些初始样式 输入框和表格等标签样式 结束===========*/
+
+
 
   /*=======内部滚动条显示的css样式情况 开始==========*/
   .title-menu-min { /*新加入隐藏滚动条效果*/
