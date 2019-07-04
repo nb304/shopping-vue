@@ -331,38 +331,42 @@
               <el-button type="primary" icon="el-icon-search" style="width: 170px; " @click="onSubmit">查询</el-button>
             </el-form-item>
           </el-col>
+          <el-col :sm="{span: 24}" :xs="{span: 24}">
+            <div class="title-menu-min">
+              <!--==========物流组件信息开始=======-->
+              <div class="track-rcol">
+                <div class="track-list">
+                  <ul>
+                    <div v-for="(item,index) in logisticsList" :key="index">
+                      <li v-if="index===0" class="first">
+                        <div />
+                        <i class="node-icon" />
+                        <span class="txt">{{ item.message }}</span>
+                        <span class="time">{{ item.messageDate }}</span>
+                      </li>
+                      <li v-if="index > 0 && index !== logisticsList.length-1">
+                        <i class="node-icon" />
+                        <span class="txt">{{ item.message }}</span>
+                        <span class="time">{{ item.messageDate }}</span>
+                      </li>
+                      <li v-if="index === logisticsList.length-1" class="finall">
+                        <i class="div-spilander" />
+                        <i class="node-icon" />
+                        <span class="txt">{{ item.message }}</span>
+                        <span class="time">{{ item.messageDate }}ss</span>
+                      </li>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+              <!--==========物流组件信息结束=======-->
+            </div>
+          </el-col>
+          <el-col :sm="{span: 8,offset:16}" :xs="{span: 23}" style="margin-top:20px;">
+            <el-button style="width: 90%; " @click="orderExpressVisible = false">关闭窗口</el-button>
+          </el-col>
         </el-row>
       </el-form>
-
-      <div class="title-menu-min">
-        <!--==========物流组件信息开始=======-->
-        <div class="track-rcol">
-          <div class="track-list">
-            <ul>
-              <div v-for="(item,index) in logisticsList" :key="index">
-                <li v-if="index===0" class="first">
-                  <div />
-                  <i class="node-icon" />
-                  <span class="txt">{{ item.message }}</span>
-                  <span class="time">{{ item.messageDate }}</span>
-                </li>
-                <li v-if="index > 0 && index !== logisticsList.length-1">
-                  <i class="node-icon" />
-                  <span class="txt">{{ item.message }}</span>
-                  <span class="time">{{ item.messageDate }}</span>
-                </li>
-                <li v-if="index === logisticsList.length-1" class="finall">
-                  <i class="div-spilander" />
-                  <i class="node-icon" />
-                  <span class="txt">{{ item.message }}</span>
-                  <span class="time">{{ item.messageDate }}ss</span>
-                </li>
-              </div>
-            </ul>
-          </div>
-        </div>
-        <!--==========物流组件信息结束=======-->
-      </div>
     </el-dialog>
     <!--===================物流详情弹出框(结束)========================-->
 
@@ -645,10 +649,6 @@ export default {
   }
 
   @media only screen and (min-width: 410px) and (max-width: 500px) {  /*宽度 410 -- 500px*/
-
-
-  }
-  @media only screen and (min-width: 300px) and (max-width: 500px)  { /*宽度 300 -- 409px*/
     .el-form .el-form-item .el-input__inner{
       width: 250px !important;
     }
@@ -681,6 +681,40 @@ export default {
       margin-left: 68px !important;
       width: 184px !important;
     }
+  }
+  @media only screen and (min-width: 300px) and (max-width: 409px)  { /*宽度 300 -- 409px*/
+      .el-form .el-form-item .el-input__inner{
+        width: 250px !important;
+      }
+      .el-form .el-row{
+        margin: 0 auto;
+        text-align:center;
+      }
+      .el-col-xs-23{
+        width: 100%;
+      }
+      .el-form-item .el-button{
+        width: 250px !important;
+      }
+      .el-divider span{
+        font-size: 11px;
+      }
+      .el-col{
+        padding: 0px !important;
+      }
+      /*========弹出框样式信息开始============*/
+      .el-dialog__wrapper .el-dialog{
+        width: 80% !important;
+      }
+
+      /*========物流详情弹出框信息*=============*/
+      div[aria-label="物流详情"] .el-form .el-form-item .el-input__inner{
+        width: 184px !important;
+      }
+      div[aria-label="物流详情"] .el-form .el-form-item .el-button{
+        margin-left: 68px !important;
+        width: 184px !important;
+      }
   }
   /*==================自定义自适应css样式详情结束 ========================*/
 
