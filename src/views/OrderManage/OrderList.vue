@@ -321,7 +321,7 @@
     <!--===================用户详情弹出框(结束)========================-->
 
     <!--===================物流详情弹出框(开始)========================-->
-    <el-dialog title="物流详情" :visible.sync="orderExpressVisible" width="35%" :close-on-click-modal="false">
+    <el-dialog title="物流详情" v-loading="loadings" :visible.sync="orderExpressVisible" width="35%" :close-on-click-modal="false">
       <el-form :inline="true" class="demo-form-inline">
         <el-row :gutter="24">
           <el-col :sm="{span: 15}" :xs="{span: 24}">
@@ -385,6 +385,7 @@
 export default {
   data() {
     return {
+      myLoading:null,
       startDate: '', // 开始时间
       endDate: '', // 结束时间
       orderCast: '', // 订单类型
@@ -401,8 +402,8 @@ export default {
       total: 100, // 分页信息
       currentPage: 2, // 当前页数信息
       orderDescList: [ // 商品详细描述信息列表
-        {cast: '商品编号', desc: '1231241413'},
-        {cast: '店铺名称', desc: '小彭家具'},
+        {cast: '商品编号', desc: '1231241413' },
+        {cast: '店铺名称', desc: '小彭家具' },
         {cast: '商品名称', desc: '茶杯'},
         {cast: '商品数量', desc: '2'},
         {cast: '商品总金额', desc: '78'},
@@ -645,8 +646,6 @@ export default {
     }
   }
 }
-
-
 
 </script>
 

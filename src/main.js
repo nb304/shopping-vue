@@ -11,6 +11,7 @@ import locale from 'element-ui/lib/locale/lang/en' // lang i18n
 import { mockXHR } from '../mock'
 import iView from 'iview'
 
+import common from './utils/common.js' //引入页面公共的组件方法
 
 /**
  * ================引入的自己获取其他组件自带的样式文件===============
@@ -28,11 +29,18 @@ if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
 
+
+/**
+ * ================将自己定义好的变量和方法全局挂载到vue上===============
+ * 如何调用呢》  在某个vue模板下 this.COMMON.方法名即可
+ */
+Vue.prototype.COMMON = common
+
 /**
  * ================引入使用所需要用的组件===============
  */
 Vue.use(ElementUI, { locale })
-Vue.use(iView);
+Vue.use(iView)
 Vue.config.productionTip = false
 
 new Vue({
