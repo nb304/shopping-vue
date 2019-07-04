@@ -118,8 +118,8 @@
 		<!-- ======================= 商品管理弹出层 =========================  -->
 
 		<!-- ======================= 添加商品弹出层 =========================  -->
-		<el-dialog top="7vh" :append-to-body="true" :close-on-click-modal="false" :title="addProductTitle" :visible.sync="addProductFlag"
-		 class="addProduct title-menu-min2" v-loading="isProductLoading">
+		<el-dialog top="7vh" width="70%" :append-to-body="true" custom-class="addProductDiv" :close-on-click-modal="false"
+		 :title="addProductTitle" :visible.sync="addProductFlag" class="title-menu-min2" v-loading="isProductLoading">
 			<!-- ======================= 步骤一=========================  -->
 			<div v-if="isShowOneFlag" id="stepone" class="stepList">
 
@@ -144,13 +144,13 @@
 
 					<el-row :gutter="24">
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}" class="paddingLeft0px">
 							<el-form-item class="addProductItem" label="商品名称" style="width:100%;">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品名称"></el-input>
 							</el-form-item>
 						</el-col>
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 
 							<el-form-item label="商品品牌" class="addProductItem">
 								<el-select class="addProductFormInput" v-model="addProductTwoFrom.region" placeholder="请选择商品品牌">
@@ -163,13 +163,13 @@
 					</el-row>
 
 					<el-row :gutter="24">
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item label="市场价格" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入市场价格"></el-input>
 							</el-form-item>
 						</el-col>
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item label="商城价格" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商城价格"></el-input>
 							</el-form-item>
@@ -184,13 +184,13 @@
 			<div id="stepthree" v-if="isShowThreeFlag">
 				<el-form :inline="true" label-position="left" ref="addProductThreeFrom" :model="addProductTwoFrom" label-width="80px">
 					<el-row :gutter="24">
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item label="商品卖点" style="width:100%;" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品卖点"></el-input>
 							</el-form-item>
 						</el-col>
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 
 							<el-form-item label="排序" style="width:100%;" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品排序"></el-input>
@@ -200,13 +200,13 @@
 					</el-row>
 
 					<el-row :gutter="24">
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item label="商品单位" style="width:100%;" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品单位"></el-input>
 							</el-form-item>
 						</el-col>
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item label="商品简述" class="addProductItem">
 								<el-input type="textarea" class="addProductFormInput" v-model="addProductTwoFrom.desc"></el-input>
 							</el-form-item>
@@ -221,13 +221,13 @@
 			<div id="stepfour" v-if="isShowFourFlag">
 				<el-form :inline="true" label-position="left" ref="addProductTwoFrom" :model="addProductTwoFrom" label-width="80px">
 					<el-row :gutter="24">
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item label="SPU" style="width:100%;" class="addProductItem">
 								<el-button type="primary" style="width:270px;" @click="addProductSPU">添加商品的SPU</el-button>
 							</el-form-item>
 						</el-col>
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 
 							<el-form-item label="SKU" style="width:100%;" class="addProductItem">
 								<el-button type="primary" style="width:270px;" @click="addProductSKU">添加商品的SKU</el-button>
@@ -237,13 +237,13 @@
 					</el-row>
 
 					<el-row :gutter="24">
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item label="商品图片" style="width:100%;" class="addProductItem">
 								<el-button type="primary" style="width:270px;" @click="addProductImages">添加商品图片</el-button>
 							</el-form-item>
 						</el-col>
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item label="商品详情" style="width:100%;" class="addProductItem">
 								<el-button type="primary" style="width:270px;" @click="addProductInfos">添加商品详情</el-button>
 							</el-form-item>
@@ -888,13 +888,13 @@
 
 					<el-row :gutter="24">
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item class="addProductItem" label="商品名称" style="width:100%;">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品名称"></el-input>
 							</el-form-item>
 						</el-col>
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 
 							<el-form-item label="商品品牌" class="addProductItem">
 								<el-select class="addProductFormInput" v-model="addProductTwoFrom.region" placeholder="请选择商品品牌">
@@ -905,13 +905,13 @@
 						</el-col>
 					</el-row>
 					<el-row :gutter="24">
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item class="addProductItem" label="市场价格" style="width:100%;">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入市场价格"></el-input>
 							</el-form-item>
 						</el-col>
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 
 							<el-form-item label="商城价格" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商城价格"></el-input>
@@ -921,13 +921,13 @@
 					</el-row>
 
 					<el-row :gutter="24">
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item class="addProductItem" label="市场价格" style="width:100%;">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入市场价格"></el-input>
 							</el-form-item>
 						</el-col>
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 
 							<el-form-item label="商城价格" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商城价格"></el-input>
@@ -938,13 +938,13 @@
 					</el-row>
 
 					<el-row :gutter="24">
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item class="addProductItem" label="商品卖点" style="width:100%;">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品卖点"></el-input>
 							</el-form-item>
 						</el-col>
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 
 							<el-form-item label="排序" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入排序"></el-input>
@@ -954,13 +954,13 @@
 					</el-row>
 
 					<el-row :gutter="24">
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item class="addProductItem" label="商品单位" style="width:100%;">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品单位"></el-input>
 							</el-form-item>
 						</el-col>
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 
 							<el-form-item label="商品简述" class="addProductItem">
 								<el-input class="addProductFormInput" v-model="addProductTwoFrom.name" placeholder="请输入商品简述"></el-input>
@@ -970,13 +970,13 @@
 					</el-row>
 
 					<el-row :gutter="24">
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 							<el-form-item class="addProductItem" label="商品图片" style="width:100%;">
-								<el-button type="primary" style="width:270px;" @click="addProductInfos">修改商品图片</el-button>
+								<el-button type="primary" style="width:270px;" @click="editProductImage = true">修改商品图片</el-button>
 							</el-form-item>
 						</el-col>
 
-						<el-col :sm="{span: 12}" :xs="{span: 23}">
+						<el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
 
 							<el-form-item label="商品详情" class="addProductItem">
 								<el-button type="primary" style="width:270px;" @click="addProductInfos">修改商品详情</el-button>
@@ -986,7 +986,7 @@
 
 					<el-row class="spusRowClass" :gutter="24">
 
-						<el-col :sm="{span: 6}" :xs="{span: 24}">
+						<el-col :sm="{span: 6,offset: 1}" :xs="{span: 24}">
 							<el-button type="primary" style="margin-top: 12px;  width: 100% !important;  ">保存编辑</el-button>
 						</el-col>
 
@@ -995,8 +995,54 @@
 						</el-col>
 					</el-row>
 				</el-form>
-
 			</div>
+
+			<!-- ======================= 修改商品图片 =========================  -->
+			<el-dialog width="77%" :top="productTopHtml" custom-class="productSkuInfoDialog title-menu-min" title="修改商品图片"
+			 :visible.sync="editProductImage" append-to-body>
+
+				<el-divider content-position="left">当前使用的商品图片</el-divider>
+				<el-table :data="productImages" style="width: 100%" max-height="250">
+					<el-table-column label="商品图片" width="150">
+
+						<el-image style="width: 100px; height: 100px" slot-scope="scope" :src="scope.row.imageUrl" fit="scale-down"></el-image>
+					</el-table-column>
+					<el-table-column label="图片地址" show-overflow-tooltip="true">
+						<el-link type="primary" slot-scope="scope">{{scope.row.imageUrl}}</el-link>
+					</el-table-column>
+					<el-table-column prop="imageOrder" label="显示顺序" width="120">
+
+						<el-input slot-scope="scope" v-model="scope.row.imageOrder" maxlength="1"></el-input>
+					</el-table-column>
+					<el-table-column fixed="right" label="操作" width="120">
+						<template slot-scope="scope">
+							<el-button @click.native.prevent="deleteRow(scope.$index, tableData)" type="text" size="small">
+								移除
+							</el-button>
+						</template>
+					</el-table-column>
+				</el-table>
+				<el-divider content-position="left">上传新的商品图片</el-divider>
+
+				<el-upload class="upload-demo" ref="upload" action="http://192.168.0.127/ucc/vue/upload" :on-preview="handlePreview"
+				 :on-remove="handleRemove" name="fileImage" :multiple="true" limit="6" accept="image/*" :on-success="uploadProductImageSuccess"
+				 :on-exceed="exceedFun" :file-list="fileList" :auto-upload="false" list-type="picture">
+					<el-button slot="trigger" size="small" type="primary">选取需要上传的文件</el-button>
+					<el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+					<div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且图片数量最多为6张,最少为一张</div>
+					<div slot="tip" class="el-upload__tip">图片默认显示顺序也是根据上传的顺序规定</div>
+				</el-upload>
+				
+				
+				<el-col :sm="{span: 8}" style="margin-top:20px; margin-bottom: 20px;" :xs="{span: 23}">
+					<el-button style="width: 100%;" type="primary">确认保存</el-button>
+				</el-col>
+				
+				<el-col :sm="{span: 8 ,offset: 1}" style="margin-top:20px; margin-bottom: 20px;" :xs="{span: 23}">
+					<el-button style="width: 100%;" @click="editProductImage = false">关闭窗口</el-button>
+				</el-col>
+			</el-dialog>
+			<!-- ======================= 修改商品图片(结束) =========================  -->
 
 		</el-dialog>
 		<!-- ======================= 修改商品信息(结束) =========================  -->
@@ -1009,6 +1055,50 @@
 	export default {
 		data() {
 			return {
+				// 商品图片列表
+				productImages: [{
+						imageId: '1',
+						imageUrl: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+						imageOrder: '1'
+					},
+					{
+						imageId: '1',
+						imageUrl: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+						imageOrder: '1'
+					},
+					{
+						imageId: '1',
+						imageUrl: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+						imageOrder: '1'
+					},
+					{
+						imageId: '1',
+						imageUrl: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+						imageOrder: '1'
+					},
+					{
+						imageId: '1',
+						imageUrl: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+						imageOrder: '1'
+					},
+					{
+						imageId: '1',
+						imageUrl: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+						imageOrder: '1'
+					},
+					{
+						imageId: '1',
+						imageUrl: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+						imageOrder: '1'
+					},
+					{
+						imageId: '1',
+						imageUrl: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+						imageOrder: '1'
+					}
+				],
+				// 修改商品图片窗口的flag
+				editProductImage: false,
 				// 修改商品窗口的flag
 				editProductInfoFlag: false,
 				// 商品SKU信息的加载层
@@ -1812,11 +1902,6 @@
 		-webkit-text-overflow: ellipsis;
 	}
 
-	/*  添加商品  */
-	.addProduct .el-dialog {
-		width: 900px !important;
-	}
-
 	/*新加入隐藏滚动条效果*/
 	.title-menu-min2 {
 		overflow-y: scroll !important;
@@ -1900,6 +1985,10 @@
 	}
 
 	@media only screen and (min-width: 300px) and (max-width: 409px) {
+		.addProductDiv {
+			width: 98% !important;
+		}
+
 		.productSkuInfoDialog {
 			width: 100% !important;
 		}
@@ -1949,6 +2038,14 @@
 	}
 
 	@media only screen and (min-width: 410px) and (max-width: 500px) {
+
+		.addProductDiv {
+			width: 100% !important;
+		}
+
+		.paddingLeft0px {
+			padding-left: 0px !important;
+		}
 
 		.productSkuInfoDialog {
 			width: 100% !important;
