@@ -321,7 +321,7 @@
     <!--===================用户详情弹出框(结束)========================-->
 
     <!--===================物流详情弹出框(开始)========================-->
-    <el-dialog title="物流详情" v-loading="loadings" :visible.sync="orderExpressVisible" width="35%" :close-on-click-modal="false">
+    <el-dialog v-loading="loadings" title="物流详情" :visible.sync="orderExpressVisible" width="35%" :close-on-click-modal="false">
       <el-form :inline="true" class="demo-form-inline">
         <el-row :gutter="24">
           <el-col :sm="{span: 15}" :xs="{span: 24}">
@@ -381,11 +381,10 @@
 
 <script>
 
-
 export default {
   data() {
     return {
-      myLoading:null,
+      myLoading: null,
       startDate: '', // 开始时间
       endDate: '', // 结束时间
       orderCast: '', // 订单类型
@@ -402,30 +401,30 @@ export default {
       total: 100, // 分页信息
       currentPage: 2, // 当前页数信息
       orderDescList: [ // 商品详细描述信息列表
-        {cast: '商品编号', desc: '1231241413' },
-        {cast: '店铺名称', desc: '小彭家具' },
-        {cast: '商品名称', desc: '茶杯'},
-        {cast: '商品数量', desc: '2'},
-        {cast: '商品总金额', desc: '78'},
-        {cast: '商品购项', desc: '红色-4g-6+128'}
+        { cast: '商品编号', desc: '1231241413' },
+        { cast: '店铺名称', desc: '小彭家具' },
+        { cast: '商品名称', desc: '茶杯' },
+        { cast: '商品数量', desc: '2' },
+        { cast: '商品总金额', desc: '78' },
+        { cast: '商品购项', desc: '红色-4g-6+128' }
       ],
       orderPriceList: [ // 金额详细描述信息列表
-        {cast: '支付编号', desc: '5148949848948'},
-        {cast: '下单时间', desc: '2019-1'},
-        {cast: '商品金额', desc: '110'},
-        {cast: '优惠金额', desc: '20'},
-        {cast: '实付金额', desc: '90'},
-        {cast: '运费', desc: '15'},
-        {cast: '其他金额', desc: '0'},
-        {cast: '其他描述', desc: '无'},
-        {cast: '支付时间', desc: '2019-1-1'},
-        {cast: '支付类型', desc: '支付宝'}
+        { cast: '支付编号', desc: '5148949848948' },
+        { cast: '下单时间', desc: '2019-1' },
+        { cast: '商品金额', desc: '110' },
+        { cast: '优惠金额', desc: '20' },
+        { cast: '实付金额', desc: '90' },
+        { cast: '运费', desc: '15' },
+        { cast: '其他金额', desc: '0' },
+        { cast: '其他描述', desc: '无' },
+        { cast: '支付时间', desc: '2019-1-1' },
+        { cast: '支付类型', desc: '支付宝' }
       ],
       orderUserList: [ // 订单用户列表信息
-        {cast: '账户', desc: '5148949848948'},
-        {cast: '用户姓名', desc: '小李'},
-        {cast: '收货地址', desc: '江西省上饶市广丰县'},
-        {cast: '电话', desc: '15717007490'}
+        { cast: '账户', desc: '5148949848948' },
+        { cast: '用户姓名', desc: '小李' },
+        { cast: '收货地址', desc: '江西省上饶市广丰县' },
+        { cast: '电话', desc: '15717007490' }
       ],
       pickerOptions: { // 时间情况
         disabledDate(time) {
@@ -728,10 +727,6 @@ export default {
   }
   /*==================自定义自适应css样式详情结束 ========================*/
 
-
-
-
-
   /*========弹出框样式信息开始============*/
   .el-dialog__wrapper div[role="dialog"]{
     margin-top: 50px !important;
@@ -766,8 +761,6 @@ export default {
   }
   /*========当前页面的一些初始样式 输入框和表格等标签样式 结束===========*/
 
-
-
   /*=======内部滚动条显示的css样式情况 开始==========*/
   .title-menu-min { /*新加入隐藏滚动条效果*/
     height: 450px !important;
@@ -798,11 +791,11 @@ export default {
   /*=======内部滚动条显示的css样式情况 开始==========*/
 
   /*=======物流详细描述信息css样式开始==========*/
-  ul li{
+  .title-menu-min ul li{
     list-style:none;
     font-size:0.8rem;
   }
-  ul {
+  .title-menu-min ul {
     padding-left:1.5rem;
   }
   .track-rcol{
