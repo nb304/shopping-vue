@@ -1,7 +1,6 @@
 <template>
   <div id="listArea">
-
-    <el-form :inline="true" class="demo-form-inline">
+    <el-form :inline="true" class="demo-form-inline searchForm">
       <el-row :gutter="24">
         <el-col :sm="{span: 6}" :xs="{span: 23}">
           <el-form-item label="订单编号">
@@ -205,7 +204,7 @@
 
     <!--==================分页组件(开始)========================-->
     <el-row :gutter="24">
-      <el-col :sm="{span: 5, offset: 19}" :xs="{span: 24}">
+      <el-col :sm="{span: 4, offset: 18}" :xs="{span: 24}">
         <el-pagination
           background
           layout="prev, pager, next"
@@ -241,7 +240,7 @@
       </el-table>
       <div slot="footer" class="dialog-footer ">
         <el-row :gutter="24">
-          <el-col :sm="{span: 8,offset:16}" :xs="{span: 23}" style="margin-top:20px;">
+          <el-col :sm="{span: 8,offset:16}" :xs="{span: 23}" style="margin-top:20px; text-align: center;">
             <el-button style="width: 90%; " @click="productDescVisible = false">关闭窗口</el-button>
           </el-col>
         </el-row>
@@ -312,7 +311,7 @@
       </el-table>
       <div slot="footer" class="dialog-footer ">
         <el-row :gutter="24">
-          <el-col :sm="{span: 8,offset:16}" :xs="{span: 23}" style="margin-top:20px;">
+          <el-col :sm="{span: 8,offset:16}" :xs="{span: 23}" style="margin-top:20px; text-align: center;">
             <el-button style="width: 90%; " @click="orderUserVisible = false">关闭窗口</el-button>
           </el-col>
         </el-row>
@@ -368,7 +367,7 @@
               <!--==========物流组件信息结束=======-->
             </div>
           </el-col>
-          <el-col :sm="{span: 8,offset:16}" :xs="{span: 23}" style="margin-top:20px;">
+          <el-col :sm="{span: 8,offset:16}" :xs="{span: 23}" style="margin-top:20px; text-align: center;">
             <el-button style="width: 90%; " @click="orderExpressVisible = false">关闭窗口</el-button>
           </el-col>
         </el-row>
@@ -384,7 +383,6 @@
 export default {
   data() {
     return {
-      myLoading: null,
       startDate: '', // 开始时间
       endDate: '', // 结束时间
       orderCast: '', // 订单类型
@@ -426,31 +424,6 @@ export default {
         { cast: '收货地址', desc: '江西省上饶市广丰县' },
         { cast: '电话', desc: '15717007490' }
       ],
-      pickerOptions: { // 时间情况
-        disabledDate(time) {
-          return time.getTime() > Date.now()
-        },
-        shortcuts: [{
-          text: '今天',
-          onClick(picker) {
-            picker.$emit('pick', new Date())
-          }
-        }, {
-          text: '昨天',
-          onClick(picker) {
-            const date = new Date()
-            date.setTime(date.getTime() - 3600 * 1000 * 24)
-            picker.$emit('pick', date)
-          }
-        }, {
-          text: '一周前',
-          onClick(picker) {
-            const date = new Date()
-            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)
-            picker.$emit('pick', date)
-          }
-        }]
-      },
       list: [ // 订单列表情况集合
         {
           pid: '1',
@@ -650,20 +623,44 @@ export default {
 
 <style >
 
+  /*========当前页面的一些初始样式 输入框和表格等标签样式 开始===========*/
+
+  .el-form .el-row{
+    margin: 0 auto;
+    text-align:center !important;
+  }
+
+  .el-divider span{
+    color: #606266;font-weight:bold;
+  }
+  .el-table th .cell{
+    word-break: keep-all;
+    white-space:nowrap;
+    padding: 0px  0px;
+  }
+  .el-table th{
+    padding: 2px 0px;
+    padding-left: 10px;
+    color: #606266;
+  }
+  .el-table td{
+    padding: 0px;
+  }
+  #listArea{
+    margin: 30px;
+  }
+  /*========当前页面的一些初始样式 输入框和表格等标签样式 结束===========*/
+
   /*==================自定义自适应css样式详情开始 ========================*/
-  @media only screen and (min-width: 1301px) and (max-width: 2000px) { /*宽度 1301 -- 2000px*/
+  @media only screen and (min-width: 1301px) and (max-width: 2000px) { /*宽 ==================1301--2000px===========*/
     .el-form .el-form-item .el-input__inner{
       width: 216px !important;
     }
   }
 
-  @media only screen and (min-width: 410px) and (max-width: 500px) {  /*宽度 410 -- 500px*/
+  @media only screen and (min-width: 360px) and (max-width: 500px) {  /*宽================360 -- 500px================*/
     .el-form .el-form-item .el-input__inner{
       width: 250px !important;
-    }
-    .el-form .el-row{
-      margin: 0 auto;
-      text-align:center;
     }
     .el-col-xs-23{
       width: 100%;
@@ -677,13 +674,12 @@ export default {
     .el-col{
       padding: 0px !important;
     }
-    /*========弹出框样式信息开始============*/
+
     .el-dialog__wrapper .el-dialog{
-      width: 80% !important;
+      width: 90% !important;
     }
 
-    /*========物流详情弹出框信息*=============*/
-    div[aria-label="物流详情"] .el-form .el-form-item .el-input__inner{
+    div[aria-label="物流详情"] .el-form .el-form-item .el-input__inner{ /*=物流详情弹出框信息*/
       width: 184px !important;
     }
     div[aria-label="物流详情"] .el-form .el-form-item .el-button{
@@ -691,40 +687,35 @@ export default {
       width: 184px !important;
     }
   }
-  @media only screen and (min-width: 300px) and (max-width: 409px)  { /*宽度 300 -- 409px*/
-      .el-form .el-form-item .el-input__inner{
-        width: 250px !important;
-      }
-      .el-form .el-row{
-        margin: 0 auto;
-        text-align:center;
-      }
-      .el-col-xs-23{
-        width: 100%;
-      }
-      .el-form-item .el-button{
-        width: 250px !important;
-      }
-      .el-divider span{
-        font-size: 11px;
-      }
-      .el-col{
-        padding: 0px !important;
-      }
-      /*========弹出框样式信息开始============*/
-      .el-dialog__wrapper .el-dialog{
-        width: 80% !important;
-      }
 
-      /*========物流详情弹出框信息*=============*/
-      div[aria-label="物流详情"] .el-form .el-form-item .el-input__inner{
-        width: 184px !important;
-      }
-      div[aria-label="物流详情"] .el-form .el-form-item .el-button{
-        margin-left: 68px !important;
-        width: 184px !important;
-      }
+  @media only screen and (min-width: 200px) and (max-width: 350px)  { /*宽=================200 -- 350==================*/
+    .searchForm .el-col{
+      padding: 0px !important;
+      margin-left: 10px;
+    }
+    .searchForm  .el-form-item .el-form-item__content{
+      width: 194px !important;
+    }
+    .searchForm .el-form-item .el-button{
+      margin-left: 34px !important;
+      width: 195px !important;
+    }
+    .el-divider__text{  /*分割线样式*/
+      right:0px !important;
+      font-size: 9px !important;
+    }
+    .el-dialog__wrapper .el-dialog{             /*========弹出框样式信息开始============*/
+      width: 100% !important;
+    }
+    div[aria-label="物流详情"] .el-form-item__content{
+      width: 194px !important;
+    }
+    div[aria-label="物流详情"] .el-form-item__content button{
+      width: 194px !important;
+      margin-left: 35px !important;
+    }
   }
+
   /*==================自定义自适应css样式详情结束 ========================*/
 
   /*========弹出框样式信息开始============*/
@@ -737,29 +728,7 @@ export default {
   .el-dialog__body .el-table td{
     padding: 6px 0px !important;
   }
-
-  /*========当前页面的一些初始样式 输入框和表格等标签样式 开始===========*/
-  .el-divider span{
-    color: #606266;font-weight:bold;
-  }
-  .el-table th .cell{
-    word-break: keep-all;
-    white-space:nowrap;
-    padding: 0px  0px;
-  }
-  .el-table th{
-    padding: 2px 0px;
-    padding-left: 10px;
-    color: #606266;
-
-  }
-  .el-table td{
-    padding: 0px;
-  }
-  #listArea{
-    margin: 30px;
-  }
-  /*========当前页面的一些初始样式 输入框和表格等标签样式 结束===========*/
+  /*========弹出框样式信息结束============*/
 
   /*=======内部滚动条显示的css样式情况 开始==========*/
   .title-menu-min { /*新加入隐藏滚动条效果*/

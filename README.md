@@ -6,6 +6,7 @@ Iocn图标说明列表
       名称                    功能     默认颜色
       caigou.svg            采购图标   白色
       dianpu.svg            店铺图标   白色
+      dianpu2.svg            店铺图标   白色
       dingdan.svg           订单图标   白色
       kefu.svg              客服图标   白色
       kucun.svg             库存图标   白色
@@ -26,12 +27,14 @@ Iocn图标说明列表
       tianjiaNeiRong.svg    添加2图标  白色
       update.svg            修改图标   白色
       xiugai.svg            修改2图标  橙色
+      xiuga2.svg            修改3图标  黑色
       
       message.svg           消息图标   黑色
       price.svg             金额图标   黑色
       product.svg           商品图标   黑色
       tree.svg              树图标     黑色
       user.svg              用户图标   黑色
+      result.svg            结果图标   黑色
    
   
   
