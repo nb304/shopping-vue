@@ -791,12 +791,13 @@ export default {
   /*=======内部滚动条显示的css样式情况 开始==========*/
 
   /*=======物流详细描述信息css样式开始==========*/
+  .title-menu-min ul {
+    padding-left:1.5rem;
+  }
+
   .title-menu-min ul li{
     list-style:none;
     font-size:0.8rem;
-  }
-  .title-menu-min ul {
-    padding-left:1.5rem;
   }
   .track-rcol{
     width: 90% !important;
