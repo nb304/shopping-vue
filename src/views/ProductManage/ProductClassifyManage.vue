@@ -1,446 +1,492 @@
 <!--  商品类目管理  -->
 <template>
-	<div id="listArea" v-loading="ProductLeiMuLoadings.productLeiMuCommonLoading">
+  <div id="listArea" v-loading="ProductLeiMuLoadings.productLeiMuCommonLoading">
 
-		<!-- ======================= 商品品牌按钮集合 =========================  -->
-		<el-form :inline="true" :model="searchBrandForm" class="demo-form-inline">
-			<el-row :gutter="24">
-				<el-col :sm="{span: 8}" :xs="{span: 23}">
-					<el-form-item label="搜索类目">
-						<el-input v-model="searchLeiMuForm.LeiMuName" placeholder="类目的名称"><i slot="prefix" class="el-icon-edit"></i></el-input>
-					</el-form-item>
-				</el-col>
+    <!-- ======================= 商品品牌按钮集合 =========================  -->
+    <el-form :inline="true" :model="searchBrandForm" class="demo-form-inline">
+      <el-row :gutter="24">
+        <el-col :sm="{span: 8}" :xs="{span: 23}">
+          <el-form-item label="搜索类目">
+            <el-input v-model="searchLeiMuForm.LeiMuName" placeholder="类目的名称"><i slot="prefix" class="el-icon-edit" /></el-input>
+          </el-form-item>
+        </el-col>
 
-				<el-col :sm="{span: 8}" :xs="{span: 23}">
-					<el-form-item>
+        <el-col :sm="{span: 8}" :xs="{span: 23}">
+          <el-form-item>
 
-						<el-button type="primary" @click="addProductLeiMuDiv" style="width: 215px; margin-left: 70px;">
-							<svg-icon icon-class="tianjia" style="width:14px !important; height:14px !important; margin-right:10px;" />
-							添加类目
-						</el-button>
-					</el-form-item>
-				</el-col>
+            <el-button type="primary" style="width: 215px; margin-left: 70px;" @click="addProductLeiMuDiv">
+              <svg-icon icon-class="tianjia" style="width:14px !important; height:14px !important; margin-right:10px;" />
+              添加类目
+            </el-button>
+          </el-form-item>
+        </el-col>
 
-				<el-col :sm="{span: 8}" :xs="{span: 23}">
-					<el-form-item>
-						<el-button type="primary" icon="el-icon-search" style="width: 215px; margin-left: 70px;">搜索</el-button>
-					</el-form-item>
-				</el-col>
-			</el-row>
-		</el-form>
+        <el-col :sm="{span: 8}" :xs="{span: 23}">
+          <el-form-item>
+            <el-button type="primary" icon="el-icon-search" style="width: 215px; margin-left: 70px;">搜索</el-button>
+          </el-form-item>
+        </el-col>
+      </el-row>
+    </el-form>
 
-		<!-- ======================= 商品品牌按钮集合(结束) =========================  -->
-		<el-row :gutter="24">
-			<el-col :sm="{span: 24}" :xs="{span: 24}">
-				<div>
-					<el-divider content-position="right">
-						<span>数量:900个</span>
-					</el-divider>
-				</div>
-			</el-col>
-		</el-row>
+    <!-- ======================= 商品品牌按钮集合(结束) =========================  -->
+    <el-row :gutter="24">
+      <el-col :sm="{span: 24}" :xs="{span: 24}">
+        <div>
+          <el-divider content-position="right">
+            <span>数量:900个</span>
+          </el-divider>
+        </div>
+      </el-col>
+    </el-row>
 
-		<!-- ======================= 商品类目管理Talbe =========================  -->
-		<el-row :gutter="24">
-			<el-col :sm="{span: 24}" :xs="{span: 24}">
-				<el-table v-loading="ProductLeiMuLoadings.productLeiMuTableDataLoading" lazy :load="load" :data="leiMuDatas" style="width: 100%;margin-bottom: 20px;"
-				 row-key="leimuId" border default-expand-all :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
-					<el-table-column prop="leimuName" label="类目名称" show-overflow-tooltip="true" min-width="150">
-					</el-table-column>
-					<el-table-column prop="leimuType" label="类型" width="100" show-overflow-tooltip="true">
-					</el-table-column>
-					<el-table-column prop="createTime" label="创建时间" sortable width="180">
-					</el-table-column>
-					<el-table-column fixed="right" label="操作" width="170">
-						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="editProductLeiMuDiv">编辑</el-button>
-							<el-button type="text" size="small">停用</el-button>
-							<el-button type="text" size="small" v-if="!scope.row.isParent" @click="addLeiMuSkuInfo">管理SKU</el-button>
-						</template>
-					</el-table-column>
-				</el-table>
+    <!-- ======================= 商品类目管理Talbe =========================  -->
+    <el-row :gutter="24">
+      <el-col :sm="{span: 24}" :xs="{span: 24}">
+        <el-table
+          v-loading="ProductLeiMuLoadings.productLeiMuTableDataLoading"
+          lazy
+          :load="load"
+          :data="leiMuDatas"
+          style="width: 100%;margin-bottom: 20px;"
+          row-key="leimuId"
+          border
+          default-expand-all
+          :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
+        >
+          <el-table-column prop="leimuName" label="类目名称" show-overflow-tooltip="true" min-width="150" />
+          <el-table-column prop="leimuType" label="类型" width="100" show-overflow-tooltip="true" />
+          <el-table-column prop="createTime" label="创建时间" sortable width="180" />
+          <el-table-column fixed="right" label="操作" width="170">
+            <template slot-scope="scope">
+              <el-button type="text" size="small" @click="editProductLeiMuDiv">编辑</el-button>
+              <el-button type="text" size="small">停用</el-button>
+              <el-button v-if="!scope.row.isParent" type="text" size="small" @click="addLeiMuSkuInfo">管理SKU</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
 
-			</el-col>
-		</el-row>
-		<!-- ======================= 商品类目管理Talbe(结束) =========================  -->
+      </el-col>
+    </el-row>
+    <!-- ======================= 商品类目管理Talbe(结束) =========================  -->
 
-		<!-- ======================= 分页层 =========================  -->
-		<el-row :gutter="24">
-			<el-col :sm="{span: 5, offset: 19}" :xs="{span: 24}">
-				<el-pagination background layout="prev, pager, next" :current-page="currentPage" :total="total" @current-change="handleSizeChange"
-				 page-size="3" small="false" style="margin-top: 15px;margin-right: 10px;">
-				</el-pagination>
-			</el-col>
-		</el-row>
+    <!-- ======================= 分页层 =========================  -->
+    <el-row :gutter="24">
+      <el-col :sm="{span: 5, offset: 19}" :xs="{span: 24}">
+        <el-pagination
+          background
+          layout="prev, pager, next"
+          :current-page="currentPage"
+          :total="total"
+          page-size="3"
+          small="false"
+          style="margin-top: 15px;margin-right: 10px;"
+          @current-change="handleSizeChange"
+        />
+      </el-col>
+    </el-row>
 
-		<!-- ======================= 分页层 (结束) =========================  -->
+    <!-- ======================= 分页层 (结束) =========================  -->
 
-		<!-- ======================= 添加类目的SKU基础模板 =========================  -->
-		<el-dialog :append-to-body="true" width="600px" :top="productTopHtml" :close-on-click-modal="false" title="添加SKU参数"
-		 :visible.sync="productLeiMuDiaLogFlags.addProductLeiMuSkuTemplate" class="addProduct title-menu-min">
-			<div>
-				<el-divider content-position="left">系统定制的SKU</el-divider>
-				<el-row :gutter="24">
-					<el-col :sm="{span: 6}" :xs="{span: 12}" v-for="tag in adminDeinSkuValues">
-						<el-tag show-overflow-tooltip="true" style="width:100%;margin-bottom: 10px;" :key="tag.skuId" closable
-						 :disable-transitions="false" @close="handleClose(tag)">
-							<span class="autocut">
-								{{tag.skuName}}
-							</span>
-						</el-tag>
-					</el-col>
+    <!-- ======================= 添加类目的SKU基础模板 =========================  -->
+    <el-dialog
+      :append-to-body="true"
+      width="600px"
+      :top="productTopHtml"
+      :close-on-click-modal="false"
+      title="添加SKU参数"
+      :visible.sync="productLeiMuDiaLogFlags.addProductLeiMuSkuTemplate"
+      class="addProduct title-menu-min"
+    >
+      <div>
+        <el-divider content-position="left">系统定制的SKU</el-divider>
+        <el-row :gutter="24">
+          <el-col v-for="tag in adminDeinSkuValues" :sm="{span: 6}" :xs="{span: 12}">
+            <el-tag
+              :key="tag.skuId"
+              show-overflow-tooltip="true"
+              style="width:100%;margin-bottom: 10px;"
+              closable
+              :disable-transitions="false"
+              @close="handleClose(tag)"
+            >
+              <span class="autocut">
+                {{ tag.skuName }}
+              </span>
+            </el-tag>
+          </el-col>
 
-				</el-row>
+        </el-row>
 
-				<el-divider content-position="left">店铺定制的SKU</el-divider>
+        <el-divider content-position="left">店铺定制的SKU</el-divider>
 
-				<el-row :gutter="24">
-					<el-col :sm="{span: 6}" :xs="{span: 12}" v-for="tag in userDeinSkuValues">
-						<el-tag show-overflow-tooltip="true" style="width:100%;margin-bottom: 10px;" :key="tag.skuId" closable
-						 :disable-transitions="false" @close="handleClose2(tag)">
-							<span class="autocut">
-								{{tag.skuName}}
-							</span>
-						</el-tag>
-					</el-col>
-					<el-col :sm="{span: 6}">
-						<el-input class="input-new-tag" v-if="inputVisible" v-model="newSkuName" ref="saveTagInput" size="small"
-						 @keyup.enter.native="handleInputConfirm" @blur="handleInputConfirm">
-						</el-input>
-						<el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
-					</el-col>
-				</el-row>
+        <el-row :gutter="24">
+          <el-col v-for="tag in userDeinSkuValues" :sm="{span: 6}" :xs="{span: 12}">
+            <el-tag
+              :key="tag.skuId"
+              show-overflow-tooltip="true"
+              style="width:100%;margin-bottom: 10px;"
+              closable
+              :disable-transitions="false"
+              @close="handleClose2(tag)"
+            >
+              <span class="autocut">
+                {{ tag.skuName }}
+              </span>
+            </el-tag>
+          </el-col>
+          <el-col :sm="{span: 6}">
+            <el-input
+              v-if="inputVisible"
+              ref="saveTagInput"
+              v-model="newSkuName"
+              class="input-new-tag"
+              size="small"
+              @keyup.enter.native="handleInputConfirm"
+              @blur="handleInputConfirm"
+            />
+            <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+          </el-col>
+        </el-row>
 
-				<el-row :gutter="24">
-					<el-col :sm="{span: 8}" :xs="{span: 23}">
+        <el-row :gutter="24">
+          <el-col :sm="{span: 8}" :xs="{span: 23}">
 
-						<el-button type="primary" style="width:100%;margin-bottom: 15px;">确认添加</el-button>
-					</el-col>
+            <el-button type="primary" style="width:100%;margin-bottom: 15px;">确认添加</el-button>
+          </el-col>
 
-					<el-col :sm="{span: 8}" :xs="{span: 23}">
-						<el-button style="width:100%;margin-bottom: 15px !important;" @click="productLeiMuDiaLogFlags.addProductLeiMuSkuTemplate = false">关闭窗口</el-button>
-					</el-col>
-				</el-row>
-			</div>
-		</el-dialog>
-		<!-- ======================= 添加类目的SKU基础模板(结束) =========================  -->
+          <el-col :sm="{span: 8}" :xs="{span: 23}">
+            <el-button style="width:100%;margin-bottom: 15px !important;" @click="productLeiMuDiaLogFlags.addProductLeiMuSkuTemplate = false">关闭窗口</el-button>
+          </el-col>
+        </el-row>
+      </div>
+    </el-dialog>
+    <!-- ======================= 添加类目的SKU基础模板(结束) =========================  -->
 
-		<!-- ======================= 添加类目 =========================  -->
-		<el-dialog :append-to-body="true" width="400px" :close-on-click-modal="false" title="添加类目" :visible.sync="productLeiMuDiaLogFlags.addProductLeiMu"
-		 class="addProduct title-menu-min" v-loading="ProductLeiMuLoadings.productLeiMuCommonLoading">
-			<div>
-				<el-form label-position="left" :inline="true" ref="addProductLeiMuForm" :model="addProductLeiMuForm" label-width="80px">
-					<el-row :gutter="24">
-						<el-col :sm="{span: 24}" :xs="{span: 24}">
-							<el-form-item label="类目名称" style="width:100%;">
-								<el-input v-model="addProductLeiMuForm.leimuName" placeholder="请输入类目名称"></el-input>
-							</el-form-item>
-						</el-col>
+    <!-- ======================= 添加类目 =========================  -->
+    <el-dialog
+      v-loading="ProductLeiMuLoadings.productLeiMuCommonLoading"
+      :append-to-body="true"
+      width="400px"
+      :close-on-click-modal="false"
+      title="添加类目"
+      :visible.sync="productLeiMuDiaLogFlags.addProductLeiMu"
+      class="addProduct title-menu-min"
+    >
+      <div>
+        <el-form ref="addProductLeiMuForm" label-position="left" :inline="true" :model="addProductLeiMuForm" label-width="80px">
+          <el-row :gutter="24">
+            <el-col :sm="{span: 24}" :xs="{span: 24}">
+              <el-form-item label="类目名称" style="width:100%;">
+                <el-input v-model="addProductLeiMuForm.leimuName" placeholder="请输入类目名称" />
+              </el-form-item>
+            </el-col>
 
-						<el-col :sm="{span: 24}" :xs="{span: 24}">
-							<el-form-item label="适应季节" style="width:100%;">
-								<el-input v-model="addProductLeiMuForm.leimuAdaptSeason" placeholder="请输入适应季节"></el-input>
-							</el-form-item>
-						</el-col>
+            <el-col :sm="{span: 24}" :xs="{span: 24}">
+              <el-form-item label="适应季节" style="width:100%;">
+                <el-input v-model="addProductLeiMuForm.leimuAdaptSeason" placeholder="请输入适应季节" />
+              </el-form-item>
+            </el-col>
 
+            <el-col :sm="{span: 24}" :xs="{span: 24}">
+              <el-form-item label="一级类目" style="width:100%;">
+                <el-select v-model="addProductLeiMuForm.leimuParentId" placeholder="请选择类目,若不选择则为一级类目">
+                  <el-option label="不选择(一级类目)" value="shangha1i" />
+                  <el-option label="区域一" value="shanghai" />
+                  <el-option label="区域二" value="beijing" />
+                </el-select>
+              </el-form-item>
+            </el-col>
+          </el-row>
 
-						<el-col :sm="{span: 24}" :xs="{span: 24}">
-							<el-form-item label="一级类目" style="width:100%;">
-								<el-select v-model="addProductLeiMuForm.leimuParentId" placeholder="请选择类目,若不选择则为一级类目">
-									<el-option label="不选择(一级类目)" value="shangha1i"></el-option>
-									<el-option label="区域一" value="shanghai"></el-option>
-									<el-option label="区域二" value="beijing"></el-option>
-								</el-select>
-							</el-form-item>
-						</el-col>
-					</el-row>
+          <el-row :gutter="24">
 
-					<el-row :gutter="24">
+            <el-col :sm="{span: 8}" :xs="{span: 23}">
 
-						<el-col :sm="{span: 8}" :xs="{span: 23}">
+              <el-button type="primary" style="width:100%;margin-bottom: 15px;">确认添加</el-button>
+            </el-col>
 
-							<el-button type="primary" style="width:100%;margin-bottom: 15px;">确认添加</el-button>
-						</el-col>
+            <el-col :sm="{span: 8}" :xs="{span: 23}">
 
-						<el-col :sm="{span: 8}" :xs="{span: 23}">
+              <el-button style="width:100%;margin-bottom: 15px !important;" @click="productLeiMuDiaLogFlags.addProductLeiMu = false">关闭窗口</el-button>
+            </el-col>
+          </el-row>
+        </el-form>
+      </div>
+    </el-dialog>
+    <!-- ======================= 添加类目(结束) =========================  -->
 
-							<el-button style="width:100%;margin-bottom: 15px !important;" @click="productLeiMuDiaLogFlags.addProductLeiMu = false">关闭窗口</el-button>
-						</el-col>
-					</el-row>
-				</el-form>
-			</div>
-		</el-dialog>
-		<!-- ======================= 添加类目(结束) =========================  -->
+    <!-- ======================= 修改类目 =========================  -->
+    <el-dialog
+      :append-to-body="true"
+      width="400px"
+      :close-on-click-modal="false"
+      title="修改类目"
+      :visible.sync="productLeiMuDiaLogFlags.editProductLeiMu"
+      class="addProduct title-menu-min"
+    >
+      <div>
+        <el-form ref="addProductLeiMuForm" label-position="left" :inline="true" :model="addProductLeiMuForm" label-width="80px">
+          <el-row :gutter="24">
+            <el-col :sm="{span: 24}" :xs="{span: 24}">
+              <el-form-item label="类目名称" style="width:100%;">
+                <el-input v-model="addProductLeiMuForm.leimuName" placeholder="请输入类目名称" />
+              </el-form-item>
+            </el-col>
 
+            <el-col :sm="{span: 24}" :xs="{span: 24}">
+              <el-form-item label="适应季节" style="width:100%;">
+                <el-input v-model="addProductLeiMuForm.leimuAdaptSeason" placeholder="请输入适应季节" />
+              </el-form-item>
+            </el-col>
 
-		<!-- ======================= 修改类目 =========================  -->
-		<el-dialog :append-to-body="true" width="400px" :close-on-click-modal="false" title="修改类目" :visible.sync="productLeiMuDiaLogFlags.editProductLeiMu"
-		 class="addProduct title-menu-min">
-			<div>
-				<el-form label-position="left" :inline="true" ref="addProductLeiMuForm" :model="addProductLeiMuForm" label-width="80px">
-					<el-row :gutter="24">
-						<el-col :sm="{span: 24}" :xs="{span: 24}">
-							<el-form-item label="类目名称" style="width:100%;">
-								<el-input v-model="addProductLeiMuForm.leimuName" placeholder="请输入类目名称"></el-input>
-							</el-form-item>
-						</el-col>
+            <el-col :sm="{span: 24}" :xs="{span: 24}">
+              <el-form-item label="一级类目" style="width:100%;">
+                <el-select v-model="addProductLeiMuForm.leimuParentId" :disabled="true" placeholder="请选择类目,若不选择则为一级类目">
+                  <el-option label="不选择(一级类目)" value="shangha1i" />
+                  <el-option label="区域一" value="shanghai" />
+                  <el-option label="区域二" value="beijing" />
+                </el-select>
+              </el-form-item>
+            </el-col>
+          </el-row>
 
-						<el-col :sm="{span: 24}" :xs="{span: 24}">
-							<el-form-item label="适应季节" style="width:100%;">
-								<el-input v-model="addProductLeiMuForm.leimuAdaptSeason" placeholder="请输入适应季节"></el-input>
-							</el-form-item>
-						</el-col>
+          <el-row :gutter="24">
 
+            <el-col :sm="{span: 8}" :xs="{span: 23}">
 
-						<el-col :sm="{span: 24}" :xs="{span: 24}">
-							<el-form-item label="一级类目" style="width:100%;">
-								<el-select :disabled="true" v-model="addProductLeiMuForm.leimuParentId" placeholder="请选择类目,若不选择则为一级类目">
-									<el-option label="不选择(一级类目)" value="shangha1i"></el-option>
-									<el-option label="区域一" value="shanghai"></el-option>
-									<el-option label="区域二" value="beijing"></el-option>
-								</el-select>
-							</el-form-item>
-						</el-col>
-					</el-row>
+              <el-button type="primary" style="width:100%;margin-bottom: 15px;">确认添加</el-button>
+            </el-col>
 
-					<el-row :gutter="24">
+            <el-col :sm="{span: 8}" :xs="{span: 23}">
 
-						<el-col :sm="{span: 8}" :xs="{span: 23}">
+              <el-button style="width:100%;margin-bottom: 15px !important;" @click="productLeiMuDiaLogFlags.editProductLeiMu = false">关闭窗口</el-button>
+            </el-col>
+          </el-row>
+        </el-form>
+      </div>
+    </el-dialog>
+    <!-- ======================= 修改类目(结束) =========================  -->
 
-							<el-button type="primary" style="width:100%;margin-bottom: 15px;">确认添加</el-button>
-						</el-col>
-
-						<el-col :sm="{span: 8}" :xs="{span: 23}">
-
-							<el-button style="width:100%;margin-bottom: 15px !important;" @click="productLeiMuDiaLogFlags.editProductLeiMu = false">关闭窗口</el-button>
-						</el-col>
-					</el-row>
-				</el-form>
-			</div>
-		</el-dialog>
-		<!-- ======================= 修改类目(结束) =========================  -->
-
-
-	</div>
+  </div>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				// 网页的宽高
-				screenWidth: '',
-				screenHeight: '',
-				// 窗口距离网页的高度
-				productTopHtml: '',
-				inputVisible: false,
-				// 新添的SKU值
-				newSkuName: '',
-				inputValue: '',
-				// SKU参数列表
-				// 管理员定义
-				adminDeinSkuValues: [{
-						skuId: '1',
-						skuName: '颜色颜色色色'
-					}, {
-						skuId: '1',
-						skuName: '颜色'
-					}, {
-						skuId: '1',
-						skuName: '颜色'
-					},
-					{
-						skuId: '1',
-						skuName: '内存'
-					},
-					{
-						skuId: '1',
-						skuName: '厂商地'
-					}
-				],
-				// 用户自己定义
-				userDeinSkuValues: [{
-						skuId: '99',
-						skuName: '颜色'
-					},
-					{
-						skuId: '98',
-						skuName: '内存'
-					},
-					{
-						skuId: '97',
-						skuName: '厂商地'
-					}
-				],
-				// 添加类目的Form
-				addProductLeiMuForm: {
-					leimuName: '',
-					leimuParentId: '',
-					leimuAdaptSeason: ''
-				},
-				// 类目页面的弹出flag
-				productLeiMuDiaLogFlags: {
-					// 添加类目
-					addProductLeiMu: false,
-					// 修改类目
-					editProductLeiMu: false,
-					// 添加类目的SKU模板
-					addProductLeiMuSkuTemplate: false
-				},
-				// 类目Table的数据
-				leiMuDatas: [{
-						leimuId: '1',
-						leimuName: '女装',
-						leimuType: '一级类目',
-						createTime: '2019-07-04 14:13',
-						hasChildren: true,
-						isParent: true
-					},
-					{
-						leimuId: '3',
-						leimuName: '女装',
-						leimuType: '一级类目',
-						createTime: '2019-07-04 14:14',
-						isParent: true
-					},
-					{
-						leimuId: '4',
-						leimuName: '女装',
-						leimuType: '一级类目',
-						createTime: '2019-07-04 14:15',
-						isParent: true
-					},
-					{
-						leimuId: '5',
-						leimuName: '女装',
-						leimuType: '一级类目',
-						createTime: '2019-07-04 14:16',
-						isParent: true
-					}
-				],
-				// 分页数据
-				total: 100,
-				currentPage: 2,
-				// 网页长宽
-				screenWidth: 0,
-				screenHeight: 0,
-				// 类目搜索表单
-				searchLeiMuForm: {
-					LeiMuName: ''
-				},
-				// 类目加载层集合
-				ProductLeiMuLoadings: {
-					// 类目的Table加载层
-					productLeiMuTableDataLoading: false,
-					// 类目公用的加载成
-					productLeiMuCommonLoading: false
-				}
-			}
-		},
-		methods: {
-			// 打开SKU模板
-			addLeiMuSkuInfo() {
-				this.productLeiMuDiaLogFlags.addProductLeiMuSkuTemplate = true;
-			},
-			// 删除用户定义的SKU
-			handleClose2(tag) {
-				this.$message({
-					showClose: true,
-					message: '删除成功,id为:' + tag.skuId,
-					type: 'success'
-				});
-				this.userDeinSkuValues.splice(this.userDeinSkuValues.indexOf(tag), 1);
-			},
-			// 删除系统定义的SKU
-			handleClose(tag) {
-				this.$message({
-					message: '删除成功,id为:' + tag.skuId,
-					type: 'success',
-					showClose: true
-				});
-				this.adminDeinSkuValues.splice(this.adminDeinSkuValues.indexOf(tag), 1);
-			},
-			// 显示添加的SKUInput
-			showInput() {
-				this.inputVisible = true;
-				this.$nextTick(_ => {
-					this.$refs.saveTagInput.$refs.input.focus();
-				});
-			},
-			// 动态添加SKU
-			handleInputConfirm() {
-				let inputValue = this.newSkuName;
-				if (inputValue.length > 6) {
-					this.$message({
-						showClose: true,
-						message: '最高长度为6位',
-						type: 'error'
-					});
-					return ;
-				}
-				let pushs = {
-					'skuId': new Date().getTime(),
-					'skuName': inputValue
-				};
-				if (inputValue) {
-					this.userDeinSkuValues.push(pushs);
-				}
-				this.inputVisible = false;
-				this.newSkuName = '';
-			},
-			// 编辑类目
-			editProductLeiMuDiv() {
-				this.productLeiMuDiaLogFlags.editProductLeiMu = true;
-			},
-			// 显示添加类目Div
-			addProductLeiMuDiv() {
-				this.productLeiMuDiaLogFlags.addProductLeiMu = true;
-			},
-			// 动态加载二级类目
-			load(tree, treeNode, resolve) {
-				setTimeout(() => {
-					resolve([{
-						leimuId: '355',
-						leimuName: '女装',
-						leimuType: '二级类目',
-						createTime: '2019-07-04 14:14',
-						isParent: false
-					}, {
-						leimuId: '356',
-						leimuName: '女装',
-						leimuType: '二级类目',
-						createTime: '2019-07-04 14:14',
-						isParent: false
-					}])
-				}, 1000)
-			}
-		},
-		created() {
-			// 初始化方法 vue组件初始化完成,网页未完成
-		},
-		mounted() {
-			this.screenWidth = document.body.clientWidth;
-			this.screenHeight = document.body.clientHeight;
-			if (this.screenWidth <= 500) {
-				this.productTopHtml = "1vh";
-			} else {
-				this.productTopHtml = "10vh";
-			}
-			window.onresize = () => {
-				return (() => {
-					this.screenWidth = document.body.clientWidth;
-					this.screenHeight = document.body.clientHeight;
-					// 判断宽度是否小于500 小于500 全部全屏显示
-					if (this.screenWidth <= 500) {
-						this.productTopHtml = "1vh";
-					} else {
-						this.productTopHtml = "10vh";
-					}
-
-				})();
-			};
-		}
-	}
+export default {
+  data() {
+    return {
+      // 网页的宽高
+      screenWidth: '',
+      screenHeight: '',
+      // 窗口距离网页的高度
+      productTopHtml: '',
+      inputVisible: false,
+      // 新添的SKU值
+      newSkuName: '',
+      inputValue: '',
+      // SKU参数列表
+      // 管理员定义
+      adminDeinSkuValues: [{
+        skuId: '1',
+        skuName: '颜色颜色色色'
+      }, {
+        skuId: '1',
+        skuName: '颜色'
+      }, {
+        skuId: '1',
+        skuName: '颜色'
+      },
+      {
+        skuId: '1',
+        skuName: '内存'
+      },
+      {
+        skuId: '1',
+        skuName: '厂商地'
+      }
+      ],
+      // 用户自己定义
+      userDeinSkuValues: [{
+        skuId: '99',
+        skuName: '颜色'
+      },
+      {
+        skuId: '98',
+        skuName: '内存'
+      },
+      {
+        skuId: '97',
+        skuName: '厂商地'
+      }
+      ],
+      // 添加类目的Form
+      addProductLeiMuForm: {
+        leimuName: '',
+        leimuParentId: '',
+        leimuAdaptSeason: ''
+      },
+      // 类目页面的弹出flag
+      productLeiMuDiaLogFlags: {
+        // 添加类目
+        addProductLeiMu: false,
+        // 修改类目
+        editProductLeiMu: false,
+        // 添加类目的SKU模板
+        addProductLeiMuSkuTemplate: false
+      },
+      // 类目Table的数据
+      leiMuDatas: [{
+        leimuId: '1',
+        leimuName: '女装',
+        leimuType: '一级类目',
+        createTime: '2019-07-04 14:13',
+        hasChildren: true,
+        isParent: true
+      },
+      {
+        leimuId: '3',
+        leimuName: '女装',
+        leimuType: '一级类目',
+        createTime: '2019-07-04 14:14',
+        isParent: true
+      },
+      {
+        leimuId: '4',
+        leimuName: '女装',
+        leimuType: '一级类目',
+        createTime: '2019-07-04 14:15',
+        isParent: true
+      },
+      {
+        leimuId: '5',
+        leimuName: '女装',
+        leimuType: '一级类目',
+        createTime: '2019-07-04 14:16',
+        isParent: true
+      }
+      ],
+      // 分页数据
+      total: 100,
+      currentPage: 2,
+      // 网页长宽
+      screenWidth: 0,
+      screenHeight: 0,
+      // 类目搜索表单
+      searchLeiMuForm: {
+        LeiMuName: ''
+      },
+      // 类目加载层集合
+      ProductLeiMuLoadings: {
+        // 类目的Table加载层
+        productLeiMuTableDataLoading: false,
+        // 类目公用的加载成
+        productLeiMuCommonLoading: false
+      }
+    }
+  },
+  created() {
+    // 初始化方法 vue组件初始化完成,网页未完成
+  },
+  mounted() {
+    this.screenWidth = document.body.clientWidth
+    this.screenHeight = document.body.clientHeight
+    if (this.screenWidth <= 500) {
+      this.productTopHtml = '1vh'
+    } else {
+      this.productTopHtml = '10vh'
+    }
+    window.onresize = () => {
+      return (() => {
+        this.screenWidth = document.body.clientWidth
+        this.screenHeight = document.body.clientHeight
+        // 判断宽度是否小于500 小于500 全部全屏显示
+        if (this.screenWidth <= 500) {
+          this.productTopHtml = '1vh'
+        } else {
+          this.productTopHtml = '10vh'
+        }
+      })()
+    }
+  },
+  methods: {
+    // 打开SKU模板
+    addLeiMuSkuInfo() {
+      this.productLeiMuDiaLogFlags.addProductLeiMuSkuTemplate = true
+    },
+    // 删除用户定义的SKU
+    handleClose2(tag) {
+      this.$message({
+        showClose: true,
+        message: '删除成功,id为:' + tag.skuId,
+        type: 'success'
+      })
+      this.userDeinSkuValues.splice(this.userDeinSkuValues.indexOf(tag), 1)
+    },
+    // 删除系统定义的SKU
+    handleClose(tag) {
+      this.$message({
+        message: '删除成功,id为:' + tag.skuId,
+        type: 'success',
+        showClose: true
+      })
+      this.adminDeinSkuValues.splice(this.adminDeinSkuValues.indexOf(tag), 1)
+    },
+    // 显示添加的SKUInput
+    showInput() {
+      this.inputVisible = true
+      this.$nextTick(_ => {
+        this.$refs.saveTagInput.$refs.input.focus()
+      })
+    },
+    // 动态添加SKU
+    handleInputConfirm() {
+      const inputValue = this.newSkuName
+      if (inputValue.length > 6) {
+        this.$message({
+          showClose: true,
+          message: '最高长度为6位',
+          type: 'error'
+        })
+        return
+      }
+      const pushs = {
+        'skuId': new Date().getTime(),
+        'skuName': inputValue
+      }
+      if (inputValue) {
+        this.userDeinSkuValues.push(pushs)
+      }
+      this.inputVisible = false
+      this.newSkuName = ''
+    },
+    // 编辑类目
+    editProductLeiMuDiv() {
+      this.productLeiMuDiaLogFlags.editProductLeiMu = true
+    },
+    // 显示添加类目Div
+    addProductLeiMuDiv() {
+      this.productLeiMuDiaLogFlags.addProductLeiMu = true
+    },
+    // 动态加载二级类目
+    load(tree, treeNode, resolve) {
+      setTimeout(() => {
+        resolve([{
+          leimuId: '355',
+          leimuName: '女装',
+          leimuType: '二级类目',
+          createTime: '2019-07-04 14:14',
+          isParent: false
+        }, {
+          leimuId: '356',
+          leimuName: '女装',
+          leimuType: '二级类目',
+          createTime: '2019-07-04 14:14',
+          isParent: false
+        }])
+      }, 1000)
+    }
+  }
+}
 </script>
 
 <style>

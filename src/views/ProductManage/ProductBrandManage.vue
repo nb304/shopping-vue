@@ -1,295 +1,329 @@
 <template>
-	<div id="listArea" v-loading="ProductBrandLoadings.productBrandCommonLoading">
+  <div id="listArea" v-loading="ProductBrandLoadings.productBrandCommonLoading">
 
-		<!-- ======================= 商品品牌按钮集合 =========================  -->
-		<el-form :inline="true" :model="searchBrandForm" class="demo-form-inline">
-			<el-row :gutter="24">
-				<el-col :sm="{span: 8}" :xs="{span: 23}">
-					<el-form-item label="搜索品牌">
-						<el-input v-model="searchBrandForm.brandName" placeholder="品牌的名称"><i slot="prefix" class="el-icon-edit"></i></el-input>
-					</el-form-item>
-				</el-col>
+    <!-- ======================= 商品品牌按钮集合 =========================  -->
+    <el-form :inline="true" :model="searchBrandForm" class="demo-form-inline">
+      <el-row :gutter="24">
+        <el-col :sm="{span: 8}" :xs="{span: 23}">
+          <el-form-item label="搜索品牌">
+            <el-input v-model="searchBrandForm.brandName" placeholder="品牌的名称"><i slot="prefix" class="el-icon-edit" /></el-input>
+          </el-form-item>
+        </el-col>
 
-				<el-col :sm="{span: 8}" :xs="{span: 23}">
-					<el-form-item>
+        <el-col :sm="{span: 8}" :xs="{span: 23}">
+          <el-form-item>
 
-						<el-button type="primary" style="width: 215px; margin-left: 70px;" @click="productBrandDiaLogFlags.addProductBrandFlag = true">
-							<svg-icon icon-class="tianjia" class-name='' style="width:14px !important; height:14px !important; margin-right:10px;" />
-							添加品牌
-						</el-button>
-					</el-form-item>
-				</el-col>
+            <el-button type="primary" style="width: 215px; margin-left: 70px;" @click="productBrandDiaLogFlags.addProductBrandFlag = true">
+              <svg-icon icon-class="tianjia" class-name="" style="width:14px !important; height:14px !important; margin-right:10px;" />
+              添加品牌
+            </el-button>
+          </el-form-item>
+        </el-col>
 
-				<el-col :sm="{span: 8}" :xs="{span: 23}">
-					<el-form-item>
-						<el-button type="primary" icon="el-icon-search" style="width: 215px; margin-left: 70px;">搜索</el-button>
-					</el-form-item>
-				</el-col>
-			</el-row>
-		</el-form>
+        <el-col :sm="{span: 8}" :xs="{span: 23}">
+          <el-form-item>
+            <el-button type="primary" icon="el-icon-search" style="width: 215px; margin-left: 70px;">搜索</el-button>
+          </el-form-item>
+        </el-col>
+      </el-row>
+    </el-form>
 
-		<!-- ======================= 商品品牌按钮集合(结束) =========================  -->
-		<el-row :gutter="24">
-			<el-col :sm="{span: 24}" :xs="{span: 24}">
-				<div>
-					<el-divider content-position="right">
-						<span>数量:900个</span>
-					</el-divider>
-				</div>
-			</el-col>
-		</el-row>
+    <!-- ======================= 商品品牌按钮集合(结束) =========================  -->
+    <el-row :gutter="24">
+      <el-col :sm="{span: 24}" :xs="{span: 24}">
+        <div>
+          <el-divider content-position="right">
+            <span>数量:900个</span>
+          </el-divider>
+        </div>
+      </el-col>
+    </el-row>
 
-		<!-- ======================= 商品信息管理Talbe =========================  -->
-		<el-row :gutter="24">
-			<el-col :sm="{span: 24}" :xs="{span: 24}">
+    <!-- ======================= 商品信息管理Talbe =========================  -->
+    <el-row :gutter="24">
+      <el-col :sm="{span: 24}" :xs="{span: 24}">
 
-				<el-table class="title-menu-min" v-loading="ProductBrandLoadings.productBrandTableDataLoading" :data="productBrandTableDatas"
-				 border style="width: 100%">
-					<el-table-column prop="brandNumber" label="编号" width="150" show-overflow-tooltip="true">
-					</el-table-column>
-					<el-table-column prop="brandName" label="品牌名称">
-					</el-table-column>
-					<el-table-column label="品牌LOGO" width="120" prop="brandLogoUrl">
-						<div slot-scope="scope" @click="showProductBrandLogoDiv(scope.row)">
-							<el-image style="width: 100px; height: 30px;cursor: pointer;" :src="scope.row.brandLogoUrl"></el-image>
-						</div>
-					</el-table-column>
-					<el-table-column prop="createName" label="创建人" width="120">
-					</el-table-column>
-					<el-table-column prop="updateName" label="操作人" width="120">
-					</el-table-column>
-					<el-table-column prop="createTime" label="创建时间" width="150" show-overflow-tooltip="true">
-					</el-table-column>
-					<el-table-column prop="updateTime" label="修改时间" width="150" show-overflow-tooltip="true">
-					</el-table-column>
-					<el-table-column fixed="right" label="操作" width="150">
-						<template slot-scope="scope">
-							<el-button type="text" size="small" @click="productBrandDiaLogFlags.editProductBrand = true">编辑</el-button>
-							<el-button type="text" size="small">删除</el-button>
-						</template>
-					</el-table-column>
-				</el-table>
+        <el-table
+          v-loading="ProductBrandLoadings.productBrandTableDataLoading"
+          class="title-menu-min"
+          :data="productBrandTableDatas"
+          border
+          style="width: 100%"
+        >
+          <el-table-column prop="brandNumber" label="编号" width="150" show-overflow-tooltip="true" />
+          <el-table-column prop="brandName" label="品牌名称" />
+          <el-table-column label="品牌LOGO" width="120" prop="brandLogoUrl">
+            <div slot-scope="scope" @click="showProductBrandLogoDiv(scope.row)">
+              <el-image style="width: 100px; height: 30px;cursor: pointer;" :src="scope.row.brandLogoUrl" />
+            </div>
+          </el-table-column>
+          <el-table-column prop="createName" label="创建人" width="120" />
+          <el-table-column prop="updateName" label="操作人" width="120" />
+          <el-table-column prop="createTime" label="创建时间" width="150" show-overflow-tooltip="true" />
+          <el-table-column prop="updateTime" label="修改时间" width="150" show-overflow-tooltip="true" />
+          <el-table-column fixed="right" label="操作" width="150">
+            <template slot-scope="scope">
+              <el-button type="text" size="small" @click="productBrandDiaLogFlags.editProductBrand = true">编辑</el-button>
+              <el-button type="text" size="small">删除</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
 
-			</el-col>
-		</el-row>
-		<!-- ======================= 商品信息管理Talbe(结束) =========================  -->
+      </el-col>
+    </el-row>
+    <!-- ======================= 商品信息管理Talbe(结束) =========================  -->
 
-		<!-- ======================= 分页层 =========================  -->
-		<el-row :gutter="24">
-			<el-col :sm="{span: 5, offset: 19}" :xs="{span: 24}">
-				<el-pagination background layout="prev, pager, next" :current-page="currentPage" :total="total" @current-change="handleSizeChange"
-				 page-size="3" small="false" style="margin-top: 15px;margin-right: 10px;">
-				</el-pagination>
-			</el-col>
-		</el-row>
+    <!-- ======================= 分页层 =========================  -->
+    <el-row :gutter="24">
+      <el-col :sm="{span: 5, offset: 19}" :xs="{span: 24}">
+        <el-pagination
+          background
+          layout="prev, pager, next"
+          :current-page="currentPage"
+          :total="total"
+          page-size="3"
+          small="false"
+          style="margin-top: 15px;margin-right: 10px;"
+          @current-change="handleSizeChange"
+        />
+      </el-col>
+    </el-row>
 
-		<!-- ======================= 分页层 (结束) =========================  -->
-		<!-- ======================= 商品品牌弹出层 =========================  -->
-		<el-dialog :append-to-body="true" width="400px" :close-on-click-modal="false" title="添加品牌" :visible.sync="productBrandDiaLogFlags.addProductBrandFlag"
-		 class="addProduct title-menu-min2" :v-loading="ProductBrandLoadings.productBrandCommonLoading">
+    <!-- ======================= 分页层 (结束) =========================  -->
+    <!-- ======================= 商品品牌弹出层 =========================  -->
+    <el-dialog
+      :append-to-body="true"
+      width="400px"
+      :close-on-click-modal="false"
+      title="添加品牌"
+      :visible.sync="productBrandDiaLogFlags.addProductBrandFlag"
+      class="addProduct title-menu-min2"
+      :v-loading="ProductBrandLoadings.productBrandCommonLoading"
+    >
 
-			<el-form label-position="left" :inline="true" ref="addProductBrandForm" :model="addProductBrandForm" label-width="80px">
-				<el-row :gutter="24">
-					<el-col :sm="{span: 24}" :xs="{span: 24}">
-						<el-form-item label="品牌名称" style="width:100%;">
-							<el-input v-model="addProductBrandForm.brandName" class="productBrandInputClass" placeholder="请输入品牌名称"></el-input>
-						</el-form-item>
-					</el-col>
+      <el-form ref="addProductBrandForm" label-position="left" :inline="true" :model="addProductBrandForm" label-width="80px">
+        <el-row :gutter="24">
+          <el-col :sm="{span: 24}" :xs="{span: 24}">
+            <el-form-item label="品牌名称" style="width:100%;">
+              <el-input v-model="addProductBrandForm.brandName" class="productBrandInputClass" placeholder="请输入品牌名称" />
+            </el-form-item>
+          </el-col>
 
-				</el-row>
+        </el-row>
 
-				<el-row :gutter="24">
-					<el-col :sm="{span: 8,offset:4}" :xs="{span: 23}">
+        <el-row :gutter="24">
+          <el-col :sm="{span: 8,offset:4}" :xs="{span: 23}">
 
-						<el-button type="primary" style="width:100%;margin-bottom: 15px;">确认添加</el-button>
-					</el-col>
+            <el-button type="primary" style="width:100%;margin-bottom: 15px;">确认添加</el-button>
+          </el-col>
 
-					<el-col :sm="{span: 8}" :xs="{span: 23}">
-						<el-button style="width:100%;margin-bottom: 15px !important;" @click="productBrandDiaLogFlags.addProductBrandFlag = false">关闭窗口</el-button>
-					</el-col>
-				</el-row>
-			</el-form>
+          <el-col :sm="{span: 8}" :xs="{span: 23}">
+            <el-button style="width:100%;margin-bottom: 15px !important;" @click="productBrandDiaLogFlags.addProductBrandFlag = false">关闭窗口</el-button>
+          </el-col>
+        </el-row>
+      </el-form>
 
-		</el-dialog>
-		<!-- ======================= 商品品牌弹出层End =========================  -->
+    </el-dialog>
+    <!-- ======================= 商品品牌弹出层End =========================  -->
 
-		<!-- ======================= 查询商品品牌LOGO弹出层 =========================  -->
+    <!-- ======================= 查询商品品牌LOGO弹出层 =========================  -->
 
-		<el-dialog :append-to-body="true" top="1vh" :close-on-click-modal="false" title="编辑LOGO" :visible.sync="productBrandDiaLogFlags.showProductBrandLogoFlag"
-		 class="addProduct title-menu-min2" v-loading="ProductBrandLoadings.productBrandCommonLoading">
-			<el-row :gutter="24">
+    <el-dialog
+      v-loading="ProductBrandLoadings.productBrandCommonLoading"
+      :append-to-body="true"
+      top="1vh"
+      :close-on-click-modal="false"
+      title="编辑LOGO"
+      :visible.sync="productBrandDiaLogFlags.showProductBrandLogoFlag"
+      class="addProduct title-menu-min2"
+    >
+      <el-row :gutter="24">
 
-				<el-col :sm="{span: 23}" :xs="{span: 23}">
-					<el-divider content-position="left">当前LOGO</el-divider>
-					<div class="block">
-						<el-image :src="editProductBrandLogoForm.oldLogoUrl"></el-image>
-					</div>
-				</el-col>
+        <el-col :sm="{span: 23}" :xs="{span: 23}">
+          <el-divider content-position="left">当前LOGO</el-divider>
+          <div class="block">
+            <el-image :src="editProductBrandLogoForm.oldLogoUrl" />
+          </div>
+        </el-col>
 
-				<el-col :sm="{span: 23}" :xs="{span: 23}">
-					<el-divider content-position="left">替换新的LOGO</el-divider>
-					<el-upload ref="upload" class="upload-demo" :auto-upload="false" :data="addProductBrandForm.brandName" limit="1"
-					 name="productBrandLogo" action="https://jsonplaceholder.typicode.com/posts/" :file-list="fileList" list-type="picture">
-						<el-button size="small" class="uploadBrandBtn" type="primary" style="width:13.5rem;">选取LOGO图片</el-button>
-					</el-upload>
-				</el-col>
-			</el-row>
+        <el-col :sm="{span: 23}" :xs="{span: 23}">
+          <el-divider content-position="left">替换新的LOGO</el-divider>
+          <el-upload
+            ref="upload"
+            class="upload-demo"
+            :auto-upload="false"
+            :data="addProductBrandForm.brandName"
+            limit="1"
+            name="productBrandLogo"
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :file-list="fileList"
+            list-type="picture"
+          >
+            <el-button size="small" class="uploadBrandBtn" type="primary" style="width:13.5rem;">选取LOGO图片</el-button>
+          </el-upload>
+        </el-col>
+      </el-row>
 
-			<el-row>
-				<el-divider content-position="left"></el-divider>
-				<el-col :sm="{span: 8}" :xs="{span: 24}">
-					<el-button @click="submitUpload" type="primary" style="margin-top: 12px; width: 100% !important;  padding-left: 0px !important; padding-right: 0px !important;">
-						确认编辑
-					</el-button>
-				</el-col>
+      <el-row>
+        <el-divider content-position="left" />
+        <el-col :sm="{span: 8}" :xs="{span: 24}">
+          <el-button type="primary" style="margin-top: 12px; width: 100% !important;  padding-left: 0px !important; padding-right: 0px !important;" @click="submitUpload">
+            确认编辑
+          </el-button>
+        </el-col>
 
-				<el-col :sm="{span: 8 , offset: 1}" :xs="{span: 24}">
-					<el-button @click="productBrandDiaLogFlags.showProductBrandLogoFlag = false" style="margin-top: 12px;  width: 100% !important; padding-left: 0px !important; padding-right: 0px !important;">
-						关闭窗口
-					</el-button>
-				</el-col>
-			</el-row>
+        <el-col :sm="{span: 8 , offset: 1}" :xs="{span: 24}">
+          <el-button style="margin-top: 12px;  width: 100% !important; padding-left: 0px !important; padding-right: 0px !important;" @click="productBrandDiaLogFlags.showProductBrandLogoFlag = false">
+            关闭窗口
+          </el-button>
+        </el-col>
+      </el-row>
 
-		</el-dialog>
-		<!-- ======================= 查询商品品牌LOGO弹出层(结束) =========================  -->
+    </el-dialog>
+    <!-- ======================= 查询商品品牌LOGO弹出层(结束) =========================  -->
 
+    <!-- ======================= 编辑商品品牌弹出层) =========================  -->
 
-		<!-- ======================= 编辑商品品牌弹出层) =========================  -->
+    <el-dialog
+      v-loading="ProductBrandLoadings.productBrandCommonLoading"
+      :append-to-body="true"
+      :close-on-click-modal="false"
+      title="编辑品牌"
+      :visible.sync="productBrandDiaLogFlags.editProductBrand"
+      class="addProduct title-menu-min2"
+      width="400px"
+    >
 
-		<el-dialog :append-to-body="true" :close-on-click-modal="false" title="编辑品牌" :visible.sync="productBrandDiaLogFlags.editProductBrand"
-		 class="addProduct title-menu-min2" width="400px" v-loading="ProductBrandLoadings.productBrandCommonLoading">
+      <el-form ref="addProductBrandForm" label-position="left" :inline="true" :model="addProductBrandForm" label-width="80px">
+        <el-row :gutter="24">
+          <el-col :sm="{span: 24}" :xs="{span: 24}">
+            <el-form-item label="品牌名称" style="width:100%;">
+              <el-input v-model="addProductBrandForm.brandName" class="productBrandInputClass" placeholder="请输入品牌名称" />
+            </el-form-item>
+          </el-col>
 
-			<el-form label-position="left" :inline="true" ref="addProductBrandForm" :model="addProductBrandForm" label-width="80px">
-				<el-row :gutter="24">
-					<el-col :sm="{span: 24}" :xs="{span: 24}">
-						<el-form-item label="品牌名称" style="width:100%;">
-							<el-input v-model="addProductBrandForm.brandName" class="productBrandInputClass" placeholder="请输入品牌名称"></el-input>
-						</el-form-item>
-					</el-col>
-			
-				</el-row>
-			
-				<el-row :gutter="24">
-					<el-col :sm="{span: 8,offset:4}" :xs="{span: 23}">
-			
-						<el-button type="primary" style="width:100%;margin-bottom: 15px;">确认添加</el-button>
-					</el-col>
-			
-					<el-col :sm="{span: 8}" :xs="{span: 23}">
-						<el-button style="width:100%;margin-bottom: 15px !important;" @click="productBrandDiaLogFlags.addProductBrandFlag = false">关闭窗口</el-button>
-					</el-col>
-				</el-row>
-			</el-form>
+        </el-row>
 
-		</el-dialog>
-		<!-- ======================= 编辑商品品牌弹出层(结束) =========================  -->
-	</div>
+        <el-row :gutter="24">
+          <el-col :sm="{span: 8,offset:4}" :xs="{span: 23}">
+
+            <el-button type="primary" style="width:100%;margin-bottom: 15px;">确认添加</el-button>
+          </el-col>
+
+          <el-col :sm="{span: 8}" :xs="{span: 23}">
+            <el-button style="width:100%;margin-bottom: 15px !important;" @click="productBrandDiaLogFlags.addProductBrandFlag = false">关闭窗口</el-button>
+          </el-col>
+        </el-row>
+      </el-form>
+
+    </el-dialog>
+    <!-- ======================= 编辑商品品牌弹出层(结束) =========================  -->
+  </div>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				// 编辑LOGO的FORM
-				editProductBrandLogoForm: {
-					// 旧的logoUrl
-					oldLogoUrl: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
-					// 需要修改的LOGOId
-					productBrandId: '1'
-				},
-				// 添加品牌的Form
-				addProductBrandForm: {
-					brandName: ''
-				},
-				// 品牌页面的弹出层flag集合
-				productBrandDiaLogFlags: {
-					// 添加品牌的flag
-					addProductBrandFlag: false,
-					// 查看品牌LogoFlag
-					showProductBrandLogoFlag: false,
-					// 显示编辑品牌的flag
-					editProductBrand: false
-				},
-				// 分页数据
-				total: 100,
-				currentPage: 2,
-				// 网页长宽
-				screenWidth: 0,
-				screenHeight: 0,
-				// 品牌搜索表单
-				searchBrandForm: {
-					brandName: ''
-				},
-				// 品牌加载层集合
-				ProductBrandLoadings: {
-					// 品牌的HTML加载层
-					isProductBrandHtmlLoading: false,
-					// 品牌的Table加载层
-					productBrandTableDataLoading: false,
-					// 品牌弹出层公用的加载成
-					productBrandCommonLoading: false
-				},
-				// 商品品牌Table集合数据
-				productBrandTableDatas: [{
-						brandId: 1,
-						brandNumber: '001',
-						brandName: '小米',
-						brandLogoUrl: 'http://39.105.41.2:8080/uec//media/file//timg13.gif',
-						createName: '鹿七七',
-						updateName: '鹿七七',
-						createTime: '2019-07-04 09:10',
-						updateTime: '2019-07-04 09:10'
-					},
-					{
-						brandId: 1,
-						brandNumber: '001',
-						brandName: '小米',
-						brandLogoUrl: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
-						createName: '鹿七七',
-						updateName: '鹿七七',
-						createTime: '2019-07-04 09:10',
-						updateTime: '2019-07-04 09:10'
-					}
-				]
-			}
-		},
-		methods: {
-			// 查询图片函数
-			showProductBrandLogoDiv(item) {
-				// 打开Loading
-				this.ProductBrandLoadings.productBrandCommonLoading = true;
-				this.editProductBrandLogoForm.oldLogoUrl = item.brandLogoUrl;
-				this.editProductBrandLogoForm.productBrandId = item.brandId;
-				this.productBrandDiaLogFlags.showProductBrandLogoFlag = true;
-				this.ProductBrandLoadings.productBrandCommonLoading = false;
-			},
-			// 上传商品图片的钩子函数
-			submitUpload() {
-				this.$refs.upload.submit();
-			}
-		},
-		created() {
-			// 初始化方法 vue组件初始化完成,网页未完成
-		},
-		mounted() {
-			this.screenWidth = document.body.clientWidth;
-			this.screenHeight = document.body.clientHeight;
-			if (this.screenWidth <= 500) {
+export default {
+  data() {
+    return {
+      // 编辑LOGO的FORM
+      editProductBrandLogoForm: {
+        // 旧的logoUrl
+        oldLogoUrl: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
+        // 需要修改的LOGOId
+        productBrandId: '1'
+      },
+      // 添加品牌的Form
+      addProductBrandForm: {
+        brandName: ''
+      },
+      // 品牌页面的弹出层flag集合
+      productBrandDiaLogFlags: {
+        // 添加品牌的flag
+        addProductBrandFlag: false,
+        // 查看品牌LogoFlag
+        showProductBrandLogoFlag: false,
+        // 显示编辑品牌的flag
+        editProductBrand: false
+      },
+      // 分页数据
+      total: 100,
+      currentPage: 2,
+      // 网页长宽
+      screenWidth: 0,
+      screenHeight: 0,
+      // 品牌搜索表单
+      searchBrandForm: {
+        brandName: ''
+      },
+      // 品牌加载层集合
+      ProductBrandLoadings: {
+        // 品牌的HTML加载层
+        isProductBrandHtmlLoading: false,
+        // 品牌的Table加载层
+        productBrandTableDataLoading: false,
+        // 品牌弹出层公用的加载成
+        productBrandCommonLoading: false
+      },
+      // 商品品牌Table集合数据
+      productBrandTableDatas: [{
+        brandId: 1,
+        brandNumber: '001',
+        brandName: '小米',
+        brandLogoUrl: 'http://39.105.41.2:8080/uec//media/file//timg13.gif',
+        createName: '鹿七七',
+        updateName: '鹿七七',
+        createTime: '2019-07-04 09:10',
+        updateTime: '2019-07-04 09:10'
+      },
+      {
+        brandId: 1,
+        brandNumber: '001',
+        brandName: '小米',
+        brandLogoUrl: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
+        createName: '鹿七七',
+        updateName: '鹿七七',
+        createTime: '2019-07-04 09:10',
+        updateTime: '2019-07-04 09:10'
+      }
+      ]
+    }
+  },
+  created() {
+    // 初始化方法 vue组件初始化完成,网页未完成
+  },
+  mounted() {
+    this.screenWidth = document.body.clientWidth
+    this.screenHeight = document.body.clientHeight
+    if (this.screenWidth <= 500) {
 
-			} else {
-				this.isLoadingFull = false;
-			}
-			window.onresize = () => {
-				return (() => {
-					this.screenWidth = document.body.clientWidth;
-					this.screenHeight = document.body.clientHeight;
-					// 判断宽度是否小于500 小于500 全部全屏显示
-					if (this.screenWidth <= 500) {} else {}
-
-				})();
-			};
-		}
-	}
+    } else {
+      this.isLoadingFull = false
+    }
+    window.onresize = () => {
+      return (() => {
+        this.screenWidth = document.body.clientWidth
+        this.screenHeight = document.body.clientHeight
+        // 判断宽度是否小于500 小于500 全部全屏显示
+        if (this.screenWidth <= 500) {} else {}
+      })()
+    }
+  },
+  methods: {
+    // 查询图片函数
+    showProductBrandLogoDiv(item) {
+      // 打开Loading
+      this.ProductBrandLoadings.productBrandCommonLoading = true
+      this.editProductBrandLogoForm.oldLogoUrl = item.brandLogoUrl
+      this.editProductBrandLogoForm.productBrandId = item.brandId
+      this.productBrandDiaLogFlags.showProductBrandLogoFlag = true
+      this.ProductBrandLoadings.productBrandCommonLoading = false
+    },
+    // 上传商品图片的钩子函数
+    submitUpload() {
+      this.$refs.upload.submit()
+    }
+  }
+}
 </script>
 
 <style>
