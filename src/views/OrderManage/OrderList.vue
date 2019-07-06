@@ -74,7 +74,7 @@
             <el-button type="primary" icon="el-icon-search" style="width: 215px; margin-left: 70px;" @click="onSubmit">搜索</el-button>
           </el-form-item>
         </el-col>
-      </el-row>
+      </el-row> 
     </el-form>
 
     <!--==================分割线(开始)========================-->
