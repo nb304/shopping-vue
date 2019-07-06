@@ -35,16 +35,16 @@
       </el-row>
 
       <el-row :gutter="24">
-        <el-divider>类型筛选</el-divider>
-        <el-col :sm="{span: 8}" :xs="{span: 8}">
+        <el-divider>评论类型筛选</el-divider>
+        <el-col :sm="{span: 4}" :xs="{span: 8}">
           <el-button type="primary" style="width: 100% !important;" @click="onSubmit">好评</el-button>
         </el-col>
 
-        <el-col :sm="{span: 8}" :xs="{span: 8}">
+        <el-col :sm="{span: 4}" :xs="{span: 8}">
           <el-button type="primary" style="width: 100% !important;" @click="onSubmit">中评</el-button>
         </el-col>
 
-        <el-col :sm="{span: 8}" :xs="{span: 8}">
+        <el-col :sm="{span: 4}" :xs="{span: 8}">
           <el-button type="primary" style="width: 100% !important;" @click="onSubmit">差评</el-button>
         </el-col>
       </el-row>
@@ -281,6 +281,11 @@ export default {
             start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
             picker.$emit('pick', [start, end])
           }
+        }, {
+          text: '关闭',
+          onClick(picker) {
+            picker.$emit('pick', ['', ''])
+          }
         }]
       },
       // 商品评价搜索表单
@@ -309,8 +314,7 @@ export default {
       })()
     }
   },
-  methods: {
-  }
+  methods: {}
 }
 </script>
 
@@ -406,8 +410,7 @@ export default {
 	}
 
 	/*==================自定义自适应css 宽度 1301 -- 2000px========================*/
-	@media only screen and (min-width: 1301px) and (max-width: 2000px) {
-	}
+	@media only screen and (min-width: 1301px) and (max-width: 2000px) {}
 
 	@media only screen and (min-width: 300px) and (max-width: 409px) {
 		.productBrandInputClass {

@@ -179,11 +179,11 @@
     <!-- ======================= 用户反馈--回复用户 =========================  -->
 
     <el-dialog
-      width="50%"
+      width="400px"
       custom-class="issueDescribeClass"
       :append-to-body="true"
       :close-on-click-modal="false"
-      title="查看附件"
+      title="回复"
       :visible.sync="userFeedbackDiaLogFlas.replyUserMessageFlag"
     >
 
@@ -195,10 +195,10 @@
       </el-row>
 
       <el-row :gutter="24">
-        <el-col :sm="{span: 4}" :xs="{span: 24}">
+        <el-col :sm="{span: 8}" :xs="{span: 24}">
           <el-button style="width: 100% !important; margin-top: 10px;" type="primary" @click="userFeedbackDiaLogFlas.replyUserMessageFlag = false">回复</el-button>
         </el-col>
-        <el-col :sm="{span: 4}" :xs="{span: 24}">
+        <el-col :sm="{span: 8}" :xs="{span: 24}">
           <el-button style="width: 100% !important; margin-top: 10px;" @click="userFeedbackDiaLogFlas.replyUserMessageFlag = false">关闭窗口</el-button>
         </el-col>
       </el-row>
@@ -294,6 +294,11 @@ export default {
             const start = new Date()
             start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
             picker.$emit('pick', [start, end])
+          }
+        }, {
+          text: '关闭',
+          onClick(picker) {
+            picker.$emit('pick', ['', ''])
           }
         }]
       },

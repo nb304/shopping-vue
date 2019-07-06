@@ -171,17 +171,17 @@ export const constantRoutes = [{
 },
 
 {
-  path: '/nested1',
+  path: '/storeManage',
   component: Layout,
-  redirect: '/nested/menu1',
+  redirect: '/storeManage/storeInfoManage',
   name: 'Nested1',
   meta: {
     title: '店铺管理',
     icon: 'dianpu'
   },
   children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
+    path: '/storeInfoManage',
+    component: () => import('@/views/StoreManage/StoreInfoManage'), // Parent router-view
     name: 'Menu1',
     meta: {
       title: '店铺信息管理'
@@ -189,23 +189,23 @@ export const constantRoutes = [{
   },
   {
     path: 'menu1-2-1',
-    component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
+    component: () => import('@/views/StoreManage/StoreUserManage'),
     name: 'Menu1-2-1',
     meta: {
       title: '店铺人员管理'
     }
   },
   {
-    path: 'menu1-2-2',
-    component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+    path: '/storeCheckInManage',
+    component: () => import('@/views/StoreManage/StoreCheckInManage'),
     name: 'Menu1-2-2',
     meta: {
       title: '店铺入驻管理'
     }
   },
   {
-    path: 'menu1-2-2',
-    component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+    path: '/storeTypeManage',
+    component: () => import('@/views/StoreManage/StoreTypeManage'),
     name: 'Menu1-2-2',
     meta: {
       title: '店铺分类管理'
@@ -528,7 +528,7 @@ export const constantRoutes = [{
 },
 
 // 404 page must be placed at the end !!!
-	 {
+{
   path: '*',
   redirect: '/404',
   hidden: true
