@@ -276,7 +276,7 @@
         </el-table-column>
       </el-table>
       <div slot="footer" class="dialog-footer ">
-        <el-button @click="orderPriceVisible = false">取 消</el-button>
+        <el-button @click="orderPriceVisible = false">关 闭</el-button>
         <el-button type="primary" @click="orderPriceVisible = false">确 定</el-button>
       </div>
     </el-dialog>
@@ -297,13 +297,7 @@
         </el-table-column>
         <el-table-column prop="created_at" label="信息" show-overflow-tooltip="true">
           <template slot-scope="scope">
-            <span v-if="scope.$index==6">
-              <el-input v-model="elsePrice" placeholder="请输入" :value="scope.row.desc" />
-            </span>
-            <span v-if="scope.$index==7">
-              <el-input v-model="elseDesc" placeholder="请输入" :value="scope.row.desc" />
-            </span>
-            <span v-if="scope.$index!=7&&scope.$index!=6">
+            <span >
               {{ scope.row.desc }}
             </span>
           </template>
