@@ -1,5 +1,5 @@
 <template>
-  <div id="listArea">
+  <div id="OrderReview">
     <el-form :inline="true" class="demo-form-inline searchForm">
       <el-row :gutter="24">
         <el-col :sm="{span: 6}" :xs="{span: 23}">
@@ -723,40 +723,40 @@ export default {
 
   /*========当前页面的一些初始样式 输入框和表格等标签样式 开始===========*/
 
-  .el-form .el-row{
+  #OrderReview .el-form .el-row{
     margin: 0 auto;
     text-align:center !important;
   }
 
-  .el-divider span{
+  #OrderReview .el-divider span{
     color: #606266;font-weight:bold;
   }
-  .el-table th .cell{
+  #OrderReview .el-table th .cell{
     word-break: keep-all;
     white-space:nowrap;
     padding: 0px  0px;
   }
-  .el-table th{
+  #OrderReview .el-table th{
     padding: 2px 0px;
     padding-left: 10px;
     color: #606266;
   }
-  .el-table td{
+  #OrderReview .el-table td{
     padding: 0px;
   }
 
   /*========弹出框样式信息开始============*/
-  .el-dialog__wrapper div[role="dialog"]{
+  #OrderReview .el-dialog__wrapper div[role="dialog"]{
     margin-top: 50px !important;
   }
-  .el-dialog__body{
+  #OrderReview .el-dialog__body{
     padding-top: 10px !important;
   }
-  .el-dialog .el-table td{ /*弹出框下的列表样式信息*/
+  #OrderReview .el-dialog .el-table td{ /*弹出框下的列表样式信息*/
     padding: 5px !important;
   }
 
-  #listArea{
+  #OrderReview{
     margin: 30px;
   }
 
@@ -766,23 +766,23 @@ export default {
 
   /*==================自定义自适应css样式详情开始 ========================*/
   @media only screen and (min-width: 1301px) and (max-width: 2000px) { /*宽=================1301 -- 2000==================*/
-    .el-form .el-form-item .el-input__inner{
+    #OrderReview .el-form .el-form-item .el-input__inner{
       width: 216px !important;
     }
 
     /*=====审批弹出框下的表单样式修改开始=======*/
-    #review .el-input__inner{
+    #OrderReview #review .el-input__inner{
       width: 109%!important;
     }
 
-    #review textarea{
+    #OrderReview #review textarea{
       width: 127% !important;
     }
 
-    #review .el-col{
+    #OrderReview #review .el-col{
       padding-right: 0px !important;
     }
-    #review  .el-form-item{
+    #OrderReview #review  .el-form-item{
       margin-right: 0px !important
     }
     /*=====审批弹出框下的表单样式修改结束=======*/
@@ -790,68 +790,68 @@ export default {
   }
 
   @media only screen and (min-width: 360px) and (max-width: 500px) {  /*宽================360 -- 500px================*/
-    .el-form .el-form-item .el-input__inner{
+    #OrderReview .el-form .el-form-item .el-input__inner{
       width: 250px !important;
     }
-    .el-col-xs-23{
+    #OrderReview .el-col-xs-23{
       width: 100%;
     }
-    .el-form-item .el-button{
+    #OrderReview .el-form-item .el-button{
       width: 250px !important;
     }
-    .el-divider span{  /*分割线显示样式*/
+    #OrderReview .el-divider span{  /*分割线显示样式*/
       font-size: 11px;
     }
-    .el-col{
+    #OrderReview .el-col{
       padding: 0px !important;
     }
-    div[aria-label="审批操作"] .el-row{
+    #OrderReview div[aria-label="审批操作"] .el-row{
       margin-left: 0px !important;
     }
-    div[aria-label="审批操作"] .el-textarea{
+    #OrderReview div[aria-label="审批操作"] .el-textarea{
        width: 138% !important;
     }
 
-    .el-dialog__wrapper .el-dialog{
+    #OrderReview .el-dialog__wrapper .el-dialog{
       width: 90% !important;
     }
   }
 
   @media only screen and (min-width: 200px) and (max-width: 350px)  {   /*宽=================200 -- 350==================*/
-    .searchForm .el-col{
+    #OrderReview .searchForm .el-col{
       padding: 0px !important;
       margin-left: 10px;
     }
-    .searchForm  .el-form-item .el-form-item__content{
+    #OrderReview .searchForm  .el-form-item .el-form-item__content{
       width: 194px !important;
     }
-    .searchForm .el-form-item .el-button{
+    #OrderReview .searchForm .el-form-item .el-button{
       margin-left: 34px !important;
       width: 195px !important;
     }
 
-    .el-divider__text{  /*分割线样式*/
+    #OrderReview .el-divider__text{  /*分割线样式*/
       right:0px !important;
       font-size: 9px !important;
     }
-    .searchForm .el-form-item .el-button{
+    #OrderReview .searchForm .el-form-item .el-button{
       margin-left: 34px !important;
       width: 195px !important;
 
     }
-    div[aria-label="审批操作"] .el-col{   /*========审批操作弹出框样式信息============*/
+    #OrderReview div[aria-label="审批操作"] .el-col{   /*========审批操作弹出框样式信息============*/
       padding: 0px !important;
       margin-left: 10px;
     }
-    div[aria-label="审批操作"]   .el-form-item .el-form-item__content{
+    #OrderReview div[aria-label="审批操作"]   .el-form-item .el-form-item__content{
       width: 194px !important;
     }
 
-    div[aria-label="审批操作"] .el-textarea,div[aria-label="审批操作"] .el-select{
+    #OrderReview div[aria-label="审批操作"] .el-textarea,div[aria-label="审批操作"] .el-select{
       width: 125% !important;
     }
 
-    .el-dialog__wrapper .el-dialog{             /*========弹出框样式信息开始============*/
+    #OrderReview .el-dialog__wrapper .el-dialog{             /*========弹出框样式信息开始============*/
       width: 100% !important;
     }
   }
@@ -859,27 +859,27 @@ export default {
   /*==================自定义自适应css样式详情结束 ========================*/
 
   /*=======内部滚动条显示的css样式情况 开始==========*/
-  .title-menu-min { /*新加入隐藏滚动条效果*/
+  #OrderReview .title-menu-min { /*新加入隐藏滚动条效果*/
     height: 350px !important;
     overflow-y: scroll !important;
     -webkit-overflow-scrolling: touch;
   }
 
-  .title-menu-min::-webkit-scrollbar {
+  #OrderReview .title-menu-min::-webkit-scrollbar {
     /*滚动条整体样式*/
     width: 4px;
     /*高宽分别对应横竖滚动条的尺寸*/
     height: 4px;
   }
 
-  .title-menu-min::-webkit-scrollbar-thumb {
+  #OrderReview .title-menu-min::-webkit-scrollbar-thumb {
     /*滚动条里面小方块*/
     border-radius: 5px;
     -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
     background: rgba(0, 0, 0, 0.2);
   }
 
-  .title-menu-min::-webkit-scrollbar-track {
+  #OrderReview .title-menu-min::-webkit-scrollbar-track {
     /*滚动条里面轨道*/
     -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 0;

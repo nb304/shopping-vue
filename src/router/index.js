@@ -266,11 +266,11 @@ export const constantRoutes = [{
     }
   },
   {
-    path: 'menu1-2-1',
-    component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-    name: 'Menu1-2-1',
+    path: '/DeliverManage',
+    component: () => import('@/views/OrderManage/DeliverManage'),
+    name: 'DeliverManage',
     meta: {
-      title: '订单操作'
+      title: '发货管理'
     }
   }
   ]
