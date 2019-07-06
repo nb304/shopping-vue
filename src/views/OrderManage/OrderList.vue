@@ -1,5 +1,5 @@
 <template>
-  <div id="listArea">
+  <div id="OrderList">
     <el-form :inline="true" class="demo-form-inline searchForm">
       <el-row :gutter="24">
         <el-col :sm="{span: 6}" :xs="{span: 23}">
@@ -276,7 +276,7 @@
         </el-table-column>
       </el-table>
       <div slot="footer" class="dialog-footer ">
-        <el-button @click="orderPriceVisible = false">取 消</el-button>
+        <el-button @click="orderPriceVisible = false">关 闭</el-button>
         <el-button type="primary" @click="orderPriceVisible = false">确 定</el-button>
       </div>
     </el-dialog>
@@ -297,13 +297,7 @@
         </el-table-column>
         <el-table-column prop="created_at" label="信息" show-overflow-tooltip="true">
           <template slot-scope="scope">
-            <span v-if="scope.$index==6">
-              <el-input v-model="elsePrice" placeholder="请输入" :value="scope.row.desc" />
-            </span>
-            <span v-if="scope.$index==7">
-              <el-input v-model="elseDesc" placeholder="请输入" :value="scope.row.desc" />
-            </span>
-            <span v-if="scope.$index!=7&&scope.$index!=6">
+            <span >
               {{ scope.row.desc }}
             </span>
           </template>
@@ -625,92 +619,92 @@ export default {
 
   /*========当前页面的一些初始样式 输入框和表格等标签样式 开始===========*/
 
-  .el-form .el-row{
+  #OrderList .el-form .el-row{
     margin: 0 auto;
     text-align:center !important;
   }
 
-  .el-divider span{
+  #OrderList .el-divider span{
     color: #606266;font-weight:bold;
   }
-  .el-table th .cell{
+  #OrderList .el-table th .cell{
     word-break: keep-all;
     white-space:nowrap;
     padding: 0px  0px;
   }
-  .el-table th{
+  #OrderList .el-table th{
     padding: 2px 0px;
     padding-left: 10px;
     color: #606266;
   }
-  .el-table td{
+  #OrderList .el-table td{
     padding: 0px;
   }
-  #listArea{
+  #OrderList{
     margin: 30px;
   }
   /*========当前页面的一些初始样式 输入框和表格等标签样式 结束===========*/
 
   /*==================自定义自适应css样式详情开始 ========================*/
   @media only screen and (min-width: 1301px) and (max-width: 2000px) { /*宽 ==================1301--2000px===========*/
-    .el-form .el-form-item .el-input__inner{
+    #OrderList .el-form .el-form-item .el-input__inner{
       width: 216px !important;
     }
   }
 
   @media only screen and (min-width: 360px) and (max-width: 500px) {  /*宽================360 -- 500px================*/
-    .el-form .el-form-item .el-input__inner{
+    #OrderList .el-form .el-form-item .el-input__inner{
       width: 250px !important;
     }
-    .el-col-xs-23{
+    #OrderList .el-col-xs-23{
       width: 100%;
     }
-    .el-form-item .el-button{
+    #OrderList .el-form-item .el-button{
       width: 250px !important;
     }
-    .el-divider span{
+    #OrderList .el-divider span{
       font-size: 11px;
     }
-    .el-col{
+    #OrderList .el-col{
       padding: 0px !important;
     }
 
-    .el-dialog__wrapper .el-dialog{
+    #OrderList .el-dialog__wrapper .el-dialog{
       width: 90% !important;
     }
 
-    div[aria-label="物流详情"] .el-form .el-form-item .el-input__inner{ /*=物流详情弹出框信息*/
+    #OrderList div[aria-label="物流详情"] .el-form .el-form-item .el-input__inner{ /*=物流详情弹出框信息*/
       width: 184px !important;
     }
-    div[aria-label="物流详情"] .el-form .el-form-item .el-button{
+    #OrderList div[aria-label="物流详情"] .el-form .el-form-item .el-button{
       margin-left: 68px !important;
       width: 184px !important;
     }
   }
 
   @media only screen and (min-width: 200px) and (max-width: 350px)  { /*宽=================200 -- 350==================*/
-    .searchForm .el-col{
+    #OrderList .searchForm .el-col{
       padding: 0px !important;
       margin-left: 10px;
     }
-    .searchForm  .el-form-item .el-form-item__content{
+    #OrderList .searchForm  .el-form-item .el-form-item__content{
       width: 194px !important;
     }
-    .searchForm .el-form-item .el-button{
+    #OrderList .searchForm .el-form-item .el-button{
       margin-left: 34px !important;
       width: 195px !important;
     }
-    .el-divider__text{  /*分割线样式*/
+    #OrderList .el-divider__text{  /*分割线样式*/
       right:0px !important;
       font-size: 9px !important;
     }
-    .el-dialog__wrapper .el-dialog{             /*========弹出框样式信息开始============*/
+    #OrderList .el-dialog__wrapper .el-dialog{             /*========弹出框样式信息开始============*/
       width: 100% !important;
     }
-    div[aria-label="物流详情"] .el-form-item__content{
+    #OrderList div[aria-label="物流详情"] .el-form-item__content{
       width: 194px !important;
     }
-    div[aria-label="物流详情"] .el-form-item__content button{
+    #OrderList div[aria-label="物流详情"] .el-form-item__content button{
       width: 194px !important;
       margin-left: 35px !important;
     }
@@ -719,39 +713,39 @@ export default {
   /*==================自定义自适应css样式详情结束 ========================*/
 
   /*========弹出框样式信息开始============*/
-  .el-dialog__wrapper div[role="dialog"]{
+  #OrderList .el-dialog__wrapper div[role="dialog"]{
     margin-top: 50px !important;
   }
-  .el-dialog__body{
+  #OrderList .el-dialog__body{
     padding-top: 10px !important;
   }
-  .el-dialog__body .el-table td{
+  #OrderList .el-dialog__body .el-table td{
     padding: 6px 0px !important;
   }
   /*========弹出框样式信息结束============*/
 
   /*=======内部滚动条显示的css样式情况 开始==========*/
-  .title-menu-min { /*新加入隐藏滚动条效果*/
+  #OrderList .title-menu-min { /*新加入隐藏滚动条效果*/
     height: 450px !important;
     overflow-y: scroll !important;
     -webkit-overflow-scrolling: touch;
   }
 
-  .title-menu-min::-webkit-scrollbar {
+  #OrderList .title-menu-min::-webkit-scrollbar {
     /*滚动条整体样式*/
     width: 4px;
     /*高宽分别对应横竖滚动条的尺寸*/
     height: 4px;
   }
 
-  .title-menu-min::-webkit-scrollbar-thumb {
+  #OrderList .title-menu-min::-webkit-scrollbar-thumb {
     /*滚动条里面小方块*/
     border-radius: 5px;
     -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
     background: rgba(0, 0, 0, 0.2);
   }
 
-  .title-menu-min::-webkit-scrollbar-track {
+  #OrderList .title-menu-min::-webkit-scrollbar-track {
     /*滚动条里面轨道*/
     -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 0;
@@ -760,35 +754,35 @@ export default {
   /*=======内部滚动条显示的css样式情况 开始==========*/
 
   /*=======物流详细描述信息css样式开始==========*/
-  .title-menu-min ul {
+  #OrderList .title-menu-min ul {
     padding-left:1.5rem;
   }
 
-  .title-menu-min ul li{
+  #OrderList .title-menu-min ul li{
     list-style:none;
     font-size:0.8rem;
   }
-  .track-rcol{
+  #OrderList .track-rcol{
     width: 90% !important;
   }
-  .track-list{
+  #OrderList .track-list{
     position:relative;
   }
-  .track-list li{
+  #OrderList .track-list li{
     position:relative;
     padding:0px 0 1.5rem 25px;
     line-height:1rem;
     border-left:1px solid #d9d9d9;
     color: #999;
   }
-  .track-list li.first{
+  #OrderList .track-list li.first{
     color:red;
     padding-top:0;
     width:100%;
     text-align:left;
     border-left:1px solid #d9d9d9;
   }
-  .track-list li .node-icon{
+  #OrderList .track-list li .node-icon{
     position: absolute;
     left: -5.5px;
     border-radius: 0.25rem;
@@ -797,7 +791,7 @@ export default {
     top:4px;
     background-color: #999999;
   }
-  .track-list li.first .node-icon{
+  #OrderList .track-list li.first .node-icon{
     background-position:0-72px;
     background-color: red;
     width: 1rem;
@@ -808,7 +802,7 @@ export default {
     top: 0;
     border-radius: 0.5rem;
   }
-  .track-list li .time{
+  #OrderList .track-list li .time{
     margin-right:20px;
     position:relative;
     top:4px;
@@ -819,23 +813,23 @@ export default {
     width:100%;
     text-align :left;
   }
-  .track-list li .txt{
+  #OrderList .track-list li .txt{
     position:relative;
     display:inline-block;
     vertical-align:top;
     color: #999;
   }
-  .track-list li.first .time{
+  #OrderList .track-list li.first .time{
     text-align: left;
     width: 94%;
     color:red;
   }
-  .track-list li.first .txt{
+  #OrderList .track-list li.first .txt{
     color: red;
     text-align:left;
     width: 94%;
   }
-  .track-list li.finall{
+  #OrderList .track-list li.finall{
     position:relative;
     padding:0px 0 1.5rem 25px;
     line-height:18px;
@@ -843,7 +837,7 @@ export default {
     border-left:1px solid #ffffff;
     color: #999;
   }
-  .track-list li.finall .div-spilander{
+  #OrderList .track-list li.finall .div-spilander{
     width: 1px;
     position: absolute;
     position: absolute;

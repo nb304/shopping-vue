@@ -1266,7 +1266,7 @@ export default {
       ],
       // 商品SKU信息操作flag
       productInfoSkuInfos: false,
-      // 商品相信信息距离网页头顶的距离
+      // 商品详细信息距离网页头顶的距离
       productTopHtml: '10vh',
       // 商品评论信息flag
       productInfoFlag3: false,

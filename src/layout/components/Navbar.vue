@@ -1,128 +1,122 @@
 <template>
-	<div class="navbar">
-		<hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+  <div class="navbar">
+    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
-		<breadcrumb class="breadcrumb-container" />
+    <breadcrumb class="breadcrumb-container" />
 
-		<div class="right-menu">
+    <div class="right-menu">
 
-			<el-dropdown>
-				<div class="avatar-wrapper">
+      <el-dropdown>
+        <div class="avatar-wrapper">
 
-					<!-- ======================= 导航栏消息图标 =========================  -->
-					<el-dropdown trigger="click">
-						<span class="el-dropdown-link">
-							<!-- ======================= 导航栏消息图标 =========================  -->
-							<el-badge v-if="isShowMessage" is-dot class="item" id="messageRed" title="提示">
-								<svg-icon icon-class="message" class-name='message-class' />
-							</el-badge>
-							<el-badge v-else="isShowMessage" title="提示">
-								<svg-icon icon-class="message" class-name='message-class' />
-							</el-badge>
-							<!-- ======================= 导航栏消息图标(结束) =========================  -->
-						</span>
-						<!-- ======================= 导航栏消息数据实体 =========================  -->
-						<el-dropdown-menu slot="dropdown">
-						<el-tabs type="border-card" style="width:350px;">
-							<el-tab-pane label="全部消息" class="title-menu-min">
-								<el-card shadow="hover" class="info" v-for="value,key in messageInfos">
-									<span :key="value.mid"  style="width:100%; display:block;"  @click="messageInfo(value.mid)">
-										{{value.message}}
-									</span>
-								</el-card>
-								
-							</el-tab-pane>
-							<el-tab-pane label="未读消息" class="title-menu-min">未读消息</el-tab-pane>
-							<el-tab-pane label="已读消息" class="title-menu-min">已读消息</el-tab-pane>
-						</el-tabs>
+          <!-- ======================= 导航栏消息图标 =========================  -->
+          <el-dropdown trigger="click">
+            <span class="el-dropdown-link">
+              <!-- ======================= 导航栏消息图标 =========================  -->
+              <el-badge v-if="isShowMessage" id="messageRed" is-dot class="item" title="提示">
+                <svg-icon icon-class="message" class-name="message-class" />
+              </el-badge>
+              <el-badge v-else="isShowMessage" title="提示">
+                <svg-icon icon-class="message" class-name="message-class" />
+              </el-badge>
+              <!-- ======================= 导航栏消息图标(结束) =========================  -->
+            </span>
+            <!-- ======================= 导航栏消息数据实体 =========================  -->
+            <el-dropdown-menu slot="dropdown">
+              <el-tabs type="border-card" style="width:350px;">
+                <el-tab-pane label="全部消息" class="title-menu-min">
+                  <el-card v-for="value,key in messageInfos" shadow="hover" class="info">
+                    <span :key="value.mid" style="width:100%; display:block;" @click="messageInfo(value.mid)">
+                      {{ value.message }}
+                    </span>
+                  </el-card>
 
-						</el-dropdown-menu>
-					</el-dropdown>
-					<!-- ======================= 导航栏消息图标(结束) =========================  -->
+                </el-tab-pane>
+                <el-tab-pane label="未读消息" class="title-menu-min">未读消息</el-tab-pane>
+                <el-tab-pane label="已读消息" class="title-menu-min">已读消息</el-tab-pane>
+              </el-tabs>
 
-				</div>
+            </el-dropdown-menu>
+          </el-dropdown>
+          <!-- ======================= 导航栏消息图标(结束) =========================  -->
 
-			</el-dropdown>
+        </div>
 
-			<!-- ======================= 头像 =========================  -->	
-			<el-dropdown class="avatar-container" trigger="click">
-				<div class="avatar-wrapper">
-					<img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
-					<i class="el-icon-caret-bottom" />
-				</div>
-				<el-dropdown-menu slot="dropdown" class="user-dropdown">
-					<router-link to="/">
-						<el-dropdown-item>
-							<span @click="Home">Home</span>
-						</el-dropdown-item>
-					</router-link>
-					<a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/">
-						<el-dropdown-item>Github</el-dropdown-item>
-					</a>
-					<a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-						<el-dropdown-item>Docs</el-dropdown-item>
-					</a>
-					<el-dropdown-item divided>
-						<span style="display:block;" @click="logout">Log Out</span>
-					</el-dropdown-item>
-				</el-dropdown-menu>
-			</el-dropdown>
-			<!-- ======================= 头像(结束) =========================  -->	
-		</div>
-	</div>
+      </el-dropdown>
+
+      <!-- ======================= 头像 =========================  -->
+      <el-dropdown class="avatar-container" trigger="click">
+        <div class="avatar-wrapper">
+          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+          <i class="el-icon-caret-bottom" />
+        </div>
+        <el-dropdown-menu slot="dropdown" class="user-dropdown">
+          <router-link to="/">
+            <el-dropdown-item>
+              <span @click="Home">主页</span>
+            </el-dropdown-item>
+          </router-link>
+          <el-dropdown-item divided>
+            <span style="display:block;" @click="logout">退出系统</span>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+      <!-- ======================= 头像(结束) =========================  -->
+    </div>
+  </div>
 </template>
 
 <script>
-	import {
-		mapGetters
-	} from 'vuex'
-	import Breadcrumb from '@/components/Breadcrumb'
-	import Hamburger from '@/components/Hamburger'
+import {
+  mapGetters
+} from 'vuex'
+import Breadcrumb from '@/components/Breadcrumb'
+import Hamburger from '@/components/Hamburger'
 
-	export default {
-		components: {
-			Breadcrumb,
-			Hamburger
-		},
-		computed: {
-			...mapGetters([
-				'sidebar',
-				'avatar'
-			])
-		},
-		created() {
-			setInterval(() => {
-				this.Home2();
-			}, 1000);
-		},
-		methods: {
-			toggleSideBar() {
-				this.$store.dispatch('app/toggleSideBar')
-			},
-			async logout() {
-				await this.$store.dispatch('user/logout')
-				this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-			},
-			async Home() {
-				console.log("123")
-			},
-			Home2() {
-				this.isShowMessage = !this.isShowMessage
-			},
-			messageInfo(id) {
-				alert("消息实体"+id);
-			}
-		},
-		data() {
-			return {
-				isShowMessage: true,
-				messageInfos:[
-					{"mid":1,"message":"信息1"},
-					{"mid":2,"message":"信息2"}
-				]
-			}
-		}
-	}
+export default {
+  components: {
+    Breadcrumb,
+    Hamburger
+  },
+  computed: {
+    ...mapGetters([
+      'sidebar',
+      'avatar'
+    ])
+  },
+  created() {
+    setInterval(() => {
+      this.Home2()
+    }, 1000)
+  },
+  methods: {
+    toggleSideBar() {
+      this.$store.dispatch('app/toggleSideBar')
+    },
+    async logout() {
+      await this.$store.dispatch('user/logout')
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    },
+    async Home() {
+      console.log('123')
+    },
+    Home2() {
+      this.isShowMessage = !this.isShowMessage
+    },
+    messageInfo(id) {
+      alert('消息实体' + id)
+    }
+  },
+  data() {
+    return {
+      isShowMessage: true,
+      messageInfos: [
+        { 'mid': 1, 'message': '信息1' },
+        { 'mid': 2, 'message': '信息2' }
+      ]
+    }
+  }
+}
 </script>
 
 <style lang="scss">
