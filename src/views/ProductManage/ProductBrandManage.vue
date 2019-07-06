@@ -40,37 +40,31 @@
     </el-row>
 
     <!-- ======================= 商品信息管理Talbe =========================  -->
-    <el-row :gutter="24">
-      <el-col :sm="{span: 24}" :xs="{span: 24}">
-
-        <el-table
-          v-loading="ProductBrandLoadings.productBrandTableDataLoading"
-          class="title-menu-min"
-          :data="productBrandTableDatas"
-          border
-          style="width: 100%"
-        >
-          <el-table-column prop="brandNumber" label="编号" width="150" show-overflow-tooltip="true" />
-          <el-table-column prop="brandName" label="品牌名称" />
-          <el-table-column label="品牌LOGO" width="120" prop="brandLogoUrl">
-            <div slot-scope="scope" @click="showProductBrandLogoDiv(scope.row)">
-              <el-image style="width: 100px; height: 30px;cursor: pointer;" :src="scope.row.brandLogoUrl" />
-            </div>
-          </el-table-column>
-          <el-table-column prop="createName" label="创建人" width="120" />
-          <el-table-column prop="updateName" label="操作人" width="120" />
-          <el-table-column prop="createTime" label="创建时间" width="150" show-overflow-tooltip="true" />
-          <el-table-column prop="updateTime" label="修改时间" width="150" show-overflow-tooltip="true" />
-          <el-table-column fixed="right" label="操作" width="150">
-            <template slot-scope="scope">
-              <el-button type="text" size="small" @click="productBrandDiaLogFlags.editProductBrand = true">编辑</el-button>
-              <el-button type="text" size="small">删除</el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-
-      </el-col>
-    </el-row>
+    <el-table
+      v-loading="ProductBrandLoadings.productBrandTableDataLoading"
+      class="title-menu-min"
+      :data="productBrandTableDatas"
+      border
+      style="width: 100%"
+    >
+      <el-table-column prop="brandNumber" label="编号" width="150" show-overflow-tooltip="true" />
+      <el-table-column prop="brandName" label="品牌名称" />
+      <el-table-column label="品牌LOGO" width="120" prop="brandLogoUrl">
+        <div slot-scope="scope" @click="showProductBrandLogoDiv(scope.row)">
+          <el-image style="width: 100px; height: 30px;cursor: pointer;" :src="scope.row.brandLogoUrl" />
+        </div>
+      </el-table-column>
+      <el-table-column prop="createName" label="创建人" width="120" />
+      <el-table-column prop="updateName" label="操作人" width="120" />
+      <el-table-column prop="createTime" label="创建时间" width="150" show-overflow-tooltip="true" />
+      <el-table-column prop="updateTime" label="修改时间" width="150" show-overflow-tooltip="true" />
+      <el-table-column fixed="right" label="操作" width="150">
+        <template slot-scope="scope">
+          <el-button type="text" size="small" @click="productBrandDiaLogFlags.editProductBrand = true">编辑</el-button>
+          <el-button type="text" size="small">删除</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
     <!-- ======================= 商品信息管理Talbe(结束) =========================  -->
 
     <!-- ======================= 分页层 =========================  -->
@@ -88,7 +82,6 @@
         />
       </el-col>
     </el-row>
-
     <!-- ======================= 分页层 (结束) =========================  -->
     <!-- ======================= 商品品牌弹出层 =========================  -->
     <el-dialog

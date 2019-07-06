@@ -7,7 +7,8 @@ import store from './store'
 import router from './router'
 import Vue from 'vue'
 import ElementUI from 'element-ui'
-import locale from 'element-ui/lib/locale/lang/en' // lang i18n
+import locale from 'element-ui/lib/locale/lang/zh-CN'
+
 import { mockXHR } from '../mock'
 import iView from 'iview'
 

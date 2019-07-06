@@ -1,6 +1,6 @@
 <template>
 
-<!-- 头顶伸缩栏 -->
+  <!-- 头顶伸缩栏 -->
   <div style="padding: 0 15px;" @click="toggleClick">
     <svg
       :class="{'is-active':isActive}"
