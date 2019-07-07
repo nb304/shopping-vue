@@ -74,7 +74,7 @@
             <el-button type="primary" icon="el-icon-search" style="width: 215px; margin-left: 70px;" @click="onSubmit">搜索</el-button>
           </el-form-item>
         </el-col>
-      </el-row> 
+      </el-row>
     </el-form>
 
     <!--==================分割线(开始)========================-->
@@ -204,7 +204,7 @@
 
     <!--==================分页组件(开始)========================-->
     <el-row :gutter="24">
-      <el-col :sm="{span: 4, offset: 18}" :xs="{span: 24}">
+      <el-col :sm="{span: 4, offset: 17}" :xs="{span: 24}">
         <el-pagination
           background
           layout="prev, pager, next"
@@ -643,14 +643,50 @@ export default {
   #OrderList{
     margin: 30px;
   }
+
+  /*========弹出框样式信息开始============*/
+  #OrderList .el-dialog__wrapper div[role="dialog"]{
+    margin-top: 50px !important;
+  }
+  #OrderList .el-dialog__body{
+    padding-top: 10px !important;
+  }
+  #OrderList .el-dialog__body .el-table td{
+    padding: 6px 0px !important;
+  }
+  /*========弹出框样式信息结束============*/
+
+
   /*========当前页面的一些初始样式 输入框和表格等标签样式 结束===========*/
 
   /*==================自定义自适应css样式详情开始 ========================*/
-  @media only screen and (min-width: 1301px) and (max-width: 2000px) { /*宽 ==================1301--2000px===========*/
+  @media only screen and (min-width: 1501px) and (max-width: 2000px) { /*宽 ==================1501--2000px===========*/
     #OrderList .el-form .el-form-item .el-input__inner{
       width: 216px !important;
     }
   }
+
+  @media only screen and (min-width: 1300px) and (max-width: 1500px) { /*宽 ==================1300--1500px===========*/
+    #OrderList .searchForm .el-input__inner{
+      width: 9.6rem !important
+    }
+    #OrderList .searchForm button{
+      width: 9.6rem !important;
+    }
+
+    #OrderList div[aria-label="物流详情"] .el-input__inner {
+      width: 10rem !important;
+    }
+
+    #OrderList div[aria-label="物流详情"] .el-row .el-col:nth-child(2)  button{
+      width: 140px !important;
+    }
+
+
+
+  }
+
+
 
   @media only screen and (min-width: 360px) and (max-width: 500px) {  /*宽================360 -- 500px================*/
     #OrderList .el-form .el-form-item .el-input__inner{
@@ -712,17 +748,7 @@ export default {
 
   /*==================自定义自适应css样式详情结束 ========================*/
 
-  /*========弹出框样式信息开始============*/
-  #OrderList .el-dialog__wrapper div[role="dialog"]{
-    margin-top: 50px !important;
-  }
-  #OrderList .el-dialog__body{
-    padding-top: 10px !important;
-  }
-  #OrderList .el-dialog__body .el-table td{
-    padding: 6px 0px !important;
-  }
-  /*========弹出框样式信息结束============*/
+
 
   /*=======内部滚动条显示的css样式情况 开始==========*/
   #OrderList .title-menu-min { /*新加入隐藏滚动条效果*/
