@@ -1,5 +1,5 @@
 <template>
-  <div id="listArea" v-loading="isProductSPULoading">
+  <div id="productInfoDiv" v-loading="isProductSPULoading">
 
     <!-- ======================= 商品信息按钮集合 =========================  -->
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
@@ -489,12 +489,12 @@
 
     <!-- ======================= 查看商品类目 =========================  -->
 
-    <el-dialog title="商品类目信息" :close-on-click-modal="false" :visible.sync="productLeiMuInfoFlag" class="addProduct" @close="spuWindow">
+    <el-dialog title="商品类目信息" width="400px" :close-on-click-modal="false" :visible.sync="productLeiMuInfoFlag" class="addProduct" @close="spuWindow">
       <div>
         <el-form ref="productLeiMuInfoFlag" label-position="left" :inline="true" :model="addProductTwoFrom" label-width="80px">
           <el-row :gutter="24">
 
-            <el-col :sm="{span: 12,offset: 6}" :xs="{span: 23}" class="productLeiMuInfoClass">
+            <el-col :sm="{span: 23}" :xs="{span: 23}" class="productLeiMuInfoClass">
 
               <el-form-item label="商品类目" style="width:100%;">
                 <el-input v-model="productLeiMuValue" :disabled="true" />
@@ -1578,7 +1578,7 @@ export default {
     },
     // 显示商品SKU信息
     showProductSkuInfo() {
-      this.COMMON.startLoading()()
+      this.COMMON.startLoading()
       // 发送请求 传递数据
       this.productInfoSkuInfos = true
       this.COMMON.stopLoading()
@@ -1651,15 +1651,15 @@ export default {
       var mo = function(e) {
         e.preventDefault()
       }
-      document.getElementById('listArea').style.overflow = 'hidden'
-      document.getElementById('listArea').addEventListener('touchmove', mo, false) // 禁止页面滑动
+      document.getElementById('productInfoDiv').style.overflow = 'hidden'
+      document.getElementById('productInfoDiv').addEventListener('touchmove', mo, false) // 禁止页面滑动
 
       this.ProductEventLists.ProductLeiMuEvent = mo
     },
     /** *取消滑动限制***/
     htmlMove() {
-      document.getElementById('listArea').style.overflow = ''
-      document.getElementById('listArea').removeEventListener('touchmove', this.ProductEventLists.ProductLeiMuEvent,
+      document.getElementById('productInfoDiv').style.overflow = ''
+      document.getElementById('productInfoDiv').removeEventListener('touchmove', this.ProductEventLists.ProductLeiMuEvent,
         false)
     },
     spuWindow() {
@@ -1958,7 +1958,7 @@ export default {
 </script>
 
 <style>
-	.el-carousel__item h3 {
+	#productInfoDiv .el-carousel__item h3 {
 		color: #475669;
 		font-size: 14px;
 		opacity: 0.75;
@@ -1966,22 +1966,22 @@ export default {
 		margin: 0;
 	}
 
-	.el-carousel__item:nth-child(2n) {
+	#productInfoDiv .el-carousel__item:nth-child(2n) {
 		background-color: #99a9bf;
 	}
 
-	.el-carousel__item:nth-child(2n+1) {
+	#productInfoDiv .el-carousel__item:nth-child(2n+1) {
 		background-color: #d3dce6;
 	}
 
-	.el-form-item .el-form-item__content .addProductFormInput .el-input__inner,
-	.el-textarea__inner {
+	#productInfoDiv .el-form-item .el-form-item__content .addProductFormInput .el-input__inner,
+	#productInfoDiv .el-textarea__inner {
 		width: 270px !important;
 	}
 
-	.productInfo {}
+	#productInfoDiv .productInfo {}
 
-	.autocut {
+	#productInfoDiv .autocut {
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
@@ -1993,26 +1993,26 @@ export default {
 	}
 
 	/*新加入隐藏滚动条效果*/
-	.title-menu-min2 {
+	#productInfoDiv .title-menu-min2 {
 		overflow-y: scroll !important;
 		-webkit-overflow-scrolling: touch;
 	}
 
-	.title-menu-min2::-webkit-scrollbar {
+	#productInfoDiv .title-menu-min2::-webkit-scrollbar {
 		/*滚动条整体样式*/
 		width: 4px;
 		/*高宽分别对应横竖滚动条的尺寸*/
 		height: 4px;
 	}
 
-	.title-menu-min2::-webkit-scrollbar-thumb {
+	#productInfoDiv .title-menu-min2::-webkit-scrollbar-thumb {
 		/*滚动条里面小方块*/
 		border-radius: 5px;
 		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 		background: rgba(0, 0, 0, 0.2);
 	}
 
-	.title-menu-min2::-webkit-scrollbar-track {
+	#productInfoDiv .title-menu-min2::-webkit-scrollbar-track {
 		/*滚动条里面轨道*/
 		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 		border-radius: 0;
@@ -2020,26 +2020,26 @@ export default {
 	}
 
 	/*新加入隐藏滚动条效果*/
-	.title-menu-min {
+	#productInfoDiv .title-menu-min {
 		overflow-y: scroll !important;
 		-webkit-overflow-scrolling: touch;
 	}
 
-	.title-menu-min::-webkit-scrollbar {
+	#productInfoDiv .title-menu-min::-webkit-scrollbar {
 		/*滚动条整体样式*/
 		width: 4px;
 		/*高宽分别对应横竖滚动条的尺寸*/
 		height: 4px;
 	}
 
-	.title-menu-min::-webkit-scrollbar-thumb {
+	#productInfoDiv .title-menu-min::-webkit-scrollbar-thumb {
 		/*滚动条里面小方块*/
 		border-radius: 5px;
 		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 		background: rgba(0, 0, 0, 0.2);
 	}
 
-	.title-menu-min::-webkit-scrollbar-track {
+	#productInfoDiv .title-menu-min::-webkit-scrollbar-track {
 		/*滚动条里面轨道*/
 		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 		border-radius: 0;
@@ -2048,168 +2048,168 @@ export default {
 
 	/*==================自定义自适应css 宽度 1301 -- 2000px========================*/
 	@media only screen and (min-width: 1301px) and (max-width: 2000px) {
-		.productLeiMuInfoClass {
+		#productInfoDiv .productLeiMuInfoClass {
 			margin-left: 0px !important;
 		}
 
-		.spusRowClass {
+		#productInfoDiv .spusRowClass {
 			margin-right: 0px !important;
 			margin-left: 17px !important;
 		}
 
-		.SpusClass {
+		#productInfoDiv .SpusClass {
 			width: 95% !important;
 		}
 
-		.el-form .el-form-item .el-input__inner {
-			width: 216px !important;
+		#productInfoDiv .el-form .el-form-item .el-input__inner {
+			width: 200px !important;
 		}
 
-		.el-form .el-form-item .SpuInput .el-input__inner {
-			width: 216px !important;
+		#productInfoDiv .el-form .el-form-item .SpuInput .el-input__inner {
+			width: 200px !important;
 		}
 
-		.el-form .el-form-item .SpuInput2 .el-input__inner {
+		#productInfoDiv .el-form .el-form-item .SpuInput2 .el-input__inner {
 			width: 80px !important;
 		}
 	}
 
 	@media only screen and (min-width: 300px) and (max-width: 409px) {
-		.addProductDiv {
+		#productInfoDiv .addProductDiv {
 			width: 98% !important;
 		}
 
-		.productSkuInfoDialog {
+		#productInfoDiv .productSkuInfoDialog {
 			width: 100% !important;
 		}
 
-		.productCommentInfoClass {
+	#productInfoDiv 	.productCommentInfoClass {
 			width: 100% !important;
 		}
 
-		.addProductItem {
+		#productInfoDiv .addProductItem {
 			margin-bottom: 0px !important;
 		}
 
-		.SpusClass button {
+		#productInfoDiv .SpusClass button {
 			margin-top: 0.625rem !important;
 		}
 
-		.spuDialogClass {
+		#productInfoDiv .spuDialogClass {
 			max-height: 300px;
 		}
 
-		.addAndClose {
+		#productInfoDiv .addAndClose {
 			margin-top: 10px !important;
 		}
 
-		.fixedClass {
+		#productInfoDiv .fixedClass {
 			position: absolute;
 			top: 100px;
 		}
 
-		.spusRowClass {
+		#productInfoDiv .spusRowClass {
 			margin-right: 0px !important;
 			margin-left: 7px !important;
 		}
 
-		.SpusClass {
+		#productInfoDiv .SpusClass {
 			width: 270px !important;
 		}
 
 		/*  添加商品的css  */
-		.addProduct .el-dialog {
+		#productInfoDiv .addProduct .el-dialog {
 			width: 330px !important;
 		}
 
-		.addProduct .el-dialog #steptwo {
+		#productInfoDiv .addProduct .el-dialog #steptwo {
 			max-height: 31.25rem;
 		}
 	}
 
 	@media only screen and (min-width: 410px) and (max-width: 500px) {
 
-		.addProductDiv {
+		#productInfoDiv .addProductDiv {
 			width: 100% !important;
 		}
 
-		.paddingLeft0px {
+		#productInfoDiv .paddingLeft0px {
 			padding-left: 0px !important;
 		}
 
-		.productSkuInfoDialog {
+		#productInfoDiv .productSkuInfoDialog {
 			width: 100% !important;
 		}
 
-		.productCommentInfoClass {
+		#productInfoDiv .productCommentInfoClass {
 			width: 100% !important;
 		}
 
-		.SpusClass button {
+		#productInfoDiv .SpusClass button {
 			margin-top: 0.625rem !important;
 		}
 
-		.spuDialogClass {
+		#productInfoDiv .spuDialogClass {
 			max-height: 300px;
 		}
 
-		.addAndClose {
+		#productInfoDiv .addAndClose {
 			margin-top: 10px !important;
 		}
 
-		.fixedClass {
+		#productInfoDiv .fixedClass {
 			position: absolute;
 			top: 100px;
 		}
 
-		.spusRowClass {
+		#productInfoDiv .spusRowClass {
 			margin-right: 0px !important;
 			margin-left: 7px !important;
 		}
 
-		.SpusClass {
+		#productInfoDiv .SpusClass {
 			width: 330px !important;
 		}
 
 		/*  添加商品的css  */
-		.addProduct .el-dialog {
+		#productInfoDiv .addProduct .el-dialog {
 			width: 400px !important;
 		}
 
-		.addProduct .el-dialog #steptwo {
+		#productInfoDiv .addProduct .el-dialog #steptwo {
 			max-height: 31.25rem;
 		}
 	}
 
 	@media only screen and (min-width: 410px) and (max-width: 1300px) {
 
-		.el-form .el-form-item .SpuInput .el-input__inner {
+		#productInfoDiv .el-form .el-form-item .SpuInput .el-input__inner {
 			width: 100px !important;
 		}
 
-		.el-form .el-form-item .SpuInput2 .el-input__inner {
+		#productInfoDiv .el-form .el-form-item .SpuInput2 .el-input__inner {
 			width: 100px !important;
 		}
 
 		/*  添加商品的css结束  */
-		.el-form .el-form-item .el-input__inner {
+		#productInfoDiv .el-form .el-form-item .el-input__inner {
 			width: 250px;
 		}
 
-		.el-form .el-row {
+		#productInfoDiv .el-form .el-row {
 			margin: 0 auto;
 			text-align: center;
 		}
 
-		.el-col-xs-23 {
+		#productInfoDiv .el-col-xs-23 {
 			width: 100%;
 		}
 
-		.el-form-item .el-button {
 			width: 250px !important;
+		.el-form-item .el-button {
 		}
+		#productInfoDiv .el-divider span {
 
-		.el-divider span {
 			font-size: 11px;
 		}
 
@@ -2222,30 +2222,30 @@ export default {
 			text-align: left;
 		} */
 	}
+#productInfoDiv 	.el-divider span {
 
-	.el-divider span {
 		color: #606266;
 		font-weight: bold;
 	}
+	#productInfoDiv .el-table th .cell {
 
-	.el-table th .cell {
 		word-break: keep-all;
 		white-space: nowrap;
 		padding: 0px 0px;
 	}
+	#productInfoDiv .el-table th {
 
-	.el-table th {
 		padding: 3px 0px;
 		padding-left: 10px;
 		color: #606266;
 
 	}
+	#productInfoDiv .el-table td {
 
-	.el-table td {
 		padding: 3px 0;
 	}
 
-	#listArea {
+	#productInfoDiv {
 		margin: 30px;
 	}
 </style>
