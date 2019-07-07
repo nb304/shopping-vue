@@ -462,7 +462,7 @@
 
     <!--==================分页组件(开始)========================-->
     <el-row :gutter="24">
-      <el-col :sm="{span: 4, offset: 18}" :xs="{span: 24}">
+      <el-col :sm="{span: 4, offset: 17}" :xs="{span: 24}">
         <el-pagination
           background
           layout="prev, pager, next"
@@ -759,13 +759,12 @@ export default {
   #OrderReview{
     margin: 30px;
   }
-
   /*========弹出框样式信息结束============*/
 
   /*========当前页面的一些初始样式 输入框和表格等标签样式 结束===========*/
 
   /*==================自定义自适应css样式详情开始 ========================*/
-  @media only screen and (min-width: 1301px) and (max-width: 2000px) { /*宽=================1301 -- 2000==================*/
+  @media only screen and (min-width: 1501px) and (max-width: 2000px) { /*宽=================1501 -- 2000==================*/
     #OrderReview .el-form .el-form-item .el-input__inner{
       width: 216px !important;
     }
@@ -786,6 +785,20 @@ export default {
       margin-right: 0px !important
     }
     /*=====审批弹出框下的表单样式修改结束=======*/
+
+  }
+
+  @media only screen and (min-width: 1300px) and (max-width: 1500px) { /*宽 ==================1300--1500px===========*/
+    #OrderReview .searchForm .el-input__inner{
+      width: 9.6rem !important
+    }
+    #OrderReview .searchForm button{
+      width: 9.6rem !important;
+    }
+
+    #OrderReview div[aria-label="审批操作"] .el-input__inner,#OrderReview div[aria-label="审批操作"] .el-textarea__inner{
+      width: 10.5rem !important;
+    }
 
   }
 
@@ -843,12 +856,12 @@ export default {
       padding: 0px !important;
       margin-left: 10px;
     }
-    #OrderReview div[aria-label="审批操作"]   .el-form-item .el-form-item__content{
-      width: 194px !important;
+    #OrderReview div[aria-label="审批操作"]   .el-input__inner{
+      width: 14.8rem !important;
     }
 
-    #OrderReview div[aria-label="审批操作"] .el-textarea,div[aria-label="审批操作"] .el-select{
-      width: 125% !important;
+    #OrderReview div[aria-label="审批操作"] .el-textarea__inner{
+      width: 132% !important;
     }
 
     #OrderReview .el-dialog__wrapper .el-dialog{             /*========弹出框样式信息开始============*/
