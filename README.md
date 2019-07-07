@@ -15,6 +15,7 @@ Iocn图标说明列表
       tongzhi.svg           通知图标   白色
       wangzhan.svg          网站图标   白色
       wuliu.svg             物流图标   白色
+      wuliu2.svg            物流图标   黑色
       yingxiao.svg          营销图标   白色
       shangpinguanli.svg    商品图标   白色
       tongjiguanli.svg      统计图标   白色
@@ -35,6 +36,8 @@ Iocn图标说明列表
       tree.svg              树图标     黑色
       user.svg              用户图标   黑色
       result.svg            结果图标   黑色
-   
+      yiwen.svg             疑问图标   黑色
+      jinggao.svg           警告图标   橙色
+     
   
   
