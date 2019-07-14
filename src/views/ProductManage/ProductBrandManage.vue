@@ -1,5 +1,5 @@
 <template>
-  <div id="listArea" v-loading="ProductBrandLoadings.productBrandCommonLoading">
+  <div id="productBrandDiv" v-loading="ProductBrandLoadings.productBrandCommonLoading">
 
     <!-- ======================= 商品品牌按钮集合 =========================  -->
     <el-form :inline="true" :model="searchBrandForm" class="demo-form-inline">
@@ -160,13 +160,20 @@
       <el-row>
         <el-divider content-position="left" />
         <el-col :sm="{span: 8}" :xs="{span: 24}">
-          <el-button type="primary" style="margin-top: 12px; width: 100% !important;  padding-left: 0px !important; padding-right: 0px !important;" @click="submitUpload">
+          <el-button
+            type="primary"
+            style="margin-top: 12px; width: 100% !important;  padding-left: 0px !important; padding-right: 0px !important;"
+            @click="submitUpload"
+          >
             确认编辑
           </el-button>
         </el-col>
 
         <el-col :sm="{span: 8 , offset: 1}" :xs="{span: 24}">
-          <el-button style="margin-top: 12px;  width: 100% !important; padding-left: 0px !important; padding-right: 0px !important;" @click="productBrandDiaLogFlags.showProductBrandLogoFlag = false">
+          <el-button
+            style="margin-top: 12px;  width: 100% !important; padding-left: 0px !important; padding-right: 0px !important;"
+            @click="productBrandDiaLogFlags.showProductBrandLogoFlag = false"
+          >
             关闭窗口
           </el-button>
         </el-col>
@@ -320,7 +327,7 @@ export default {
 </script>
 
 <style>
-	.el-carousel__item h3 {
+	#productBrandDiv .el-carousel__item h3 {
 		color: #475669;
 		font-size: 14px;
 		opacity: 0.75;
@@ -328,7 +335,7 @@ export default {
 		margin: 0;
 	}
 
-	.el-carousel__item:nth-child(2n) {
+	#productBrandDiv .el-carousel__item:nth-child(2n) {
 		background-color: #99a9bf;
 	}
 
@@ -336,12 +343,12 @@ export default {
 		background-color: #d3dce6;
 	}
 
-	.el-form-item .el-form-item__content .addProductFormInput .el-input__inner,
+	#productBrandDiv .el-form-item .el-form-item__content .addProductFormInput .el-input__inner,
 	.el-textarea__inner {
 		width: 270px !important;
 	}
 
-	.autocut {
+	#productBrandDiv .autocut {
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
@@ -353,26 +360,26 @@ export default {
 	}
 
 	/*新加入隐藏滚动条效果*/
-	.title-menu-min2 {
+	#productBrandDiv .title-menu-min2 {
 		overflow-y: scroll !important;
 		-webkit-overflow-scrolling: touch;
 	}
 
-	.title-menu-min2::-webkit-scrollbar {
+	#productBrandDiv .title-menu-min2::-webkit-scrollbar {
 		/*滚动条整体样式*/
 		width: 4px;
 		/*高宽分别对应横竖滚动条的尺寸*/
 		height: 4px;
 	}
 
-	.title-menu-min2::-webkit-scrollbar-thumb {
+	#productBrandDiv .title-menu-min2::-webkit-scrollbar-thumb {
 		/*滚动条里面小方块*/
 		border-radius: 5px;
 		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 		background: rgba(0, 0, 0, 0.2);
 	}
 
-	.title-menu-min2::-webkit-scrollbar-track {
+	#productBrandDiv .title-menu-min2::-webkit-scrollbar-track {
 		/*滚动条里面轨道*/
 		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 		border-radius: 0;
@@ -380,26 +387,26 @@ export default {
 	}
 
 	/*新加入隐藏滚动条效果*/
-	.title-menu-min {
+	#productBrandDiv .title-menu-min {
 		overflow-y: scroll !important;
 		-webkit-overflow-scrolling: touch;
 	}
 
-	.title-menu-min::-webkit-scrollbar {
+	#productBrandDiv .title-menu-min::-webkit-scrollbar {
 		/*滚动条整体样式*/
 		width: 4px;
 		/*高宽分别对应横竖滚动条的尺寸*/
 		height: 4px;
 	}
 
-	.title-menu-min::-webkit-scrollbar-thumb {
+	#productBrandDiv .title-menu-min::-webkit-scrollbar-thumb {
 		/*滚动条里面小方块*/
 		border-radius: 5px;
 		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 		background: rgba(0, 0, 0, 0.2);
 	}
 
-	.title-menu-min::-webkit-scrollbar-track {
+	#productBrandDiv .title-menu-min::-webkit-scrollbar-track {
 		/*滚动条里面轨道*/
 		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 		border-radius: 0;
@@ -408,140 +415,140 @@ export default {
 
 	/*==================自定义自适应css 宽度 1301 -- 2000px========================*/
 	@media only screen and (min-width: 1301px) and (max-width: 2000px) {
-		.productLeiMuInfoClass {
+		#productBrandDiv .productLeiMuInfoClass {
 			margin-left: 0px !important;
 		}
 
-		.spusRowClass {
+		#productBrandDiv .spusRowClass {
 			margin-right: 0px !important;
 			margin-left: 17px !important;
 		}
 
-		.SpusClass {
+		#productBrandDiv .SpusClass {
 			width: 95% !important;
 		}
 
-		.el-form .el-form-item .el-input__inner {
+		#productBrandDiv .el-form .el-form-item .el-input__inner {
 			width: 216px !important;
 		}
 
-		.el-form .el-form-item .SpuInput .el-input__inner {
+		#productBrandDiv .el-form .el-form-item .SpuInput .el-input__inner {
 			width: 216px !important;
 		}
 
-		.el-form .el-form-item .SpuInput2 .el-input__inner {
+		#productBrandDiv .el-form .el-form-item .SpuInput2 .el-input__inner {
 			width: 80px !important;
 		}
 	}
 
 	@media only screen and (min-width: 300px) and (max-width: 409px) {
-		.productBrandInputClass {
+		#productBrandDiv .productBrandInputClass {
 			width: 170px !important;
 		}
 
-		.spuDialogClass {
+		#productBrandDiv .spuDialogClass {
 			max-height: 300px;
 		}
 
-		.addAndClose {
+		#productBrandDiv .addAndClose {
 			margin-top: 10px !important;
 		}
 
-		.fixedClass {
+		#productBrandDiv .fixedClass {
 			position: absolute;
 			top: 100px;
 		}
 
-		.spusRowClass {
+		#productBrandDiv .spusRowClass {
 			margin-right: 0px !important;
 			margin-left: 7px !important;
 		}
 
-		.SpusClass {
+		#productBrandDiv .SpusClass {
 			width: 270px !important;
 		}
 
 		/*  添加商品的css  */
-		.addProduct .el-dialog {
+		#productBrandDiv .addProduct .el-dialog {
 			width: 330px !important;
 		}
 
-		.addProduct .el-dialog #steptwo {
+		#productBrandDiv .addProduct .el-dialog #steptwo {
 			max-height: 31.25rem;
 		}
 	}
 
 	@media only screen and (min-width: 410px) and (max-width: 500px) {
 
-		.productSkuInfoDialog {
+		#productBrandDiv.productSkuInfoDialog {
 			width: 100% !important;
 		}
 
-		.productCommentInfoClass {
+		#productBrandDiv.productCommentInfoClass {
 			width: 100% !important;
 		}
 
-		.SpusClass button {
+		#productBrandDiv.SpusClass button {
 			margin-top: 0.625rem !important;
 		}
 
-		.spuDialogClass {
+		#productBrandDiv.spuDialogClass {
 			max-height: 300px;
 		}
 
-		.addAndClose {
+		#productBrandDiv.addAndClose {
 			margin-top: 10px !important;
 		}
 
-		.fixedClass {
+		#productBrandDiv.fixedClass {
 			position: absolute;
 			top: 100px;
 		}
 
-		.spusRowClass {
+		#productBrandDiv.spusRowClass {
 			margin-right: 0px !important;
 			margin-left: 7px !important;
 		}
 
-		.SpusClass {
+		#productBrandDiv.SpusClass {
 			width: 330px !important;
 		}
 
 		/*  添加商品的css  */
-		.addProduct .el-dialog {
+		#productBrandDiv.addProduct .el-dialog {
 			width: 400px !important;
 		}
 
-		.addProduct .el-dialog #steptwo {
+		#productBrandDiv .addProduct .el-dialog #steptwo {
 			max-height: 31.25rem;
 		}
 	}
 
 	@media only screen and (min-width: 410px) and (max-width: 1300px) {
 
-		.el-form .el-form-item .SpuInput .el-input__inner {
+		#productBrandDiv .el-form .el-form-item .SpuInput .el-input__inner {
 			width: 100px !important;
 		}
 
-		.el-form .el-form-item .SpuInput2 .el-input__inner {
+		#productBrandDiv .el-form .el-form-item .SpuInput2 .el-input__inner {
 			width: 100px !important;
 		}
 
 		/*  添加商品的css结束  */
-		.el-form .el-form-item .el-input__inner {
+		#productBrandDiv .el-form .el-form-item .el-input__inner {
 			width: 250px;
 		}
 
-		.el-form .el-row {
+		#productBrandDiv .el-form .el-row {
 			margin: 0 auto;
 			text-align: center;
 		}
 
-		.el-col-xs-23 {
+		#productBrandDiv .el-col-xs-23 {
 			width: 100%;
 		}
 
-		.el-form-item .el-button {
+		#productBrandDiv .el-form-item .el-button {
 			width: 250px !important;
 		}
 
@@ -559,29 +566,29 @@ export default {
 		} */
 	}
 
-	.el-divider span {
+	#productBrandDiv .el-divider span {
 		color: #606266;
 		font-weight: bold;
 	}
 
-	.el-table__row th .cell {
+	#productBrandDiv .el-table__row th .cell {
 		word-break: keep-all;
 		white-space: nowrap;
 		padding: 0px 0px;
 	}
 
-	.el-table__row th {
+	#productBrandDiv .el-table__row th {
 		padding: 3px 0px;
 		padding-left: 10px;
 		color: #606266;
 
 	}
 
-	.el-table__row td {
+	#productBrandDiv .el-table__row td {
 		padding: 3px 0;
 	}
 
-	#listArea {
+	#productBrandDiv {
 		margin: 30px;
 	}
 </style>

@@ -118,6 +118,18 @@
             </template>
           </el-table-column>
 
+          <el-table-column show-overflow-tooltip="true">
+            <template slot="header" slot-scope="scope">
+              <span>发货数量</span>
+              <el-tooltip class="item" effect="dark" content="发货数量(需发货/已发货)" placement="right">
+                <svg-icon icon-class="yiwen" />
+              </el-tooltip>
+            </template>
+            <template slot-scope="scope">
+              <span>{{ scope.row.deliverNumber }}</span>
+            </template>
+          </el-table-column>
+
           <el-table-column prop="created_at" show-overflow-tooltip="true">
             <template slot="header" slot-scope="scope">
               <span>订单商品</span>
@@ -170,17 +182,7 @@
             </template>
           </el-table-column>
 
-          <el-table-column show-overflow-tooltip="true">
-            <template slot="header" slot-scope="scope">
-              <span>发货数量</span>
-              <el-tooltip class="item" effect="dark" content="发货数量(需发货/已发货)" placement="right">
-                <svg-icon icon-class="yiwen" />
-              </el-tooltip>
-            </template>
-            <template slot-scope="scope">
-              <span>{{ scope.row.deliverNumber }}</span>
-            </template>
-          </el-table-column>
+
 
           <el-table-column align="center" prop="created_at" show-overflow-tooltip="true">
             <template slot="header" slot-scope="scope">
@@ -333,6 +335,10 @@
             <el-form-item label="物流名称">
               <el-input v-model="deliverName" placeholder="输入物流名称"><i slot="prefix" class="el-icon-edit" /></el-input>
             </el-form-item>
+          </el-col>
+
+          <el-col :sm="{span: 23}" :xs="{span: 23}" style="color: #ff761a;font-size: 10px ">
+            <svg-icon icon-class="jinggao" style="margin-right: 5px" /> 如果选择手动输入发货该订单就不能用一件生成功能
           </el-col>
         </el-row>
       </el-form>
