@@ -1,7 +1,7 @@
 <template>
   <div id="productEvalInfo">
 
-    <!-- ======================= 商品评价按钮集合 =========================  -->
+    <!-- ======================= 商品评价按钮集合  =========================  -->
     <el-form :inline="true" :model="productEvaluateSearchForm" class="demo-form-inline">
       <el-row :gutter="24">
         <el-col :sm="{span: 3}" :xs="{span: 8}" style="margin-bottom: 10px;;">
