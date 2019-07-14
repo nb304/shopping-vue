@@ -145,7 +145,7 @@ export const constantRoutes = [{
   },
   children: [{
     path: 'productEvaluateManage',
-    component: () => import('@/views/InformManage/productEvaluateManage'), // Parent router-view
+    component: () => import('@/views/InformManage/ProductEvaluateManage'), // Parent router-view
     name: 'Menu1',
     meta: {
       title: '商品评价管理'
@@ -153,7 +153,7 @@ export const constantRoutes = [{
   },
   {
     path: 'userFeedbackManage',
-    component: () => import('@/views/InformManage/userFeedbackManage'),
+    component: () => import('@/views/InformManage/UserFeedbackManage'),
     name: 'Menu1-2-1',
     meta: {
       title: '用户反馈管理'
@@ -161,7 +161,7 @@ export const constantRoutes = [{
   },
   {
     path: 'systemInformManage',
-    component: () => import('@/views/InformManage/systemInformManage'),
+    component: () => import('@/views/InformManage/SystemInformManage'),
     name: 'Menu1-2-2',
     meta: {
       title: '网站通知管理'
