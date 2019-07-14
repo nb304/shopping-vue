@@ -64,6 +64,23 @@
       </el-col>
     </el-row>
     <!-- ======================= 用户反馈Table(结束) =========================  -->
+		
+		<!-- ======================= 分页层 =========================  -->
+		<el-row :gutter="24">
+		  <el-col :sm="{span: 5, offset: 18}" :xs="{span: 24}">
+		    <el-pagination
+		      background
+		      layout="prev, pager, next"
+		      current-page="30"
+		      :total="total"
+		      page-size="3"
+		      small="false"
+		      style="margin-top: 15px;margin-right: 10px;"
+		      @current-change="handleSizeChange"
+		    />
+		  </el-col>
+		</el-row>
+		<!-- ======================= 分页层 (结束) =========================  -->
 
     <!-- ======================= 用户反馈--问题描述 =========================  -->
     <el-dialog
