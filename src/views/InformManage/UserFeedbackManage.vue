@@ -1,5 +1,5 @@
 <template>
-  <div id="listArea">
+  <div id="userFeedInfoDiv">
 
     <!-- ======================= 用户反馈按钮集合 =========================  -->
     <el-form :inline="true" :model="userFeedbackSearchForm" class="demo-form-inline">
@@ -74,23 +74,23 @@
       </el-col>
     </el-row>
     <!-- ======================= 用户反馈Table(结束) =========================  -->
-		
-		<!-- ======================= 分页层 =========================  -->
-		<el-row :gutter="24">
-		  <el-col :sm="{span: 5, offset: 18}" :xs="{span: 24}">
-		    <el-pagination
-		      background
-		      layout="prev, pager, next"
-		      current-page="30"
-		      :total="total"
-		      page-size="3"
-		      small="false"
-		      style="margin-top: 15px;margin-right: 10px;"
-		      @current-change="handleSizeChange"
-		    />
-		  </el-col>
-		</el-row>
-		<!-- ======================= 分页层 (结束) =========================  -->
+
+    <!-- ======================= 分页层 =========================  -->
+    <el-row :gutter="24">
+      <el-col :sm="{span: 5, offset: 18}" :xs="{span: 24}">
+        <el-pagination
+          background
+          layout="prev, pager, next"
+          current-page="30"
+          :total="total"
+          page-size="3"
+          small="false"
+          style="margin-top: 15px;margin-right: 10px;"
+          @current-change="handleSizeChange"
+        />
+      </el-col>
+    </el-row>
+    <!-- ======================= 分页层 (结束) =========================  -->
 
     <!-- ======================= 用户反馈--问题描述 =========================  -->
     <el-dialog
@@ -370,11 +370,11 @@ export default {
 </script>
 
 <style>
-	.el-range-separator {
+	#userFeedInfoDiv .el-range-separator {
 		width: 10% !important;
 	}
 
-	.el-carousel__item h3 {
+	#userFeedInfoDiv .el-carousel__item h3 {
 		color: #475669;
 		font-size: 14px;
 		opacity: 0.75;
@@ -382,17 +382,17 @@ export default {
 		margin: 0;
 	}
 
-	.el-carousel__item:nth-child(2n) {
+	#userFeedInfoDiv .el-carousel__item:nth-child(2n) {
 		background-color: #99a9bf;
 	}
 
-	.el-carousel__item:nth-child(2n+1) {
+	#userFeedInfoDiv .el-carousel__item:nth-child(2n+1) {
 		background-color: #d3dce6;
 	}
 
-	.el-form-item .el-form-item__content .addProductFormInput .el-input__inner,
+	#userFeedInfoDiv .el-form-item .el-form-item__content .addProductFormInput .el-input__inner,
 
-	.autocut {
+	#userFeedInfoDiv .autocut {
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
@@ -404,26 +404,26 @@ export default {
 	}
 
 	/*新加入隐藏滚动条效果*/
-	.title-menu-min2 {
+	#userFeedInfoDiv .title-menu-min2 {
 		overflow-y: scroll !important;
 		-webkit-overflow-scrolling: touch;
 	}
 
-	.title-menu-min2::-webkit-scrollbar {
+	#userFeedInfoDiv .title-menu-min2::-webkit-scrollbar {
 		/*滚动条整体样式*/
 		width: 4px;
 		/*高宽分别对应横竖滚动条的尺寸*/
 		height: 4px;
 	}
 
-	.title-menu-min2::-webkit-scrollbar-thumb {
+	#userFeedInfoDiv .title-menu-min2::-webkit-scrollbar-thumb {
 		/*滚动条里面小方块*/
 		border-radius: 5px;
 		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 		background: rgba(0, 0, 0, 0.2);
 	}
 
-	.title-menu-min2::-webkit-scrollbar-track {
+	#userFeedInfoDiv .title-menu-min2::-webkit-scrollbar-track {
 		/*滚动条里面轨道*/
 		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 		border-radius: 0;
@@ -431,26 +431,26 @@ export default {
 	}
 
 	/*新加入隐藏滚动条效果*/
-	.title-menu-min {
+	#userFeedInfoDiv .title-menu-min {
 		overflow-y: scroll !important;
 		-webkit-overflow-scrolling: touch;
 	}
 
-	.title-menu-min::-webkit-scrollbar {
+	#userFeedInfoDiv .title-menu-min::-webkit-scrollbar {
 		/*滚动条整体样式*/
 		width: 4px;
 		/*高宽分别对应横竖滚动条的尺寸*/
 		height: 4px;
 	}
 
-	.title-menu-min::-webkit-scrollbar-thumb {
+	#userFeedInfoDiv .title-menu-min::-webkit-scrollbar-thumb {
 		/*滚动条里面小方块*/
 		border-radius: 5px;
 		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 		background: rgba(0, 0, 0, 0.2);
 	}
 
-	.title-menu-min::-webkit-scrollbar-track {
+	#userFeedInfoDiv .title-menu-min::-webkit-scrollbar-track {
 		/*滚动条里面轨道*/
 		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 		border-radius: 0;
@@ -461,129 +461,129 @@ export default {
 	@media only screen and (min-width: 1301px) and (max-width: 2000px) {}
 
 	@media only screen and (min-width: 300px) and (max-width: 409px) {
-		.issueDescribeClass {
+		#userFeedInfoDiv .issueDescribeClass {
 			width: 100% !important;
 		}
 
-		.productBrandInputClass {
+	#userFeedInfoDiv 	.productBrandInputClass {
 			width: 170px !important;
 		}
 
-		.spuDialogClass {
+		#userFeedInfoDiv .spuDialogClass {
 			max-height: 300px;
 		}
 
-		.addAndClose {
+	#userFeedInfoDiv 	.addAndClose {
 			margin-top: 10px !important;
 		}
 
-		.fixedClass {
+		#userFeedInfoDiv .fixedClass {
 			position: absolute;
 			top: 100px;
 		}
 
-		.spusRowClass {
+		#userFeedInfoDiv .spusRowClass {
 			margin-right: 0px !important;
 			margin-left: 7px !important;
 		}
 
-		.SpusClass {
+		#userFeedInfoDiv .SpusClass {
 			width: 270px !important;
 		}
 
 		/*  添加商品的css  */
-		.addProduct .el-dialog {
+		#userFeedInfoDiv .addProduct .el-dialog {
 			width: 330px !important;
 		}
 
-		.addProduct .el-dialog #steptwo {
+		#userFeedInfoDiv .addProduct .el-dialog #steptwo {
 			max-height: 31.25rem;
 		}
 	}
 
 	@media only screen and (min-width: 410px) and (max-width: 500px) {
-		.issueDescribeClass {
+		#userFeedInfoDiv .issueDescribeClass {
 			width: 100% !important;
 		}
 
-		.queryValueClass {
+		#userFeedInfoDiv .queryValueClass {
 			padding-left: 0px !important;
 			padding-right: 0px !important;
 		}
 
-		.productSkuInfoDialog {
+	#userFeedInfoDiv 	.productSkuInfoDialog {
 			width: 100% !important;
 		}
 
-		.productCommentInfoClass {
+		#userFeedInfoDiv .productCommentInfoClass {
 			width: 100% !important;
 		}
 
-		.SpusClass button {
+		#userFeedInfoDiv .SpusClass button {
 			margin-top: 0.625rem !important;
 		}
 
-		.spuDialogClass {
+		#userFeedInfoDiv .spuDialogClass {
 			max-height: 300px;
 		}
 
-		.addAndClose {
+		#userFeedInfoDiv .addAndClose {
 			margin-top: 10px !important;
 		}
 
-		.fixedClass {
+		#userFeedInfoDiv .fixedClass {
 			position: absolute;
 			top: 100px;
 		}
 
-		.spusRowClass {
+		#userFeedInfoDiv .spusRowClass {
 			margin-right: 0px !important;
 			margin-left: 7px !important;
 		}
 
-		.SpusClass {
+		#userFeedInfoDiv .SpusClass {
 			width: 330px !important;
 		}
 
 		/*  添加商品的css  */
-		.addProduct .el-dialog {
+		#userFeedInfoDiv .addProduct .el-dialog {
 			width: 400px !important;
 		}
 
-		.addProduct .el-dialog #steptwo {
+		#userFeedInfoDiv .addProduct .el-dialog #steptwo {
 			max-height: 31.25rem;
 		}
 	}
 
 	@media only screen and (min-width: 410px) and (max-width: 1300px) {
 
-		.el-form .el-form-item .SpuInput .el-input__inner {
+		#userFeedInfoDiv .el-form .el-form-item .SpuInput .el-input__inner {
 			width: 100px !important;
 		}
 
-		.el-form .el-form-item .SpuInput2 .el-input__inner {
+		#userFeedInfoDiv .el-form .el-form-item .SpuInput2 .el-input__inner {
 			width: 100px !important;
 		}
 
 		/*  添加商品的css结束  */
-		.el-form .el-form-item .el-input__inner {
+		#userFeedInfoDiv .el-form .el-form-item .el-input__inner {
 			width: 250px;
 		}
 
-		.el-form .el-row {
+		#userFeedInfoDiv .el-form .el-row {
 			margin: 0 auto;
 			text-align: center;
 		}
 
-		.el-col-xs-23 {
+		#userFeedInfoDiv .el-col-xs-23 {
 			width: 100%;
 		}
 
-		.el-form-item .el-button {
+		#userFeedInfoDiv .el-form-item .el-button {
 			width: 250px !important;
 		}
 
-		.el-divider span {
+		#userFeedInfoDiv .el-divider span {
 			font-size: 11px;
 		}
 
@@ -597,29 +597,29 @@ export default {
 		} */
 	}
 
-	.el-divider span {
+	#userFeedInfoDiv .el-divider span {
 		color: #606266;
 		font-weight: bold;
 	}
 
-	.el-table__row th .cell {
+	#userFeedInfoDiv .el-table__row th .cell {
 		word-break: keep-all;
 		white-space: nowrap;
 		padding: 0px 0px;
 	}
 
-	.el-table__row th {
+	#userFeedInfoDiv .el-table__row th {
 		padding: 3px 0px;
 		padding-left: 10px;
 		color: #606266;
 
 	}
 
-	.el-table__row td {
+	#userFeedInfoDiv .el-table__row td {
 		padding: 3px 0;
 	}
 
-	#listArea {
+	#userFeedInfoDiv {
 		margin: 30px;
 	}
 </style>
