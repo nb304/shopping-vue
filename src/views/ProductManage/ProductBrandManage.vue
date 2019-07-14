@@ -69,7 +69,7 @@
 
     <!-- ======================= 分页层 =========================  -->
     <el-row :gutter="24">
-      <el-col :sm="{span: 5, offset: 19}" :xs="{span: 24}">
+      <el-col :sm="{span: 14, offset: 10}" :xs="{span: 24}">
         <el-pagination
           background
           layout="prev, pager, next"

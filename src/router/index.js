@@ -372,23 +372,23 @@ export const constantRoutes = [{
     icon: 'yingxiao'
   },
   children: [{
-    path: 'menu1',
+    path: 'Coupon',
     component: () => import('@/views/MarketingManage/Coupon'), // Parent router-view
-    name: 'Menu1',
+    name: 'Coupon',
     meta: {
       title: '优惠券管理'
     }
   }, {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
+    path: 'Promotion',
+    component: () => import('@/views/MarketingManage/Promotion'), // Parent router-view
+    name: 'Promotion',
     meta: {
       title: '推广管理'
     }
   }, {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
+    path: 'Integral',
+    component: () => import('@/views/MarketingManage/Integral'), // Parent router-view
+    name: 'Integral',
     meta: {
       title: '积分管理'
     }
@@ -403,16 +403,16 @@ export const constantRoutes = [{
     icon: 'wangzhan'
   },
   children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
+    path: 'RotaryNews',
+    component: () => import('@/views/WebsiteManage/RotaryNews'), // Parent router-view
+    name: 'RotaryNews',
     meta: {
       title: '轮播管理'
     }
   }, {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
+    path: 'OneNews',
+    component: () => import('@/views/WebsiteManage/OneNews'), // Parent router-view
+    name: 'OneNews',
     meta: {
       title: '单页新闻'
     }
@@ -428,9 +428,9 @@ export const constantRoutes = [{
     icon: 'kefu'
   },
   children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
+    path: 'customer',
+    component: () => import('@/views/customerManage/customer'), // Parent router-view
+    name: 'customer',
     meta: {
       title: '在线售后客服'
     }
@@ -445,25 +445,25 @@ export const constantRoutes = [{
     icon: 'zhijingguanli'
   },
   children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
+    path: 'capitalSituation',
+    component: () => import('@/views/capitalManage/capitalSituation'), // Parent router-view
+    name: 'capitalSituation',
     meta: {
       title: '资金概况'
     }
   },
   {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
+    path: 'capitalOrder',
+    component: () => import('@/views/capitalManage/capitalOrder'), // Parent router-view
+    name: 'capitalOrder',
     meta: {
       title: '订单资金'
     }
   },
   {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
+    path: 'capitalShop',
+    component: () => import('@/views/capitalManage/capitalShop'), // Parent router-view
+    name: 'capitalShop',
     meta: {
       title: '店铺资金'
     }
