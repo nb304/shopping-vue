@@ -22,6 +22,10 @@ Iocn图标说明列表
       xitongguanli.svg      系统图标   白色
       yonghuguanli.svg      用户图标   白色
       zhijingguanli.svg     资金图标   白色
+      renyuan.svg           人员图标   白色
+      zijinhei.svg          资金图标   黑色
+      dingdanhei.svg        订单图标   黑色
+      producthei.svg        商品图标   黑色
       
       shanchu.svg           删除图标   红色
       tianjia.svg           添加图标   白色
