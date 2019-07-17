@@ -1,7 +1,7 @@
 <template>
   <div id="StoreUserManage">
     <!--==================分割线(开始)========================-->
-    <el-row :gutter="24">
+    <el-row :gutter="24" >
       <el-col :sm="{span: 24}" :xs="{span: 24}">
         <div>
           <el-divider content-position="right">
@@ -19,9 +19,9 @@
     </el-row>
     <!--==================分割线(结束)========================-->
 
-    <el-row :gutter="24">
+    <el-row :gutter="24"  style="100% !important;">
       <!--=================权限信息标签模块(开始)========================-->
-      <el-col id="jurisdictionInfo" :sm="{span: 4}" :xs="{span: 24}">
+      <el-col id="jurisdictionInfo" :sm="{span: 4}" :xs="{span: 24}" style="100% !important;">
         <el-row :gutter="24">
           <el-col :sm="{span: 23}" :xs="{span: 24}">
             <el-divider content-position="center">
@@ -43,7 +43,7 @@
       <!--=================权限信息标签模块(结束)========================-->
 
       <!--=================基本信息标签模块(开始)========================-->
-      <el-col id="basicInfo" :sm="{span: 4}" :xs="{span: 24}">
+      <el-col id="basicInfo" :sm="{span: 4}" :xs="{span: 24}"  style="width: 100% !important;">
         <el-form :model="dynamicValidateForm" :inline="true" class="demo-form-inline" :rules="rules">
 
           <el-row :gutter="24">
@@ -105,7 +105,7 @@
       <!--=================基本信息标签模块(结束)========================-->
 
       <!--=================店铺人员信息标签模块(开始)========================-->
-      <el-col id="storePerson" :sm="{span: 11}" :xs="{span: 24}">
+      <el-col id="storePerson" :sm="{span: 11}" :xs="{span: 24}"  style="width: 100% !important;">
         <el-row :gutter="24">
           <el-col :sm="{span: 23}" :xs="{span: 24}">
             <el-divider content-position="center">
@@ -118,6 +118,7 @@
               :data="userList"
               element-loading-text="Loading"
               @row-dblclick="handleSelect"
+              style="width: 100% !important;"
             >
               <el-table-column label="序号" show-overflow-tooltip="true">
                 <template slot-scope="scope">{{ scope.$index }}</template>
