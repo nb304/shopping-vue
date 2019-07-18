@@ -31,72 +31,47 @@ import Layout from '@/layout'
  * all roles can be accessed
  */
 export const constantRoutes = [{
-  path: '/login',
-  component: () => import('@/views/login/index'),
-  hidden: true
-},
+    path: '/login',
+    component: () => import('@/views/login/index'),
+    hidden: true
+  },
 
-{
-  path: '/404',
-  component: () => import('@/views/404'),
-  hidden: true
-},
-{
-  path: '/',
-  component: Layout,
-  redirect: '/index',
-  children: [{
-    path: 'index',
-    name: '系统首页',
-    component: () => import('@/views/SystemIndex/index'),
-    meta: {
-      title: '系统首页',
-      icon: 'shouye'
-    }
-  }]
-},
-{
-  path: '/chat',
-  component: Layout,
-  redirect: '/chat/info',
-  hidden: true,
-  children: [{
-    path: 'info',
-    name: '消息中心',
-    component: () => import('@/views/Chat/ChatRoom'),
-    meta: {
-      title: '消息中心',
-      icon: 'shouye'
-    }
-  }]
-},
-{
-  path: '/product',
-  component: Layout,
-  redirect: '/product/productInfo',
-  name: '商品管理',
-  meta: {
-    title: '商品管理',
-    icon: 'shangpinguanli'
+  {
+    path: '/404',
+    component: () => import('@/views/404'),
+    hidden: true
   },
-  children: [{
-    path: 'productInfo',
-    name: '商品信息管理',
-    component: () => import('@/views/ProductManage/ProductInfoManage'),
-    meta: {
-      title: '商品信息管理'
-    }
+
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/index',
+    children: [{
+      path: 'index',
+      name: '系统首页',
+      component: () => import('@/views/SystemIndex/index'),
+      meta: {
+        title: '系统首页',
+        icon: 'shouye'
+      }
+    }]
   },
   {
-    path: 'productBrand',
-    name: '商品品牌管理',
-    component: () => import('@/views/ProductManage/ProductBrandManage'),
-    meta: {
-      title: '商品品牌管理'
-    }
+    path: '/chat',
+    component: Layout,
+    redirect: '/chat/info',
+    hidden: true,
+    children: [{
+      path: 'info',
+      name: '消息中心',
+      component: () => import('@/views/Chat/ChatRoom'),
+      meta: {
+        title: '消息中心',
+        icon: 'shouye'
+      }
+    }]
   },
   {
-<<<<<<< HEAD
     path: '/my',
     component: Layout,
     redirect: '/my/information',
@@ -153,458 +128,441 @@ export const constantRoutes = [{
         }
       }
     ]
-=======
-    path: 'productClassify',
-    name: '商品类目',
-    component: () => import('@/views/ProductManage/ProductClassifyManage'),
-    meta: {
-      title: '商品类目管理'
-    }
->>>>>>> origin/master
-  },
-  {
-    path: 'tree',
-    name: 'Tree',
-    component: () => import('@/views/tree/index'),
-    meta: {
-      title: '商品运费管理'
-    }
-  }
-  ]
-},
 
-{
-  path: '/dwadwa',
-  component: Layout,
-  meta: {
-    title: '采购管理',
-    icon: 'caigou'
   },
-  children: [{
-    path: 'index',
-    name: 'Form',
-    component: () => import('@/views/form/index'),
-    meta: {
-      title: '商品申请采购'
-    }
-  },
-  {
-    path: 'index',
-    name: 'Form',
-    component: () => import('@/views/form/index'),
-    meta: {
-      title: '添加采购管理'
-    }
-  }, {
-    path: 'index',
-    name: 'Form',
-    component: () => import('@/views/form/index'),
-    meta: {
-      title: '采购列表管理'
-    }
-  }
-  ]
-},
 
-{
-  path: '/inform',
-  component: Layout,
-  redirect: '/inform/productEvaluateManage',
-  name: 'Nested',
-  meta: {
-    title: '通知管理',
-    icon: 'tongzhi'
-  },
-  children: [{
-    path: 'productEvaluateManage',
-    component: () => import('@/views/InformManage/ProductEvaluateManage'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '商品评价管理'
-    }
-  },
   {
-    path: 'userFeedbackManage',
-    component: () => import('@/views/InformManage/UserFeedbackManage'),
-    name: 'Menu1-2-1',
+    path: '/dwadwa',
+    component: Layout,
     meta: {
-      title: '用户反馈管理'
-    }
+      title: '采购管理',
+      icon: 'caigou'
+    },
+    children: [{
+        path: 'index',
+        name: 'Form',
+        component: () => import('@/views/form/index'),
+        meta: {
+          title: '商品申请采购'
+        }
+      },
+      {
+        path: 'index',
+        name: 'Form',
+        component: () => import('@/views/form/index'),
+        meta: {
+          title: '添加采购管理'
+        }
+      }, {
+        path: 'index',
+        name: 'Form',
+        component: () => import('@/views/form/index'),
+        meta: {
+          title: '采购列表管理'
+        }
+      }
+    ]
   },
-  {
-    path: 'systemInformManage',
-    component: () => import('@/views/InformManage/SystemInformManage'),
-    name: 'Menu1-2-2',
-    meta: {
-      title: '网站通知管理'
-    }
-  }
-  ]
-},
 
-{
-  path: '/storeManage',
-  component: Layout,
-  redirect: '/storeManage/storeInfoManage',
-  name: 'Nested1',
-  meta: {
-    title: '店铺管理',
-    icon: 'dianpu'
-  },
-  children: [{
-    path: '/storeInfoManage',
-    component: () => import('@/views/StoreManage/StoreInfoManage'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '店铺信息管理'
-    }
-  },
   {
-    path: '/StoreUserManage',
-    component: () => import('@/views/StoreManage/StoreUserManage'),
-    name: 'StoreUserManage',
+    path: '/inform',
+    component: Layout,
+    redirect: '/inform/productEvaluateManage',
+    name: 'Nested',
     meta: {
-      title: '店铺人员管理'
-    }
+      title: '通知管理',
+      icon: 'tongzhi'
+    },
+    children: [{
+        path: 'productEvaluateManage',
+        component: () => import('@/views/InformManage/ProductEvaluateManage'), // Parent router-view
+        name: 'Menu1',
+        meta: {
+          title: '商品评价管理'
+        }
+      },
+      {
+        path: 'userFeedbackManage',
+        component: () => import('@/views/InformManage/UserFeedbackManage'),
+        name: 'Menu1-2-1',
+        meta: {
+          title: '用户反馈管理'
+        }
+      },
+      {
+        path: 'systemInformManage',
+        component: () => import('@/views/InformManage/SystemInformManage'),
+        name: 'Menu1-2-2',
+        meta: {
+          title: '网站通知管理'
+        }
+      }
+    ]
   },
-  {
-    path: '/storeCheckInManage',
-    component: () => import('@/views/StoreManage/StoreCheckInManage'),
-    name: 'Menu1-2-2',
-    meta: {
-      title: '店铺入驻管理'
-    }
-  },
-  {
-    path: '/storeTypeManage',
-    component: () => import('@/views/StoreManage/StoreTypeManage'),
-    name: 'Menu1-2-2',
-    meta: {
-      title: '店铺分类管理'
-    }
-  }
-  ]
-},
-{
-  path: '/nested2',
-  component: Layout,
-  redirect: '/nested/menu1',
-  name: 'Nested15',
-  meta: {
-    title: '用户管理',
-    icon: 'yonghuguanli'
-  },
-  children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '成员角色管理'
-    }
-  },
-  {
-    path: 'menu1-2-1',
-    component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-    name: 'Menu1-2-1',
-    meta: {
-      title: '用户账号列表'
-    }
-  }
-  ]
-},
-{
-  path: '/OrderManage',
-  component: Layout,
-  redirect: '/OrderManage/OrderList',
-  name: 'order',
-  meta: {
-    title: '订单管理',
-    icon: 'dingdan'
-  },
-  children: [{
-    path: '/OrderList',
-    component: () => import('@/views/OrderManage/OrderList'), // Parent router-view
-    name: 'OrderList',
-    meta: {
-      title: '订单列表'
-    }
-  },
-  {
-    path: '/OrderReview',
-    component: () => import('@/views/OrderManage/OrderReview'),
-    name: 'OrderReview',
-    meta: {
-      title: '订单审核'
-    }
-  },
-  {
-    path: '/DeliverManage',
-    component: () => import('@/views/OrderManage/DeliverManage'),
-    name: 'DeliverManage',
-    meta: {
-      title: '发货管理'
-    }
-  }
-  ]
-},
-{
-  path: '/nested5',
-  component: Layout,
-  name: 'Nested5',
-  meta: {
-    title: '库存管理',
-    icon: 'kucun'
-  },
-  children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '库存管理列表'
-    }
-  }]
-},
 
-{
-  path: '/nested5',
-  component: Layout,
-  name: 'Nested78',
-  meta: {
-    title: '物流管理',
-    icon: 'wuliu'
-  },
-  children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
+  {
+    path: '/storeManage',
+    component: Layout,
+    redirect: '/storeManage/storeInfoManage',
+    name: 'Nested1',
     meta: {
-      title: '订单签收详情'
-    }
-  }, {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '订单物流列表'
-    }
-  }]
-},
-{
-  path: '/nested98',
-  component: Layout,
-  name: 'Nested98',
-  meta: {
-    title: '统计管理',
-    icon: 'tongjiguanli'
-  },
-  children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '商品统计'
-    }
-  }, {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '商品评价统计'
-    }
-  }, {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '订单数量统计'
-    }
-  }, {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '店铺差评统计'
-    }
-  }, {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '商品库存统计'
-    }
-  }]
-},
-
-{
-  path: '/nested75',
-  component: Layout,
-  name: 'Nested75',
-  meta: {
-    title: '营销管理',
-    icon: 'yingxiao'
-  },
-  children: [{
-    path: 'Coupon',
-    component: () => import('@/views/MarketingManage/Coupon'), // Parent router-view
-    name: 'Coupon',
-    meta: {
-      title: '优惠券管理'
-    }
-  }, {
-    path: 'Promotion',
-    component: () => import('@/views/MarketingManage/Promotion'), // Parent router-view
-    name: 'Promotion',
-    meta: {
-      title: '推广管理'
-    }
-  }, {
-    path: 'Integral',
-    component: () => import('@/views/MarketingManage/Integral'), // Parent router-view
-    name: 'Integral',
-    meta: {
-      title: '积分管理'
-    }
-  }]
-},
-{
-  path: '/nested46',
-  component: Layout,
-  name: 'Nested46',
-  meta: {
-    title: '网站管理',
-    icon: 'wangzhan'
-  },
-  children: [{
-    path: 'RotaryNews',
-    component: () => import('@/views/WebsiteManage/RotaryNews'), // Parent router-view
-    name: 'RotaryNews',
-    meta: {
-      title: '轮播管理'
-    }
-  }, {
-    path: 'OneNews',
-    component: () => import('@/views/WebsiteManage/OneNews'), // Parent router-view
-    name: 'OneNews',
-    meta: {
-      title: '单页新闻'
-    }
-  }]
-},
-
-{
-  path: '/nested52',
-  component: Layout,
-  name: 'Nested52',
-  meta: {
-    title: '客服管理',
-    icon: 'kefu'
-  },
-  children: [{
-    path: 'customer',
-    component: () => import('@/views/customerManage/customer'), // Parent router-view
-    name: 'customer',
-    meta: {
-      title: '在线售后客服'
-    }
-  }]
-},
-{
-  path: '/nested52',
-  component: Layout,
-  name: 'Nested52',
-  meta: {
-    title: '资金管理',
-    icon: 'zhijingguanli'
-  },
-  children: [{
-    path: 'capitalSituation',
-    component: () => import('@/views/capitalManage/capitalSituation'), // Parent router-view
-    name: 'capitalSituation',
-    meta: {
-      title: '资金概况'
-    }
+      title: '店铺管理',
+      icon: 'dianpu'
+    },
+    children: [{
+        path: '/storeInfoManage',
+        component: () => import('@/views/StoreManage/StoreInfoManage'), // Parent router-view
+        name: 'Menu1',
+        meta: {
+          title: '店铺信息管理'
+        }
+      },
+      {
+        path: '/StoreUserManage',
+        component: () => import('@/views/StoreManage/StoreUserManage'),
+        name: 'StoreUserManage',
+        meta: {
+          title: '店铺人员管理'
+        }
+      },
+      {
+        path: '/storeCheckInManage',
+        component: () => import('@/views/StoreManage/StoreCheckInManage'),
+        name: 'Menu1-2-2',
+        meta: {
+          title: '店铺入驻管理'
+        }
+      },
+      {
+        path: '/storeTypeManage',
+        component: () => import('@/views/StoreManage/StoreTypeManage'),
+        name: 'Menu1-2-2',
+        meta: {
+          title: '店铺分类管理'
+        }
+      }
+    ]
   },
   {
-    path: 'capitalOrder',
-    component: () => import('@/views/capitalManage/capitalOrder'), // Parent router-view
-    name: 'capitalOrder',
+    path: '/nested2',
+    component: Layout,
+    redirect: '/nested/menu1',
+    name: 'Nested15',
     meta: {
-      title: '订单资金'
-    }
+      title: '用户管理',
+      icon: 'yonghuguanli'
+    },
+    children: [{
+        path: 'menu1',
+        component: () => import('@/views/nested/menu1/index'), // Parent router-view
+        name: 'Menu1',
+        meta: {
+          title: '成员角色管理'
+        }
+      },
+      {
+        path: 'menu1-2-1',
+        component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
+        name: 'Menu1-2-1',
+        meta: {
+          title: '用户账号列表'
+        }
+      }
+    ]
   },
   {
-    path: 'capitalShop',
-    component: () => import('@/views/capitalManage/capitalShop'), // Parent router-view
-    name: 'capitalShop',
+    path: '/OrderManage',
+    component: Layout,
+    redirect: '/OrderManage/OrderList',
+    name: 'order',
     meta: {
-      title: '店铺资金'
-    }
+      title: '订单管理',
+      icon: 'dingdan'
+    },
+    children: [{
+        path: '/OrderList',
+        component: () => import('@/views/OrderManage/OrderList'), // Parent router-view
+        name: 'OrderList',
+        meta: {
+          title: '订单列表'
+        }
+      },
+      {
+        path: '/OrderReview',
+        component: () => import('@/views/OrderManage/OrderReview'),
+        name: 'OrderReview',
+        meta: {
+          title: '订单审核'
+        }
+      },
+      {
+        path: '/DeliverManage',
+        component: () => import('@/views/OrderManage/DeliverManage'),
+        name: 'DeliverManage',
+        meta: {
+          title: '发货管理'
+        }
+      }
+    ]
+  },
+  {
+    path: '/nested5',
+    component: Layout,
+    name: 'Nested5',
+    meta: {
+      title: '库存管理',
+      icon: 'kucun'
+    },
+    children: [{
+      path: 'menu1',
+      component: () => import('@/views/nested/menu1/index'), // Parent router-view
+      name: 'Menu1',
+      meta: {
+        title: '库存管理列表'
+      }
+    }]
+  },
+
+  {
+    path: '/nested5',
+    component: Layout,
+    name: 'Nested78',
+    meta: {
+      title: '物流管理',
+      icon: 'wuliu'
+    },
+    children: [{
+      path: 'menu1',
+      component: () => import('@/views/nested/menu1/index'), // Parent router-view
+      name: 'Menu1',
+      meta: {
+        title: '订单签收详情'
+      }
+    }, {
+      path: 'menu1',
+      component: () => import('@/views/nested/menu1/index'), // Parent router-view
+      name: 'Menu1',
+      meta: {
+        title: '订单物流列表'
+      }
+    }]
+  },
+  {
+    path: '/nested98',
+    component: Layout,
+    name: 'Nested98',
+    meta: {
+      title: '统计管理',
+      icon: 'tongjiguanli'
+    },
+    children: [{
+      path: 'menu1',
+      component: () => import('@/views/nested/menu1/index'), // Parent router-view
+      name: 'Menu1',
+      meta: {
+        title: '商品统计'
+      }
+    }, {
+      path: 'menu1',
+      component: () => import('@/views/nested/menu1/index'), // Parent router-view
+      name: 'Menu1',
+      meta: {
+        title: '商品评价统计'
+      }
+    }, {
+      path: 'menu1',
+      component: () => import('@/views/nested/menu1/index'), // Parent router-view
+      name: 'Menu1',
+      meta: {
+        title: '订单数量统计'
+      }
+    }, {
+      path: 'menu1',
+      component: () => import('@/views/nested/menu1/index'), // Parent router-view
+      name: 'Menu1',
+      meta: {
+        title: '店铺差评统计'
+      }
+    }, {
+      path: 'menu1',
+      component: () => import('@/views/nested/menu1/index'), // Parent router-view
+      name: 'Menu1',
+      meta: {
+        title: '商品库存统计'
+      }
+    }]
+  },
+
+  {
+    path: '/nested75',
+    component: Layout,
+    name: 'Nested75',
+    meta: {
+      title: '营销管理',
+      icon: 'yingxiao'
+    },
+    children: [{
+      path: 'Coupon',
+      component: () => import('@/views/MarketingManage/Coupon'), // Parent router-view
+      name: 'Coupon',
+      meta: {
+        title: '优惠券管理'
+      }
+    }, {
+      path: 'Promotion',
+      component: () => import('@/views/MarketingManage/Promotion'), // Parent router-view
+      name: 'Promotion',
+      meta: {
+        title: '推广管理'
+      }
+    }, {
+      path: 'Integral',
+      component: () => import('@/views/MarketingManage/Integral'), // Parent router-view
+      name: 'Integral',
+      meta: {
+        title: '积分管理'
+      }
+    }]
+  },
+  {
+    path: '/nested46',
+    component: Layout,
+    name: 'Nested46',
+    meta: {
+      title: '网站管理',
+      icon: 'wangzhan'
+    },
+    children: [{
+      path: 'RotaryNews',
+      component: () => import('@/views/WebsiteManage/RotaryNews'), // Parent router-view
+      name: 'RotaryNews',
+      meta: {
+        title: '轮播管理'
+      }
+    }, {
+      path: 'OneNews',
+      component: () => import('@/views/WebsiteManage/OneNews'), // Parent router-view
+      name: 'OneNews',
+      meta: {
+        title: '单页新闻'
+      }
+    }]
+  },
+
+  {
+    path: '/nested52',
+    component: Layout,
+    name: 'Nested52',
+    meta: {
+      title: '客服管理',
+      icon: 'kefu'
+    },
+    children: [{
+      path: 'customer',
+      component: () => import('@/views/customerManage/customer'), // Parent router-view
+      name: 'customer',
+      meta: {
+        title: '在线售后客服'
+      }
+    }]
+  },
+  {
+    path: '/nested52',
+    component: Layout,
+    name: 'Nested52',
+    meta: {
+      title: '资金管理',
+      icon: 'zhijingguanli'
+    },
+    children: [{
+        path: 'capitalSituation',
+        component: () => import('@/views/capitalManage/capitalSituation'), // Parent router-view
+        name: 'capitalSituation',
+        meta: {
+          title: '资金概况'
+        }
+      },
+      {
+        path: 'capitalOrder',
+        component: () => import('@/views/capitalManage/capitalOrder'), // Parent router-view
+        name: 'capitalOrder',
+        meta: {
+          title: '订单资金'
+        }
+      },
+      {
+        path: 'capitalShop',
+        component: () => import('@/views/capitalManage/capitalShop'), // Parent router-view
+        name: 'capitalShop',
+        meta: {
+          title: '店铺资金'
+        }
+      }
+    ]
+  },
+  {
+    path: '/nested31',
+    component: Layout,
+    name: 'Nested31',
+    meta: {
+      title: '日志管理',
+      icon: 'rizhi'
+    },
+    children: [{
+      path: 'menu1',
+      component: () => import('@/views/nested/menu1/index'), // Parent router-view
+      name: 'Menu1',
+      meta: {
+        title: '系统日志管理'
+      }
+    }]
+  },
+  {
+    path: '/nested518',
+    component: Layout,
+    name: 'Nested18',
+    meta: {
+      title: '系统管理',
+      icon: 'xitongguanli'
+    },
+    children: [{
+        path: 'menu1',
+        component: () => import('@/views/nested/menu1/index'), // Parent router-view
+        name: 'Menu1',
+        meta: {
+          title: '模块设置'
+        }
+      },
+      {
+        path: 'menu1',
+        component: () => import('@/views/nested/menu1/index'), // Parent router-view
+        name: 'Menu1',
+        meta: {
+          title: '权限设置'
+        }
+      }
+    ]
+  },
+  {
+    path: '/nested789',
+    component: Layout,
+    name: 'Nested789',
+    children: [{
+      path: 'menu1',
+      component: () => import('@/views/nested/menu1/index'), // Parent router-view
+      name: 'Menu1',
+      meta: {
+        title: '模块设置'
+      }
+    }]
+  },
+
+  // 404 page must be placed at the end !!!
+  {
+    path: '*',
+    redirect: '/404',
+    hidden: true
   }
-  ]
-},
-{
-  path: '/nested31',
-  component: Layout,
-  name: 'Nested31',
-  meta: {
-    title: '日志管理',
-    icon: 'rizhi'
-  },
-  children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '系统日志管理'
-    }
-  }]
-},
-{
-  path: '/nested518',
-  component: Layout,
-  name: 'Nested18',
-  meta: {
-    title: '系统管理',
-    icon: 'xitongguanli'
-  },
-  children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '模块设置'
-    }
-  },
-  {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '权限设置'
-    }
-  }
-  ]
-},
-{
-  path: '/nested789',
-  component: Layout,
-  name: 'Nested789',
-  children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '模块设置'
-    }
-  }]
-},
-
-// 404 page must be placed at the end !!!
-{
-  path: '*',
-  redirect: '/404',
-  hidden: true
-}
 ]
 
 const createRouter = () => new Router({
