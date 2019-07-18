@@ -56,14 +56,16 @@
               <span @click="Home">主页</span>
             </el-dropdown-item>
           </router-link>
-          <el-dropdown-item>
-            <span @click="Home">账户信息</span>
-          </el-dropdown-item>
+          <router-link to="/my">
+            <el-dropdown-item>
+              <span>个人中心</span>
+            </el-dropdown-item>
+          </router-link>
           <router-link to="/chat">
             <el-dropdown-item>
               <el-badge style="margin-bottom: 0px !important;" :value="3" class="item">
                 <!-- @click="openMyInfos" -->
-                <span >消息中心</span>
+                <span>消息中心</span>
               </el-badge>
             </el-dropdown-item>
           </router-link>
@@ -502,12 +504,12 @@
     border-color: #E4E5E5 #E4E5E5 #E4E5E5 #FFFFFF;
   }
 
-  .el-tab-pane {
+  .navbar .el-tab-pane {
     max-height: 400px;
     overflow: auto !important;
   }
 
-  .info {
+  .navbar .info {
     margin: 10px 0px;
   }
 
