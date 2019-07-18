@@ -1,7 +1,7 @@
 <template>
   <div id="StoreUserManage">
     <!--==================分割线(开始)========================-->
-    <el-row :gutter="24" >
+    <el-row :gutter="24">
       <el-col :sm="{span: 24}" :xs="{span: 24}">
         <div>
           <el-divider content-position="right">
@@ -19,16 +19,16 @@
     </el-row>
     <!--==================分割线(结束)========================-->
 
-    <el-row :gutter="24"  style="100% !important;">
+    <el-row :gutter="24">
       <!--=================权限信息标签模块(开始)========================-->
-      <el-col id="jurisdictionInfo" :sm="{span: 4}" :xs="{span: 24}" style="100% !important;">
+      <el-col id="jurisdictionInfo" :lg="{span: 4}" :xs="{span: 24}">
         <el-row :gutter="24">
-          <el-col :sm="{span: 23}" :xs="{span: 24}">
+          <el-col :lg="{span: 24}" :xs="{span: 24}">
             <el-divider content-position="center">
               <span>权限</span>
             </el-divider>
           </el-col>
-          <el-col :sm="{span: 23}" :xs="{span: 24}">
+          <el-col :lg="{span: 24}" :xs="{span: 24}">
             <el-tree
               ref="tree"
               :data="jurisdictionList"
@@ -43,49 +43,49 @@
       <!--=================权限信息标签模块(结束)========================-->
 
       <!--=================基本信息标签模块(开始)========================-->
-      <el-col id="basicInfo" :sm="{span: 4}" :xs="{span: 24}"  style="width: 100% !important;">
+      <el-col id="basicInfo" :lg="{span: 5}" :xs="{span: 24}">
         <el-form :model="dynamicValidateForm" :inline="true" class="demo-form-inline" :rules="rules">
 
           <el-row :gutter="24">
 
-            <el-col :sm="{span: 23}" :xs="{span: 24}">
+            <el-col :lg="{span: 24}" :xs="{span: 24}">
               <el-divider content-position="center">
                 <span>基本信息</span>
               </el-divider>
             </el-col>
 
-            <el-col :sm="{span: 23}" :xs="{span: 24}">
+            <el-col :lg="{span: 24}" :xs="{span: 24}">
               <el-form-item label="身份证号" prop="userPid">
                 <el-input v-model="dynamicValidateForm.userPid" placeholder="请输入身份证"><i slot="prefix" class="el-icon-edit" /></el-input>
               </el-form-item>
             </el-col>
 
-            <el-col :sm="{span: 23}" :xs="{span: 24}">
+            <el-col :lg="{span: 24}" :xs="{span: 24}">
               <el-form-item label="电话号码" prop="phoneNumber">
                 <el-input v-model="dynamicValidateForm.phoneNumber" placeholder="请输入电话号码"><i slot="prefix" class="el-icon-edit" /></el-input>
               </el-form-item>
             </el-col>
 
-            <el-col :sm="{span: 23}" :xs="{span: 24}">
+            <el-col :lg="{span: 24}" :xs="{span: 24}">
               <el-form-item label="用户姓名" prop="userName">
                 <el-input v-model="dynamicValidateForm.userName" placeholder="请输入姓名"><i slot="prefix" class="el-icon-edit" /></el-input>
               </el-form-item>
             </el-col>
 
-            <el-col :sm="{span: 23}" :xs="{span: 24}">
+            <el-col :lg="{span: 24}" :xs="{span: 24}">
               <el-form-item label="用户地址" prop="userAddress">
                 <el-input v-model="dynamicValidateForm.userAddress" placeholder="请输入地址"><i slot="prefix" class="el-icon-edit" /></el-input>
               </el-form-item>
             </el-col>
 
-            <el-col :sm="{span: 23}" :xs="{span: 24}">
+            <el-col :lg="{span: 24}" :xs="{span: 24}">
               <el-form-item label="账户密码" prop="userPassword">
                 <el-input v-model="dynamicValidateForm.userPassword" placeholder="请输入密码"><i slot="prefix" class="el-icon-edit" /></el-input>
               </el-form-item>
             </el-col>
 
-            <el-col :sm="{span: 23}" :xs="{span: 24}">
-              <el-form-item label="性别" style="margin-left: 10px !important;">
+            <el-col :lg="{span: 24}" :xs="{span: 24}">
+              <el-form-item label="性别" style="width: 100% !important;margin-left: 10px !important;">
                 <el-radio-group v-model="dynamicValidateForm.sex" style="margin-left: 25px">
                   <el-radio label="男" value="0" />
                   <el-radio label="女" value="0" />
@@ -93,10 +93,8 @@
               </el-form-item>
             </el-col>
 
-            <el-col :sm="{span: 23}" :xs="{span: 24}" style="text-align: right;">
-              <el-form-item>
-                <el-button type="primary" icon="el-icon-circle-plus" style="width: 205px; margin-right: 10px " @click="onSubmit">添加</el-button>
-              </el-form-item>
+            <el-col :offset="4" :lg="{span: 20}" :xs="{span: 24}" style="padding-left: 17px;">
+              <el-button type="primary" icon="el-icon-circle-plus" @click="onSubmit">添加</el-button>
             </el-col>
 
           </el-row>
@@ -105,66 +103,79 @@
       <!--=================基本信息标签模块(结束)========================-->
 
       <!--=================店铺人员信息标签模块(开始)========================-->
-      <el-col id="storePerson" :sm="{span: 11}" :xs="{span: 24}"  style="width: 100% !important;">
+      <el-col id="storePerson" :lg="{span: 15}" :xs="{span: 24}">
         <el-row :gutter="24">
-          <el-col :sm="{span: 23}" :xs="{span: 24}">
+          <el-col :lg="{span: 24}" :xs="{span: 24}">
             <el-divider content-position="center">
               <span>店铺人员</span>
             </el-divider>
           </el-col>
-          <el-col :sm="{span: 23}" :xs="{span: 24}">
+          <el-col :lg="{span: 24}" :xs="{span: 24}">
             <el-table
               v-loading="listLoading"
               :data="userList"
+              stripe="true"
               element-loading-text="Loading"
-              @row-dblclick="handleSelect"
               style="width: 100% !important;"
+              @row-dblclick="handleSelect"
             >
-              <el-table-column label="序号" show-overflow-tooltip="true">
+              <el-table-column label="序号" show-overflow-tooltip="true" width="40px" header-align="center" align="center">
                 <template slot-scope="scope">{{ scope.$index }}</template>
               </el-table-column>
-              <el-table-column label="账号" show-overflow-tooltip="true">
+              <el-table-column label="账号" show-overflow-tooltip="true" header-align="center" align="center">
                 <template slot-scope="scope">
                   <span>{{ scope.row.userId }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="姓名" show-overflow-tooltip="true">
+              <el-table-column label="姓名" show-overflow-tooltip="true" width="70px" header-align="center" align="center">
                 <template slot-scope="scope">
                   <span>{{ scope.row.userName }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="号码" show-overflow-tooltip="true">
+              <el-table-column label="号码" show-overflow-tooltip="true" header-align="center" align="center">
                 <template slot-scope="scope">
                   <span>{{ scope.row.phoneNumber }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="创建时间" show-overflow-tooltip="true">
+              <el-table-column label="创建时间" show-overflow-tooltip="true" width="80px" header-align="center" align="center">
                 <template slot-scope="scope">
-                  <span>{{ scope.row.phoneNumber }}</span>
+                  <span>{{ scope.row.createTime }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="最近登录" show-overflow-tooltip="true">
+              <el-table-column label="最近登录" show-overflow-tooltip="true" header-align="center" align="center">
                 <template slot-scope="scope">
                   <span>{{ scope.row.loginTime }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="是否在线" show-overflow-tooltip="true">
+              <el-table-column label="是否在线" show-overflow-tooltip="true" width="80px" header-align="center" align="center">
                 <template slot-scope="scope">
-                  <span>{{ scope.row.whetherOnline }}</span>
+                  <span>{{ scope.row.whetherOnline==1?"在线":"未上线" }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="状态" show-overflow-tooltip="true">
+              <el-table-column label="状态" show-overflow-tooltip="true" width="40px" header-align="center" align="center">
                 <template slot-scope="scope">
-                  <span>{{ scope.row.state }}</span>
+                  <span>{{ scope.row.state==1?"正常":"锁定" }}</span>
                 </template>
               </el-table-column>
 
-              <el-table-column label="状态" show-overflow-tooltip="true">
+              <el-table-column label="操作" show-overflow-tooltip="true" header-align="center" align="center">
                 <template slot-scope="scope">
-                  <span>{{ scope.row.state }}</span>
+                  <span>xx</span>
                 </template>
               </el-table-column>
             </el-table>
+          </el-col>
+          <el-col :sm="{span: 3, offset: 15}" :xs="{span: 24}">
+            <el-pagination
+              background
+              layout="prev, pager, next"
+              :current-page="currentPage"
+              :total="total"
+              page-size="3"
+              small="false"
+              style="margin-top: 15px;margin-right: 10px;"
+              @current-change="handleSizeChange"
+            />
           </el-col>
         </el-row>
       </el-col>
@@ -391,14 +402,30 @@ export default {
           ]
         }
       ],
+      total: 100, // 分页信息
+      currentPage: 2,// 当前页数信息
       dynamicValidateForm: {
         userPid: '', // 用户id
         phoneNumber: '', // 电话号码
         userName: '', // 用户名称
         userAddress: '', // 用户地址
         userPassword: '', // 用户密码
-        sex: '男' // 性别
+        sex: '男', // 性别
+
       },
+      userList: [
+        { userId: '15717007490', userName: '刘梓将', phoneNumber: '15717007490', createTime: '2019-9-9', loginTime: '2019-9-9 14:24:44', whetherOnline: 0, state: 1 },
+        { userId: '15717007490', userName: '刘梓将', phoneNumber: '15717007490', createTime: '2019-9-9', loginTime: '2019-9-9 14:24:44', whetherOnline: 0, state: 1 },
+        { userId: '15717007490', userName: '刘梓将', phoneNumber: '15717007490', createTime: '2019-9-9', loginTime: '2019-9-9 14:24:44', whetherOnline: 0, state: 0 },
+        { userId: '15717007490', userName: '刘梓将', phoneNumber: '15717007490', createTime: '2019-9-9', loginTime: '2019-9-9 14:24:44', whetherOnline: 1, state: 1 },
+        { userId: '15717007490', userName: '刘梓将', phoneNumber: '15717007490', createTime: '2019-9-9', loginTime: '2019-9-9 14:24:44', whetherOnline: 0, state: 1 },
+        { userId: '15717007490', userName: '刘梓将', phoneNumber: '15717007490', createTime: '2019-9-9', loginTime: '2019-9-9 14:24:44', whetherOnline: 0, state: 1 },
+        { userId: '15717007490', userName: '刘梓将', phoneNumber: '15717007490', createTime: '2019-9-9', loginTime: '2019-9-9 14:24:44', whetherOnline: 0, state: 0 },
+        { userId: '15717007490', userName: '刘梓将', phoneNumber: '15717007490', createTime: '2019-9-9', loginTime: '2019-9-9 14:24:44', whetherOnline: 1, state: 1 },
+        { userId: '15717007490', userName: '刘梓将', phoneNumber: '15717007490', createTime: '2019-9-9', loginTime: '2019-9-9 14:24:44', whetherOnline: 0, state: 1 },
+        { userId: '15717007490', userName: '刘梓将', phoneNumber: '15717007490', createTime: '2019-9-9', loginTime: '2019-9-9 14:24:44', whetherOnline: 0, state: 0 },
+        { userId: '15717007490', userName: '刘梓将', phoneNumber: '15717007490', createTime: '2019-9-9', loginTime: '2019-9-9 14:24:44', whetherOnline: 1, state: 1 }
+      ],
       rules: {
         userPid: [
           { required: true, message: '请输入活动名称', trigger: 'blur' },
@@ -459,101 +486,54 @@ export default {
     color: #606266;
   }
   #StoreUserManage .el-table td{
-    padding: 0px;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
   }
 
   /*========当前页面的一些初始样式 输入框和表格等标签样式 结束===========*/
 
   /*==================自定义自适应css样式详情开始 ========================*/
   @media only screen and (min-width: 1501px) and (max-width: 2000px) { /*宽 ==================1501--2000px===========*/
-    #StoreUserManage #basicInfo .el-row{        /* 基础信息布局的对应的信息*/
-      width: 20rem !important;
-      margin: 0px !important;
-    }
 
-    #StoreUserManage #basicInfo .el-input__inner{ /*基础信息中输入框样式*/
-      width: 12rem !important;
+    /*对用户基础输入信息模块的form标签设置样式*/
+    #StoreUserManage #basicInfo .el-form-item__content{
+      width: 67% !important;
     }
-    #StoreUserManage #basicInfo{ /*基础信息中样式*/
-      width: 26% !important;
-    }
-
-    #StoreUserManage #jurisdictionInfo .el-row{ /*权限信息样式*/
-      width: 13.4rem !important;
-      margin-left: -5px !important;
-    }
-
-    #StoreUserManage #storePerson .el-row{ /*店铺人员信息样式*/
-      width: 135% !important;
+    #StoreUserManage #basicInfo button{
+      width: 82% !important;
+      margin-left: 28px;
     }
   }
 
   @media only screen and (min-width: 1300px) and (max-width: 1500px) { /*宽 ==================1300--1500px===========*/
 
-    #StoreUserManage #basicInfo{
-      width: 25% !important;
+    /*对用户基础输入信息模块的form标签设置样式*/
+    #basicInfo .el-form-item__content{
+      width: 60% !important;
     }
-    #StoreUserManage #basicInfo .el-row{        /* 基础信息布局的对应的信息*/
-      width: 16.5rem !important;
-      margin: 0px !important;
+    #basicInfo .el-radio-group{
+      margin-left: 10px !important;
     }
-
-    #StoreUserManage #basicInfo .el-input__inner{ /*基础信息中输入框样式*/
-      width: 9.4rem !important
-    }
-
-    #StoreUserManage #jurisdictionInfo{ /*权限信息样式*/
-      width: 18% !important;
-    }
-    #StoreUserManage #jurisdictionInfo .el-row{ /*权限信息样式*/
-      width: 13.5rem !important;
-      margin-left: -5px !important;
-    }
-
-    #StoreUserManage #storePerson { /*店铺人员信息样式*/
-      width: 57%!important;
+    #basicInfo button{
+      width: 100% !important;
     }
   }
 
   @media only screen and (min-width: 360px) and (max-width: 500px) { /*宽================360 -- 500px================*/
-    #StoreUserManage #basicInfo{ /*基础信息布局模板样式*/
-      width: 100% !important;
+    #basicInfo button{
+      width: 61% !important;
+      margin-left: 13px !important;
     }
-    #StoreUserManage #basicInfo .el-input__inner{ /*基础信息中输入框样式*/
-      width: 13rem !important;
-    }
-    #StoreUserManage #basicInfo .el-row{        /* 基础信息布局的对应的信息*/
-      width: 19.5rem !important;
-    }
-
-    #StoreUserManage #jurisdictionInfo{ /*权限信息样式*/
-      width: 100% !important;
-    }
-    #StoreUserManage #jurisdictionInfo .el-row{ /*权限信息样式*/
-      width: 19.5rem !important;
-      margin-left: 0px !important;
-    }
-
   }
 
   @media only screen and (min-width: 200px) and (max-width: 350px) { /*宽=================200 -- 350==================*/
-    #StoreUserManage #basicInfo{ /*基础信息布局模板样式*/
-      width: 100% !important;
+    /*对用户基础输入信息模块的form标签设置样式*/
+    #basicInfo .el-form-item__content{
+      width: 70% !important;
     }
-    #StoreUserManage #basicInfo .el-input__inner{ /*基础信息中输入框样式*/
-      width: 8.8rem !important;
-    }
-    #StoreUserManage #basicInfo .el-row{        /* 基础信息布局的对应的信息*/
-      width: 15.5rem !important;
-    }
-
-    #StoreUserManage #jurisdictionInfo{ /*权限信息样式*/
-      width: 100% !important;
-    }
-
-    #StoreUserManage #jurisdictionInfo .el-row{ /*权限信息样式*/
-      width: 15.7rem !important;
-      margin-left: 0px !important;
+    #basicInfo button{
+      width: 70% !important;
+      margin-left: 23px !important;
     }
   }
 </style>
