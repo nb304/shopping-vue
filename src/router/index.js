@@ -71,6 +71,21 @@ export const constantRoutes = [{
     }]
   },
   {
+    path: '/my',
+    component: Layout,
+    redirect: '/my/information',
+    hidden: true,
+    children: [{
+      path: 'information',
+      name: '个人中心',
+      component: () => import('@/views/Information/MyInformation'),
+      meta: {
+        title: '个人中心',
+        icon: 'shouye'
+      }
+    }]
+  },
+  {
     path: '/product',
     component: Layout,
     redirect: '/product/productInfo',
