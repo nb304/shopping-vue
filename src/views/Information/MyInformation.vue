@@ -11,7 +11,7 @@
         <transition name="el-fade-in-linear">
 
           <!-- ======================= 显示的账户资料 =========================  -->
-          <div class="title-menu-min" v-if="isShowMyInfo" style="box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)">
+          <div v-if="isShowMyInfo" style="box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
             <el-card class="box-card" style="width: 100% !important; max-height: 500px; min-height: 500px;">
               <div slot="header" class="clearfix">
                 <span style="font-size: 15px;">个人资料</span>
@@ -43,7 +43,7 @@
 
                     <el-card shadow="hover" style="width:100%; border: none; text-align: left;  font-size: 12px; margin-bottom: 5px;">
                       <span type="primary">所在地址
-                        <svg-icon icon-class="dizhi" /> :&nbsp;&nbsp;</span> 江西省 上饶市 广丰区 ...
+                        <svg-icon icon-class="dizhi" /> :&nbsp;&nbsp;</span> 江西省 上饶市 广丰区
                     </el-card>
 
 
@@ -71,7 +71,7 @@
 
           <!-- ======================= 修改账户资料 =========================  -->
           <transition name="el-fade-in-linear">
-            <div class="title-menu-min" v-if="isEditMyInfo" style="box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)">
+            <div v-if="isEditMyInfo" style="box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)  margin-bottom: 20px;">
               <el-card class="box-card" style="width: 100% !important; max-height: 500px; min-height: 500px;">
                 <div slot="header" class="clearfix">
                   <span style="font-size: 15px;">编辑资料</span>
@@ -233,7 +233,7 @@
                 <div slot="header" class="clearfix">
                   <span style="font-size: 20px; font-weight: bold;">
 
-                    <svg-icon icon-class="xinyong" /> 你已经通过了实名认证
+                    <svg-icon icon-class="shenfenzheng" style="font-size: 20px;" /> 你已经通过了实名认证
                   </span>
                 </div>
                 <div class="text item" style="font-size: 0.75rem; margin-left: 30px;">
@@ -289,20 +289,26 @@
         userSafetyData: [{
             key: '手机号',
             keyIcon: 'anquan-zh',
-            state: '已设置',
+            state: '已绑定',
             functionBtm: '更换手机号'
           },
           {
             key: '邮箱',
             keyIcon: 'jinggao-zh',
-            state: '未设置邮箱',
+            state: '未绑定',
             functionBtm: '绑定邮箱'
           },
           {
             key: '实名认证',
             keyIcon: 'anquan-zh',
-            state: '已设置',
+            state: '已认证',
             functionBtm: '查看详情'
+          },
+          {
+            key: '设置密码',
+            keyIcon: 'anquan-zh',
+            state: '已设置',
+            functionBtm: '修改密码'
           }
         ],
         // 账户安全的图标

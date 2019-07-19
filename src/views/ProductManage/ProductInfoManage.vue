@@ -4,7 +4,7 @@
     <!-- ======================= 商品信息按钮集合 =========================  -->
     <el-form :inline="true" :model="formInline" class="demo-form-inline productSearchForm" label-width="70px">
       <el-row :gutter="24">
-        <el-col :lg="{span: 6}" :xs="{span: 23}" :sm="{span: 23}">
+        <el-col :lg="{span: 6}" :xs="{span: 24}" :sm="{span: 24}">
           <el-form-item label="商品状态" style="width: 100% !important;">
             <el-select v-model="formInline.productState" placeholder="选择" style="width: 100% !important;">
               <el-option label="全部" value="6" />
@@ -18,20 +18,20 @@
           </el-form-item>
         </el-col>
 
-        <el-col :lg="{span: 6}" :xs="{span: 23}" :sm="{span: 23}">
+        <el-col :lg="{span: 6}" :xs="{span: 24}" :sm="{span: 24}">
           <el-form-item label="搜索商品" style="width: 100%;">
             <el-input v-model="formInline.user" placeholder="商品的名称/类型"><i slot="prefix" class="el-icon-edit" /></el-input>
           </el-form-item>
         </el-col>
 
-        <el-col :lg="{span: 5}" :xs="{span: 23}" :sm="{span: 23}">
+        <el-col :lg="{span: 5}" :xs="{span: 24}" :sm="{span: 24}">
           <el-button type="primary" class="searchButton" style="width: 100%; " @click.stop="showAddProduct">
             <svg-icon icon-class="tianjia" class-name="" style="width:14px !important; height:14px !important; margin-right:10px;" />
             添加商品
           </el-button>
         </el-col>
 
-        <el-col :lg="{span: 5}" :xs="{span: 23}" :sm="{span: 23}">
+        <el-col :lg="{span: 5}" :xs="{span: 24}" :sm="{span: 24}">
           <el-button class="searchButton" type="primary" style="width:  100%; " @click="onSubmit">
             <svg-icon icon-class="tianjia" class-name="" style="width:14px !important; height:14px !important; margin-right:10px;" />
             批量导入商品SKU信息
@@ -40,7 +40,7 @@
 
       </el-row>
       <el-row :gutter="24">
-        <el-col :lg="{span: 6}" :xs="{span: 23}" :sm="{span: 23}">
+        <el-col :lg="{span: 6}" :xs="{span: 24}" :sm="{span: 24}">
           <el-button class="searchButton" type="primary" icon="el-icon-search" style="width:  100%;" @click="onSubmit">搜索</el-button>
         </el-col>
       </el-row>
@@ -792,7 +792,7 @@
                     </el-col>
 
                   </el-tab-pane>
-                  <el-tab-pane label="商品评论列表" name="second" class="title-menu-min el-tab-paneClass">
+                  <el-tab-pane label="商品评论列表" name="second"  class="title-menu-min el-tab-paneClass">
                     <el-row :gutter="24">
                       <el-col :sm="{span: 8}" :xs="{span:8}">
                         <el-button type="primary" style="width:100%;padding:12px 0px; ">好评</el-button>
@@ -832,7 +832,7 @@
                       </el-card>
                     </el-col>
                   </el-tab-pane>
-                  <el-tab-pane label="商品SKU列表" name="fourth" class="title-menu-min el-tab-paneClass">
+                  <el-tab-pane label="商品SKU列表" name="fourth" class="title-menu-min el-tab-paneClass" style="max-height: 220px;">
                     <el-table :data="tableData" border style="width: 100%">
                       <el-table-column prop="date" label="SKU名称" min-width="150" />
                       <el-table-column prop="province" label="排序" width="120" />
@@ -1963,6 +1963,9 @@ export default {
 </script>
 
 <style>
+  .el-tab-paneClass {
+    max-height: 407px !important;
+  }
   .spusRowClass {
     margin-left: 20px !important;
   }
@@ -1991,12 +1994,12 @@ export default {
   }
 
   .productSearchForm .el-form-item .el-form-item__content {
-    width: 75% !important;
+    width: 72% !important;
   }
 
   @media only screen and (min-width: 310px) and (max-width: 500px) {
     .el-tab-paneClass {
-      max-height: 13.75rem !important;
+      max-height: 220px !important;
     }
 
     .productSkuInfoDialog {
