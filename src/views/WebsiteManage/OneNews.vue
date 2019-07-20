@@ -67,8 +67,8 @@
       <el-table-column prop="newsDescribe" label="描述" show-overflow-tooltip="true"></el-table-column>
       <el-table-column fixed="right" label="操作" width="150">
         <template slot-scope="scope">
-          <el-button type="text" size="small">停用</el-button>
-          <el-button type="text" size="small">下架</el-button>
+          <el-button type="text" size="mini" style="padding:2px 15px !important;">停用</el-button>
+          <el-button type="text" size="mini" style="padding:2px 15px !important;">下架</el-button>
         </template>
       </el-table-column>
     </el-table>

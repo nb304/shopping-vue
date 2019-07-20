@@ -96,7 +96,7 @@
     <!--==================分割线(结束)========================-->
 
     <el-row :gutter="24">
-      <el-col :sm="{span: 24}" :xs="{span: 24}">
+      <el-col :sm="{span: 24}" :xs="{span: 24}" >
         <el-table
           v-loading="listLoading"
           :data="list"
@@ -515,44 +515,5 @@ export default {
 </script>
 
 <style >
-/*========当前页面的一些初始样式 输入框和表格等标签样式 开始===========*/
 
-.el-form .el-row {
-  margin: 0 auto;
-  text-align: center !important;
-}
-
-.el-divider span {
-  color: #606266;
-  font-weight: bold;
-}
-.el-table th .cell {
-  word-break: keep-all;
-  white-space: nowrap;
-  padding: 0px 0px;
-}
-.el-table th {
-  padding: 2px 0px;
-  padding-left: 10px;
-  color: #606266;
-}
-.el-table td {
-  padding: 0px;
-}
-#listArea {
-  margin: 30px;
-}
-/*========当前页面的一些初始样式 输入框和表格等标签样式 结束===========*/
-
-/*========弹出框样式信息开始============*/
-.el-dialog__wrapper div[role="dialog"] {
-  margin-top: 50px !important;
-}
-.el-dialog__body {
-  padding-top: 10px !important;
-}
-.el-dialog__body .el-table td {
-  padding: 6px 0px !important;
-}
-/*========弹出框样式信息结束============*/
 </style>
