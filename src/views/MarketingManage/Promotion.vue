@@ -1,8 +1,8 @@
 <template>
   <div id="listArea">
     <el-form :inline="true" class="demo-form-inline searchForm">
-      <el-row :gutter="24">
-        <el-col :sm="{span: 8}" :xs="{span: 23}">
+      <el-row :gutter="24"> 
+        <el-col :sm="{span: 8}" :xs="{span: 24}" class="title-menu-min">
           <el-form-item label="推广人">
             <el-input v-model="orderPid" placeholder="输入推广人">
               <i slot="prefix" class="el-icon-edit" />
@@ -277,64 +277,4 @@ export default {
 </script>
 
 <style >
-/*========当前页面的一些初始样式 输入框和表格等标签样式 开始===========*/
-
-.el-form .el-row {
-  margin: 0 auto;
-  text-align: center !important;
-}
-
-.el-divider span {
-  color: #606266;
-  font-weight: bold;
-}
-.el-table th .cell {
-  word-break: keep-all;
-  white-space: nowrap;
-  padding: 0px 0px;
-}
-.el-table th {
-  padding: 2px 0px;
-  padding-left: 10px;
-  color: #606266;
-}
-.el-table td {
-  padding: 0px;
-}
-#listArea {
-  margin: 30px;
-}
-/*========当前页面的一些初始样式 输入框和表格等标签样式 结束===========*/
-
-/*==================自定义自适应css样式详情开始 ========================*/
-@media only screen and (min-width: 1301px) and (max-width: 2000px) {
-  /*宽 ==================1301--2000px===========*/
-  .el-form .el-form-item .el-input__inner {
-    width: 216px !important;
-  }
-}
-
-
-@media only screen and (min-width: 200px) and (max-width: 350px) {
-  /*宽=================200 -- 350==================*/
-  .searchForm .el-col {
-    padding: 0px !important;
-    margin-left: 10px;
-  }
-  .searchForm .el-form-item .el-form-item__content {
-    width: 194px !important;
-  }
-  .searchForm .el-form-item .el-button {
-    margin-left: 34px !important;
-    width: 195px !important;
-  }
-  .el-divider__text {
-    /*分割线样式*/
-    right: 0px !important;
-    font-size: 9px !important;
-  }
-}
-
-/*==================自定义自适应css样式详情结束 ========================*/
-
 </style>

@@ -43,13 +43,13 @@
       <el-table-column prop="newsName" label="新闻名称"  show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="stateTime" label="上架时间"  show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="endTime" label="下架时间" show-overflow-tooltip="true"></el-table-column>
-      <el-table-column prop="shopNum" label="轮播图片数量" show-overflow-tooltip="true"></el-table-column>
+      <el-table-column prop="shopNum" label="轮播图片数量" min-width="120" show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="newsDescribe" label="描述" show-overflow-tooltip="true"></el-table-column>
-      <el-table-column fixed="right" label="操作">
-        <template slot-scope="scope">
-          <el-button type="text" size="small" @click="CarouselSrc()">编辑</el-button>
-          <el-button type="text" size="small">停用</el-button>
-          <el-button type="text" size="small">下架</el-button>
+      <el-table-column fixed="right" label="操作" min-width="80">
+        <template slot-scope="scope" >
+          <el-button type="text" size="mini" style="padding:2px 15px !important;" @click="CarouselSrc()">编辑</el-button>
+          <el-button type="text" size="mini" style="padding:2px 15px !important;">停用</el-button>
+          <el-button type="text" size="mini" style="padding:2px 15px !important;">下架</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -113,7 +113,7 @@
       </el-row>
 
       <div slot="footer" class="dialog-footer">
-        <el-button @click="newsFormVisible = false">取 消</el-button>
+        <el-button  @click="newsFormVisible = false">取 消</el-button>
         <el-button type="primary" @click="newsFormVisible = false">确 定</el-button>
       </div>
     </el-dialog>
@@ -345,6 +345,48 @@ export default {
 #listArea {
   margin: 30px;
 }
+ .addStoreType .el-form-item__label {
+    margin-left: 1.0625rem;
+  }
+
+  @media only screen and (min-width: 310px) and (max-width: 500px) {
+    #stortTypeDiv .el-form-item__content {
+      width: 100% !important;
+    }
+
+    #stortTypeDiv .storeTypeSearchForm .el-form-item__content {
+      width: 75% !important;
+    }
+  }
+
+  #stortTypeDiv .el-form-item__content {
+    width: 80%;
+  }
+
+  #stortTypeDiv .el-range-separator {
+    width: 10% !important;
+  }
+
+  #stortTypeDiv .el-divider span {
+    color: #606266;
+    font-weight: bold;
+  }
+
+  #stortTypeDiv .el-table__row th .cell {
+    word-break: keep-all;
+    white-space: nowrap;
+    padding: 0px 0px;
+  }
+
+  #stortTypeDiv .el-table__row th {
+    padding: 3px 0px;
+    padding-left: 10px;
+    color: #606266;
+  }
+
+  #stortTypeDiv .el-table__row td {
+    padding: 3px 0;
+  }
 </style>
 
 

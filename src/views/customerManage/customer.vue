@@ -42,7 +42,7 @@
       <el-table-column prop="brandNumber" label="编号" width="60" show-overflow-tooltip="true" />
       <el-table-column prop="newsName" label="客服名称" show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="source" label="客服昵称" show-overflow-tooltip="true"></el-table-column>
-      <el-table-column prop="shopName" label="客服联系方式" show-overflow-tooltip="true"></el-table-column>
+      <el-table-column prop="shopName" label="客服联系方式" min-width="120" show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="shopName" label="管理范围" show-overflow-tooltip="true"></el-table-column>
 
       <el-table-column fixed="right" label="操作" width="150">

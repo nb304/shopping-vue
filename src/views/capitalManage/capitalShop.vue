@@ -1,15 +1,15 @@
 <template>
   <div id="listArea">
     <!--==================表单提交(开始)========================-->
-    <el-form ref="form" :model="form" label-width="80px">
+    <el-form ref="form" :model="form" label-width="100px">
       <el-row :gutter="24">
-        <el-col :sm="{span: 6}" :xs="{span: 23}">
+        <el-col :sm="{span: 7}" :xs="{span: 24}">
           <el-form-item label="店铺名称">
             <el-input v-model="form.region" placeholder="请输入店铺名称"></el-input>
           </el-form-item>
         </el-col>
 
-        <el-col :sm="{span: 7}" :xs="{span: 23}" style="padding:0">
+        <el-col :sm="{span: 7}" :xs="{span: 24}" style="padding:0">
           <el-form-item label="提交审核时间" label-width="110px">
             <el-date-picker
               type="date"
@@ -20,8 +20,8 @@
           </el-form-item>
         </el-col>
 
-        <el-col :sm="{span: 7}" :xs="{span: 23}" style="padding: 0;">
-          <el-form-item label="确认审核时间" label-width="120px">
+        <el-col :sm="{span: 7}" :xs="{span: 24}" style="padding: 0;">
+          <el-form-item label="确认审核时间" label-width="110px">
             <el-date-picker
               type="date"
               placeholder="选择确认审核时间"
@@ -31,7 +31,7 @@
           </el-form-item>
         </el-col>
 
-        <el-col :sm="{span: 4}" :xs="{span: 23}">
+        <el-col :sm="{span: 3}" :xs="{span: 24}">
           <el-form-item label-width="40px">
             <el-button type="primary" style="width: 100% ;" @click="deleteEvaluate">查询</el-button>
           </el-form-item>
@@ -62,9 +62,9 @@
       <el-table-column prop="newsDescribe" label="确认审核时间" show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="deposit" label="押金(元)" show-overflow-tooltip="true"></el-table-column>
 
-      <el-table-column fixed="right" label="操作" width="150">
+      <el-table-column fixed="right" label="操作" width="150" style="padding: 3px 0;">
         <template slot-scope="scope">
-          <el-button type="text" size="small">删除</el-button>
+          <el-button type="text" size="mini" style="padding:2px 15px !important;">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
