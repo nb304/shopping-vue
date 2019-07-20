@@ -132,16 +132,17 @@ export const constantRoutes = [{
 },
 
 {
-  path: '/dwadwa',
+  path: '/applyManage',
+  redirect: '/applyManage/Productapply',
   component: Layout,
   meta: {
     title: '采购管理',
     icon: 'caigou'
   },
   children: [{
-    path: 'index',
-    name: 'Form',
-    component: () => import('@/views/form/index'),
+    path: 'Productapply',
+    name: 'Productapply',
+    component: () => import('@/views/ApplyManage/Productapply'),
     meta: {
       title: '商品申请采购'
     }
