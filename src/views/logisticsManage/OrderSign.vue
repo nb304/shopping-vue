@@ -238,7 +238,7 @@
                     placement="top"
                   >
                     <el-card shadow="hover">
-                      <h4><span style="margin-right: 10px">物流编号：{{ activity.logisticsNumber }}</span> <span>物流名称：{{ activity.logisticsName }}</span></h4>
+                      <h4><span style="margin-right: 10px">物流编号：{{ activity.logisticsNumber }}</span><br/><span>物流名称：{{ activity.logisticsName }}</span></h4>
                       <el-button
                         type="text"
                         size="20px"

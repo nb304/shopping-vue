@@ -181,7 +181,7 @@
                 size="20px"
                 @click.native.prevent="orderExpressDesc(scope.$index, list)"
               >
-                {{ scope.row.logistics }}
+                查看详情
               </el-button>
               <span />
             </template>

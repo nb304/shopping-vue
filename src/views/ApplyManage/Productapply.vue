@@ -34,7 +34,7 @@
               :file-list="productapplyForm.uploadFile"
               limit="1"
             >
-              <el-button slot="trigger" size="small" style="width: 100%;" type="primary">选择图片</el-button>
+              <el-button slot="trigger" size="small" icon="el-icon-picture"  style="width: 100%;" type="primary">选择图片</el-button>
             </el-upload>
           </el-form-item>
         </el-col>
@@ -52,7 +52,10 @@
       <el-col :sm="{span: 24}" :xs="{span: 24}">
         <div>
           <el-divider content-position="right">
-            <span>店铺名称:小鹏家具</span>
+            <el-tooltip class="item" effect="dark" content="店铺名称" placement="right">
+              <svg-icon icon-class="dianpu2" />
+            </el-tooltip>
+            <span>：小鹏家具</span>
             <el-divider direction="vertical" />
             <span>已受理:900笔</span>
             <el-divider direction="vertical" />
@@ -108,6 +111,26 @@
             </template>
           </el-table-column>
 
+          <el-table-column label="图片详情" show-overflow-tooltip="true" header-align="center" align="center">
+            <template slot-scope="scope">
+              <el-popover
+                placement="bottom"
+                width="600"
+                trigger="hover"
+              >
+                <el-image :src="scope.row.imgUrl">
+                  <div slot="error" class="image-slot">
+                    <i class="el-icon-picture-outline"></i>
+                  </div>
+                </el-image>
+                <el-button slot="reference" style="border: none;color: #409EFF;">查看图片</el-button>
+              </el-popover>
+
+            </template>
+          </el-table-column>
+
+
+
           <el-table-column label="审批结果" show-overflow-tooltip="true" header-align="center" align="center">
             <template slot-scope="scope">
 
@@ -127,23 +150,7 @@
             </template>
           </el-table-column>
 
-          <el-table-column label="图片详情" show-overflow-tooltip="true" header-align="center" align="center">
-            <template slot-scope="scope">
-              <el-popover
-                placement="bottom"
-                width="300"
-                trigger="hover"
-                >
-                <el-image :src="scope.row.imgUrl">
-                  <div slot="error" class="image-slot">
-                    <i class="el-icon-picture-outline"></i>
-                  </div>
-                </el-image>
-                <el-button slot="reference" style="border: none;color: #409EFF;">查看图片</el-button>
-              </el-popover>
 
-            </template>
-          </el-table-column>
 
           <el-table-column label="操作" width="150" header-align="center" align="center">
             <template slot-scope="scope">
@@ -315,7 +322,7 @@ export default {
           productName: '电风扇35k',
           applyDesc: '双十一马上来了库存不足',
           applyState: '0',
-          imgUrl: ''
+          imgUrl: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg'
         }
 
       ]

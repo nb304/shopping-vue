@@ -148,16 +148,16 @@ export const constantRoutes = [{
     }
   },
   {
-    path: 'index',
-    name: 'Form',
-    component: () => import('@/views/form/index'),
+    path: 'AddPurchasing',
+    name: 'AddPurchasing',
+    component: () => import('@/views/ApplyManage/AddPurchasing'),
     meta: {
       title: '添加采购管理'
     }
   }, {
-    path: 'index',
-    name: 'Form',
-    component: () => import('@/views/form/index'),
+    path: 'PurchasingList',
+    name: 'PurchasingList',
+    component: () => import('@/views/ApplyManage/PurchasingList'),
     meta: {
       title: '采购列表管理'
     }
@@ -307,17 +307,18 @@ export const constantRoutes = [{
   ]
 },
 {
-  path: '/nested5',
+  path: '/InventoryManage',
   component: Layout,
-  name: 'Nested5',
+  redirect: '/InventoryManage/InventoryList',
+  name: 'InventoryManage',
   meta: {
     title: '库存管理',
     icon: 'kucun'
   },
   children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
+    path: 'InventoryList',
+    component: () => import('@/views/InventoryManage/InventoryList'), // Parent router-view
+    name: 'InventoryList',
     meta: {
       title: '库存管理列表'
     }
