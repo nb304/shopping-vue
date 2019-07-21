@@ -100,9 +100,9 @@
     <!--==================分割线(结束)========================-->
 
     <el-row :gutter="24">
-      <el-col :sm="{span:9}" :xs="{span: 24}" style="margin-bottom: 10px;; ">
+      <el-col :sm="{span:9}" :xs="{span: 24}" style="margin-bottom: 10px;">
         <el-date-picker
-          v-model="queryTimes"
+          v-model='val7'
           style="width:100%;"
           type="daterange"
           align="right"
@@ -114,14 +114,14 @@
         />
       </el-col>
 
-      <el-col :sm="{span: 3}" :xs="{span: 23}" style="margin-bottom: 10px;; ">
+      <el-col :sm="{span: 3}" :xs="{span: 24}" style="margin-bottom: 10px;">
         <el-button
           type="primary"
           icon="el-icon-search"
           style="width: 100% !important;"
-          @click="onSubmit"
         >搜索</el-button>
       </el-col>
+      </el-row>
 
       <!--==================分割线(开始)========================-->
       <el-row :gutter="24">
@@ -211,7 +211,7 @@ export default {
          total: 100, // 分页信息
       currentPage: 2, // 当前页数信息
       // 快捷时间选择
-      queryTimes: "",
+      val7: "",
       pickerOptions2: {
         shortcuts: [
           {
