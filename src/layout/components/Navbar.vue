@@ -10,34 +10,32 @@
         <div class="avatar-wrapper">
 
           <!-- ======================= 导航栏消息图标 =========================  -->
-          <el-dropdown trigger="click">
-            <span class="el-dropdown-link">
-              <!-- ======================= 导航栏消息图标 =========================  -->
-              <el-badge v-if="isShowMessage" id="messageRed" is-dot class="item" title="提示">
-                <svg-icon icon-class="message" class-name="message-class" />
-              </el-badge>
-              <el-badge v-else="isShowMessage" title="提示">
-                <svg-icon icon-class="message" class-name="message-class" />
-              </el-badge>
-              <!-- ======================= 导航栏消息图标(结束) =========================  -->
-            </span>
-            <!-- ======================= 导航栏消息数据实体 =========================  -->
-            <el-dropdown-menu slot="dropdown">
-              <el-tabs type="border-card" style="width:350px;">
-                <el-tab-pane label="全部消息" class="title-menu-min">
-                  <el-card v-for="value,key in messageInfos" shadow="hover" class="info">
-                    <span :key="value.mid" style="width:100%; display:block;" @click="messageInfo(value.mid)">
-                      {{ value.message }}
-                    </span>
-                  </el-card>
+          <span class="el-dropdown-link">
+            <!-- ======================= 导航栏消息图标 =========================  -->
+            <el-badge v-if="isShowMessage" id="messageRed" is-dot class="item" title="提示">
+              <svg-icon icon-class="message" class-name="message-class" />
+            </el-badge>
+            <el-badge v-else="isShowMessage" title="提示">
+              <svg-icon icon-class="message" class-name="message-class" />
+            </el-badge>
+            <!-- ======================= 导航栏消息图标(结束) =========================  -->
+          </span>
+          <!-- ======================= 导航栏消息数据实体 =========================  -->
+          <el-dropdown-menu slot="dropdown">
+            <el-tabs type="border-card" style="width:350px;">
+              <el-tab-pane label="全部消息" class="title-menu-min">
+                <el-card v-for="value,key in messageInfos" shadow="hover" class="info">
+                  <span :key="value.mid" style="width:100%; display:block;" @click="messageInfo(value.mid)">
+                    {{ value.message }}
+                  </span>
+                </el-card>
 
-                </el-tab-pane>
-                <el-tab-pane label="未读消息" class="title-menu-min">未读消息</el-tab-pane>
-                <el-tab-pane label="已读消息" class="title-menu-min">已读消息</el-tab-pane>
-              </el-tabs>
+              </el-tab-pane>
+              <el-tab-pane label="未读消息" class="title-menu-min">未读消息</el-tab-pane>
+              <el-tab-pane label="已读消息" class="title-menu-min">已读消息</el-tab-pane>
+            </el-tabs>
 
-            </el-dropdown-menu>
-          </el-dropdown>
+          </el-dropdown-menu>
           <!-- ======================= 导航栏消息图标(结束) =========================  -->
 
         </div>

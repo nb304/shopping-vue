@@ -135,7 +135,7 @@
             <el-col :sm="{span: 12,offset: 6}" :xs="{span: 23}">
 
               <el-form-item label="商品类目" style="width:100%;">
-                <el-cascader v-model="ProductMuluListIds" style="width:100% !important;" :options="options" @change="handleChange" />
+                <el-cascader v-model="ProductMuluListIds" filterable style="width:100% !important;" :options="options" @change="handleChange" />
               </el-form-item>
             </el-col>
 
@@ -217,6 +217,16 @@
                 <el-input v-model="addProductTwoFrom.desc" type="textarea" class="addProductFormInput" />
               </el-form-item>
             </el-col>
+          </el-row>
+
+          <el-row :gutter="24">
+            <el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
+             <el-form-item label="是否支持" style="width:100%;" class="addProductItem">
+               <el-radio v-model="radio" label="1">支持无理由退货</el-radio>
+               <el-radio v-model="radio" label="2">不支持无理由退货</el-radio>
+                <el-input v-model="addProductTwoFrom.desc" placeholder="设置无理由退款天数(默认7天)"  class="addProductFormInput" />
+             </el-form-item>
+           </el-col>
           </el-row>
 
         </el-form>
@@ -1149,6 +1159,7 @@
 export default {
   data() {
     return {
+      radio: '',
       // 商品图片列表
       productImages: [{
         imageId: '1',
