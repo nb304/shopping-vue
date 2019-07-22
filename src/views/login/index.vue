@@ -1,7 +1,7 @@
 <template>
   <div class="login-container" style="background-image: url(../../images/login_background.png);">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on"
-      label-position="left">
+    <el-form v-if="isLoginFormFlag" ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form"
+      auto-complete="on" label-position="left">
 
       <div class="title-container">
         <h3 class="title">商家后台管理系统</h3>
@@ -49,7 +49,8 @@
           <el-input ref="username" v-model="loginCodeForm.code" placeholder="请输入验证码" name="phone" type="text" tabindex="1"
             auto-complete="on" />
 
-          <el-button :loading="sendLoading" type="info" plain style="opacity: 0.5; position: absolute; top: 5px;right: 10px;;" @click="sendCode">{{sendCodeBtn}}</el-button>
+          <el-button :loading="sendLoading" type="info" plain style="opacity: 0.5; position: absolute; top: 5px;right: 10px;;"
+            @click="sendCode">{{sendCodeBtn}}</el-button>
         </el-form-item>
       </div>
       <!-- ======================= 使用验证码登入(结束) =========================  -->
@@ -69,6 +70,25 @@
       </transition>
 
     </el-form>
+
+    <!-- ======================= 加载框 =========================  -->
+    <div v-if="loginLoadingFLag">
+      <div>
+        <div class="loader">
+          <div class="face">
+            <div class="circle"></div>
+          </div>
+          <div class="face">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;clear:both; font-size: 20px;">
+        认证中,请稍后{{dian}}
+      </div>
+    </div>
+    <!-- ======================= 加载框(结束) =========================  -->
   </div>
 </template>
 
@@ -95,6 +115,13 @@
         }
       }
       return {
+        // 登入的加载flag
+        loginLoadingFLag: false,
+        // 登入的显示flag
+        isLoginFormFlag: true,
+        // 加载参数
+        dianSize: 1,
+        dian: '.',
         sendLoading: false,
         // 验证码倒计时定时器
         isSendInterVal: '',
@@ -199,7 +226,22 @@
         })
       },
       handleLogin() {
-        this.$refs.loginForm.validate(valid => {
+        this.isLoginFormFlag = false;
+        this.loginLoadingFLag = true;
+
+        setInterval(() => {
+          this.dianSize++;
+          if (this.dianSize == 1) {
+            this.dian = ".";
+          } else if (this.dianSize == 2) {
+            this.dian = "..";
+          } else if (this.dianSize == 3) {
+            this.dian = "...";
+            this.dianSize = 0;
+          }
+        }, 500);
+
+          this.$refs.loginForm.validate(valid => {
           if (valid) {
             this.loading = true
             this.$store.dispatch('user/login', this.loginForm).then(() => {
@@ -215,7 +257,11 @@
             return false
           }
         })
+
       }
+    },
+    created() {
+
     }
   }
 </script>
@@ -271,6 +317,87 @@
   $bg:#2d3a4b;
   $dark_gray:#889aa4;
   $light_gray:#eee;
+
+  body {
+    margin: 0;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+  }
+
+  .loader {
+    width: 20em;
+    height: 20em;
+    font-size: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px auto;
+  }
+
+  .loader .face {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    animation: animate 3s linear infinite;
+  }
+
+  .loader .face:nth-child(1) {
+    width: 100%;
+    height: 100%;
+    color: gold;
+    border-color: currentColor transparent transparent currentColor;
+    border-width: 0.2em 0.2em 0em 0em;
+    --deg: -45deg;
+    animation-direction: normal;
+  }
+
+  .loader .face:nth-child(2) {
+    width: 70%;
+    height: 70%;
+    color: lime;
+    border-color: currentColor currentColor transparent transparent;
+    border-width: 0.2em 0em 0em 0.2em;
+    --deg: -135deg;
+    animation-direction: reverse;
+  }
+
+  .loader .face .circle {
+    position: absolute;
+    width: 50%;
+    height: 0.1em;
+    top: 50%;
+    left: 50%;
+    background-color: transparent;
+    transform: rotate(var(--deg));
+    transform-origin: left;
+  }
+
+  .loader .face .circle::before {
+    position: absolute;
+    top: -0.5em;
+    right: -0.5em;
+    content: '';
+    width: 1em;
+    height: 1em;
+    background-color: currentColor;
+    border-radius: 50%;
+    box-shadow: 0 0 2em,
+      0 0 4em,
+      0 0 6em,
+      0 0 8em,
+      0 0 10em,
+      0 0 0 0.5em rgba(255, 255, 0, 0.1);
+  }
+
+  @keyframes animate {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
 
   .login-container {
     min-height: 100%;
