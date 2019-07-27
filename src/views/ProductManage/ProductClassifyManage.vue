@@ -2,7 +2,7 @@
 <template>
   <div id="productClassify" v-loading="ProductLeiMuLoadings.productLeiMuCommonLoading">
 
-    <!-- ======================= 商品品牌按钮集合 =========================  -->
+    <!-- ======================= 商品类目按钮集合 =========================  -->
     <el-form :inline="true" :model="searchBrandForm" class="demo-form-inline">
       <el-row :gutter="24">
         <el-col :sm="{span: 8}" :xs="{span: 23}">
@@ -29,7 +29,7 @@
       </el-row>
     </el-form>
 
-    <!-- ======================= 商品品牌按钮集合(结束) =========================  -->
+    <!-- ======================= 商品类目按钮集合(结束) =========================  -->
     <el-row :gutter="24">
       <el-col :sm="{span: 24}" :xs="{span: 24}">
         <div>
@@ -54,7 +54,7 @@
           default-expand-all
           :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
         >
-          <el-table-column prop="leimuName" label="类目名称" show-overflow-tooltip="true" min-width="150" />
+          <el-table-column sortable prop="leimuName" label="类目名称" show-overflow-tooltip="true" min-width="150" />
           <el-table-column prop="leimuType" label="类型" width="100" show-overflow-tooltip="true" />
           <el-table-column prop="createTime" label="创建时间" sortable width="180" />
           <el-table-column fixed="right" label="操作" width="170">
