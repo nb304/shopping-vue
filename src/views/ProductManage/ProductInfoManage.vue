@@ -1,3 +1,4 @@
+<!--======商品信息管理模块=======-->
 <template>
   <div id="productInfoDiv" v-loading="isProductSPULoading" style="margin:30px ;">
 

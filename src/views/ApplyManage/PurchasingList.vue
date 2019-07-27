@@ -1,4 +1,6 @@
+<!--======采购列表管理模块========-->
 <template>
+
   <div id="purchasingList">
     <el-form ref="form" :model="purchasingListForm" label-width="70px">
       <el-row :gutter="24">

@@ -1,11 +1,13 @@
+<!--======在线售后客服模板=======-->
 <template>
+
   <div id="customer" style="margin:30px ;">
     <!--==================表单提交(开始)========================-->
     <el-form ref="form" :model="form" label-width="80px">
       <el-row :gutter="24">
         <el-col :sm="{span: 7}" :xs="{span: 23}">
           <el-form-item label="客服名称">
-            <el-input v-model="form.region" placeholder="输入客服名称"></el-input>
+            <el-input v-model="form.region" placeholder="输入客服名称" />
           </el-form-item>
         </el-col>
 
@@ -40,10 +42,10 @@
     <!--==================table表格(开始)========================-->
     <el-table :data="tableData" class="title-menu-min" border style="width: 100%">
       <el-table-column prop="brandNumber" label="编号" width="60" show-overflow-tooltip="true" />
-      <el-table-column prop="newsName" label="客服名称" show-overflow-tooltip="true"></el-table-column>
-      <el-table-column prop="source" label="客服昵称" show-overflow-tooltip="true"></el-table-column>
-      <el-table-column prop="shopName" label="客服联系方式" min-width="120" show-overflow-tooltip="true"></el-table-column>
-      <el-table-column prop="shopName" label="管理范围" show-overflow-tooltip="true"></el-table-column>
+      <el-table-column prop="newsName" label="客服名称" show-overflow-tooltip="true" />
+      <el-table-column prop="source" label="客服昵称" show-overflow-tooltip="true" />
+      <el-table-column prop="shopName" label="客服联系方式" min-width="120" show-overflow-tooltip="true" />
+      <el-table-column prop="shopName" label="管理范围" show-overflow-tooltip="true" />
 
       <el-table-column fixed="right" label="操作" min-width="60" max-width="120">
         <template slot-scope="scope">
@@ -76,23 +78,23 @@
         <el-form ref="form" :model="form" label-width="80px">
           <el-col :span="10">
             <el-form-item label="客服名称">
-              <el-input v-model="form.tiele" placeholder="请输入客服名称"></el-input>
+              <el-input v-model="form.tiele" placeholder="请输入客服名称" />
             </el-form-item>
           </el-col>
           <el-col :span="10">
             <el-form-item label="客服昵称">
-              <el-input v-model="form.hig" placeholder="请输入客服昵称"></el-input>
+              <el-input v-model="form.hig" placeholder="请输入客服昵称" />
             </el-form-item>
           </el-col>
 
           <el-col :span="10">
             <el-form-item label="管理范围">
-              <el-input v-model="form.num" placeholder="请输入管理的范围"></el-input>
+              <el-input v-model="form.num" placeholder="请输入管理的范围" />
             </el-form-item>
           </el-col>
           <el-col :span="10">
             <el-form-item label="客服号码">
-              <el-input v-model="form.hig" placeholder="请输入客服号码"></el-input>
+              <el-input v-model="form.hig" placeholder="请输入客服号码" />
             </el-form-item>
           </el-col>
         </el-form>
@@ -114,79 +116,79 @@ export default {
       // 文件图片
       fileList: [
         {
-          name: "food.jpeg",
+          name: 'food.jpeg',
           url:
-            "https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100"
+            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
         }
       ],
       customerFormVisible: false, // 添加新闻弹窗
       // 表格数据
       tableData: [
         {
-          brandNumber: "001",
-          newsName: "2016-05-02",
-          source: "王小虎",
-          shopName: "上海市普陀区金沙江路 1518 弄",
-          brandLogoUrl: "http://39.105.41.2:8080/uec//media/file//timg13.gif",
-          stateTime: "2016-05-02",
-          endTime: "2016-05-02",
-          shopSrc: "点我",
-          newsDescribe: " .... "
+          brandNumber: '001',
+          newsName: '2016-05-02',
+          source: '王小虎',
+          shopName: '上海市普陀区金沙江路 1518 弄',
+          brandLogoUrl: 'http://39.105.41.2:8080/uec//media/file//timg13.gif',
+          stateTime: '2016-05-02',
+          endTime: '2016-05-02',
+          shopSrc: '点我',
+          newsDescribe: ' .... '
         },
         {
-          brandNumber: "002",
-          newsName: "2016-05-02",
-          source: "王小虎",
-          shopName: "上海市普陀区金沙江路 1518 弄",
-          brandLogoUrl: "http://39.105.41.2:8080/uec//media/file//timg13.gif",
-          stateTime: "2016-05-02",
-          endTime: "2016-05-02",
-          shopSrc: "点我",
-          newsDescribe: " .... "
+          brandNumber: '002',
+          newsName: '2016-05-02',
+          source: '王小虎',
+          shopName: '上海市普陀区金沙江路 1518 弄',
+          brandLogoUrl: 'http://39.105.41.2:8080/uec//media/file//timg13.gif',
+          stateTime: '2016-05-02',
+          endTime: '2016-05-02',
+          shopSrc: '点我',
+          newsDescribe: ' .... '
         },
         {
-          brandNumber: "003",
-          newsName: "2016-05-02",
-          source: "王小虎",
-          shopName: "上海市普陀区金沙江路 1518 弄",
-          brandLogoUrl: "http://39.105.41.2:8080/uec//media/file//timg13.gif",
-          stateTime: "2016-05-02",
-          endTime: "2016-05-02",
-          shopSrc: "点我",
-          newsDescribe: " .... "
+          brandNumber: '003',
+          newsName: '2016-05-02',
+          source: '王小虎',
+          shopName: '上海市普陀区金沙江路 1518 弄',
+          brandLogoUrl: 'http://39.105.41.2:8080/uec//media/file//timg13.gif',
+          stateTime: '2016-05-02',
+          endTime: '2016-05-02',
+          shopSrc: '点我',
+          newsDescribe: ' .... '
         },
         {
-          brandNumber: "004",
-          newsName: "2016-05-02",
-          source: "王小虎",
-          shopName: "上海市普陀区金沙江路 1518 弄",
-          brandLogoUrl: "http://39.105.41.2:8080/uec//media/file//timg13.gif",
-          stateTime: "2016-05-02",
-          endTime: "2016-05-02",
-          shopSrc: "点我",
-          newsDescribe: " .... "
+          brandNumber: '004',
+          newsName: '2016-05-02',
+          source: '王小虎',
+          shopName: '上海市普陀区金沙江路 1518 弄',
+          brandLogoUrl: 'http://39.105.41.2:8080/uec//media/file//timg13.gif',
+          stateTime: '2016-05-02',
+          endTime: '2016-05-02',
+          shopSrc: '点我',
+          newsDescribe: ' .... '
         }
       ],
       // 表单元素中绑定的数据参数
       form: {
-        name: "",
-        region: ""
+        name: '',
+        region: ''
       },
       // 分页数据
       total: 100,
       currentPage: 2
-    };
+    }
   },
   methods: {
     customerForm() {
-      this.customerFormVisible = true;
+      this.customerFormVisible = true
     },
 
     shoppingSrc(a) {
-      alert(`我跳到了${a}中`);
+      alert(`我跳到了${a}中`)
     }
   }
-};
+}
 </script>
 
 <style>
@@ -247,5 +249,4 @@ export default {
   padding: 0px;
 }
 </style>
-
 

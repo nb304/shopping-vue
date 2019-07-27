@@ -1,4 +1,4 @@
-<!--  商品类目管理  -->
+<!--======商品类目管理模块=======-->
 <template>
   <div id="productClassify" v-loading="ProductLeiMuLoadings.productLeiMuCommonLoading">
 

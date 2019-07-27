@@ -1,3 +1,4 @@
+<!--======优惠券管理模块=======-->
 <template>
   <div id="Coupon" style="margin:1rem;">
     <el-form ref="form" :model="form" label-width="100px">

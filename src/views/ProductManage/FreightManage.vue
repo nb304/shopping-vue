@@ -1,3 +1,4 @@
+<!--======商品运费管理模块=======-->
 <template>
   <div id="freightManage">
     <el-form ref="form" :model="freightManageForm" label-width="70px">

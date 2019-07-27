@@ -1,4 +1,6 @@
+<!--======消息中心模板=======-->
 <template>
+
   <div style="margin: 30px 0px; 30px 0">
 
     <!-- ======================= 我的消息(电脑版) =========================  -->
@@ -13,14 +15,13 @@
           </div>
           <el-row :gutter="24" style="width: 96%;">
             <!-- ======================= 单独一条消息 =========================  -->
-            <el-col :sm="{span: 24}" :lg="{span:24}" :xs="{span: 24}" v-for="o in 10" style="margin: 5px 0px !important; cursor: pointer;">
-
+            <el-col v-for="o in 10" :sm="{span: 24}" :lg="{span:24}" :xs="{span: 24}" style="margin: 5px 0px !important; cursor: pointer;">
 
               <el-badge id="phoneBContent" style="margin-bottom: 0px !important;" :value="3" class="item">
                 <div>
                   <el-col :sm="{span: 5}" :lg="{span:5}" :xs="{span: 5}">
                     <div class="block">
-                      <el-avatar :size="50" :src="avatarUrl"></el-avatar>
+                      <el-avatar :size="50" :src="avatarUrl" />
                     </div>
                   </el-col>
                   <el-col :sm="{span: 19}" :lg="{span:19}" :xs="{span: 19}">
@@ -28,11 +29,10 @@
                       <el-link :underline="false">鹿七七</el-link>
                     </el-col>
                     <el-col :sm="{span: 24}" :lg="{span:24}" :xs="{span: 24}" style="margin: 2px 0px;">
-                      你好！公号{{o}}为你服务....
+                      你好！公号{{ o }}为你服务....
                     </el-col>
                   </el-col>
-                  <el-col style="border-bottom: 1px solid #cccccc;" :sm="{span: 24}" :lg="{span:24}" :xs="{span: 24}">
-                  </el-col>
+                  <el-col style="border-bottom: 1px solid #cccccc;" :sm="{span: 24}" :lg="{span:24}" :xs="{span: 24}" />
                 </div>
               </el-badge>
             </el-col>
@@ -54,13 +54,12 @@
               <div v-if="o.flag == 'left'">
                 <el-col :sm="{span: 2}" :lg="{span:2}" :xs="{span: 4}">
                   <div class="block">
-                    <el-avatar shape="square" :size="50" :src="avatarUrl"></el-avatar>
+                    <el-avatar shape="square" :size="50" :src="avatarUrl" />
                   </div>
                 </el-col>
                 <el-col :sm="{span: 18}" :lg="{span:18}" :xs="{span: 18}">
                   <el-card shadow="always" style="" class="leftInfos">
-                    <div :key="o" class="text item send" v-html="o.content" style="width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;">
-                    </div>
+                    <div :key="o" class="text item send" style="width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;" v-html="o.content" />
                     <!-- <div :class="o.userClass"></div> -->
                   </el-card>
                 </el-col>
@@ -69,18 +68,16 @@
               <div v-if="o.flag == 'right'">
                 <el-col :lg="{span:18,offset: 4}" :xs="{span: 18,offset: 2}">
                   <el-card shadow="always" style="margin-right: 15px;" class="rightInfos">
-                    <div :key="o" class="text item send" v-html="o.content" style="width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;">
-                    </div>
+                    <div :key="o" class="text item send" style="width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;" v-html="o.content" />
                     <!-- <div :class="o.userClass"></div> -->
                   </el-card>
                 </el-col>
                 <el-col :sm="{span: 2}" :lg="{span:2}" :xs="{span: 4}">
                   <div class="block">
-                    <el-avatar shape="square" :size="50" :src="avatarUrl"></el-avatar>
+                    <el-avatar shape="square" :size="50" :src="avatarUrl" />
                   </div>
                 </el-col>
               </div>
-
 
             </el-row>
 
@@ -89,7 +86,7 @@
 
           <!-- ======================= 富文本编辑器 =========================  -->
           <el-row>
-            <quill-editor style="height: 100px;" ref="text" v-model="content" class="myQuillEditor" :options="editorOption" />
+            <quill-editor ref="text" v-model="content" style="height: 100px;" class="myQuillEditor" :options="editorOption" />
           </el-row>
 
           <!-- ======================= 富文本编辑器(结束) =========================  -->
@@ -104,20 +101,19 @@
     </div>
     <!-- ======================= 我的消息(电脑版结束) =========================  -->
 
-
-<!-- ======================= 我的消息(手机版) =========================  -->
+    <!-- ======================= 我的消息(手机版) =========================  -->
     <div v-if="isInfoPhoneFlag">
       <!-- ======================= 我的消息 =========================  -->
       <transition name="el-zoom-in-center">
         <div v-if="showInfoListsFlag">
-          <el-row :gutter="24" v-for="o in 20">
+          <el-row v-for="o in 20" :gutter="24">
             <el-badge id="phoneBContent" style="margin-bottom: 0px !important;" :value="3" class="item">
               <!-- ======================= 单独一条消息 =========================  -->
               <el-col :sm="{span: 24}" :lg="{span:24}" :xs="{span: 24}" style="margin: 5px 0px !important; cursor: pointer;">
                 <div @click="showChatWindowsFlagMethod">
                   <el-col :sm="{span: 3}" :lg="{span:3}" :xs="{span: 5}">
                     <div class="block">
-                      <el-avatar :size="50" :src="avatarUrl"></el-avatar>
+                      <el-avatar :size="50" :src="avatarUrl" />
                     </div>
                   </el-col>
                   <el-col :sm="{span: 19}" :lg="{span:19}" :xs="{span: 19}">
@@ -125,11 +121,10 @@
                       <el-link :underline="false">鹿七七</el-link>
                     </el-col>
                     <el-col :sm="{span: 24}" :lg="{span:24}" :xs="{span: 24}" style="margin: 2px 0px;">
-                      你好！公号{{o}}为你服务2333....
+                      你好！公号{{ o }}为你服务2333....
                     </el-col>
                   </el-col>
-                  <el-col style="border-bottom: 1px solid #cccccc;" :sm="{span: 24}" :lg="{span:24}" :xs="{span: 24}">
-                  </el-col>
+                  <el-col style="border-bottom: 1px solid #cccccc;" :sm="{span: 24}" :lg="{span:24}" :xs="{span: 24}" />
                 </div>
               </el-col>
               <!-- ======================= 单独一条消息(结束) =========================  -->
@@ -139,12 +134,10 @@
       </transition>
       <!-- ======================= 我的消息(结束) =========================  -->
 
-
       <!-- ======================= 手机端聊天窗口 =========================  -->
       <transition name="el-zoom-in-center">
-        <div class="title-menu-min" style="max-height: 34.375rem !important; min-height: 34.375rem !important;" v-if="showChatWindowsFlag">
-          <el-page-header @back="goPhoneInfoLists" content="消息列表">
-          </el-page-header>
+        <div v-if="showChatWindowsFlag" class="title-menu-min" style="max-height: 34.375rem !important; min-height: 34.375rem !important;">
+          <el-page-header content="消息列表" @back="goPhoneInfoLists" />
 
           <!-- ======================= 聊天记录 =========================  -->
           <el-card class="box-card title-menu-min" style="width: 100%; max-height: 350px; min-height: 350px; background-color: #E4E5E5;">
@@ -153,14 +146,13 @@
               <div v-if="o.flag == 'left'">
                 <el-col :sm="{span: 2}" :lg="{span:2}" :xs="{span: 4}">
                   <div class="block">
-                    <el-avatar shape="square" :size="50" :src="avatarUrl"></el-avatar>
+                    <el-avatar shape="square" :size="50" :src="avatarUrl" />
                   </div>
                 </el-col>
                 <el-col :sm="{span: 18}" :lg="{span:18}" :xs="{span: 18}">
                   <el-card shadow="always" style="margin-left: 10px;" class="leftInfos">
-                    <div :key="o" class="text item send" v-html="o.content" style="width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;">
-                    </div>
-                   <!-- <div :class="o.userClass"></div> -->
+                    <div :key="o" class="text item send" style="width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;" v-html="o.content" />
+                    <!-- <div :class="o.userClass"></div> -->
                   </el-card>
                 </el-col>
               </div>
@@ -170,14 +162,13 @@
               <div v-if="o.flag == 'right'">
                 <el-col :lg="{span:18,offset: 4}" :xs="{span: 18,offset: 2}">
                   <el-card shadow="always" style="margin-right: 15px;" class="rightInfos">
-                    <div :key="o" class="text item send" v-html="o.content" style="width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;">
-                    </div>
-                   <!-- <div :class="o.userClass"></div> -->
+                    <div :key="o" class="text item send" style="width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;" v-html="o.content" />
+                    <!-- <div :class="o.userClass"></div> -->
                   </el-card>
                 </el-col>
                 <el-col class="phoneRightImage" :sm="{span: 2}" :lg="{span:2}" :xs="{span: 4}">
                   <div class="block">
-                    <el-avatar shape="square" :size="50" :src="avatarUrl"></el-avatar>
+                    <el-avatar shape="square" :size="50" :src="avatarUrl" />
                   </div>
                 </el-col>
               </div>
@@ -189,7 +180,7 @@
 
           <!-- ======================= 富文本编辑器 =========================  -->
           <el-row>
-            <quill-editor style="height: 100px;" ref="text" v-model="content" class="myQuillEditor" :options="editorOption" />
+            <quill-editor ref="text" v-model="content" style="height: 100px;" class="myQuillEditor" :options="editorOption" />
           </el-row>
 
           <el-row style="width: 6.25rem !important;">
@@ -205,120 +196,119 @@
   </div>
 </template>
 
-
 <script>
-  import {
+import {
+  quillEditor
+} from 'vue-quill-editor'
+
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+// 工具栏配置
+const toolbarOptions = [
+  ['image', 'video']
+]
+export default {
+
+  components: {
     quillEditor
-  } from 'vue-quill-editor'
-
-  import 'quill/dist/quill.core.css'
-  import 'quill/dist/quill.snow.css'
-  import 'quill/dist/quill.bubble.css'
-  // 工具栏配置
-  const toolbarOptions = [
-    ['image', 'video']
-  ]
-  export default {
-
-    components: {
-      quillEditor
-    },
-    methods: {
-      // 打开我的消息
-      openMyInfos() {
-        this.COMMON.startLoading();
-        this.myInfosFLag = true;
-        this.COMMON.stopLoading();
+  },
+  data() {
+    return {
+      // 手机端聊天Title
+      phoneTitle: '消息列表',
+      // 手机聊天消息列表
+      showInfoListsFlag: true,
+      // 手机聊天窗口
+      showChatWindowsFlag: false,
+      screenWidth: '',
+      screenHeight: '',
+      infoTopHtml: '',
+      isInfoPhoneFlag: false,
+      liaojlS: [],
+      content: '',
+      editorOption: {
+        modules: {
+          toolbar: toolbarOptions
+        }
       },
-      // 发送消息
-      submit() {
-        var newPojo = {
-          content: "LEFTINFO:" + this.$refs.text.value,
-          userClass: "leftArrow",
-          flag: "left"
-        };
-        var newPojo2 = {
-          content: "RIGHTINFO:" + this.$refs.text.value,
-          userClass: "rightArrow",
-          flag: "right"
-        };
-        this.liaojlS.push(newPojo)
-        this.liaojlS.push(newPojo2)
-        this.content = "";
-        console.log(this.$refs.text.value)
+      avatarUrl: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
+      myInfosFLag: false,
+      isShowMessage: true,
+      messageInfos: [{
+        'mid': 1,
+        'message': '信息1'
       },
-      // 手机端返回消息列表
-      goPhoneInfoLists() {
-        this.phoneTitle = "消息列表";
-        this.showInfoListsFlag = true;
-        this.showChatWindowsFlag = false;
-      },
-      // 手机端显示发送消息窗口
-      showChatWindowsFlagMethod() {
-        this.phoneTitle = "鹿七七";
-        this.showInfoListsFlag = false;
-        this.showChatWindowsFlag = true;
+      {
+        'mid': 2,
+        'message': '信息2'
       }
+      ]
+    }
+  },
+  mounted() {
+    this.screenWidth = document.body.clientWidth
+    this.screenHeight = document.body.clientHeight
+    if (this.screenWidth <= 1000) {
+      this.isInfoPhoneFlag = true
+      this.infoTopHtml = '1vh'
+    } else {
+      this.isInfoPhoneFlag = false
+      this.infoTopHtml = '10vh'
+    }
+    window.onresize = () => {
+      return (() => {
+        this.screenWidth = document.body.clientWidth
+        this.screenHeight = document.body.clientHeight
+        // 判断宽度是否小于500 小于500 全部全屏显示
+        if (this.screenWidth <= 1000) {
+          this.isInfoPhoneFlag = true
+          this.infoTopHtml = '1vh'
+        } else {
+          this.isInfoPhoneFlag = false
+          this.infoTopHtml = '10vh'
+        }
+      })()
+    }
+  },
+  methods: {
+    // 打开我的消息
+    openMyInfos() {
+      this.COMMON.startLoading()
+      this.myInfosFLag = true
+      this.COMMON.stopLoading()
     },
-    data() {
-      return {
-        // 手机端聊天Title
-        phoneTitle: "消息列表",
-        // 手机聊天消息列表
-        showInfoListsFlag: true,
-        // 手机聊天窗口
-        showChatWindowsFlag: false,
-        screenWidth: '',
-        screenHeight: '',
-        infoTopHtml: '',
-        isInfoPhoneFlag: false,
-        liaojlS: [],
-        content: '',
-        editorOption: {
-          modules: {
-            toolbar: toolbarOptions
-          }
-        },
-        avatarUrl: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
-        myInfosFLag: false,
-        isShowMessage: true,
-        messageInfos: [{
-            'mid': 1,
-            'message': '信息1'
-          },
-          {
-            'mid': 2,
-            'message': '信息2'
-          }
-        ]
+    // 发送消息
+    submit() {
+      var newPojo = {
+        content: 'LEFTINFO:' + this.$refs.text.value,
+        userClass: 'leftArrow',
+        flag: 'left'
       }
+      var newPojo2 = {
+        content: 'RIGHTINFO:' + this.$refs.text.value,
+        userClass: 'rightArrow',
+        flag: 'right'
+      }
+      this.liaojlS.push(newPojo)
+      this.liaojlS.push(newPojo2)
+      this.content = ''
+      console.log(this.$refs.text.value)
     },
-    mounted() {
-      this.screenWidth = document.body.clientWidth
-      this.screenHeight = document.body.clientHeight
-      if (this.screenWidth <= 1000) {
-        this.isInfoPhoneFlag = true
-        this.infoTopHtml = '1vh'
-      } else {
-        this.isInfoPhoneFlag = false
-        this.infoTopHtml = '10vh'
-      }
-      window.onresize = () => {
-        return (() => {
-          this.screenWidth = document.body.clientWidth
-          this.screenHeight = document.body.clientHeight
-          // 判断宽度是否小于500 小于500 全部全屏显示
-          if (this.screenWidth <= 1000) {
-            this.isInfoPhoneFlag = true
-            this.infoTopHtml = '1vh'
-          } else {
-            this.isInfoPhoneFlag = false
-            this.infoTopHtml = '10vh'
-          }
-        })()
-      }
+    // 手机端返回消息列表
+    goPhoneInfoLists() {
+      this.phoneTitle = '消息列表'
+      this.showInfoListsFlag = true
+      this.showChatWindowsFlag = false
+    },
+    // 手机端显示发送消息窗口
+    showChatWindowsFlagMethod() {
+      this.phoneTitle = '鹿七七'
+      this.showInfoListsFlag = false
+      this.showChatWindowsFlag = true
     }
   }
+}
 </script>
 <style>
 
@@ -349,7 +339,6 @@
       display: none !important;
     }
   }
-
 
   @media only screen and (min-width: 1200px) and (max-width: 1400px) {
     .rightInfos {
