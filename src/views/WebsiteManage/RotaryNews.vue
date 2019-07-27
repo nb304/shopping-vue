@@ -381,6 +381,24 @@ export default {
   #RotaryNews .el-table__row td {
     padding: 3px 0;
   }
+
+  #RotaryNews .el-divider span{
+  color: #606266;font-weight:bold;
+}
+
+#RotaryNews .el-table th .cell{
+  word-break: keep-all;
+  white-space:nowrap;
+  padding: 0px  0px;
+}
+#RotaryNews .el-table th{
+  padding: 2px 0px;
+  padding-left: 10px;
+  color: #606266;
+}
+#RotaryNews .el-table td{
+  padding: 0px;
+}
 </style>
 
 

@@ -192,6 +192,23 @@ export default {
   #capitalShop .el-table__row td {
     padding: 3px 0;
   }
+  #capitalShop .el-divider span{
+  color: #606266;font-weight:bold;
+}
+
+#capitalShop .el-table th .cell{
+  word-break: keep-all;
+  white-space:nowrap;
+  padding: 0px  0px;
+}
+#capitalShop .el-table th{
+  padding: 2px 0px;
+  padding-left: 10px;
+  color: #606266;
+}
+#capitalShop .el-table td{
+  padding: 0px;
+}
 </style>
 
 
