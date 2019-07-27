@@ -59,7 +59,7 @@
               <span>个人中心</span>
             </el-dropdown-item>
           </router-link>
-          <router-link to="/chat">
+          <router-link to="/chatManage">
             <el-dropdown-item>
               <el-badge style="margin-bottom: 0px !important;" :value="3" class="item">
                 <!-- @click="openMyInfos" -->
