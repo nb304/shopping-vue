@@ -1,29 +1,19 @@
 <template>
   <div class="drawer-container">
     <div>
-      <h3 class="drawer-title">Page style setting</h3>
+      <h3 class="drawer-title">系统基础设置</h3>
 
       <div class="drawer-item">
-        <span>Theme Color</span>
+        <span>系统主题</span>
         <theme-picker
           style="float: right;height: 26px;margin: -3px 8px 0 0;"
         />
       </div>
-
-      <div class="drawer-item">
-        <span>Open Tags-View</span>
-        <el-switch class="drawer-switch" />
-      </div>
-
-      <div class="drawer-item">
-        <span>Fixed Header</span>
-        <el-switch class="drawer-switch" />
-      </div>
-
+<!--
       <div class="drawer-item">
         <span>Sidebar Logo</span>
         <el-switch class="drawer-switch" />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
