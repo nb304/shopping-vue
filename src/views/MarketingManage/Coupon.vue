@@ -1,6 +1,5 @@
 <template>
   <div id="Coupon" style="margin:1rem;">
-
     <el-form ref="form" :model="form" label-width="100px">
       <el-row :gutter="24">
         <el-col :sm="{span: 6}" :xs="{span: 24}">
@@ -84,18 +83,18 @@
       <el-table-column prop="tiemEnd" label="结束时间" show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="num" label="发放个数" show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="shops" label="开始时间" show-overflow-tooltip="true"></el-table-column>
-       <el-table-column prop="created_at" show-overflow-tooltip="true">
-            <template slot="header" slot-scope="scope">
-              <span>优惠范围</span>
-            </template>
-            <template slot-scope="scope">
-              <el-button
-                type="text"
-                size="20px"
-                @click.native.prevent="addShops(scope.$index, list)"
-              >添加商品</el-button>
-            </template>
-          </el-table-column>
+      <el-table-column prop="created_at" show-overflow-tooltip="true">
+        <template slot="header" slot-scope="scope">
+          <span>优惠范围</span>
+        </template>
+        <template slot-scope="scope">
+          <el-button
+            type="text"
+            size="20px"
+            @click.native.prevent="addShops(scope.$index, list)"
+          >添加商品</el-button>
+        </template>
+      </el-table-column>
 
       <el-table-column fixed="right" label="操作" width="150" style="padding: 3px 0;">
         <template slot-scope="scope">
@@ -183,7 +182,7 @@
 
     <!--===================添加优惠券商品(开始)========================-->
     <el-dialog title="参与优惠商品" :visible.sync="addShopsVisible" width="80%">
-      <el-button type="primary" @click=" ">删除</el-button>
+      <el-button type="primary">删除</el-button>
       <el-button type="primary" @click="addAllShops()">选择参与优惠商品/店铺</el-button>
 
       <el-table
@@ -440,38 +439,37 @@ export default {
 
 <style>
 @media only screen and (min-width: 310px) and (max-width: 500px) {
-    #Coupon .el-form-item__content {
-      width: 100% !important;
-    }
-
-    #Coupon .storeTypeSearchForm .el-form-item__content {
-      width: 75% !important;
-    }
+  #Coupon .el-form-item__content {
+    width: 100% !important;
   }
 
-  #Coupon .el-range-separator {
-    width: 10% !important;
+  #Coupon .storeTypeSearchForm .el-form-item__content {
+    width: 75% !important;
   }
+}
 
-  #Coupon .el-divider span {
-    color: #606266;
-    font-weight: bold;
-  }
+#Coupon .el-range-separator {
+  width: 10% !important;
+}
 
-  #Coupon .el-table__row th .cell {
-    word-break: keep-all;
-    white-space: nowrap;
-    padding: 0px 0px;
-  }
+#Coupon .el-divider span {
+  color: #606266;
+  font-weight: bold;
+}
 
-  #Coupon .el-table__row th {
-    padding: 3px 0px;
-    padding-left: 10px;
-    color: #606266;
+#Coupon .el-table__row th .cell {
+  word-break: keep-all;
+  white-space: nowrap;
+  padding: 0px 0px;
+}
 
-  }
+#Coupon .el-table__row th {
+  padding: 3px 0px;
+  padding-left: 10px;
+  color: #606266;
+}
 
-  #Coupon .el-table__row td {
-    padding: 3px 0;
-  }
+#Coupon .el-table__row td {
+  padding: 3px 0;
+}
 </style>

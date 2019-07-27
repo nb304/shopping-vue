@@ -387,7 +387,7 @@
           ps: ''
         },
         // 个人信息的头像
-        url: 'http://39.105.41.2:8080/uec//media/file//124F79B0F5B3C04B0255215715AB9F57.png',
+        url: 'http://39.105.41.2:8080/uec//media/file//ideaBackImg.jpg',
         // 是否是观看的个人信息
         isShowMyInfo: true,
         // 是否修改个人信息

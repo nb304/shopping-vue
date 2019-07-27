@@ -49,7 +49,8 @@
           <el-input ref="username" v-model="loginCodeForm.code" placeholder="请输入验证码" name="phone" type="text" tabindex="1"
             auto-complete="on" />
 
-          <el-button :loading="sendLoading" type="info" plain style="opacity: 0.5; position: absolute; top: 5px;right: 10px;;" @click="sendCode">{{sendCodeBtn}}</el-button>
+          <el-button :loading="sendLoading" type="info" plain style="opacity: 0.5; position: absolute; top: 5px;right: 10px;;"
+            @click="sendCode">{{sendCodeBtn}}</el-button>
         </el-form-item>
       </div>
       <!-- ======================= 使用验证码登入(结束) =========================  -->
@@ -67,8 +68,14 @@
           </span>
         </div>
       </transition>
-
     </el-form>
+
+
+    <div style="position: fixed; bottom: 0px;">
+      <el-alert title="使用系统前提介绍" type="info" close-text="知道了,前往下载" @close="gotoDownLoadChrome"
+      description="为了提高用户体验,使用本系统请尽量使用谷歌浏览器(Chrome)">
+      </el-alert>
+    </div>
   </div>
 </template>
 
@@ -143,6 +150,10 @@
       }
     },
     methods: {
+      // 前往下载Chrome
+      gotoDownLoadChrome() {
+        window.open("https://www.google.cn/chrome/");
+      },
       // 发送验证码
       sendCode() {
         if (this.isSendFlagCode) {
