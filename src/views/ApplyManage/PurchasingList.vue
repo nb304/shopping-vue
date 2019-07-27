@@ -647,6 +647,10 @@ export default {
     color: #606266;font-weight:bold;
   }
 
+  #purchasingList .el-date-editor{
+      width: 105% !important;
+  }
+
   #purchasingList div[role="dialog"]{
     margin-top: 30px !important;
   }

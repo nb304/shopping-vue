@@ -469,6 +469,10 @@ export default {
     padding: 0px !important;
   }
 
+  #orderSign .el-date-editor{
+    width: 105% !important;
+  }
+
   /*对编辑人员信息弹出框设置样式*/
   #orderSign div.el-dialog:nth-child(1){
     margin-top: 30px !important;

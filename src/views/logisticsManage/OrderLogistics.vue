@@ -586,6 +586,13 @@ export default {
     white-space:nowrap;
     padding: 0px  0px;
   }
+
+  #orderLogistics .el-date-editor,#orderLogistics .el-select{
+    width: 105% !important;
+  }
+
+
+
   #orderLogistics .el-table th{
     padding: 2px 0px;
     padding-left: 10px;
