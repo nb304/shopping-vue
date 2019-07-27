@@ -1,5 +1,5 @@
 <template>
-  <div id="listArea">
+  <div id="customer" style="margin:30px ;">
     <!--==================表单提交(开始)========================-->
     <el-form ref="form" :model="form" label-width="80px">
       <el-row :gutter="24">
@@ -45,7 +45,7 @@
       <el-table-column prop="shopName" label="客服联系方式" min-width="120" show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="shopName" label="管理范围" show-overflow-tooltip="true"></el-table-column>
 
-      <el-table-column fixed="right" label="操作" width="150">
+      <el-table-column fixed="right" label="操作" min-width="60" max-width="120">
         <template slot-scope="scope">
           <el-button type="text" size="small">删除</el-button>
         </template>
@@ -190,9 +190,45 @@ export default {
 </script>
 
 <style>
-#listArea {
-  margin: 30px;
-}
+ @media only screen and (min-width: 310px) and (max-width: 500px) {
+    #customer .el-form-item__content {
+      width: 100% !important;
+    }
+
+    #customer .storeTypeSearchForm .el-form-item__content {
+      width: 75% !important;
+    }
+  }
+
+  #customer .el-form-item__content {
+    width: 80%;
+  }
+
+  #customer .el-range-separator {
+    width: 10% !important;
+  }
+
+  #customer .el-divider span {
+    color: #606266;
+    font-weight: bold;
+  }
+
+  #customer .el-table__row th .cell {
+    word-break: keep-all;
+    white-space: nowrap;
+    padding: 0px 0px;
+  }
+
+  #customer .el-table__row th {
+    padding: 3px 0px;
+    padding-left: 10px;
+    color: #606266;
+
+  }
+
+  #customer .el-table__row td {
+    padding: 3px 0;
+  }
 </style>
 
 

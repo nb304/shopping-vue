@@ -1,5 +1,5 @@
 <template>
-  <div id="listArea">
+  <div id="capitalOrder" style="margin:30px ;">
     <!--==================表单提交(开始)========================-->
     <el-form ref="form" :model="form" label-width="100px">
       <el-row :gutter="24">
@@ -10,13 +10,13 @@
         </el-col>
 
         <el-col :sm="{span: 7}" :xs="{span: 23}">
-          <el-form-item label="用户名">
+          <el-form-item label="用户名" label-width="140px">
             <el-input v-model="form.region" placeholder="请输入用户名"></el-input>
           </el-form-item>
         </el-col>
 
         <el-col :sm="{span: 7}" :xs="{span: 23}">
-          <el-form-item label="订单状态">
+          <el-form-item label="订单状态" label-width="140px">
             <el-select v-model="form.region" placeholder="请选择订单状态">
               <el-option label="全部" value="shanghai"></el-option>
               <el-option label="已付款" value="beijing"></el-option>
@@ -26,30 +26,30 @@
           </el-form-item>
         </el-col>
 
-        <el-col :sm="{span: 7}" :xs="{span: 23}" style="padding-left:0">
-          <el-form-item label="提交审核时间" label-width="110px">
+        <el-col :sm="{span: 7}" :xs="{span: 23}" >
+          <el-form-item label="提交审核时间" label-width="100px">
             <el-date-picker
               type="date"
               placeholder="选择提交审核时间"
               v-model="form.date1"
-              style="width: 100%;"
+              style="width: 100%"
             ></el-date-picker>
           </el-form-item>
         </el-col>
 
-        <el-col :sm="{span: 7}" :xs="{span: 23}" style="padding-left: 0;">
-          <el-form-item label="确认审核时间" label-width="110px">
+        <el-col :sm="{span: 7}" :xs="{span: 23}" >
+          <el-form-item label="确认审核时间" label-width="140px">
             <el-date-picker
               type="date"
               placeholder="选择确认审核时间"
               v-model="form.date2"
-              style="width: 100%;"
+              style="width: 100%"
             ></el-date-picker>
           </el-form-item>
         </el-col>
 
         <el-col :sm="{span: 4}" :xs="{span: 23}" style="margin-left: 62px">
-          <el-form-item label-width="40px">
+          <el-form-item label-width="80px">
             <el-button type="primary" style="width: 100%;">查询</el-button>
           </el-form-item>
         </el-col>
@@ -157,9 +157,45 @@ export default {
 </script>
 
 <style>
-#listArea {
-  margin: 30px;
-}
+ @media only screen and (min-width: 310px) and (max-width: 500px) {
+    #capitalOrder .el-form-item__content {
+      width: 100% !important;
+    }
+
+    #capitalOrder .storeTypeSearchForm .el-form-item__content {
+      width: 75% !important;
+    }
+  }
+
+  #capitalOrder .el-form-item__content {
+    width: 80%;
+  }
+
+  #capitalOrder .el-range-separator {
+    width: 10% !important;
+  }
+
+  #capitalOrder .el-divider span {
+    color: #606266;
+    font-weight: bold;
+  }
+
+  #capitalOrder .el-table__row th .cell {
+    word-break: keep-all;
+    white-space: nowrap;
+    padding: 0px 0px;
+  }
+
+  #capitalOrder .el-table__row th {
+    padding: 3px 0px;
+    padding-left: 10px;
+    color: #606266;
+
+  }
+
+  #capitalOrder .el-table__row td {
+    padding: 3px 0;
+  }
 </style>
 
 

@@ -1,16 +1,17 @@
 <template>
-  <div id="listArea">
+  <div id="capitalShop" style="margin:30px;">
     <!--==================表单提交(开始)========================-->
-    <el-form ref="form" :model="form" label-width="100px">
+    <el-form ref="form" :model="form" label-width="80px">
+
       <el-row :gutter="24">
-        <el-col :sm="{span: 7}" :xs="{span: 24}">
+        <el-col :sm="{span: 6}" :xs="{span: 24}">
           <el-form-item label="店铺名称">
             <el-input v-model="form.region" placeholder="请输入店铺名称"></el-input>
           </el-form-item>
         </el-col>
 
-        <el-col :sm="{span: 7}" :xs="{span: 24}" style="padding:0">
-          <el-form-item label="提交审核时间" label-width="110px">
+        <el-col :sm="{span: 6}" :xs="{span: 24}" style="padding:0">
+          <el-form-item label="提交审核时间" label-width="130px">
             <el-date-picker
               type="date"
               placeholder="选择提交审核时间"
@@ -20,8 +21,8 @@
           </el-form-item>
         </el-col>
 
-        <el-col :sm="{span: 7}" :xs="{span: 24}" style="padding: 0;">
-          <el-form-item label="确认审核时间" label-width="110px">
+        <el-col :sm="{span: 6}" :xs="{span: 24}" style="padding: 0;">
+          <el-form-item label="确认审核时间" label-width="190px">
             <el-date-picker
               type="date"
               placeholder="选择确认审核时间"
@@ -32,7 +33,7 @@
         </el-col>
 
         <el-col :sm="{span: 3}" :xs="{span: 24}">
-          <el-form-item label-width="40px">
+          <el-form-item label-width="140px">
             <el-button type="primary" style="width: 100% ;" @click="deleteEvaluate">查询</el-button>
           </el-form-item>
         </el-col>
@@ -64,7 +65,7 @@
 
       <el-table-column fixed="right" label="操作" width="150" style="padding: 3px 0;">
         <template slot-scope="scope">
-          <el-button type="text" size="mini" style="padding:2px 15px !important;">删除</el-button>
+          <el-button type="text" size="primary">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -152,9 +153,45 @@ export default {
 </script>
 
 <style>
-#listArea {
-  margin: 30px;
-}
+@media only screen and (min-width: 310px) and (max-width: 500px) {
+    #capitalShop .el-form-item__content {
+      width: 100% !important;
+    }
+
+    #capitalShop .storeTypeSearchForm .el-form-item__content {
+      width: 75% !important;
+    }
+  }
+
+  #capitalShop .el-form-item__content {
+    width: 80%;
+  }
+
+  #capitalShop .el-range-separator {
+    width: 10% !important;
+  }
+
+  #capitalShop .el-divider span {
+    color: #606266;
+    font-weight: bold;
+  }
+
+  #capitalShop .el-table__row th .cell {
+    word-break: keep-all;
+    white-space: nowrap;
+    padding: 0px 0px;
+  }
+
+  #capitalShop .el-table__row th {
+    padding: 3px 0px;
+    padding-left: 10px;
+    color: #606266;
+
+  }
+
+  #capitalShop .el-table__row td {
+    padding: 3px 0;
+  }
 </style>
 
 

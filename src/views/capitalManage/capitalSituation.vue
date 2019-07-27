@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="capitalSituation" style="margin: 1rem">
     <el-row :gutter="20">
       <el-col :lg="{span: 24}" :xs="{span: 24}" style="margin-bottom: 10px;">
         <el-card
@@ -287,10 +287,45 @@ export default {
 </script>
 
 <style scoped>
-#app {
-  box-sizing: border-box;
-  padding: 1rem 1rem;
-}
+@media only screen and (min-width: 310px) and (max-width: 500px) {
+    #capitalSituation .el-form-item__content {
+      width: 100% !important;
+    }
+
+    #capitalSituation .storeTypeSearchForm .el-form-item__content {
+      width: 75% !important;
+    }
+  }
+
+  #capitalSituation .el-form-item__content {
+    width: 80%;
+  }
+
+  #capitalSituation .el-range-separator {
+    width: 10% !important;
+  }
+
+  #capitalSituation .el-divider span {
+    color: #606266;
+    font-weight: bold;
+  }
+
+  #capitalSituation .el-table__row th .cell {
+    word-break: keep-all;
+    white-space: nowrap;
+    padding: 0px 0px;
+  }
+
+  #capitalSituation .el-table__row th {
+    padding: 3px 0px;
+    padding-left: 10px;
+    color: #606266;
+
+  }
+
+  #capitalSituation .el-table__row td {
+    padding: 3px 0;
+  }
 .el-range-separator {
   width: 1rem !important;
 }
