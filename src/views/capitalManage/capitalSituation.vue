@@ -326,6 +326,24 @@ export default {
   #capitalSituation .el-table__row td {
     padding: 3px 0;
   }
+#capitalSituation .el-divider span{
+  color: #606266;font-weight:bold;
+}
+
+#capitalSituation .el-table th .cell{
+  word-break: keep-all;
+  white-space:nowrap;
+  padding: 0px  0px;
+}
+#capitalSituation .el-table th{
+  padding: 2px 0px;
+  padding-left: 10px;
+  color: #606266;
+}
+#capitalSituation .el-table td{
+  padding: 0px;
+}
+
 .el-range-separator {
   width: 1rem !important;
 }

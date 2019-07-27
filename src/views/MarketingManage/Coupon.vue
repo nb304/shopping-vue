@@ -439,13 +439,17 @@ export default {
 
 <style>
 @media only screen and (min-width: 310px) and (max-width: 500px) {
-  #Coupon .el-form-item__content {
+  #Promotion .el-form-item__content {
     width: 100% !important;
   }
 
-  #Coupon .storeTypeSearchForm .el-form-item__content {
+  #Promotion .storeTypeSearchForm .el-form-item__content {
     width: 75% !important;
   }
+}
+
+#Coupon .el-form-item__content {
+  width: 80%;
 }
 
 #Coupon .el-range-separator {
@@ -472,4 +476,22 @@ export default {
 #Coupon .el-table__row td {
   padding: 3px 0;
 }
+#Coupon .el-divider span{
+  color: #606266;font-weight:bold;
+}
+
+#Coupon .el-table th .cell{
+  word-break: keep-all;
+  white-space:nowrap;
+  padding: 0px  0px;
+}
+#Coupon .el-table th{
+  padding: 2px 0px;
+  padding-left: 10px;
+  color: #606266;
+}
+#Coupon .el-table td{
+  padding: 0px;
+}
+
 </style>
