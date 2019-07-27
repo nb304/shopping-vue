@@ -120,9 +120,9 @@ export const constantRoutes = [{
     }
   },
   {
-    path: 'tree',
-    name: 'Tree',
-    component: () => import('@/views/tree/index'),
+    path: 'FreightManage',
+    name: 'FreightManage',
+    component: () => import('@/views/ProductManage/FreightManage'),
     meta: {
       title: '商品运费管理'
     }
@@ -245,26 +245,26 @@ export const constantRoutes = [{
   ]
 },
 {
-  path: '/nested2',
+  path: '/UserManage',
   component: Layout,
-  redirect: '/nested/menu1',
+  redirect: '/UserManage/UserList',
   name: 'Nested15',
   meta: {
     title: '用户管理',
     icon: 'yonghuguanli'
   },
   children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
+    path: '/UserList',
+    component: () => import('@/views/UserManage/UserList'), // Parent router-view
+    name: 'UserList',
     meta: {
       title: '成员角色管理'
     }
   },
   {
-    path: 'menu1-2-1',
-    component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-    name: 'Menu1-2-1',
+    path: '/UserList',
+    component: () => import('@/views/UserManage/UserList'),
+    name: 'UserList',
     meta: {
       title: '用户账号列表'
     }

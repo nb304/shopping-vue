@@ -167,18 +167,7 @@
               </el-table-column>
             </el-table>
           </el-col>
-          <el-col :lg="{span: 3, offset: 15}" :xs="{span: 24}">
-            <el-pagination
-              background
-              layout="prev, pager, next"
-              :current-page="currentPage"
-              :total="total"
-              page-size="3"
-              lgall="false"
-              style="margin-top: 15px;margin-right: 10px;"
-              @current-change="handleSizeChange"
-            />
-          </el-col>
+
 
           <!--=========================修改店铺人员权限及信息对应的弹出框 开始==================================-->
           <el-dialog
@@ -273,6 +262,23 @@
       <!--=================店铺人员信息标签模块(结束)========================-->
 
     </el-row>
+
+    <!--==================分页组件(开始)========================-->
+    <el-row :gutter="24">
+      <el-col :sm="{span: 4, offset: 18}" :xs="{span: 24}">
+        <el-pagination
+          background
+          layout="prev, pager, next"
+          :current-page="currentPage"
+          :total="total"
+          page-size="3"
+          small="false"
+          style="margin-top: 15px;margin-right: 10px;"
+          @current-change="handleSizeChange"
+        />
+      </el-col>
+    </el-row>
+    <!--==================分页组件(结束)========================-->
 
   </div>
 
