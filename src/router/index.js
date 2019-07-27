@@ -219,9 +219,9 @@ export const constantRoutes = [{
     }
   },
   {
-    path: '/StoreUserManage',
+    path: '/storeUserManage',
     component: () => import('@/views/StoreManage/StoreUserManage'),
-    name: 'StoreUserManage',
+    name: 'storeUserManage',
     meta: {
       title: '店铺人员管理'
     }
@@ -254,9 +254,9 @@ export const constantRoutes = [{
     icon: 'yonghuguanli'
   },
   children: [{
-    path: '/UserList',
-    component: () => import('@/views/UserManage/UserList'), // Parent router-view
-    name: 'UserList',
+    path: '/RoleList',
+    component: () => import('@/views/UserManage/RoleList'), // Parent router-view
+    name: 'RoleList',
     meta: {
       title: '成员角色管理'
     }

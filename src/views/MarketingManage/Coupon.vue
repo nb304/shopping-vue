@@ -1,5 +1,5 @@
 <template>
-  <div id="listArea">
+  <div id="couponDiv" style="margin: 30px;">
     <el-form :inline="true" class="demo-form-inline searchForm">
       <el-row :gutter="24">
         <el-col :sm="{span: 8}" :xs="{span: 24}">
@@ -317,7 +317,7 @@
         </el-col>
       </el-row>
       <!-- 分页 -->
-      
+
       <div slot="footer" class="dialog-footer">
         <el-button @click="addShopsVisible = false">关闭窗口</el-button>
       </div>
@@ -325,7 +325,7 @@
     <!--===================添加优惠券商品(结束)========================-->
 
     <!--===================添加参与优惠商品(开始)========================-->
-     <el-dialog title="参与优惠商品" :visible.sync="addAllShopsVisible" width="60%">  
+     <el-dialog title="参与优惠商品" :visible.sync="addAllShopsVisible" width="60%">
 
       <el-button type="primary"  @click="addSuccess">添加</el-button>
 
@@ -384,7 +384,7 @@
         </el-col>
       </el-row>
       <!-- 分页 -->
-      
+
       <div slot="footer" class="dialog-footer">
         <el-button @click="addAllShopsVisible = false">关闭窗口</el-button>
       </div>
@@ -515,5 +515,27 @@ export default {
 </script>
 
 <style >
+
+	#couponDiv .el-divider span {
+	  color: #606266;
+	  font-weight: bold;
+	}
+
+	#couponDiv .el-table__row th .cell {
+	  word-break: keep-all;
+	  white-space: nowrap;
+	  padding: 0px 0px;
+	}
+
+	#couponDiv .el-table__row th {
+	  padding: 3px 0px;
+	  padding-left: 10px;
+	  color: #606266;
+
+	}
+
+	#couponDiv .el-table__row td {
+	  padding: 3px 0;
+	}
 
 </style>
