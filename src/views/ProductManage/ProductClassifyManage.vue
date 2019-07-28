@@ -2,7 +2,7 @@
 <template>
   <div id="productClassify" v-loading="ProductLeiMuLoadings.productLeiMuCommonLoading">
 
-    <!-- ======================= 商品类目按钮集合 =========================  -->
+    <!-- ======================= 商品类目按钮集合  =========================  -->
     <el-form :inline="true" :model="searchBrandForm" class="demo-form-inline">
       <el-row :gutter="24">
         <el-col :sm="{span: 8}" :xs="{span: 23}">
