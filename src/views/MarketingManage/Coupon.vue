@@ -12,8 +12,8 @@
         <el-col :sm="{span: 6}" :xs="{span: 24}">
           <el-form-item label="优惠券类型">
             <el-select v-model="orderCast" placeholder="选择">
-              <el-option label="普通订单" value="普通订单" />
-              <el-option label="优惠订单" value="优惠订单" />
+              <el-option label="店铺优惠" value="店铺优惠" />
+              <el-option label="商品优惠" value="商品优惠" />
             </el-select>
           </el-form-item>
         </el-col>
@@ -131,7 +131,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="优惠类型">
+            <el-form-item label="优惠券类型">
               <el-select v-model="form.region" placeholder="请选择优惠的类型">
                 <el-option label="店铺优惠" value="shanghai"></el-option>
                 <el-option label="商品优惠" value="beijing"></el-option>

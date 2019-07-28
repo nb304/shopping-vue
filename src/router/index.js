@@ -288,7 +288,7 @@ export const constantRoutes = [{
           title: '订单列表'
         }
       },
-      {
+      { 
         path: 'orderReview',
         component: () => import('@/views/OrderManage/OrderReview'),
         name: '订单审核',
@@ -428,7 +428,7 @@ export const constantRoutes = [{
     }]
   },
   {
-    path: 'potaryNews',
+    path: '/potaryNews',
     component: Layout,
     redirect: '/potaryNews/rotaryNews',
     name: '网站管理',
