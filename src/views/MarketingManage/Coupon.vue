@@ -10,16 +10,16 @@
 
         <el-col :sm="{span: 6}" :xs="{span: 24}">
           <el-form-item label="优惠券类型">
-            <el-input v-model="form.region" placeholder="输入名称"></el-input>
-          </el-form-item>
-        </el-col>
-
-        <el-col :sm="{span: 6}" :xs="{span: 24}">
-          <el-form-item label="订单类型">
             <el-select v-model="orderCast" placeholder="选择">
               <el-option label="普通订单" value="普通订单" />
               <el-option label="优惠订单" value="优惠订单" />
             </el-select>
+          </el-form-item>
+        </el-col>
+
+        <el-col :sm="{span: 6}" :xs="{span: 24}">
+          <el-form-item label="优惠门槛">
+            <el-input v-model="form.region" placeholder="输入金额"></el-input>
           </el-form-item>
         </el-col>
 
@@ -77,12 +77,11 @@
       <el-table-column prop="brandNumber" label="编号" width="100" show-overflow-tooltip="true" />
       <el-table-column prop="title" label="优惠券标题" show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="type" label="优惠券类型" show-overflow-tooltip="true"></el-table-column>
-      <el-table-column prop="term" label="优惠条件" show-overflow-tooltip="true"></el-table-column>
+      <el-table-column prop="term" label="优惠门槛" show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="money" label="优惠金额" show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="timeState" label="开始时间" show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="tiemEnd" label="结束时间" show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="num" label="发放个数" show-overflow-tooltip="true"></el-table-column>
-      <el-table-column prop="shops" label="开始时间" show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="created_at" show-overflow-tooltip="true">
         <template slot="header" slot-scope="scope">
           <span>优惠范围</span>
@@ -126,21 +125,28 @@
       <el-row :gutter="24">
         <el-form ref="form" :model="form" label-width="80px">
           <el-col :span="12">
-            <el-form-item label="优惠类型">
-              <el-select v-model="form.region" placeholder="请选择活动区域">
-                <el-option label="店铺优惠" value="shanghai"></el-option>
-                <el-option label="商品优惠" value="beijing"></el-option>
-              </el-select>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
             <el-form-item label="优惠标题">
               <el-input v-model="form.tiele" placeholder="优惠标题"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="满减门槛">
+            <el-form-item label="优惠类型">
+              <el-select v-model="form.region" placeholder="请选择优惠的类型">
+                <el-option label="店铺优惠" value="shanghai"></el-option>
+                <el-option label="商品优惠" value="beijing"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+
+          <el-col :span="12">
+            <el-form-item label="优惠门槛">
               <el-input v-model="form.hig" placeholder="满减门槛"></el-input>
+            </el-form-item>
+          </el-col>
+
+           <el-col :span="12">
+            <el-form-item label="优惠金额">
+              <el-input v-model="form.hig" placeholder="优惠金额"></el-input>
             </el-form-item>
           </el-col>
 
@@ -181,7 +187,7 @@
     <!--===================添加优惠券信息(结束)========================-->
 
     <!--===================添加优惠券商品(开始)========================-->
-    <el-dialog title="参与优惠商品" :visible.sync="addShopsVisible" width="80%">
+    <el-dialog title="参与优惠商品" :visible.sync="addShopsVisible" width="50%">
       <el-button type="primary">删除</el-button>
       <el-button type="primary" @click="addAllShops()">选择参与优惠商品/店铺</el-button>
 
@@ -448,10 +454,6 @@ export default {
   }
 }
 
-#Coupon .el-form-item__content {
-  width: 80%;
-}
-
 #Coupon .el-range-separator {
   width: 10% !important;
 }
@@ -476,22 +478,22 @@ export default {
 #Coupon .el-table__row td {
   padding: 3px 0;
 }
-#Coupon .el-divider span{
-  color: #606266;font-weight:bold;
+#Coupon .el-divider span {
+  color: #606266;
+  font-weight: bold;
 }
 
-#Coupon .el-table th .cell{
+#Coupon .el-table th .cell {
   word-break: keep-all;
-  white-space:nowrap;
-  padding: 0px  0px;
+  white-space: nowrap;
+  padding: 0px 0px;
 }
-#Coupon .el-table th{
+#Coupon .el-table th {
   padding: 2px 0px;
   padding-left: 10px;
   color: #606266;
 }
-#Coupon .el-table td{
+#Coupon .el-table td {
   padding: 0px;
 }
-
 </style>
