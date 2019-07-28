@@ -1,3 +1,4 @@
+<!--======用户账号列表模块=======-->
 <template>
 
   <div id="userList">
@@ -161,8 +162,12 @@
             </template>
           </el-table-column>
 
-          <el-table-column fixed="right" label="操作" header-align="center" align="center" width="230px">
+          <el-table-column  label="操作" header-align="center" align="center" width="230px">
             <template slot-scope="scope">
+
+
+              <el-button type="text" size="20px" style="margin-right: 14px" @click.native.prevent="checkHandle(scope.row, list)"> 查看</el-button>
+              <el-button type="text" size="20px" style="margin-right: 14px" @click.native.prevent="jurisdictionHandle(scope.row, list)">权限</el-button>
 
               <el-popover
                 placement="right"
@@ -170,17 +175,14 @@
                 trigger="click"
               >
                 <el-select v-model="userState" placeholder="选择">
-                  <el-option label="锁定" value="锁定" />
+                  <el-option label="删除" value="删除" />
                   <el-option label="注销" value="注销" />
                 </el-select>
                 <div style="text-align: right; margin-top:5px">
                   <el-button type="primary" size="mini">确定</el-button>
                 </div>
-                <el-button slot="reference" style="border: none;margin-right: 14px;color: #409EFF">设置</el-button>
+                <el-button slot="reference" style="border: none;color: #409EFF">设置</el-button>
               </el-popover>
-
-              <el-button type="text" size="20px" style="margin-right: 14px" @click.native.prevent="checkHandle(scope.row, list)"> 查看</el-button>
-              <el-button type="text" size="20px" @click.native.prevent="jurisdictionHandle(scope.row, list)">权限</el-button>
             </template>
           </el-table-column>
 

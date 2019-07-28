@@ -1,50 +1,52 @@
+<!--======订单资金模板=======-->
 <template>
+
   <div id="capitalOrder" style="margin:30px ;">
     <!--==================表单提交(开始)========================-->
     <el-form ref="form" :model="form" label-width="100px">
       <el-row :gutter="24">
         <el-col :sm="{span: 7}" :xs="{span: 23}">
           <el-form-item label="订单编号">
-            <el-input v-model="form.region" placeholder="请输入订单编号"></el-input>
+            <el-input v-model="form.region" placeholder="请输入订单编号" />
           </el-form-item>
         </el-col>
 
         <el-col :sm="{span: 7}" :xs="{span: 23}">
           <el-form-item label="用户名" label-width="140px">
-            <el-input v-model="form.region" placeholder="请输入用户名"></el-input>
+            <el-input v-model="form.region" placeholder="请输入用户名" />
           </el-form-item>
         </el-col>
 
         <el-col :sm="{span: 7}" :xs="{span: 23}">
           <el-form-item label="订单状态" label-width="140px">
             <el-select v-model="form.region" placeholder="请选择订单状态">
-              <el-option label="全部" value="shanghai"></el-option>
-              <el-option label="已付款" value="beijing"></el-option>
-              <el-option label="已签收" value="beijing"></el-option>
-              <el-option label="运送中" value="beijing"></el-option>
+              <el-option label="全部" value="shanghai" />
+              <el-option label="已付款" value="beijing" />
+              <el-option label="已签收" value="beijing" />
+              <el-option label="运送中" value="beijing" />
             </el-select>
           </el-form-item>
         </el-col>
 
-        <el-col :sm="{span: 7}" :xs="{span: 23}" >
+        <el-col :sm="{span: 7}" :xs="{span: 23}">
           <el-form-item label="提交审核时间" label-width="100px">
             <el-date-picker
+              v-model="form.date1"
               type="date"
               placeholder="选择提交审核时间"
-              v-model="form.date1"
               style="width: 100%"
-            ></el-date-picker>
+            />
           </el-form-item>
         </el-col>
 
-        <el-col :sm="{span: 7}" :xs="{span: 23}" >
+        <el-col :sm="{span: 7}" :xs="{span: 23}">
           <el-form-item label="确认审核时间" label-width="140px">
             <el-date-picker
+              v-model="form.date2"
               type="date"
               placeholder="选择确认审核时间"
-              v-model="form.date2"
               style="width: 100%"
-            ></el-date-picker>
+            />
           </el-form-item>
         </el-col>
 
@@ -73,10 +75,10 @@
     <!--==================table表格(开始)========================-->
     <el-table :data="tableData" class="title-menu-min" border style="width: 100%">
       <el-table-column prop="brandNumber" label="订单编号" width="170" show-overflow-tooltip="true" />
-      <el-table-column prop="newsName" label="用户名" show-overflow-tooltip="true"></el-table-column>
-      <el-table-column prop="source" label="付款时间" show-overflow-tooltip="true"></el-table-column>
-      <el-table-column prop="shopName" label="订单状态" show-overflow-tooltip="true"></el-table-column>
-      <el-table-column prop="deposit" label="付款价格（元）" show-overflow-tooltip="true"></el-table-column>
+      <el-table-column prop="newsName" label="用户名" show-overflow-tooltip="true" />
+      <el-table-column prop="source" label="付款时间" show-overflow-tooltip="true" />
+      <el-table-column prop="shopName" label="订单状态" show-overflow-tooltip="true" />
+      <el-table-column prop="deposit" label="付款价格（元）" show-overflow-tooltip="true" />
     </el-table>
     <!--================== table表格(结束) ========================-->
 
@@ -106,54 +108,54 @@ export default {
       // 表格数据
       tableData: [
         {
-          brandNumber: "DD1160001160001160",
-          newsName: "小彭店铺",
-          source: "2019-10-5",
-          shopName: "已签收",
+          brandNumber: 'DD1160001160001160',
+          newsName: '小彭店铺',
+          source: '2019-10-5',
+          shopName: '已签收',
           deposit: 122
         },
         {
-          brandNumber: "DD1160001160001160",
-          newsName: "小彭店铺",
-          source: "2019-10-5",
-          shopName: "已签收",
+          brandNumber: 'DD1160001160001160',
+          newsName: '小彭店铺',
+          source: '2019-10-5',
+          shopName: '已签收',
           deposit: 122
         },
         {
-         brandNumber: "DD1160001160001160",
-          newsName: "小彭店铺",
-          source: "2019-10-5",
-          shopName: "已签收",
+          brandNumber: 'DD1160001160001160',
+          newsName: '小彭店铺',
+          source: '2019-10-5',
+          shopName: '已签收',
           deposit: 122
         },
         {
-          brandNumber: "DD1160001160001160",
-          newsName: "小彭店铺",
-          source: "2019-10-5",
-          shopName: "已签收",
+          brandNumber: 'DD1160001160001160',
+          newsName: '小彭店铺',
+          source: '2019-10-5',
+          shopName: '已签收',
           deposit: 122
         }
       ],
       // 表单元素中绑定的数据参数
       form: {
-        name: "",
-        region: ""
+        name: '',
+        region: ''
       },
       // 分页数据
       total: 100,
       currentPage: 2
-    };
+    }
   },
   methods: {
     customerForm() {
-      this.customerFormVisible = true;
+      this.customerFormVisible = true
     },
 
     shoppingSrc(a) {
-      alert(`我跳到了${a}中`);
+      alert(`我跳到了${a}中`)
     }
   }
-};
+}
 </script>
 
 <style>
@@ -215,5 +217,4 @@ export default {
   padding: 0px;
 }
 </style>
-
 

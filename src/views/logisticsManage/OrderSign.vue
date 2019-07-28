@@ -1,3 +1,5 @@
+
+<!--======订单签收详情模块=======-->
 <template>
   <div id="orderSign">
     <el-form ref="form" :model="logisticsForm" label-width="70px">
@@ -467,6 +469,10 @@ export default {
   }
   #orderSign .el-table td{
     padding: 0px !important;
+  }
+
+  #orderSign .el-date-editor{
+    width: 105% !important;
   }
 
   /*对编辑人员信息弹出框设置样式*/

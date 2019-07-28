@@ -1,4 +1,6 @@
+<!--======资金概况模板=======-->
 <template>
+
   <div id="capitalSituation" style="margin: 1rem">
     <el-row :gutter="20">
       <el-col :lg="{span: 24}" :xs="{span: 24}" style="margin-bottom: 10px;">
@@ -52,8 +54,8 @@
             <el-button style="font-size: 0.8rem; float: right; padding: 3px 0" type="text">明细</el-button>
           </div>
           <div v-for="(itme,index) in orderMoney" :key="index" class="text item">
-            <span>{{itme.title}}</span>
-            <span>{{itme.num}}</span>
+            <span>{{ itme.title }}</span>
+            <span>{{ itme.num }}</span>
           </div>
         </el-card>
       </el-col>
@@ -65,8 +67,8 @@
             <el-button style="float: right; padding: 3px 0" type="text">明细</el-button>
           </div>
           <div v-for="(itme,index) in orderMoney" :key="index" class="text item">
-            <span>{{itme.title}}</span>
-            <span>{{itme.num}}</span>
+            <span>{{ itme.title }}</span>
+            <span>{{ itme.num }}</span>
           </div>
         </el-card>
       </el-col>
@@ -78,8 +80,8 @@
             <el-button style="float: right; padding: 3px 0" type="text">明细</el-button>
           </div>
           <div v-for="(itme,index) in orderMoney" :key="index" class="text item">
-            <span>{{itme.title}}</span>
-            <span>{{itme.num}}</span>
+            <span>{{ itme.title }}</span>
+            <span>{{ itme.num }}</span>
           </div>
         </el-card>
       </el-col>
@@ -199,34 +201,34 @@ export default {
       total: 100, // 分页信息
       currentPage: 2, // 当前页数信息
       // 快捷时间选择
-      val7: "",
+      val7: '',
       pickerOptions2: {
         shortcuts: [
           {
-            text: "最近一周",
+            text: '最近一周',
             onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit("pick", [start, end]);
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+              picker.$emit('pick', [start, end])
             }
           },
           {
-            text: "最近一个月",
+            text: '最近一个月',
             onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-              picker.$emit("pick", [start, end]);
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+              picker.$emit('pick', [start, end])
             }
           },
           {
-            text: "最近三个月",
+            text: '最近三个月',
             onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-              picker.$emit("pick", [start, end]);
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
+              picker.$emit('pick', [start, end])
             }
           }
         ]
@@ -234,44 +236,44 @@ export default {
 
       // 资金信息展示
       orderMoney: [
-        { title: "今日成交订单数", num: "12" },
-        { title: "今日成交金额", num: "12" },
-        { title: "今日退款中订单", num: "12" },
-        { title: "今日退款中订单金额", num: "12" }
+        { title: '今日成交订单数', num: '12' },
+        { title: '今日成交金额', num: '12' },
+        { title: '今日退款中订单', num: '12' },
+        { title: '今日退款中订单金额', num: '12' }
       ],
       storeCheckInDatas: [
         {
-          checkInId: "2019-7-7",
-          storeName: "323",
-          checkInName: "12",
-          checkInCard: "1232",
-          checkInPhone: "21321",
-          checkInTime: "23223",
+          checkInId: '2019-7-7',
+          storeName: '323',
+          checkInName: '12',
+          checkInCard: '1232',
+          checkInPhone: '21321',
+          checkInTime: '23223',
           goMomey: 12322
         },
         {
-          checkInId: "2019-7-7",
-          storeName: "323",
-          checkInName: "12",
-          checkInCard: "1232",
-          checkInPhone: "21321",
-          checkInTime: "23223",
+          checkInId: '2019-7-7',
+          storeName: '323',
+          checkInName: '12',
+          checkInCard: '1232',
+          checkInPhone: '21321',
+          checkInTime: '23223',
           goMomey: 12322
         },
         {
-          checkInId: "2019-7-7",
-          storeName: "323",
-          checkInName: "12",
-          checkInCard: "1232",
-          checkInPhone: "21321",
-          checkInTime: "23223",
+          checkInId: '2019-7-7',
+          storeName: '323',
+          checkInName: '12',
+          checkInCard: '1232',
+          checkInPhone: '21321',
+          checkInTime: '23223',
           goMomey: 12322
         }
       ]
-    };
+    }
   },
   methods: {}
-};
+}
 </script>
 
 <style scoped>
@@ -363,5 +365,4 @@ export default {
   width: 100%;
 }
 </style>
-
 

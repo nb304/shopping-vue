@@ -1,3 +1,5 @@
+
+<!--===========商品申请采购模块========-->
 <template>
   <div id="productapply">
     <el-form ref="form" :model="productapplyForm" label-width="70px">

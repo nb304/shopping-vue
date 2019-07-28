@@ -1,3 +1,4 @@
+<!--======店铺分类管理模块=======-->
 <template>
   <div id="stortTypeDiv" style="margin:30px ;">
 

@@ -1,3 +1,4 @@
+<!--======商品品牌管理模块=======-->
 <template>
   <div id="productBrandDiv" v-loading="ProductBrandLoadings.productBrandCommonLoading">
 

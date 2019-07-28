@@ -1,3 +1,4 @@
+<!--======库存管理列表模块=======-->
 <template>
   <div id="inventoryList">
     <el-form ref="form" :model="inventoryListForm" label-width="70px">
