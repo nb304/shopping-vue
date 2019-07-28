@@ -50,7 +50,7 @@
         <template slot-scope="scope" >
           <el-button type="text" size="primary"  @click="CarouselSrc()">编辑</el-button>
           <el-button type="text" size="primary" >停用</el-button>
-          <el-button type="text" size="primary" >下架</el-button>
+          <el-button type="text" size="primary" >删除</el-button>
         </template>
       </el-table-column>
     </el-table>

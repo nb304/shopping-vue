@@ -68,8 +68,8 @@
       <el-table-column prop="newsDescribe" label="描述" show-overflow-tooltip="true"></el-table-column>
       <el-table-column fixed="right" label="操作" width="150">
         <template slot-scope="scope">
-          <el-button type="text" size="primary" >停用</el-button>
-          <el-button type="text" size="primary" >下架</el-button>
+          <el-button type="text" size="primary">停用</el-button>
+          <el-button type="text" size="primary">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -98,11 +98,6 @@
       <el-row :gutter="24">
         <el-form ref="form" :model="form" label-width="80px">
           <el-col :span="10">
-            <el-form-item label="优惠标题">
-              <el-input v-model="form.tiele" placeholder="优惠标题"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="10">
             <el-form-item label="新闻名称">
               <el-input v-model="form.hig" placeholder="请输入新闻名称"></el-input>
             </el-form-item>
@@ -119,8 +114,13 @@
               <el-input v-model="form.num" placeholder="请输入店铺名称"></el-input>
             </el-form-item>
           </el-col>
-
           <el-col :span="10">
+            <el-form-item label="商品链接">
+              <el-input v-model="form.num" placeholder="请输入商品链接"></el-input>
+            </el-form-item>
+          </el-col>
+
+          <el-col :span="20">
             <el-form-item label="新闻图片">
               <!-- <el-input v-model="form.num" placeholder="请输入新闻图片"></el-input> -->
               <el-upload
@@ -142,12 +142,6 @@
                 >上传到服务器</el-button>-->
                 <div slot="tip" class="el-upload__tip">只能上传jpg/png图片一张</div>
               </el-upload>
-            </el-form-item>
-          </el-col>
-
-          <el-col :span="10">
-            <el-form-item label="商品链接">
-              <el-input v-model="form.num" placeholder="请输入商品链接"></el-input>
             </el-form-item>
           </el-col>
 
@@ -273,61 +267,61 @@ export default {
 </script>
 
 <style>
- @media only screen and (min-width: 310px) and (max-width: 500px) {
-    #OneNews .el-form-item__content {
-      width: 100% !important;
-    }
-
-    #OneNews .storeTypeSearchForm .el-form-item__content {
-      width: 75% !important;
-    }
-  }
-
+@media only screen and (min-width: 310px) and (max-width: 500px) {
   #OneNews .el-form-item__content {
-    width: 80%;
+    width: 100% !important;
   }
 
-  #OneNews .el-range-separator {
-    width: 10% !important;
+  #OneNews .storeTypeSearchForm .el-form-item__content {
+    width: 75% !important;
   }
-
-  #OneNews .el-divider span {
-    color: #606266;
-    font-weight: bold;
-  }
-
-  #OneNews .el-table__row th .cell {
-    word-break: keep-all;
-    white-space: nowrap;
-    padding: 0px 0px;
-  }
-
-  #OneNews .el-table__row th {
-    padding: 3px 0px;
-    padding-left: 10px;
-    color: #606266;
-
-  }
-
-  #OneNews .el-table__row td {
-    padding: 3px 0;
-  }
-
-  #OneNews .el-divider span{
-  color: #606266;font-weight:bold;
 }
 
-#OneNews .el-table th .cell{
+#OneNews .el-form-item__content {
+  width: 80%;
+}
+
+#OneNews .el-range-separator {
+  width: 10% !important;
+}
+
+#OneNews .el-divider span {
+  color: #606266;
+  font-weight: bold;
+}
+
+#OneNews .el-table__row th .cell {
   word-break: keep-all;
-  white-space:nowrap;
-  padding: 0px  0px;
+  white-space: nowrap;
+  padding: 0px 0px;
 }
-#OneNews .el-table th{
+
+#OneNews .el-table__row th {
+  padding: 3px 0px;
+  padding-left: 10px;
+  color: #606266;
+}
+
+#OneNews .el-table__row td {
+  padding: 3px 0;
+}
+
+#OneNews .el-divider span {
+  color: #606266;
+  font-weight: bold;
+}
+
+#OneNews .el-table th .cell {
+  word-break: keep-all;
+  white-space: nowrap;
+  padding: 0px 0px;
+}
+#OneNews .el-table th {
   padding: 2px 0px;
   padding-left: 10px;
   color: #606266;
 }
-#OneNews .el-table td{
+#OneNews .el-table td {
   padding: 0px;
 }
 </style>
