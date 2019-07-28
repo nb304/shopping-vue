@@ -62,6 +62,7 @@
               <el-button type="text" size="small" @click="editProductLeiMuDiv">编辑</el-button>
               <el-button type="text" size="small">停用</el-button>
               <el-button v-if="!scope.row.isParent" type="text" size="small" @click="addLeiMuSkuInfo">管理SKU</el-button>
+              <el-button type="text" size="small">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -175,7 +176,13 @@
       class="title-menu-min"
     >
       <div>
-        <el-form ref="addProductLeiMuForm" label-position="left" :inline="true" :model="addProductLeiMuForm" label-width="80px">
+        <el-form
+          ref="addProductLeiMuForm"
+          label-position="left"
+          :inline="true"
+          :model="addProductLeiMuForm"
+          label-width="80px"
+        >
           <el-row :gutter="24">
             <el-col :sm="{span: 24}" :xs="{span: 24}">
               <el-form-item label="类目名称" style="width:100%;">
@@ -185,7 +192,14 @@
 
             <el-col :sm="{span: 24}" :xs="{span: 24}">
               <el-form-item label="适应季节" style="width:100%;">
-                <el-input v-model="addProductLeiMuForm.leimuAdaptSeason" style="width:100%;" placeholder="请输入适应季节" />
+                <el-cascader
+                  v-model="addProductLeiMuForm.leimuAdaptSeason"
+                  placeholder="请选择该类目的适应季节"
+                  :options="fourOptions"
+                  :props="props"
+                  collapse-tags
+                  clearable
+                />
               </el-form-item>
             </el-col>
 
@@ -228,7 +242,13 @@
       class="title-menu-min"
     >
       <div>
-        <el-form ref="addProductLeiMuForm" label-position="left" :inline="true" :model="addProductLeiMuForm" label-width="80px">
+        <el-form
+          ref="addProductLeiMuForm"
+          label-position="left"
+          :inline="true"
+          :model="addProductLeiMuForm"
+          label-width="80px"
+        >
           <el-row :gutter="24">
             <el-col :sm="{span: 24}" :xs="{span: 24}">
               <el-form-item label="类目名称" style="width:100%;">
@@ -238,7 +258,14 @@
 
             <el-col :sm="{span: 24}" :xs="{span: 24}">
               <el-form-item label="适应季节" style="width:100%;">
-                <el-input v-model="addProductLeiMuForm.leimuAdaptSeason" placeholder="请输入适应季节" />
+                <el-cascader
+                  v-model="addProductLeiMuForm.leimuAdaptSeason"
+                  placeholder="请选择该类目的适应季节"
+                  :options="fourOptions"
+                  :props="props"
+                  collapse-tags
+                  clearable
+                />
               </el-form-item>
             </el-col>
 
@@ -277,6 +304,11 @@
 export default {
   data() {
     return {
+      // 季节数据集合
+      fourOptions: [{ value: 1, label: '春季' }, { value: 2, label: '夏季' }],
+      props: {
+        multiple: true
+      },
       // 网页的宽高
       screenWidth: '',
       screenHeight: '',
@@ -492,239 +524,239 @@ export default {
 </script>
 
 <style>
-	.productLeiMuClass .el-form-item__content .el-select {
-		width: 100% !important;
-	}
+  .productLeiMuClass .el-form-item__content .el-select {
+    width: 100% !important;
+  }
 
-	.productLeiMuClass .el-form-item__content {
-		width: 70% !important;
-	}
+  .productLeiMuClass .el-form-item__content {
+    width: 70% !important;
+  }
 
-	#productClassify .el-carousel__item h3 {
-		color: #475669;
-		font-size: 14px;
-		opacity: 0.75;
-		line-height: 200px;
-		margin: 0;
-	}
+  #productClassify .el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 200px;
+    margin: 0;
+  }
 
-	#productClassify .el-carousel__item:nth-child(2n) {
-		background-color: #99a9bf;
-	}
+  #productClassify .el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+  }
 
-	#productClassify .el-carousel__item:nth-child(2n+1) {
-		background-color: #d3dce6;
-	}
+  #productClassify .el-carousel__item:nth-child(2n+1) {
+    background-color: #d3dce6;
+  }
 
-	#productClassify .autocut {
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		-o-text-overflow: ellipsis;
-		-icab-text-overflow: ellipsis;
-		-khtml-text-overflow: ellipsis;
-		-moz-text-overflow: ellipsis;
-		-webkit-text-overflow: ellipsis;
-	}
+  #productClassify .autocut {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -icab-text-overflow: ellipsis;
+    -khtml-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+  }
 
-	/*新加入隐藏滚动条效果*/
-	#productClassify .title-menu-min2 {
-		overflow-y: scroll !important;
-		-webkit-overflow-scrolling: touch;
-	}
+  /*新加入隐藏滚动条效果*/
+  #productClassify .title-menu-min2 {
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch;
+  }
 
-	#productClassify .title-menu-min2::-webkit-scrollbar {
-		/*滚动条整体样式*/
-		width: 4px;
-		/*高宽分别对应横竖滚动条的尺寸*/
-		height: 4px;
-	}
+  #productClassify .title-menu-min2::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 4px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+  }
 
-	#productClassify .title-menu-min2::-webkit-scrollbar-thumb {
-		/*滚动条里面小方块*/
-		border-radius: 5px;
-		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-		background: rgba(0, 0, 0, 0.2);
-	}
+  #productClassify .title-menu-min2::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+  }
 
-	#productClassify .title-menu-min2::-webkit-scrollbar-track {
-		/*滚动条里面轨道*/
-		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-		border-radius: 0;
-		background: rgba(0, 0, 0, 0.1);
-	}
+  #productClassify .title-menu-min2::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.1);
+  }
 
-	/*新加入隐藏滚动条效果*/
-	#productClassify .title-menu-min {
-		overflow-y: scroll !important;
-		-webkit-overflow-scrolling: touch;
-	}
+  /*新加入隐藏滚动条效果*/
+  #productClassify .title-menu-min {
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch;
+  }
 
-	#productClassify .title-menu-min::-webkit-scrollbar {
-		/*滚动条整体样式*/
-		width: 4px;
-		/*高宽分别对应横竖滚动条的尺寸*/
-		height: 4px;
-	}
+  #productClassify .title-menu-min::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 4px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+  }
 
-	#productClassify .title-menu-min::-webkit-scrollbar-thumb {
-		/*滚动条里面小方块*/
-		border-radius: 5px;
-		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-		background: rgba(0, 0, 0, 0.2);
-	}
+  #productClassify .title-menu-min::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+  }
 
-	#productClassify .title-menu-min::-webkit-scrollbar-track {
-		/*滚动条里面轨道*/
-		-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-		border-radius: 0;
-		background: rgba(0, 0, 0, 0.1);
-	}
+  #productClassify .title-menu-min::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.1);
+  }
 
-	/*==================自定义自适应css 宽度 1301 -- 2000px========================*/
-	@media only screen and (min-width: 1301px) and (max-width: 2000px) {
-		#productClassify .productLeiMuInfoClass {
-			margin-left: 0px !important;
-		}
+  /*==================自定义自适应css 宽度 1301 -- 2000px========================*/
+  @media only screen and (min-width: 1301px) and (max-width: 2000px) {
+    #productClassify .productLeiMuInfoClass {
+      margin-left: 0px !important;
+    }
 
-		#productClassify .spusRowClass {
-			margin-right: 0px !important;
-			margin-left: 17px !important;
-		}
+    #productClassify .spusRowClass {
+      margin-right: 0px !important;
+      margin-left: 17px !important;
+    }
 
-		#productClassify .SpusClass {
-			width: 95% !important;
-		}
+    #productClassify .SpusClass {
+      width: 95% !important;
+    }
 
-		#productClassify .el-form .el-form-item .el-input__inner {
-			width: 216px !important;
-		}
+    #productClassify .el-form .el-form-item .el-input__inner {
+      width: 216px !important;
+    }
 
-		#productClassify .el-form .el-form-item .SpuInput .el-input__inner {
-			width: 216px !important;
-		}
+    #productClassify .el-form .el-form-item .SpuInput .el-input__inner {
+      width: 216px !important;
+    }
 
-		#productClassify .el-form .el-form-item .SpuInput2 .el-input__inner {
-			width: 80px !important;
-		}
-	}
+    #productClassify .el-form .el-form-item .SpuInput2 .el-input__inner {
+      width: 80px !important;
+    }
+  }
 
-	@media only screen and (min-width: 300px) and (max-width: 409px) {
-		#productClassify .productBrandInputClass {
-			width: 170px !important;
-		}
+  @media only screen and (min-width: 300px) and (max-width: 409px) {
+    #productClassify .productBrandInputClass {
+      width: 170px !important;
+    }
 
-		#productClassify .spuDialogClass {
-			max-height: 300px;
-		}
+    #productClassify .spuDialogClass {
+      max-height: 300px;
+    }
 
-		#productClassify .addAndClose {
-			margin-top: 10px !important;
-		}
+    #productClassify .addAndClose {
+      margin-top: 10px !important;
+    }
 
-		#productClassify .fixedClass {
-			position: absolute;
-			top: 100px;
-		}
+    #productClassify .fixedClass {
+      position: absolute;
+      top: 100px;
+    }
 
-		#productClassify .spusRowClass {
-			margin-right: 0px !important;
-			margin-left: 7px !important;
-		}
+    #productClassify .spusRowClass {
+      margin-right: 0px !important;
+      margin-left: 7px !important;
+    }
 
-		#productClassify .SpusClass {
-			width: 270px !important;
-		}
+    #productClassify .SpusClass {
+      width: 270px !important;
+    }
 
-		/*  添加商品的css  */
-		#productClassify .addProduct .el-dialog {
-			width: 330px !important;
-		}
+    /*  添加商品的css  */
+    #productClassify .addProduct .el-dialog {
+      width: 330px !important;
+    }
 
-		#productClassify .addProduct .el-dialog #steptwo {
-			max-height: 31.25rem;
-		}
-	}
+    #productClassify .addProduct .el-dialog #steptwo {
+      max-height: 31.25rem;
+    }
+  }
 
-	@media only screen and (min-width: 410px) and (max-width: 500px) {
+  @media only screen and (min-width: 410px) and (max-width: 500px) {
 
-		#productClassify .productSkuInfoDialog {
-			width: 100% !important;
-		}
+    #productClassify .productSkuInfoDialog {
+      width: 100% !important;
+    }
 
-		#productClassify .productCommentInfoClass {
-			width: 100% !important;
-		}
+    #productClassify .productCommentInfoClass {
+      width: 100% !important;
+    }
 
-		#productClassify .SpusClass button {
-			margin-top: 0.625rem !important;
-		}
+    #productClassify .SpusClass button {
+      margin-top: 0.625rem !important;
+    }
 
-		#productClassify .spuDialogClass {
-			max-height: 300px;
-		}
+    #productClassify .spuDialogClass {
+      max-height: 300px;
+    }
 
-		#productClassify .addAndClose {
-			margin-top: 10px !important;
-		}
+    #productClassify .addAndClose {
+      margin-top: 10px !important;
+    }
 
-		#productClassify .fixedClass {
-			position: absolute;
-			top: 100px;
-		}
+    #productClassify .fixedClass {
+      position: absolute;
+      top: 100px;
+    }
 
-		#productClassify .spusRowClass {
-			margin-right: 0px !important;
-			margin-left: 7px !important;
-		}
+    #productClassify .spusRowClass {
+      margin-right: 0px !important;
+      margin-left: 7px !important;
+    }
 
-		#productClassify .SpusClass {
-			width: 330px !important;
-		}
+    #productClassify .SpusClass {
+      width: 330px !important;
+    }
 
-		/*  添加商品的css  */
-		#productClassify .addProduct .el-dialog {
-			width: 400px !important;
-		}
+    /*  添加商品的css  */
+    #productClassify .addProduct .el-dialog {
+      width: 400px !important;
+    }
 
-		#productClassify .addProduct .el-dialog #steptwo {
-			max-height: 31.25rem;
-		}
-	}
+    #productClassify .addProduct .el-dialog #steptwo {
+      max-height: 31.25rem;
+    }
+  }
 
-	@media only screen and (min-width: 410px) and (max-width: 1300px) {
+  @media only screen and (min-width: 410px) and (max-width: 1300px) {
 
-		#productClassify .el-form .el-form-item .SpuInput .el-input__inner {
-			width: 100px !important;
-		}
+    #productClassify .el-form .el-form-item .SpuInput .el-input__inner {
+      width: 100px !important;
+    }
 
-		#productClassify .el-form .el-form-item .SpuInput2 .el-input__inner {
-			width: 100px !important;
-		}
+    #productClassify .el-form .el-form-item .SpuInput2 .el-input__inner {
+      width: 100px !important;
+    }
 
-		/*  添加商品的css结束  */
-		#productClassify .el-form .el-form-item .el-input__inner {
-			width: 250px;
-		}
+    /*  添加商品的css结束  */
+    #productClassify .el-form .el-form-item .el-input__inner {
+      width: 250px;
+    }
 
-		#productClassify .el-form .el-row {
-			margin: 0 auto;
-			text-align: center;
-		}
+    #productClassify .el-form .el-row {
+      margin: 0 auto;
+      text-align: center;
+    }
 
-		#productClassify .el-col-xs-23 {
-			width: 100%;
-		}
+    #productClassify .el-col-xs-23 {
+      width: 100%;
+    }
 
-		#productClassify .el-form-item .el-button {
-			width: 250px !important;
-		}
+    #productClassify .el-form-item .el-button {
+      width: 250px !important;
+    }
 
-		#productClassify .el-divider span {
-			font-size: 11px;
-		}
+    #productClassify .el-divider span {
+      font-size: 11px;
+    }
 
-		/* .myItem{
+    /* .myItem{
 			width: 100% !important;
 		}
 		.myItem .el-form-item__label{
@@ -732,31 +764,35 @@ export default {
 			padding: 0px;
 			text-align: left;
 		} */
-	}
+  }
 
-	#productClassify .el-divider span {
-		color: #606266;
-		font-weight: bold;
-	}
+  #productClassify .el-divider span {
+    color: #606266;
+    font-weight: bold;
+  }
 
-	#productClassify .el-table__row th .cell {
-		word-break: keep-all;
-		white-space: nowrap;
-		padding: 0px 0px;
-	}
+  .productLeiMuClass .el-cascader {
+    width: 100% !important;
+  }
 
-	#productClassify .el-table__row th {
-		padding: 3px 0px;
-		padding-left: 10px;
-		color: #606266;
+  #productClassify .el-table__row th .cell {
+    word-break: keep-all;
+    white-space: nowrap;
+    padding: 0px 0px;
+  }
 
-	}
+  #productClassify .el-table__row th {
+    padding: 3px 0px;
+    padding-left: 10px;
+    color: #606266;
 
-	#productClassify .el-table__row td {
-		padding: 4px 0 !important;
-	}
+  }
 
-	#productClassify {
-		margin: 30px;
-	}
+  #productClassify .el-table__row td {
+    padding: 4px 0 !important;
+  }
+
+  #productClassify {
+    margin: 30px;
+  }
 </style>
