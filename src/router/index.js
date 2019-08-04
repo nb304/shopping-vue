@@ -32,7 +32,7 @@ import Layout from '@/layout'
  */
 export const constantRoutes = [{
   path: '/login',
-  component: () => import('@/views/login/index'),
+  component: () => import('@/views/LoginManage/Login'),
   hidden: true
 },
 
@@ -45,11 +45,11 @@ export const constantRoutes = [{
 {
   path: '/',
   component: Layout,
-  redirect: '/index',
+  redirect: '/home',
   children: [{
-    path: 'index',
+    path: 'home',
     name: '系统首页',
-    component: () => import('@/views/SystemIndex/index'),
+    component: () => import('@/views/SystemIndexManage/Home'),
     meta: {
       title: '系统首页',
       icon: 'shouye'
@@ -57,14 +57,14 @@ export const constantRoutes = [{
   }]
 },
 {
-  path: '/chat',
+  path: '/chatManage',
   component: Layout,
-  redirect: '/chat/info',
+  redirect: '/chatManage/info',
   hidden: true,
   children: [{
     path: 'info',
     name: '消息中心',
-    component: () => import('@/views/Chat/ChatRoom'),
+    component: () => import('@/views/ChatManage/ChatRoom'),
     meta: {
       title: '消息中心',
       icon: 'shouye'
@@ -79,7 +79,7 @@ export const constantRoutes = [{
   children: [{
     path: 'information',
     name: '个人中心',
-    component: () => import('@/views/Information/MyInformation'),
+    component: () => import('@/views/InformationManage/MyInformation'),
     meta: {
       title: '个人中心',
       icon: 'shouye'
@@ -87,9 +87,9 @@ export const constantRoutes = [{
   }]
 },
 {
-  path: '/product',
+  path: '/productManage',
   component: Layout,
-  redirect: '/product/productInfo',
+  redirect: '/productManage/productInfo',
   name: '商品管理',
   meta: {
     title: '商品管理',
@@ -120,9 +120,9 @@ export const constantRoutes = [{
     }
   },
   {
-    path: 'tree',
-    name: 'Tree',
-    component: () => import('@/views/tree/index'),
+    path: 'FreightManage',
+    name: '商品运费管理',
+    component: () => import('@/views/ProductManage/FreightManage'),
     meta: {
       title: '商品运费管理'
     }
@@ -133,30 +133,30 @@ export const constantRoutes = [{
 
 {
   path: '/applyManage',
-  redirect: '/applyManage/Productapply',
+  redirect: '/applyManage/productapply',
   component: Layout,
   meta: {
     title: '采购管理',
     icon: 'caigou'
   },
   children: [{
-    path: 'Productapply',
-    name: 'Productapply',
+    path: 'productapply',
+    name: '商品申请采购',
     component: () => import('@/views/ApplyManage/Productapply'),
     meta: {
       title: '商品申请采购'
     }
   },
   {
-    path: 'AddPurchasing',
-    name: 'AddPurchasing',
+    path: 'addPurchasing',
+    name: '添加采购管理',
     component: () => import('@/views/ApplyManage/AddPurchasing'),
     meta: {
       title: '添加采购管理'
     }
   }, {
-    path: 'PurchasingList',
-    name: 'PurchasingList',
+    path: 'purchasingList',
+    name: '采购列表管理',
     component: () => import('@/views/ApplyManage/PurchasingList'),
     meta: {
       title: '采购列表管理'
@@ -166,10 +166,10 @@ export const constantRoutes = [{
 },
 
 {
-  path: '/inform',
+  path: '/informManage',
   component: Layout,
-  redirect: '/inform/productEvaluateManage',
-  name: 'Nested',
+  redirect: '/informManage/productEvaluateManage',
+  name: '通知管理',
   meta: {
     title: '通知管理',
     icon: 'tongzhi'
@@ -177,7 +177,7 @@ export const constantRoutes = [{
   children: [{
     path: 'productEvaluateManage',
     component: () => import('@/views/InformManage/ProductEvaluateManage'), // Parent router-view
-    name: 'Menu1',
+    name: '商品评价管理',
     meta: {
       title: '商品评价管理'
     }
@@ -185,7 +185,7 @@ export const constantRoutes = [{
   {
     path: 'userFeedbackManage',
     component: () => import('@/views/InformManage/UserFeedbackManage'),
-    name: 'Menu1-2-1',
+    name: '用户反馈管理',
     meta: {
       title: '用户反馈管理'
     }
@@ -193,7 +193,7 @@ export const constantRoutes = [{
   {
     path: 'systemInformManage',
     component: () => import('@/views/InformManage/SystemInformManage'),
-    name: 'Menu1-2-2',
+    name: '网站通知管理',
     meta: {
       title: '网站通知管理'
     }
@@ -205,39 +205,39 @@ export const constantRoutes = [{
   path: '/storeManage',
   component: Layout,
   redirect: '/storeManage/storeInfoManage',
-  name: 'Nested1',
+  name: '店铺管理',
   meta: {
     title: '店铺管理',
     icon: 'dianpu'
   },
   children: [{
-    path: '/storeInfoManage',
+    path: 'storeInfoManage',
     component: () => import('@/views/StoreManage/StoreInfoManage'), // Parent router-view
-    name: 'Menu1',
+    name: '店铺信息管理',
     meta: {
       title: '店铺信息管理'
     }
   },
   {
-    path: '/StoreUserManage',
+    path: 'storeUserManage',
     component: () => import('@/views/StoreManage/StoreUserManage'),
-    name: 'StoreUserManage',
+    name: '店铺人员管理',
     meta: {
       title: '店铺人员管理'
     }
   },
   {
-    path: '/storeCheckInManage',
+    path: 'storeCheckInManage',
     component: () => import('@/views/StoreManage/StoreCheckInManage'),
-    name: 'Menu1-2-2',
+    name: '店铺入驻管理',
     meta: {
       title: '店铺入驻管理'
     }
   },
   {
-    path: '/storeTypeManage',
+    path: 'storeTypeManage',
     component: () => import('@/views/StoreManage/StoreTypeManage'),
-    name: 'Menu1-2-2',
+    name: '店铺分类管理',
     meta: {
       title: '店铺分类管理'
     }
@@ -245,26 +245,26 @@ export const constantRoutes = [{
   ]
 },
 {
-  path: '/nested2',
+  path: '/userManage',
   component: Layout,
-  redirect: '/nested/menu1',
-  name: 'Nested15',
+  redirect: '/userManage/userList',
+  name: '用户管理',
   meta: {
     title: '用户管理',
     icon: 'yonghuguanli'
   },
   children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
+    path: 'roleList',
+    component: () => import('@/views/UserManage/RoleList'), // Parent router-view
+    name: '成员角色管理',
     meta: {
       title: '成员角色管理'
     }
   },
   {
-    path: 'menu1-2-1',
-    component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-    name: 'Menu1-2-1',
+    path: 'userList',
+    component: () => import('@/views/UserManage/UserList'),
+    name: '用户账号列表',
     meta: {
       title: '用户账号列表'
     }
@@ -272,34 +272,34 @@ export const constantRoutes = [{
   ]
 },
 {
-  path: '/OrderManage',
+  path: '/orderManage',
   component: Layout,
-  redirect: '/OrderManage/OrderList',
+  redirect: '/orderManage/orderList',
   name: 'order',
   meta: {
     title: '订单管理',
     icon: 'dingdan'
   },
   children: [{
-    path: '/OrderList',
+    path: 'orderList',
     component: () => import('@/views/OrderManage/OrderList'), // Parent router-view
-    name: 'OrderList',
+    name: '订单列表',
     meta: {
       title: '订单列表'
     }
   },
   {
-    path: '/OrderReview',
+    path: 'orderReview',
     component: () => import('@/views/OrderManage/OrderReview'),
-    name: 'OrderReview',
+    name: '订单审核',
     meta: {
       title: '订单审核'
     }
   },
   {
-    path: '/DeliverManage',
+    path: 'deliverManage',
     component: () => import('@/views/OrderManage/DeliverManage'),
-    name: 'DeliverManage',
+    name: '发货管理',
     meta: {
       title: '发货管理'
     }
@@ -307,18 +307,18 @@ export const constantRoutes = [{
   ]
 },
 {
-  path: '/InventoryManage',
+  path: '/inventoryManage',
   component: Layout,
-  redirect: '/InventoryManage/InventoryList',
-  name: 'InventoryManage',
+  redirect: '/inventoryManage/inventoryList',
+  name: '库存管理',
   meta: {
     title: '库存管理',
     icon: 'kucun'
   },
   children: [{
-    path: 'InventoryList',
+    path: 'inventoryList',
     component: () => import('@/views/InventoryManage/InventoryList'), // Parent router-view
-    name: 'InventoryList',
+    name: '库存管理列表',
     meta: {
       title: '库存管理列表'
     }
@@ -328,123 +328,125 @@ export const constantRoutes = [{
 {
   path: '/logisticsManage',
   component: Layout,
-  name: 'logisticsManage',
+  redirect: '/logisticsManage/orderSign',
+  name: '物流管理',
   meta: {
     title: '物流管理',
     icon: 'wuliu'
   },
   children: [{
-    path: '/orderSign',
+    path: 'orderSign',
     component: () => import('@/views/logisticsManage/OrderSign'), // Parent router-view
-    name: 'orderSign',
+    name: '订单签收详情',
     meta: {
       title: '订单签收详情'
     }
   }, {
     path: 'orderLogistics',
     component: () => import('@/views/logisticsManage/OrderLogistics'), // Parent router-view
-    name: 'orderLogistics',
+    name: '订单物流列表',
     meta: {
       title: '订单物流列表'
     }
   }]
 },
+/* {
+      path: '/nested98',
+      component: Layout,
+      name: 'Nested98',
+      meta: {
+        title: '统计管理',
+        icon: 'tongjiguanli'
+      },
+      children: [{
+        path: 'menu1',
+        component: () => import('@/views/nested/menu1/index'), // Parent router-view
+        name: 'Menu1',
+        meta: {
+          title: '商品统计'
+        }
+      }, {
+        path: 'menu1',
+        component: () => import('@/views/nested/menu1/index'), // Parent router-view
+        name: 'Menu1',
+        meta: {
+          title: '商品评价统计'
+        }
+      }, {
+        path: 'menu1',
+        component: () => import('@/views/nested/menu1/index'), // Parent router-view
+        name: 'Menu1',
+        meta: {
+          title: '订单数量统计'
+        }
+      }, {
+        path: 'menu1',
+        component: () => import('@/views/nested/menu1/index'), // Parent router-view
+        name: 'Menu1',
+        meta: {
+          title: '店铺差评统计'
+        }
+      }, {
+        path: 'menu1',
+        component: () => import('@/views/nested/menu1/index'), // Parent router-view
+        name: 'Menu1',
+        meta: {
+          title: '商品库存统计'
+        }
+      }]
+    }, */
 {
-  path: '/nested98',
+  path: '/marketingManage',
   component: Layout,
-  name: 'Nested98',
-  meta: {
-    title: '统计管理',
-    icon: 'tongjiguanli'
-  },
-  children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '商品统计'
-    }
-  }, {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '商品评价统计'
-    }
-  }, {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '订单数量统计'
-    }
-  }, {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '店铺差评统计'
-    }
-  }, {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '商品库存统计'
-    }
-  }]
-},
-
-{
-  path: '/nested75',
-  component: Layout,
-  name: 'Nested75',
+  redirect: '/marketingManage/coupon',
+  name: '营销管理',
   meta: {
     title: '营销管理',
     icon: 'yingxiao'
   },
   children: [{
-    path: 'Coupon',
+    path: 'coupon',
     component: () => import('@/views/MarketingManage/Coupon'), // Parent router-view
-    name: 'Coupon',
+    name: '优惠券管理',
     meta: {
       title: '优惠券管理'
     }
   }, {
-    path: 'Promotion',
+    path: 'promotion',
     component: () => import('@/views/MarketingManage/Promotion'), // Parent router-view
-    name: 'Promotion',
+    name: '推广管理',
     meta: {
       title: '推广管理'
     }
   }, {
-    path: 'Integral',
+    path: 'integral',
     component: () => import('@/views/MarketingManage/Integral'), // Parent router-view
-    name: 'Integral',
+    name: '积分管理',
     meta: {
       title: '积分管理'
     }
   }]
 },
 {
-  path: '/nested46',
+  path: '/potaryNews',
   component: Layout,
-  name: 'Nested46',
+  redirect: '/potaryNews/rotaryNews',
+  name: '网站管理',
   meta: {
     title: '网站管理',
     icon: 'wangzhan'
   },
   children: [{
-    path: 'RotaryNews',
+    path: 'rotaryNews',
     component: () => import('@/views/WebsiteManage/RotaryNews'), // Parent router-view
-    name: 'RotaryNews',
+    name: '轮播管理',
     meta: {
       title: '轮播管理'
     }
   }, {
-    path: 'OneNews',
+    path: 'oneNews',
     component: () => import('@/views/WebsiteManage/OneNews'), // Parent router-view
-    name: 'OneNews',
+    name: '单页新闻',
     meta: {
       title: '单页新闻'
     }
@@ -452,113 +454,114 @@ export const constantRoutes = [{
 },
 
 {
-  path: '/nested52',
+  path: '/customerManage',
   component: Layout,
-  name: 'Nested52',
+  name: '客服管理',
+  redirect: '/customerManage/customer',
   meta: {
     title: '客服管理',
     icon: 'kefu'
   },
   children: [{
     path: 'customer',
-    component: () => import('@/views/customerManage/customer'), // Parent router-view
-    name: 'customer',
+    component: () => import('@/views/CustomerManage/Customer'), // Parent router-view
+    name: '在线售后客服',
     meta: {
       title: '在线售后客服'
     }
   }]
 },
 {
-  path: '/nested52',
+  path: '/capitalManage',
   component: Layout,
-  name: 'Nested52',
+  name: '资金管理',
+  redirect: '/capitalManage/capitalSituation',
   meta: {
     title: '资金管理',
     icon: 'zhijingguanli'
   },
   children: [{
     path: 'capitalSituation',
-    component: () => import('@/views/capitalManage/capitalSituation'), // Parent router-view
-    name: 'capitalSituation',
+    component: () => import('@/views/CapitalManage/CapitalSituation'), // Parent router-view
+    name: '资金概况',
     meta: {
       title: '资金概况'
     }
   },
   {
     path: 'capitalOrder',
-    component: () => import('@/views/capitalManage/capitalOrder'), // Parent router-view
-    name: 'capitalOrder',
+    component: () => import('@/views/CapitalManage/CapitalOrder'), // Parent router-view
+    name: '订单资金',
     meta: {
       title: '订单资金'
     }
   },
   {
     path: 'capitalShop',
-    component: () => import('@/views/capitalManage/capitalShop'), // Parent router-view
-    name: 'capitalShop',
+    component: () => import('@/views/CapitalManage/CapitalShop'), // Parent router-view
+    name: '店铺资金',
     meta: {
       title: '店铺资金'
     }
   }
   ]
 },
-{
-  path: '/nested31',
-  component: Layout,
-  name: 'Nested31',
-  meta: {
-    title: '日志管理',
-    icon: 'rizhi'
-  },
-  children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
+/* {
+      path: '/nested31',
+      component: Layout,
+      name: 'Nested31',
+      meta: {
+        title: '日志管理',
+        icon: 'rizhi'
+      },
+      children: [{
+        path: 'menu1',
+        component: () => import('@/views/nested/menu1/index'), // Parent router-view
+        name: 'Menu1',
+        meta: {
+          title: '系统日志管理'
+        }
+      }]
+    }, */
+/* {
+    path: '/nested518',
+    component: Layout,
+    name: 'Nested18',
     meta: {
-      title: '系统日志管理'
+      title: '系统管理',
+      icon: 'xitongguanli'
+    },
+    children: [{
+      path: 'menu1',
+      component: () => import('@/views/nested/menu1/index'), // Parent router-view
+      name: 'Menu1',
+      meta: {
+        title: '模块设置'
+      }
+    },
+    {
+      path: 'menu1',
+      component: () => import('@/views/nested/menu1/index'), // Parent router-view
+      name: 'Menu1',
+      meta: {
+        title: '权限设置'
+      }
     }
-  }]
-},
+    ]
+  }, */
 {
-  path: '/nested518',
+  path: '/test',
   component: Layout,
-  name: 'Nested18',
-  meta: {
-    title: '系统管理',
-    icon: 'xitongguanli'
-  },
+  name: 'test',
   children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
+    path: 'test',
+    component: () => import('@/views/404'), // Parent router-view
     name: 'Menu1',
     meta: {
       title: '模块设置'
     }
-  },
-  {
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '权限设置'
-    }
-  }
-  ]
-},
-{
-  path: '/nested789',
-  component: Layout,
-  name: 'Nested789',
-  children: [{
-    path: 'menu1',
-    component: () => import('@/views/nested/menu1/index'), // Parent router-view
-    name: 'Menu1',
-    meta: {
-      title: '模块设置'
-    }
   }]
 },
-
 // 404 page must be placed at the end !!!
 {
   path: '*',
