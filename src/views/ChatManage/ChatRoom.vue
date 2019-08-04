@@ -49,17 +49,20 @@
             <span>鹿七七</span>
           </el-divider>
           <!-- ======================= 聊天记录 =========================  -->
-          <el-card class="box-card title-menu-min" style="width: 100%; max-height: 370px; min-height: 370px; background-color: #E4E5E5;">
+          <el-card class="box-card title-menu-min" style="width: 100%; max-height: 370px; min-height: 370px; background-color: #FAFAFA; ">
             <el-row v-for="o in liaojlS" style="margin-bottom: 10px;">
               <div v-if="o.flag == 'left'">
                 <el-col :sm="{span: 2}" :lg="{span:2}" :xs="{span: 4}">
                   <div class="block">
-                    <el-avatar shape="square" :size="50" :src="avatarUrl" />
+                    <!-- 头像  -->
+                    <el-avatar shape="square" :size="45" :src="avatarUrl" />
                   </div>
                 </el-col>
                 <el-col :sm="{span: 18}" :lg="{span:18}" :xs="{span: 18}">
-                  <el-card shadow="always" style="" class="leftInfos">
-                    <div :key="o" class="text item send" style="width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;" v-html="o.content" />
+                  <el-card shadow="always" style="min-width: 200px;">
+                    <!--  聊天内容 -->
+                    <div :key="o" class="text item send" style=" font-size: 10px !important;width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;"
+                      v-html="o.content" />
                     <!-- <div :class="o.userClass"></div> -->
                   </el-card>
                 </el-col>
@@ -68,13 +71,14 @@
               <div v-if="o.flag == 'right'">
                 <el-col :lg="{span:18,offset: 4}" :xs="{span: 18,offset: 2}">
                   <el-card shadow="always" style="margin-right: 15px;" class="rightInfos">
-                    <div :key="o" class="text item send" style="width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;" v-html="o.content" />
+                    <div :key="o" class="text item send" style="font-size: 10px !important;width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;"
+                      v-html="o.content" />
                     <!-- <div :class="o.userClass"></div> -->
                   </el-card>
                 </el-col>
                 <el-col :sm="{span: 2}" :lg="{span:2}" :xs="{span: 4}">
                   <div class="block">
-                    <el-avatar shape="square" :size="50" :src="avatarUrl" />
+                    <el-avatar shape="square" :size="45" :src="avatarUrl" />
                   </div>
                 </el-col>
               </div>
@@ -91,8 +95,11 @@
 
           <!-- ======================= 富文本编辑器(结束) =========================  -->
 
-          <el-row style="width: 6.25rem !important;">
-            <el-button type="primary" @click="submit">发送消息</el-button>
+          <el-row>
+            <div style="float: right; margin-right: 20px;">
+              <el-button size="small" @click="submit">发送消息</el-button>
+            </div>
+          </el-row>
           </el-row>
         </div>
       </el-col>
@@ -140,18 +147,19 @@
           <el-page-header content="消息列表" @back="goPhoneInfoLists" />
 
           <!-- ======================= 聊天记录 =========================  -->
-          <el-card class="box-card title-menu-min" style="width: 100%; max-height: 350px; min-height: 350px; background-color: #E4E5E5;">
+          <el-card class="box-card title-menu-min" style="width: 100%; max-height: 350px; min-height: 350px; background-color: #FAFAFA;">
             <el-row v-for="o in liaojlS" style="margin-bottom: 10px;">
               <!-- ======================= 左边消息 =========================  -->
               <div v-if="o.flag == 'left'">
                 <el-col :sm="{span: 2}" :lg="{span:2}" :xs="{span: 4}">
                   <div class="block">
-                    <el-avatar shape="square" :size="50" :src="avatarUrl" />
+                    <el-avatar shape="square" :size="45" :src="avatarUrl" />
                   </div>
                 </el-col>
                 <el-col :sm="{span: 18}" :lg="{span:18}" :xs="{span: 18}">
                   <el-card shadow="always" style="margin-left: 10px;" class="leftInfos">
-                    <div :key="o" class="text item send" style="width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;" v-html="o.content" />
+                    <div :key="o" class="text item send" style="font-size: 10px !important; width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;"
+                      v-html="o.content" />
                     <!-- <div :class="o.userClass"></div> -->
                   </el-card>
                 </el-col>
@@ -161,14 +169,15 @@
               <!-- ======================= 右边消息 =========================  -->
               <div v-if="o.flag == 'right'">
                 <el-col :lg="{span:18,offset: 4}" :xs="{span: 18,offset: 2}">
-                  <el-card shadow="always" style="margin-right: 15px;" class="rightInfos">
-                    <div :key="o" class="text item send" style="width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;" v-html="o.content" />
+                  <el-card shadow="always" style="margin-right: 10px;" class="rightInfos">
+                    <div :key="o" class="text item send" style="font-size: 10px !important;width: 100% !important;overflow: hidden !important;text-overflow: ellipsis !important;white-space: normal !important;"
+                      v-html="o.content" />
                     <!-- <div :class="o.userClass"></div> -->
                   </el-card>
                 </el-col>
                 <el-col class="phoneRightImage" :sm="{span: 2}" :lg="{span:2}" :xs="{span: 4}">
                   <div class="block">
-                    <el-avatar shape="square" :size="50" :src="avatarUrl" />
+                    <el-avatar shape="square" :size="45" :src="avatarUrl" />
                   </div>
                 </el-col>
               </div>
@@ -183,8 +192,10 @@
             <quill-editor ref="text" v-model="content" style="height: 100px;" class="myQuillEditor" :options="editorOption" />
           </el-row>
 
-          <el-row style="width: 6.25rem !important;">
-            <el-button type="primary" @click="submit">发送消息</el-button>
+          <el-row>
+            <div style="float: right; margin-right: 20px;">
+              <el-button size="small" @click="submit">发送消息</el-button>
+            </div>
           </el-row>
 
           <!-- ======================= 富文本编辑器(结束) =========================  -->
@@ -197,121 +208,120 @@
 </template>
 
 <script>
-import {
-  quillEditor
-} from 'vue-quill-editor'
-
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
-// 工具栏配置
-const toolbarOptions = [
-  ['image', 'video']
-]
-export default {
-
-  components: {
+  import {
     quillEditor
-  },
-  data() {
-    return {
-      // 手机端聊天Title
-      phoneTitle: '消息列表',
-      // 手机聊天消息列表
-      showInfoListsFlag: true,
-      // 手机聊天窗口
-      showChatWindowsFlag: false,
-      screenWidth: '',
-      screenHeight: '',
-      infoTopHtml: '',
-      isInfoPhoneFlag: false,
-      liaojlS: [],
-      content: '',
-      editorOption: {
-        modules: {
-          toolbar: toolbarOptions
-        }
+  } from 'vue-quill-editor'
+
+  import 'quill/dist/quill.core.css'
+  import 'quill/dist/quill.snow.css'
+  import 'quill/dist/quill.bubble.css'
+  // 工具栏配置
+  const toolbarOptions = [
+    ['image', 'video']
+  ]
+  export default {
+
+    components: {
+      quillEditor
+    },
+    data() {
+      return {
+        // 手机端聊天Title
+        phoneTitle: '消息列表',
+        // 手机聊天消息列表
+        showInfoListsFlag: true,
+        // 手机聊天窗口
+        showChatWindowsFlag: false,
+        screenWidth: '',
+        screenHeight: '',
+        infoTopHtml: '',
+        isInfoPhoneFlag: false,
+        liaojlS: [],
+        content: '',
+        editorOption: {
+          modules: {
+            toolbar: toolbarOptions
+          }
+        },
+        avatarUrl: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
+        myInfosFLag: false,
+        isShowMessage: true,
+        messageInfos: [{
+            'mid': 1,
+            'message': '信息1'
+          },
+          {
+            'mid': 2,
+            'message': '信息2'
+          }
+        ]
+      }
+    },
+    mounted() {
+      this.screenWidth = document.body.clientWidth
+      this.screenHeight = document.body.clientHeight
+      if (this.screenWidth <= 1000) {
+        this.isInfoPhoneFlag = true
+        this.infoTopHtml = '1vh'
+      } else {
+        this.isInfoPhoneFlag = false
+        this.infoTopHtml = '10vh'
+      }
+      window.onresize = () => {
+        return (() => {
+          this.screenWidth = document.body.clientWidth
+          this.screenHeight = document.body.clientHeight
+          // 判断宽度是否小于500 小于500 全部全屏显示
+          if (this.screenWidth <= 1000) {
+            this.isInfoPhoneFlag = true
+            this.infoTopHtml = '1vh'
+          } else {
+            this.isInfoPhoneFlag = false
+            this.infoTopHtml = '10vh'
+          }
+        })()
+      }
+    },
+    methods: {
+      // 打开我的消息
+      openMyInfos() {
+        this.COMMON.startLoading()
+        this.myInfosFLag = true
+        this.COMMON.stopLoading()
       },
-      avatarUrl: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
-      myInfosFLag: false,
-      isShowMessage: true,
-      messageInfos: [{
-        'mid': 1,
-        'message': '信息1'
-      },
-      {
-        'mid': 2,
-        'message': '信息2'
-      }
-      ]
-    }
-  },
-  mounted() {
-    this.screenWidth = document.body.clientWidth
-    this.screenHeight = document.body.clientHeight
-    if (this.screenWidth <= 1000) {
-      this.isInfoPhoneFlag = true
-      this.infoTopHtml = '1vh'
-    } else {
-      this.isInfoPhoneFlag = false
-      this.infoTopHtml = '10vh'
-    }
-    window.onresize = () => {
-      return (() => {
-        this.screenWidth = document.body.clientWidth
-        this.screenHeight = document.body.clientHeight
-        // 判断宽度是否小于500 小于500 全部全屏显示
-        if (this.screenWidth <= 1000) {
-          this.isInfoPhoneFlag = true
-          this.infoTopHtml = '1vh'
-        } else {
-          this.isInfoPhoneFlag = false
-          this.infoTopHtml = '10vh'
+      // 发送消息
+      submit() {
+        var newPojo = {
+          content: 'LEFTINFO:' + this.$refs.text.value,
+          userClass: 'leftArrow',
+          flag: 'left'
         }
-      })()
-    }
-  },
-  methods: {
-    // 打开我的消息
-    openMyInfos() {
-      this.COMMON.startLoading()
-      this.myInfosFLag = true
-      this.COMMON.stopLoading()
-    },
-    // 发送消息
-    submit() {
-      var newPojo = {
-        content: 'LEFTINFO:' + this.$refs.text.value,
-        userClass: 'leftArrow',
-        flag: 'left'
+        var newPojo2 = {
+          content: 'RIGHTINFO:' + this.$refs.text.value,
+          userClass: 'rightArrow',
+          flag: 'right'
+        }
+        this.liaojlS.push(newPojo)
+        this.liaojlS.push(newPojo2)
+        this.content = ''
+        console.log(this.$refs.text.value)
+      },
+      // 手机端返回消息列表
+      goPhoneInfoLists() {
+        this.phoneTitle = '消息列表'
+        this.showInfoListsFlag = true
+        this.showChatWindowsFlag = false
+      },
+      // 手机端显示发送消息窗口
+      showChatWindowsFlagMethod() {
+        this.phoneTitle = '鹿七七'
+        this.showInfoListsFlag = false
+        this.showChatWindowsFlag = true
       }
-      var newPojo2 = {
-        content: 'RIGHTINFO:' + this.$refs.text.value,
-        userClass: 'rightArrow',
-        flag: 'right'
-      }
-      this.liaojlS.push(newPojo)
-      this.liaojlS.push(newPojo2)
-      this.content = ''
-      console.log(this.$refs.text.value)
-    },
-    // 手机端返回消息列表
-    goPhoneInfoLists() {
-      this.phoneTitle = '消息列表'
-      this.showInfoListsFlag = true
-      this.showChatWindowsFlag = false
-    },
-    // 手机端显示发送消息窗口
-    showChatWindowsFlagMethod() {
-      this.phoneTitle = '鹿七七'
-      this.showInfoListsFlag = false
-      this.showChatWindowsFlag = true
     }
   }
-}
 </script>
 <style>
-
   #phoneBContent .el-badge__content {
     margin-top: 0.625rem !important;
   }

@@ -1,5 +1,3 @@
-
-<!--======网站通知管理模块=======-->
 <template>
   <div id="systenInfo">
 

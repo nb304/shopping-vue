@@ -1,4 +1,3 @@
-<!--======店铺信息管理模块=======-->
 <template>
 
   <div id="stortInfo" style="margin: 50px 0px 0 0px !important;">

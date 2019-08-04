@@ -1,4 +1,3 @@
-<!--======发货管理模块=======-->
 <template>
   <div id="DeliverManage">
     <el-form :inline="true" class="demo-form-inline searchForm">
@@ -183,6 +182,8 @@
             </template>
           </el-table-column>
 
+
+
           <el-table-column align="center" prop="created_at" show-overflow-tooltip="true">
             <template slot="header" slot-scope="scope">
               <span>发货操作</span>
@@ -316,7 +317,7 @@
 
     <!--===================发货操作弹出框(开始)========================-->
     <el-dialog id="review" title="发货操作" :visible.sync="deliverHandleVisible" width="21%">
-      <el-form :inline="true" class="demo-form-inline">
+      <el-form :inline="true" class="demo-form-inline" >
         <el-row :gutter="24" style="text-align: left !important;">
           <el-col :sm="{span: 23}" :xs="{span: 23}">
             <el-form-item label="发货数量">
@@ -536,6 +537,8 @@ export default {
     margin: 30px;
   }
 
+
+
   #DeliverManage .searchForm .el-row{
      text-align: left !important;
    }
@@ -586,6 +589,7 @@ export default {
     #DeliverManage div[aria-label="发货操作"] .el-form .el-form-item .el-input__inner{
       width: 11.5rem !important;
     }
+
 
   }
 

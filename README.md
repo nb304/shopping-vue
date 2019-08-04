@@ -6,7 +6,7 @@ Iocn图标说明列表
       名称                    功能     默认颜色
       caigou.svg            采购图标   白色
       dianpu.svg            店铺图标   白色
-      dianpu2.svg           店铺图标   白色
+      dianpu2.svg            店铺图标   白色
       dingdan.svg           订单图标   白色
       kefu.svg              客服图标   白色
       kucun.svg             库存图标   白色
@@ -38,8 +38,6 @@ Iocn图标说明列表
       result.svg            结果图标   黑色
       yiwen.svg             疑问图标   黑色
       jinggao.svg           警告图标   橙色
-      users.svg             多用户     黑色
-      zaixian.svg           在线用户   绿色
      
   
   

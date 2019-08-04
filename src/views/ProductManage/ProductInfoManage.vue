@@ -1,4 +1,3 @@
-<!--======商品信息管理模块=======-->
 <template>
   <div id="productInfoDiv" v-loading="isProductSPULoading" style="margin:30px ;">
 
@@ -222,12 +221,12 @@
 
           <el-row :gutter="24">
             <el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
-              <el-form-item label="是否支持" style="width:100%;" class="addProductItem">
-                <el-radio v-model="radio" label="1">支持无理由退货</el-radio>
-                <el-radio v-model="radio" label="2">不支持无理由退货</el-radio>
-                <el-input v-model="addProductTwoFrom.desc" placeholder="设置无理由退款天数(默认7天)" class="addProductFormInput" />
-              </el-form-item>
-            </el-col>
+             <el-form-item label="是否支持" style="width:100%;" class="addProductItem">
+               <el-radio v-model="radio" label="1">支持无理由退货</el-radio>
+               <el-radio v-model="radio" label="2">不支持无理由退货</el-radio>
+                <el-input v-model="addProductTwoFrom.desc" placeholder="设置无理由退款天数(默认7天)"  class="addProductFormInput" />
+             </el-form-item>
+           </el-col>
           </el-row>
 
         </el-form>
@@ -803,7 +802,7 @@
                     </el-col>
 
                   </el-tab-pane>
-                  <el-tab-pane label="商品评论列表" name="second" class="title-menu-min el-tab-paneClass">
+                  <el-tab-pane label="商品评论列表" name="second"  class="title-menu-min el-tab-paneClass">
                     <el-row :gutter="24">
                       <el-col :sm="{span: 8}" :xs="{span:8}">
                         <el-button type="primary" style="width:100%;padding:12px 0px; ">好评</el-button>
@@ -1052,16 +1051,6 @@
               <el-form-item label="商品简述" class="addProductItem">
                 <el-input v-model="addProductTwoFrom.name" class="addProductFormInput" placeholder="请输入商品简述" />
                 </el-select>
-              </el-form-item>
-            </el-col>
-          </el-row>
-
-          <el-row :gutter="24">
-            <el-col :sm="{span: 11,offset: 1}" :xs="{span: 23}">
-              <el-form-item label="是否支持" style="width:100%;" class="addProductItem">
-                <el-radio v-model="radio" label="1">支持无理由退货</el-radio>
-                <el-radio v-model="radio" label="2">不支持无理由退货</el-radio>
-                <el-input v-model="addProductTwoFrom.desc" placeholder="设置无理由退款天数(默认7天)" class="addProductFormInput" />
               </el-form-item>
             </el-col>
           </el-row>

@@ -1,6 +1,4 @@
-<!--======采购列表管理模块========-->
 <template>
-
   <div id="purchasingList">
     <el-form ref="form" :model="purchasingListForm" label-width="70px">
       <el-row :gutter="24">
@@ -152,6 +150,7 @@
               </el-popover>
             </template>
           </el-table-column>
+
 
           <el-table-column prop="created_at" show-overflow-tooltip="true" header-align="center" align="center">
             <template slot="header" slot-scope="scope">
@@ -646,10 +645,6 @@ export default {
 
   #purchasingList .el-divider span{
     color: #606266;font-weight:bold;
-  }
-
-  #purchasingList .el-date-editor{
-      width: 105% !important;
   }
 
   #purchasingList div[role="dialog"]{

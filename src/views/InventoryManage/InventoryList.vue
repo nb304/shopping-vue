@@ -1,4 +1,3 @@
-<!--======库存管理列表模块=======-->
 <template>
   <div id="inventoryList">
     <el-form ref="form" :model="inventoryListForm" label-width="70px">
@@ -238,7 +237,7 @@
       <el-form ref="form" :model="updateInventoryForm" label-width="70px">
         <el-row :gutter="24">
 
-          <!--     updateNumber: '', // 操作库存数量
+     <!--     updateNumber: '', // 操作库存数量
           updateDesc: '', // 操作描述
           updateState: ''// 操作状态-->
           <el-col :lg="{span: 24}" :xs="{span: 24}">
@@ -257,8 +256,8 @@
 
             <el-form-item label="操作类型">
               <el-radio-group v-model="updateInventoryForm.updateState">
-                <el-radio label="出库" value="1" />
-                <el-radio label="入库" value="0" />
+                <el-radio label="出库" value="1"></el-radio>
+                <el-radio label="入库" value="0"></el-radio>
               </el-radio-group>
             </el-form-item>
           </el-col>

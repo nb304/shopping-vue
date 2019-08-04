@@ -1,4 +1,3 @@
-<!--======店铺分类管理模块=======-->
 <template>
   <div id="stortTypeDiv" style="margin:30px ;">
 
@@ -44,7 +43,8 @@
 
         <el-table :data="storeCheckInDatas" border style="width: 100%">
           <el-table-column prop="checkInId" label="分类编号" width="120" show-overflow-tooltip="true" />
-          <el-table-column prop="storeName" label="分类名称" width="120" show-overflow-tooltip="true" />
+          <el-table-column label="店铺名称" prop="storeName" show-overflow-tooltip="true" />
+          <el-table-column prop="storeName" label="分类姓名" width="120" show-overflow-tooltip="true" />
           <el-table-column label="店铺分类图标" prop="checkInCard" width="200" show-overflow-tooltip="true" />
           <el-table-column label="达到要求" width="100" show-overflow-tooltip="true">
             <el-button type="text" size="small" @click="storeTypeFlags.storeTypeReachFlag = true">查看</el-button>
