@@ -1,4 +1,4 @@
-<!--======登陆模块=======-->
+<!--====== 登陆模块 =======-->
 <template>
   <div class="login-container" style="background-image: url(../../images/login_background.png);">
     <el-form
